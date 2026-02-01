@@ -691,7 +691,7 @@ def main():
                 if v.get("variant_id"): variant_ids.add(v["variant_id"])
         
         # Load Baseline
-        unified_path = Path(args.unified) if args.unified else DATA_DIR / "bias_unified.jsonl"
+        unified_path = Path(args.unified) if args.unified else DATA_DIR / "erepo_bias_intervar_merged.jsonl"
         all_metrics = {}
         for m in models: all_metrics[m] = calculate_category_metrics(all_variants, m)
         

@@ -12,7 +12,7 @@ This unified script orchestrates:
 Usage:
     python scripts/benchmark_analysis.py Results_500_benchmarked/classifications_*.jsonl
     python scripts/benchmark_analysis.py Results_500_benchmarked/classifications_*.jsonl --output-dir Results_500_benchmarked
-    python scripts/benchmark_analysis.py Results_500_benchmarked/classifications_*.jsonl --unified data/bias_unified.jsonl --skip-figures
+    python scripts/benchmark_analysis.py Results_500_benchmarked/classifications_*.jsonl --unified data/erepo_bias_intervar_merged.jsonl --skip-figures
 """
 
 import argparse

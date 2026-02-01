@@ -3,7 +3,7 @@
 
 Usage:
     python scripts/compare_tools.py --aiva-results results/classifications_*.jsonl
-    python scripts/compare_tools.py --aiva-results results/classifications_*.jsonl --unified data/bias_unified.jsonl
+    python scripts/compare_tools.py --aiva-results results/classifications_*.jsonl --unified data/erepo_bias_intervar_merged.jsonl
 """
 
 import argparse
