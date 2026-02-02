@@ -53,7 +53,6 @@ def calculate_metrics(results: list[dict]) -> dict:
     per_direction = calculate_direction_metrics(ground_directions, pred_directions, DIRECTION_LABELS)
 
     # Directional confusion matrix (3-class)
->>>>>>> origin/main
     confusion_3class = {g: {p: 0 for p in DIRECTION_LABELS} for g in DIRECTION_LABELS}
     for g, p in zip(ground_directions, pred_directions):
         if g in confusion_3class and p in DIRECTION_LABELS:
@@ -131,7 +130,6 @@ def print_report(metrics: dict):
         macro_r = sum(class_metrics[c]["recall"] for c in valid_classes) / len(valid_classes)
         print(f"  {'-'*60}")
         print(f"  {'Macro Average':<25} {macro_p:>8.3f} {macro_r:>8.3f} {macro_f1:>8.3f}")
->>>>>>> origin/main
 
     print(f"\n{'='*30} DIRECTIONAL METRICS {'='*19}")
     print(f"  {'Direction':<15} {'Prec':>8} {'Recall':>8} {'F1':>8} {'Support':>8}")
