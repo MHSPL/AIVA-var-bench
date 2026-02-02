@@ -185,9 +185,8 @@ python scripts/compare_models.py \
 ### Full Analysis Pipeline
 
 For comprehensive benchmarking with figures and scorecards:
-=======
+
 #### Step 3: Calculate Detailed Metrics
->>>>>>> origin/main
 
 ```bash
 # Use most recent results
