@@ -178,38 +178,37 @@ def parse_hg19_coord(hgvs_list: str) -> tuple[str, int, str, str, str] | None:
     return None
 
 
-def parse_erepo_ground_truth(filepath: Path) -> dict[str, dict]:
+def parse_erepo_ground_truth(filepath: Path) -> tuple[dict[str, dict], dict[str, dict], dict[str, dict]]:
     """
     Parse eRepo ground truth TSV.
 
-    Returns dict keyed by variant_key (chr:pos:ref:alt) with variant info.
+    Returns tuple of (variants, clinvar_index, uuid_index) where:
+    - variants: dict keyed by variant_key (chr:pos:ref:alt)
+    - clinvar_index: dict keyed by ClinVar ID
+    - uuid_index: dict keyed by UUID
     """
     variants = {}
+    clinvar_index = {}  # Secondary index by ClinVar ID
+    uuid_index = {}     # Secondary index by UUID
 
     with open(filepath, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f, delimiter='\t')
 
         for row in reader:
+            uuid = row.get('Uuid', '')
+            clinvar_id = row.get('ClinVar Variation Id', '').strip()
             hgvs_list = row.get('HGVS Expressions', '')
-            coord = parse_hg19_coord(hgvs_list)
-
-            if not coord:
-                continue
-
-            chrom, pos, ref, alt, hgvs_g = coord
-            variant_key = f"{chrom}:{pos}:{ref}:{alt}"
-
+            
             # Parse criteria
             criteria_met = row.get('Applied Evidence Codes (Met)', '').strip()
             criteria_met = [c.strip() for c in criteria_met.split(',') if c.strip()] if criteria_met else []
-
-            variants[variant_key] = {
-                "id": row.get('Uuid', ''),
+            
+            variant_data = {
+                "id": uuid,
                 "variation": row.get('#Variation', ''),
-                "clinvar_id": row.get('ClinVar Variation Id', ''),
+                "clinvar_id": clinvar_id,
                 "allele_registry_id": row.get('Allele Registry Id', ''),
                 "hgvs_expressions": hgvs_list.split(', '),
-                "hgvs_g": hgvs_g,  # hg19 genomic HGVS for AIVA input
                 "gene_symbol": row.get('HGNC Gene Symbol', ''),
                 "disease": row.get('Disease', ''),
                 "mondo_id": row.get('Mondo Id', ''),
@@ -217,10 +216,30 @@ def parse_erepo_ground_truth(filepath: Path) -> dict[str, dict]:
                 "classification": row.get('Assertion', ''),
                 "criteria_met": criteria_met,
                 "expert_panel": row.get('Expert Panel', ''),
-                "coord": {"chrom": chrom, "pos": pos, "ref": ref, "alt": alt}
             }
-
-    return variants
+            
+            # Try to parse hg19 coordinates
+            coord = parse_hg19_coord(hgvs_list)
+            if coord:
+                chrom, pos, ref, alt, hgvs_g = coord
+                variant_key = f"{chrom}:{pos}:{ref}:{alt}"
+                variant_data["hgvs_g"] = hgvs_g
+                variant_data["coord"] = {"chrom": chrom, "pos": pos, "ref": ref, "alt": alt}
+                
+                # Primary index by coordinate
+                variants[variant_key] = variant_data
+            else:
+                # No coordinates parsed, but still index by ClinVar ID if available
+                variant_data["hgvs_g"] = variant_data["variation"]  # Use primary variation
+                variant_data["coord"] = None
+            
+            # Secondary indexes for fallback matching
+            if clinvar_id:
+                clinvar_index[clinvar_id] = variant_data
+            if uuid:
+                uuid_index[uuid] = variant_data
+    
+    return variants, clinvar_index, uuid_index
 
 
 def parse_intervar_classification(intervar_field: str) -> tuple[str, list[str]]:
@@ -540,32 +559,102 @@ def parse_vcf(filepath: Path) -> list[dict]:
     return variants
 
 
+def match_erepo_variant(vcf_key: str, annovar_keys: list[str], erepo: dict,
+                        clinvar_index: dict = None, uuid_index: dict = None,
+                        bias_match: dict = None, intervar_match: dict = None) -> dict | None:
+    """
+    Multi-strategy matching for eRepo variants.
+    
+    Tries multiple approaches to find eRepo ground truth:
+    1. Direct VCF coordinate match
+    2. ANNOVAR coordinate match
+    3. Position-based fuzzy matching for complex variants (±2bp window)
+    4. ClinVar ID matching (if available from BIAS or InterVar metadata)
+    
+    Returns eRepo variant data or None if no match found.
+    """
+    # Strategy 1: Direct VCF key match
+    erepo_match = erepo.get(vcf_key)
+    if erepo_match:
+        return erepo_match
+    
+    # Strategy 2: Try all ANNOVAR keys
+    for ak in annovar_keys:
+        erepo_match = erepo.get(ak)
+        if erepo_match:
+            return erepo_match
+    
+    # Strategy 3: Fuzzy positional matching for complex indels
+    # Parse chromosome and position from VCF key
+    try:
+        parts = vcf_key.split(':')
+        if len(parts) >= 4:
+            chrom, pos_str = parts[0], parts[1]
+            pos = int(pos_str)
+            ref, alt = parts[2], parts[3]
+            
+            # Only try fuzzy matching for complex variants (indels)
+            if len(ref) != 1 or len(alt) != 1:
+                # Search for variants within ±2bp window on same chromosome
+                for fuzzy_offset in [-2, -1, 0, 1, 2]:
+                    fuzzy_pos = pos + fuzzy_offset
+                    # Try different ref/alt combinations
+                    for fuzzy_key in [
+                        f"{chrom}:{fuzzy_pos}:{ref}:{alt}",
+                        f"{chrom}:{fuzzy_pos}:-:{alt}",  # Insertion
+                        f"{chrom}:{fuzzy_pos}:{ref}:-",  # Deletion
+                    ]:
+                        erepo_match = erepo.get(fuzzy_key)
+                        if erepo_match:
+                            return erepo_match
+    except (ValueError, IndexError):
+        pass
+    
+    # Strategy 4: ClinVar ID matching (if indexes available)
+    if clinvar_index:
+        # Try to get ClinVar ID from BIAS or InterVar metadata if available
+        # Note: Current BIAS/InterVar parsing doesn't include ClinVar ID
+        # This is a placeholder for future enhancement
+        pass
+    
+    return None
+
+
 def create_unified_dataset_v2(
     vcf_variants: list[dict],
     erepo: dict[str, dict],
+    clinvar_index: dict[str, dict],
+    uuid_index: dict[str, dict],
     intervar: dict[str, dict],
     bias: dict[str, dict]
 ) -> list[dict]:
     """
     Create unified dataset using VCF as primary source.
 
-    Uses VCF key for BIAS-2015 matching, ANNOVAR keys for InterVar matching.
+    Uses VCF key for BIAS-2015 matching, ANNOVAR keys for InterVar matching,
+    and multi-strategy matching for eRepo ground truth.
     """
     unified = []
-    stats = {"total": 0, "matched_all": 0, "matched_bias_only": 0, "no_erepo": 0, "no_bias": 0}
+    stats = {
+        "total": 0, 
+        "matched_all": 0, 
+        "matched_bias_only": 0, 
+        "no_erepo": 0, 
+        "no_bias": 0,
+        "fuzzy_matched": 0  # Track fuzzy position matches
+    }
 
     for vcf_var in vcf_variants:
         stats["total"] += 1
         vcf_key = vcf_var["vcf_key"]
         annovar_keys = vcf_var["annovar_keys"]
 
-        # Match BIAS-2015 (uses VCF format)
+        # Match BIAS-2015 first (uses VCF format - optional)
         bias_match = bias.get(vcf_key)
         if not bias_match:
             stats["no_bias"] += 1
-            continue  # BIAS-2015 should match all VCF variants
 
-        # Match InterVar (uses ANNOVAR format - try all possible keys)
+        # Match InterVar (uses ANNOVAR format - try all possible keys - optional)
         intervar_match = None
         matched_annovar_key = None
         for ak in annovar_keys:
@@ -574,21 +663,17 @@ def create_unified_dataset_v2(
                 matched_annovar_key = ak
                 break
 
-        # Match eRepo (try VCF key and all ANNOVAR keys)
-        erepo_match = erepo.get(vcf_key)
-        if not erepo_match:
-            for ak in annovar_keys:
-                erepo_match = erepo.get(ak)
-                if erepo_match:
-                    break
-
+        # Match eRepo ground truth (required - try multiple strategies)
+        erepo_match = match_erepo_variant(vcf_key, annovar_keys, erepo, clinvar_index, uuid_index, bias_match, intervar_match)
+        
         if not erepo_match:
             stats["no_erepo"] += 1
             continue  # Need ground truth
 
-        if intervar_match:
+        # Track matching stats
+        if bias_match and intervar_match:
             stats["matched_all"] += 1
-        else:
+        elif bias_match:
             stats["matched_bias_only"] += 1
 
         record = {
@@ -617,8 +702,8 @@ def create_unified_dataset_v2(
             },
 
             "bias_2015": {
-                "classification": bias_match["classification"],
-                "criteria_met": bias_match["criteria_met"]
+                "classification": bias_match["classification"] if bias_match else None,
+                "criteria_met": bias_match["criteria_met"] if bias_match else []
             }
         }
 
@@ -633,9 +718,103 @@ def create_unified_dataset_v2(
     return unified
 
 
+def create_unified_from_erepo(
+    erepo: dict[str, dict],
+    intervar: dict[str, dict],
+    bias: dict[str, dict]
+) -> list[dict]:
+    """
+    Create unified dataset starting from eRepo variants.
+    
+    This captures variants that may not be in the VCF or have coordinate mismatches.
+    """
+    unified = []
+    stats = {"total": 0, "with_bias": 0, "with_intervar": 0, "with_both": 0}
+    
+    for variant_key, erepo_match in erepo.items():
+        stats["total"] += 1
+        
+        # Try to match BIAS and InterVar
+        bias_match = bias.get(variant_key)
+        if bias_match:
+            stats["with_bias"] += 1
+        
+        # For InterVar, the key format might be different (ANNOVAR style)
+        intervar_match = intervar.get(variant_key)
+        if intervar_match:
+            stats["with_intervar"] += 1
+        
+        if bias_match and intervar_match:
+            stats["with_both"] += 1
+        
+        # Only include if we have at least BIAS or InterVar prediction
+        if not (bias_match or intervar_match):
+            continue
+        
+        record = {
+            "variant_key": variant_key,
+            "annovar_key": variant_key,  # Use same key
+            "id": erepo_match["id"],
+            "variation": erepo_match["variation"],
+            "clinvar_id": erepo_match["clinvar_id"],
+            "gene_symbol": erepo_match["gene_symbol"],
+            "disease": erepo_match["disease"],
+            "mode_of_inheritance": erepo_match["mode_of_inheritance"],
+            "hgvs_expressions": erepo_match["hgvs_expressions"],
+            "hgvs_g": erepo_match["hgvs_g"],
+            "variant_type": "Unknown",  # Can't determine without VCF
+            "coord": erepo_match["coord"],
+
+            "ground_truth": {
+                "classification": erepo_match["classification"],
+                "criteria_met": erepo_match["criteria_met"],
+                "expert_panel": erepo_match["expert_panel"]
+            },
+
+            "intervar": {
+                "classification": intervar_match["classification"] if intervar_match else None,
+                "criteria_met": intervar_match["criteria_met"] if intervar_match else []
+            },
+
+            "bias_2015": {
+                "classification": bias_match["classification"] if bias_match else None,
+                "criteria_met": bias_match["criteria_met"] if bias_match else []
+            }
+        }
+
+        unified.append(record)
+    
+    print(f"  eRepo-first: {stats['total']} variants, {stats['with_both']} with both tools, {len(unified)} usable")
+    
+    return unified
+
+
+def merge_datasets(vcf_based: list[dict], erepo_based: list[dict]) -> list[dict]:
+    """
+    Merge VCF-based and eRepo-based datasets, removing duplicates.
+    
+    Prioritizes VCF-based matches (more reliable coordinates).
+    """
+    # Index VCF-based by ID
+    vcf_ids = {v["id"] for v in vcf_based}
+    
+    # Add eRepo-based variants that aren't in VCF-based
+    merged = list(vcf_based)
+    added = 0
+    
+    for erepo_var in erepo_based:
+        if erepo_var["id"] not in vcf_ids:
+            merged.append(erepo_var)
+            added += 1
+    
+    print(f"  Merged: {len(vcf_based)} VCF-based + {added} additional eRepo-based = {len(merged)} total")
+    
+    return merged
+
+
 def main():
     parser = argparse.ArgumentParser(description="Parse BIAS-2015 supplementary data")
-    parser.add_argument("--output", default="bias_unified.jsonl",
+    parser.add_argument("--output", default="erepo_bias_intervar_merged.jsonl",
                         help="Output filename (in data/ directory)")
     args = parser.parse_args()
 
@@ -664,7 +843,9 @@ def main():
     print(f"  Found {len(vcf_variants)} variants")
 
     print("Parsing eRepo ground truth...")
-    erepo = parse_erepo_ground_truth(erepo_path)
+    erepo, clinvar_index, uuid_index = parse_erepo_ground_truth(erepo_path)
+    print(f"  Parsed {len(erepo)} variants with coordinates")
+    print(f"  ClinVar index: {len(clinvar_index)} entries")
 
     print("Parsing InterVar predictions...")
     intervar = parse_intervar_predictions(intervar_path)
@@ -672,8 +853,14 @@ def main():
     print("Parsing BIAS-2015 predictions...")
     bias = parse_bias_predictions(bias_path)
 
-    print("\nCreating unified dataset (VCF-based matching)...")
-    unified = create_unified_dataset_v2(vcf_variants, erepo, intervar, bias)
+    print("\nCreating unified dataset (VCF-based matching with fuzzy fallback)...")
+    unified_from_vcf = create_unified_dataset_v2(vcf_variants, erepo, clinvar_index, uuid_index, intervar, bias)
+    
+    print("\n  Trying eRepo-first matching to capture missed variants...")
+    unified_from_erepo = create_unified_from_erepo(erepo, intervar, bias)
+    
+    # Merge the two datasets, preferring VCF-based matches
+    unified = merge_datasets(unified_from_vcf, unified_from_erepo)
 
     # Save AIVA input file
     output_path = DATA_DIR / args.output
