@@ -15,7 +15,6 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from config import CONCURRENCY_LIMIT
 from scripts.classify import AIVAClient, classify_batch
 
 async def retry_errors(filepath: Path, concurrency: int = 1):  # Default to conservative concurrency
@@ -88,17 +87,8 @@ async def retry_errors(filepath: Path, concurrency: int = 1):  # Default to cons
     print(f"Recovered {success_count}/{len(error_indices)} variants.")
     
     if success_count > 0:
-        # Create backup
+        # Create backup by renaming original file
         backup_path = filepath.with_name(filepath.name + ".bak")
-        with open(backup_path, "w", encoding="utf-8") as f:
-            for r in lines: # Wait, I want to backup the ORIGINAL lines, but I modified `lines` in place.
-                            # Actually, I haven't saved to file yet.
-                            # So I should read the file again to backup? 
-                            # Or just write existing file to .bak first.
-                pass 
-        
-        # Better: invalid loop above. Correct logic:
-        # Rename original file to .bak
         print(f"Backing up original to {backup_path}")
         filepath.rename(backup_path)
 

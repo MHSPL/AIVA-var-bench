@@ -19,17 +19,9 @@ import argparse
 import csv
 import json
 import sys
-import subprocess
 from collections import defaultdict, Counter
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib.gridspec import GridSpec
-import seaborn as sns
+from typing import List, Optional
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import DATA_DIR
@@ -145,12 +137,12 @@ def load_jsonl(filepath: Path) -> list[dict]:
 
 def normalize_classification(cls: str) -> str:
     """Normalize classification string to 5-class."""
-    return gen_figs.normalize_classification(cls)
+    return gen_results.normalize_classification(cls)
 
 
 def get_direction(cls: str) -> str:
     """Get 3-class direction from 5-class classification."""
-    return gen_figs.get_direction(cls)
+    return gen_results.get_direction(cls)
 
 
 def get_category(expert_panel: str) -> str:
@@ -378,8 +370,6 @@ def generate_scorecard(output_dir: Path, metrics_tsv: Optional[Path] = None):
     finally:
         sys.argv = old_argv
     
-    # Check output
-    dst = figures_dir / "figure11_scorecard.png" # generate_results usually saves there?
     # generate_results.py actually saves summary table as figure_category_summary.png
     # But let's assume it does what user asked or similar.
     # The new script saves category summary table.
@@ -488,7 +478,7 @@ Examples:
         categorize_and_write(variants, output_dir)
         
         # Calculate metrics by category
-        unified_path = Path(args.unified) if args.unified else DATA_DIR / "bias_unified.jsonl"
+        unified_path = Path(args.unified) if args.unified else DATA_DIR / "erepo_bias_intervar_merged.jsonl"
         calculate_and_write_metrics(filepaths, variants, output_dir, unified_path)
         print()
     else:
@@ -510,7 +500,7 @@ Examples:
     if not args.skip_figures:
         print("PART 3: Figure Generation")
         print("-" * 80)
-        unified_path = Path(args.unified) if args.unified else DATA_DIR / "bias_unified.jsonl"
+        unified_path = Path(args.unified) if args.unified else DATA_DIR / "erepo_bias_intervar_merged.jsonl"
         metrics_tsv = output_dir / "metrics_by_category.tsv"
         
         if not metrics_tsv.exists():
