@@ -584,7 +584,11 @@ def generate_combined_summary(metrics_tsv_path, output_dir):
             main_text = parts[0]
             count_text = "(n=" + parts[1]
             # Draw main text
-            ax.text(x_pos[0]+0.02, current_y+row_height/2, main_text, transform=ax.transAxes, fontsize=10, fontweight=weight, va='center', color="#202124")
+            ax.text(
+                x_pos[0]+0.02, current_y+row_height/2, main_text,
+                transform=ax.transAxes, fontsize=10, fontweight=weight,
+                va='center', color="#202124"
+            )
             # Draw count text (italic, smaller, not bold)
             # Need to estimate width? Or just append?
             # Matplotlib doesn't support partial styling easily without offsets.
