@@ -501,7 +501,7 @@ def main():
     parser = argparse.ArgumentParser(description="4-way tool comparison")
     parser.add_argument("--aiva-results", nargs="+", required=True,
                        help="AIVA classification result files (JSONL)")
-    parser.add_argument("--unified", default=str(DATA_DIR / "bias_unified.jsonl"),
+    parser.add_argument("--unified", default=str(DATA_DIR / "erepo_bias_intervar_merged.jsonl"),
                        help="Unified data file with InterVar/BIAS predictions")
     parser.add_argument("--output", help="Output file for detailed results")
 

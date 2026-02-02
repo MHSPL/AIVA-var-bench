@@ -145,12 +145,12 @@ def load_jsonl(filepath: Path) -> list[dict]:
 
 def normalize_classification(cls: str) -> str:
     """Normalize classification string to 5-class."""
-    return gen_figs.normalize_classification(cls)
+    return gen_results.normalize_classification(cls)
 
 
 def get_direction(cls: str) -> str:
     """Get 3-class direction from 5-class classification."""
-    return gen_figs.get_direction(cls)
+    return gen_results.get_direction(cls)
 
 
 def get_category(expert_panel: str) -> str:
@@ -488,7 +488,7 @@ Examples:
         categorize_and_write(variants, output_dir)
         
         # Calculate metrics by category
-        unified_path = Path(args.unified) if args.unified else DATA_DIR / "bias_unified.jsonl"
+        unified_path = Path(args.unified) if args.unified else DATA_DIR / "erepo_bias_intervar_merged.jsonl"
         calculate_and_write_metrics(filepaths, variants, output_dir, unified_path)
         print()
     else:
@@ -510,7 +510,7 @@ Examples:
     if not args.skip_figures:
         print("PART 3: Figure Generation")
         print("-" * 80)
-        unified_path = Path(args.unified) if args.unified else DATA_DIR / "bias_unified.jsonl"
+        unified_path = Path(args.unified) if args.unified else DATA_DIR / "erepo_bias_intervar_merged.jsonl"
         metrics_tsv = output_dir / "metrics_by_category.tsv"
         
         if not metrics_tsv.exists():
