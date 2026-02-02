@@ -395,7 +395,7 @@ def print_criteria_analysis(unified_data: list[dict], aiva_by_id: dict):
         vid = v.get("id")
         if vid in aiva_by_id:
             for m, data in aiva_by_id[vid].items():
-                 for c in data.get("criteria", []):
+                for c in data.get("criteria", []):
                     model_criteria[m][c] += 1
 
     # Get all unique criteria
