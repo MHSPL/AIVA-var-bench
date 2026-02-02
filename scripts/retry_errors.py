@@ -15,7 +15,6 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from config import CONCURRENCY_LIMIT
 from scripts.classify import AIVAClient, classify_batch
 
 async def retry_errors(filepath: Path, concurrency: int = 1):  # Default to conservative concurrency

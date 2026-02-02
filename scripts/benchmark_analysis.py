@@ -19,17 +19,9 @@ import argparse
 import csv
 import json
 import sys
-import subprocess
 from collections import defaultdict, Counter
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib.gridspec import GridSpec
-import seaborn as sns
+from typing import List, Optional
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import DATA_DIR
@@ -378,8 +370,6 @@ def generate_scorecard(output_dir: Path, metrics_tsv: Optional[Path] = None):
     finally:
         sys.argv = old_argv
     
-    # Check output
-    dst = figures_dir / "figure11_scorecard.png" # generate_results usually saves there?
     # generate_results.py actually saves summary table as figure_category_summary.png
     # But let's assume it does what user asked or similar.
     # The new script saves category summary table.

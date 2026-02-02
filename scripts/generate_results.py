@@ -20,17 +20,14 @@ Usage:
 """
 
 import argparse
-import csv
 import json
 import sys
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 from pathlib import Path
 from collections import Counter, defaultdict
-from datetime import datetime
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List
 
 # --- CONFIGURATION & CONSTANTS ---
 
@@ -507,7 +504,6 @@ def generate_combined_summary(metrics_tsv_path, output_dir):
     header_height = 0.06
     row_height = 0.05
     aiva_bg_color = "#e8f0fe"
-    others_bg_color = "#f1f3f4"
     line_color = "#e0e0e0"
     separator_color = "#9aa0a6"
     
@@ -588,7 +584,7 @@ def generate_combined_summary(metrics_tsv_path, output_dir):
             main_text = parts[0]
             count_text = "(n=" + parts[1]
             # Draw main text
-            t = ax.text(x_pos[0]+0.02, current_y+row_height/2, main_text, transform=ax.transAxes, fontsize=10, fontweight=weight, va='center', color="#202124")
+            ax.text(x_pos[0]+0.02, current_y+row_height/2, main_text, transform=ax.transAxes, fontsize=10, fontweight=weight, va='center', color="#202124")
             # Draw count text (italic, smaller, not bold)
             # Need to estimate width? Or just append?
             # Matplotlib doesn't support partial styling easily without offsets.
@@ -644,9 +640,6 @@ def generate_combined_summary(metrics_tsv_path, output_dir):
     from datetime import datetime
     eval_date = datetime.now().strftime("%b %d, %Y")
     ax.text(0, table_bottom - row_height*0.8, f"Source: Internal Benchmark. Evaluation date: {eval_date}.", fontsize=8, color='#5f6368', transform=ax.transAxes)
-    
-    legend_text = "" # Removed legend as requested
-    # ax.text(0, table_bottom - row_height*1.5, legend_text, fontsize=7, color='#5f6368', transform=ax.transAxes, fontstyle='italic')
     
     # Add AIVA* footnote
     ax.text(0, table_bottom - row_height*1.5, "* AIVA powered by Gemini 3 Pro", fontsize=7, color='#5f6368', transform=ax.transAxes, fontstyle='italic')
