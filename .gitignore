@@ -3,7 +3,7 @@
 *.csv
 !data/bias_unified.jsonl
 !data/erepo_bias_intervar_merged.jsonl
-data/bias_2015/
+!data/bias_2015/
 *.log
 *.pyc
 __pycache__
