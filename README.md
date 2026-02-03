@@ -80,8 +80,7 @@ Edit `config.py` or set environment variables:
 | `AIVA_API_TOKEN` | - | AIVA API token for authentication |
 | `DEFAULT_MODEL` | `google/gemini-3-flash-preview` | LLM model for classification |
 | `DEFAULT_ASSEMBLY` | `GRCh38` | Genome assembly |
-<<<<<<< HEAD
-| `CONCURRENCY_LIMIT` | `5` | Max concurrent API requests |
+| `CONCURRENCY_LIMIT` | `5` | Max concurrent API requests (respects AIVA rate limit) |
 
 ## Project Structure
 
@@ -114,9 +113,6 @@ aiva-var-bench/
     ├── benchmark_analysis.py    # End-to-end analysis pipeline
     └── generate_results.py      # Metrics calculation & figure generation
 ```
-=======
-| `CONCURRENCY_LIMIT` | `5` | Max concurrent API requests (respects AIVA rate limit) |
->>>>>>> origin/main
 
 ## Usage
 
@@ -150,8 +146,7 @@ python scripts/compare_models.py --models google/gemini-3-flash-preview openai/g
 python scripts/compare_models.py --models google/gemini-3-flash-preview --limit 20
 ```
 
-<<<<<<< HEAD
-# New Feature: Parallel Execution
+#### New Feature: Parallel Execution
 You can use the `--parallel` flag to run multiple models concurrently, significantly speeding up the benchmarking process.
 
 ```bash
@@ -166,25 +161,15 @@ When using `--parallel`:
 - Progress bars are replaced with periodic status updates to avoid console conflicts.
 - Each model runs in its own concurrent task.
 
-**New Feature: Custom Output Directory**
+#### New Feature: Custom Output Directory
 You can now specify where to save results using `--output-dir`.
 
 ```bash
-# Step 1: Download BIAS-2015 data (see below)
-
-# Step 2: Parse and unify data
-python scripts/parse_bias_data.py
-
-# Step 3: Run AIVA classification
 python scripts/compare_models.py \
   --models openai/gpt-5.2 google/gemini-3-pro-preview \
   --input data/sample_200.jsonl \
   --output-dir results/my_experiment_v1
 ```
-
-### Full Analysis Pipeline
-
-For comprehensive benchmarking with figures and scorecards:
 
 #### Step 3: Calculate Detailed Metrics
 
@@ -200,7 +185,7 @@ python scripts/benchmark.py --input results/classifications_*.jsonl
 
 ### Workflow B: 4-Way Tool Comparison (AIVA vs InterVar vs BIAS-2015)
 
-Use this to compare AIVA against InterVar and BIAS-2015 on 7,617 variants from the BIAS-2015 paper.
+Use this to compare AIVA against InterVar and BIAS-2015 on 8,387 variants from the unified baseline.
 
 #### Step 1: Download BIAS-2015 Supplementary Data
 
@@ -217,24 +202,6 @@ aws s3 cp s3://bias-2015/bias_v2.0.0_supplementary_files.zip /tmp/
 ```
 
 Then extract and copy files:
-<<<<<<< HEAD
-```bash
-unzip /tmp/bias_v2.0.0_supplementary_files.zip -d /tmp/bias_supp/
-cp /tmp/bias_supp/bias_v2.0.0_supplementary_files/*.{tabbed,intervar,tsv,vcf} data/bias_2015/
-```
-
-## Script Reference
-
-| Script | Purpose |
-|--------|---------|
-| `parse_erepo.py` | Parse ClinGen eRepo TSV, create stratified sample |
-| `parse_bias_data.py` | Parse BIAS-2015 files, create unified dataset |
-| `compare_models.py` | Run AIVA with multiple models, compare results |
-| `compare_tools.py` | Compare AIVA vs InterVar vs BIAS-2015 |
-| `benchmark.py` | Calculate detailed metrics |
-| `benchmark_analysis.py` | End-to-end analysis pipeline with figures |
-| `generate_results.py` | Metrics calculation and figure generation |
-=======
 
 ```bash
 unzip /tmp/bias_v2.0.0_supplementary_files.zip -d /tmp/bias_supp/
@@ -298,15 +265,26 @@ AIVA                      100      75.0%      88.0%      68.2%      85.3%
 BIAS-2015                 100      58.0%      81.0%      51.4%      81.5%
 InterVar                  100      49.0%      65.0%      43.0%      65.9%
 
-REFERENCE: Full dataset metrics (all 7617 variants)
+REFERENCE: Full dataset metrics (all 8387 variants)
 Tool                  N Valid      Exact     Direct
 ------------------------------------------------------------------------------------------
-InterVar (full)          7617      49.6%      65.3%
-BIAS-2015 (full)         7617      58.2%      81.2%
+InterVar (full)          8387      49.6%      65.3%
+BIAS-2015 (full)         8387      58.2%      81.2%
 ```
 
 The comparison is **fair** - all tools are evaluated on the exact same variants that AIVA classified.
->>>>>>> origin/main
+
+## Script Reference
+
+| Script | Purpose |
+|--------|---------|
+| `parse_erepo.py` | Parse ClinGen eRepo TSV, create stratified sample |
+| `parse_bias_data.py` | Parse BIAS-2015 files, create unified dataset |
+| `compare_models.py` | Run AIVA with multiple models, compare results |
+| `compare_tools.py` | Compare AIVA vs InterVar vs BIAS-2015 |
+| `benchmark.py` | Calculate detailed metrics |
+| `benchmark_analysis.py` | End-to-end analysis pipeline with figures |
+| `generate_results.py` | Metrics calculation and figure generation |
 
 ## Metrics Explained
 
@@ -324,8 +302,6 @@ For each of the 5 ACMG classifications:
 - **Recall**: Of all variants in this class, how many does AIVA identify?
 - **F1**: Harmonic mean of precision and recall
 
-<<<<<<< HEAD
-=======
 ### Criteria Analysis
 
 | Metric | Description |
@@ -402,19 +378,6 @@ aiva-bench/
     ├── compare_tools.py   # 4-way tool comparison
     └── benchmark.py       # Calculate detailed metrics
 ```
-
-## Script Reference
-
-| Script | Purpose | When to Use |
-|--------|---------|-------------|
-| `parse_erepo.py` | Parse ClinGen eRepo TSV, create stratified sample | Workflow A, Step 1 |
-| `parse_bias_data.py` | Parse BIAS-2015 supplementary files, create unified dataset | Workflow B, Step 2 |
-| `classify.py` | Run AIVA classification (single model) | Quick single-model test |
-| `compare_models.py` | Run AIVA with multiple models, compare results | Both workflows |
-| `compare_tools.py` | Compare AIVA vs InterVar vs BIAS-2015 | Workflow B, Step 4 |
-| `benchmark.py` | Calculate detailed metrics, confusion matrices | Detailed analysis |
-
->>>>>>> origin/main
 ## Rate Limiting
 
 The classify script handles rate limits automatically:
@@ -424,7 +387,6 @@ The classify script handles rate limits automatically:
 
 If you encounter rate limits, reduce concurrency:
 ```bash
-<<<<<<< HEAD
 python scripts/compare_models.py --concurrency 1
 ```
 
@@ -435,7 +397,3 @@ MIT License - see LICENSE file for details.
 ## Contact
 
 Arun Boddapati, MHSPL Research Team
-=======
-python scripts/classify.py --concurrency 1
-```
->>>>>>> origin/main

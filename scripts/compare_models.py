@@ -402,10 +402,12 @@ async def main():
                                                     vid = rec.get("variant_id") or rec.get("id") or rec.get("variant")
                                                     if vid:
                                                         existing_ids.add(vid)
-                                                except:
-                                                    pass
-                                except:
-                                    pass
+                                                except json.JSONDecodeError:
+                                                    # Skip malformed JSON lines
+                                                    continue
+                                except (FileNotFoundError, IOError):
+                                    # Skip files that can't be read
+                                    continue
                             
                             if existing_ids:
                                 print(f"[{model}] Found {len(existing_ids)} existing classified variants")
