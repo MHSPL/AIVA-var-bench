@@ -16,6 +16,7 @@ venv/
 *.csv
 !data/bias_unified.jsonl
 !data/erepo_bias_intervar_merged.jsonl
+!data/aiva_bench_core_v1.jsonl
 !data/bias_2015/
 !Claude_code_results/*.json
 

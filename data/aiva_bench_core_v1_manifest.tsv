@@ -1,0 +1,1001 @@
+variant_id	gene	expert_panel	expert_classification	cell_size	cell_sample	weight
+6a74180a-e02e-4305-8b31-87aa5f6c292d	MTOR	Brain Malformations VCEP	Uncertain Significance	10	1	10.0000
+9187950f-2c32-459c-b678-3bd146dec7ec	MTOR	Brain Malformations VCEP	Pathogenic	14	2	7.0000
+735c5a86-d4d4-43c1-9cd2-06280c74846e	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Uncertain Significance	11	1	11.0000
+bb754561-67bc-43f7-8fb6-5a8960491fe7	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Pathogenic	58	7	8.2857
+ddfaeffe-407e-4f2f-ac41-1df3ee46c3de	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Likely Pathogenic	33	4	8.2500
+8c0c6342-b407-4413-be30-35e48105188f	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Benign	8	1	8.0000
+8868ea77-b698-44c4-b393-873347ceb306	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Pathogenic	58	7	8.2857
+8da5cb6f-1e37-44b9-9370-55c5637c4e64	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Likely Pathogenic	33	4	8.2500
+712bf686-0d03-4824-828c-16e06bf93992	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Pathogenic	58	7	8.2857
+9d7ea6c6-401f-4580-a91b-8eb05ea96b8a	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Likely Benign	15	2	7.5000
+004146bf-92a4-4dab-9479-0428336f6f93	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Likely Benign	15	2	7.5000
+d53c7ff1-c734-4ed0-8666-65e7b2f4cda9	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Pathogenic	58	7	8.2857
+a808b7fd-5aac-4cc5-8c56-0144934d068c	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Pathogenic	58	7	8.2857
+bc545cdf-c331-4bcf-b50f-b561a1be3aee	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Likely Pathogenic	33	4	8.2500
+b20a9aa6-473e-4b25-90eb-e3679ddd4ff9	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Pathogenic	58	7	8.2857
+a9c71830-a5f8-465c-b29c-0106196bc9a2	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Pathogenic	58	7	8.2857
+7561359c-6530-4b00-a818-405ac597d9da	RPE65	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	Likely Pathogenic	33	4	8.2500
+83d5c119-8a88-4482-8ffb-08d114257610	NRAS	RASopathy VCEP	Uncertain Significance	42	5	8.4000
+62b36d6a-2aef-4aef-8115-eec1878f22bd	MYOC	Glaucoma VCEP	Likely Benign	24	3	8.0000
+5dacda88-7003-4057-bb38-044014a96dbe	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+0add327e-fa1d-4577-8fcf-edcb4817a061	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+5fe3a673-abb3-4cde-a22c-baa28336fbe7	MYOC	Glaucoma VCEP	Likely Pathogenic	19	2	9.5000
+f6b6b529-db5d-4217-9fb4-dc6e8209689f	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+54390ffa-8631-4d0f-8a41-69794f4a5f22	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+6727373b-139a-4846-9bd5-9a013d15b205	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+1be3ddb6-b1f9-42ee-8822-851cfc5bec0b	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+13b7a0ea-fbf4-4ce4-95b6-0cdc104151d8	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+399db6af-6807-459a-9953-39c259125cad	MYOC	Glaucoma VCEP	Pathogenic	9	1	9.0000
+f9eac996-1b82-4222-b685-e17c4c244c3d	MYOC	Glaucoma VCEP	Likely Pathogenic	19	2	9.5000
+80212ec0-e8cf-4072-820b-d78d84961107	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+20a98120-57b2-4101-aa41-7e0d4cd2a1b7	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+aa0c6cf7-663b-40a9-8c67-e48a4370d33d	MYOC	Glaucoma VCEP	Benign	9	1	9.0000
+fc672c52-8cb6-4bbb-a199-698d6e5cb5c3	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+653c89c3-854b-4091-af70-2528414120a3	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+e6bf8a8f-ff70-4c55-bb32-9412f728c616	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+866e2d91-9860-4786-b689-729bceabb530	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+dcf619d5-e4f9-4775-bf09-52c3cb2bf8f9	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+29797379-99f0-425c-ac84-234f2967209f	MYOC	Glaucoma VCEP	Likely Benign	24	3	8.0000
+1f11276b-946b-499c-b124-fa2ad98fec07	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+07bc3f4b-ace5-479d-b58e-d87184f9a968	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+753186a8-75c2-4540-9d2e-f07fbdd8fb73	MYOC	Glaucoma VCEP	Uncertain Significance	146	17	8.5882
+8eae89ac-b0f9-4a81-a04f-bdc1ba3f6f6c	MYOC	Glaucoma VCEP	Likely Benign	24	3	8.0000
+1030c18a-bb25-4557-a2d7-449ce81e8f9d	SERPINC1	Thrombosis VCEP	Pathogenic	19	2	9.5000
+0e26b3da-0730-4e5c-a373-4b7ca7a3652f	SERPINC1	Thrombosis VCEP	Uncertain Significance	22	3	7.3333
+5a6d0cad-7f21-4636-99e2-f1d780c416d0	SERPINC1	Thrombosis VCEP	Uncertain Significance	22	3	7.3333
+42201df9-3651-45a2-957b-3ab904e1abed	SERPINC1	Thrombosis VCEP	Benign	6	1	6.0000
+ef2a8166-a1f3-4a2e-ba69-a9c42df7a735	SERPINC1	Thrombosis VCEP	Likely Benign	15	2	7.5000
+8dce18fe-3323-4d15-b3de-da6f74c95ef9	SERPINC1	Thrombosis VCEP	Pathogenic	19	2	9.5000
+6fdd3bac-395e-4fdd-9e42-2c552b360524	SERPINC1	Thrombosis VCEP	Likely Pathogenic	8	1	8.0000
+8358e264-ed0f-4ecf-8cd5-a64aa998d03e	SERPINC1	Thrombosis VCEP	Likely Benign	15	2	7.5000
+fc8c7942-cb94-416c-8a6f-6b8348aac059	SERPINC1	Thrombosis VCEP	Uncertain Significance	22	3	7.3333
+3462992d-0234-401e-b823-3d37b89833bd	USH2A	Hearing Loss VCEP	Likely Pathogenic	43	5	8.6000
+a38414ae-e328-4518-8105-9299e499fa90	USH2A	Hearing Loss VCEP	Benign	28	3	9.3333
+f41fc1cd-9f60-4c2d-ae7d-a2b577765994	USH2A	Hearing Loss VCEP	Uncertain Significance	45	5	9.0000
+8eb3ee78-6625-4a84-bebc-eff570d0c2fc	USH2A	Hearing Loss VCEP	Likely Pathogenic	43	5	8.6000
+16f373e0-f3cf-4ebe-91ea-6d1a22e44f9c	USH2A	Hearing Loss VCEP	Pathogenic	51	6	8.5000
+201650f0-4a5b-446d-98e4-65dbae845631	USH2A	Hearing Loss VCEP	Uncertain Significance	45	5	9.0000
+a5c58407-b571-46b2-b787-30711d1fd9f3	USH2A	Hearing Loss VCEP	Likely Benign	29	3	9.6667
+e3a83a0f-ca41-4386-a5fc-43e3e9b1f359	ACTA1	Congenital Myopathies VCEP	Likely Pathogenic	14	2	7.0000
+b8aa8cd3-c0d4-4548-ac55-966ad6c57973	ACTA1	Congenital Myopathies VCEP	Likely Pathogenic	14	2	7.0000
+adea7478-9785-4843-9917-df07bc64d300	ACTA1	Congenital Myopathies VCEP	Benign	22	3	7.3333
+813ff07f-556e-4768-9347-9b93e3c210dd	ACTA1	Congenital Myopathies VCEP	Pathogenic	29	3	9.6667
+3ae1da87-a464-43ae-9958-d8bddb6adf0e	ACTA1	Congenital Myopathies VCEP	Benign	22	3	7.3333
+37988287-c3c7-4c5c-902d-0a080e47563e	OTOF	Hearing Loss VCEP	Uncertain Significance	45	5	9.0000
+a3a44624-d639-4324-a887-81890dc4927c	OTOF	Hearing Loss VCEP	Pathogenic	51	6	8.5000
+0c2a6fb5-1765-45ef-bae8-c71d38cebdbb	SOS1	RASopathy VCEP	Benign	132	16	8.2500
+57a75218-590b-421b-8f2f-c7254ed50eaa	SOS1	RASopathy VCEP	Likely Benign	65	8	8.1250
+8323e22b-23e0-47b4-905a-611c06a49ece	SOS1	RASopathy VCEP	Benign	132	16	8.2500
+b1bb4dae-8f06-4a91-b1c4-ccf1a3d0092f	SOS1	RASopathy VCEP	Pathogenic	95	11	8.6364
+dcfb56fe-0b80-4c22-b9fc-d5d834b1bf38	SOS1	RASopathy VCEP	Benign	132	16	8.2500
+4536a40e-a4fc-474b-b83d-f63fa7e74a4a	SOS1	RASopathy VCEP	Pathogenic	95	11	8.6364
+35b65877-4f4e-4afc-b8ac-5e10c6c2f474	SOS1	RASopathy VCEP	Likely Benign	65	8	8.1250
+47bd0e22-7b07-4048-9afc-7fad23a874ad	SOS1	RASopathy VCEP	Likely Benign	65	8	8.1250
+37d6267b-b7c7-4b94-b086-40428da17513	MSH2	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	Pathogenic	14	2	7.0000
+685c6f83-034e-4c37-9494-891f75306e44	DYSF	Limb Girdle Muscular Dystrophy VCEP	Pathogenic	49	6	8.1667
+f62f2ccc-f972-4206-91e8-dcfee3ed434a	DYSF	Limb Girdle Muscular Dystrophy VCEP	Pathogenic	49	6	8.1667
+aca77cd8-4d85-454c-8411-cf7c9b4b8b2e	DYSF	Limb Girdle Muscular Dystrophy VCEP	Benign	17	2	8.5000
+21ce5567-196f-4932-9651-2888968d7c02	SCN3A	Epilepsy Sodium Channel VCEP	Benign	9	1	9.0000
+bbe70591-af90-42a4-91fa-53b43c8b0f4d	SCN3A	Epilepsy Sodium Channel VCEP	Pathogenic	8	1	8.0000
+df4f3335-b54c-49a2-8016-9bbc4979399e	SCN1A	Epilepsy Sodium Channel VCEP	Likely Pathogenic	6	1	6.0000
+4c546bba-96a7-4f6b-abb9-8fca75864f83	SCN1A	Epilepsy Sodium Channel VCEP	Uncertain Significance	5	1	5.0000
+068fe37c-6ccb-4f7d-8daf-425aa1384a70	BMPR2	Pulmonary Hypertension VCEP	Likely Benign	14	2	7.0000
+cb1f7eef-ea1e-4931-ad64-40d78ee1e2f3	BMPR2	Pulmonary Hypertension VCEP	Likely Pathogenic	14	2	7.0000
+5fa5715b-b0db-4fa2-acc1-c29cb80d5dc3	BMPR2	Pulmonary Hypertension VCEP	Likely Pathogenic	14	2	7.0000
+8ce94f69-5d6f-4c30-bee8-b5174220c1f0	BMPR2	Pulmonary Hypertension VCEP	Uncertain Significance	23	3	7.6667
+2649bacd-6839-4dbf-bad0-fa4462173e43	BMPR2	Pulmonary Hypertension VCEP	Pathogenic	11	1	11.0000
+43fb2d44-b756-4904-9ef4-19f0070db7a5	BMPR2	Pulmonary Hypertension VCEP	Uncertain Significance	23	3	7.6667
+a98f8803-dc54-4fc4-8e92-3d89575245f2	BMPR2	Pulmonary Hypertension VCEP	Uncertain Significance	23	3	7.6667
+9b757254-9aea-4dfa-8304-74a9c6d0491a	BMPR2	Pulmonary Hypertension VCEP	Likely Benign	14	2	7.0000
+352ee0a1-c2ed-4b84-9da8-780a9905ef0a	VHL	VHL VCEP	Benign	8	1	8.0000
+eb3883a6-80f5-45f8-9c0f-a2928a4e24ca	VHL	VHL VCEP	Pathogenic	13	1	13.0000
+dae201a3-af5a-4275-9e46-16b1bbc2104e	VHL	VHL VCEP	Uncertain Significance	6	1	6.0000
+b36ca919-43d1-4147-a163-d7613a3b1d81	RAF1	RASopathy VCEP	Benign	132	16	8.2500
+3d3d7a51-6ba9-4434-a6d9-ebf5e4b84ae4	RAF1	RASopathy VCEP	Pathogenic	95	11	8.6364
+54e513e4-3d82-4530-8f42-82522d750073	RAF1	RASopathy VCEP	Uncertain Significance	42	5	8.4000
+f46177ab-5c80-48cf-bd17-6acc5668f182	RAF1	RASopathy VCEP	Benign	132	16	8.2500
+92a20fc0-2bb5-4c16-b8cb-13af84a65a97	RAF1	RASopathy VCEP	Likely Benign	65	8	8.1250
+da2fd72c-d28d-424b-92b6-eb26ccf60d9f	RAF1	RASopathy VCEP	Likely Benign	65	8	8.1250
+e3a025b8-32a2-4d0f-92e0-d44516304ddc	RAF1	RASopathy VCEP	Benign	132	16	8.2500
+1f40ba2a-2d8a-44e6-b23e-d4c408223d93	MLH1	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	Benign	17	2	8.5000
+bd985124-a267-45f8-8cc2-bbcbbe4af360	MLH1	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	Pathogenic	14	2	7.0000
+c7dfdecb-28d6-4ff6-906c-a1c68da05a60	MLH1	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	Uncertain Significance	18	2	9.0000
+f50177c7-45e2-4684-8e1d-24bd0badd09e	PIK3CA	Brain Malformations VCEP	Likely Benign	12	1	12.0000
+857fcdd5-3e4e-4d8c-bc86-6586a8591ded	PIK3CA	Brain Malformations VCEP	Pathogenic	14	2	7.0000
+82f2cc6b-74c1-47c7-9ca0-1d5148992608	IDUA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+8b0cd67f-ccd3-478b-a4c0-60ca53c89ae9	IDUA	Lysosomal Diseases VCEP	Benign	30	4	7.5000
+1cf911e8-9341-4cd0-8188-8179bb98f8bb	IDUA	Lysosomal Diseases VCEP	Likely Pathogenic	89	11	8.0909
+11a09c24-febd-4a8b-ba85-456ccc4ae398	IDUA	Lysosomal Diseases VCEP	Likely Benign	15	2	7.5000
+288ac3da-1fc8-4d5e-9588-504638b0957d	IDUA	Lysosomal Diseases VCEP	Likely Pathogenic	89	11	8.0909
+894ae42c-05e9-4361-ae71-076c19a2608c	SGCB	Limb Girdle Muscular Dystrophy VCEP	Benign	17	2	8.5000
+5636a2dd-2849-4f93-a755-dffaa8688c02	SGCB	Limb Girdle Muscular Dystrophy VCEP	Likely Benign	22	3	7.3333
+f98879f1-c7ae-43f8-9b74-3c53efca968b	SGCB	Limb Girdle Muscular Dystrophy VCEP	Likely Pathogenic	19	2	9.5000
+5a883370-d4a2-4502-9463-331b0c4c73bb	SGCB	Limb Girdle Muscular Dystrophy VCEP	Likely Benign	22	3	7.3333
+1c8f4bc6-5f05-48ab-9c82-c81899baba0a	IL7R	Severe Combined Immunodeficiency Disease  VCEP	Likely Pathogenic	66	8	8.2500
+d6943a2d-65f3-453d-8466-d14040885cb4	IL7R	Severe Combined Immunodeficiency Disease  VCEP	Benign	40	5	8.0000
+d5b9112d-d56d-4e07-8713-01a5d04b0d59	IL7R	Severe Combined Immunodeficiency Disease  VCEP	Benign	40	5	8.0000
+2e794a2d-90d8-45db-99ed-2ae3f3865213	APC	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	Likely Benign	13	2	6.5000
+164600c2-3e6f-449d-b8ba-1c2ec0a82479	APC	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	Benign	17	2	8.5000
+2807ff61-1552-482a-90b2-892d47050e14	APC	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	Likely Pathogenic	25	3	8.3333
+72670e17-83e8-4b17-88e1-e99c60817349	APC	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	Likely Pathogenic	25	3	8.3333
+7cb03244-ee57-4d80-9542-a0a5abc44d98	APC	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	Likely Pathogenic	25	3	8.3333
+2850fdca-2c61-433f-a353-63c5996acc33	APC	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	Likely Benign	13	2	6.5000
+e8316a20-ad88-4c2b-a2ec-baba843041a7	SGCD	Limb Girdle Muscular Dystrophy VCEP	Uncertain Significance	8	1	8.0000
+ce1b25c2-4939-4be5-a164-23a81edf121e	SGCD	Limb Girdle Muscular Dystrophy VCEP	Pathogenic	49	6	8.1667
+0594a0af-c3ef-4b52-ad4e-3de7004f881f	PMS2	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	Uncertain Significance	18	2	9.0000
+5373061c-5c70-4d02-bd9c-c75b82ee851e	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+bd3084d6-9dc3-41fd-aa91-9835ae812ea8	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+fbe6afe4-7e88-4f73-aeae-8dee5e88c151	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+5a5a400f-b924-4261-a797-30b4d0f80434	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+848bb6b5-a99b-41c3-a9b8-413c2dce18db	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+95f4d325-8f63-4245-a559-09e270cc8af9	GCK	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+044222ee-b66d-441c-9fca-cc0c7b94d742	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+7e0be3b3-0dd3-4777-a4af-ba2e0a1b8750	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+ede5f4b4-8cbc-4190-9fec-adf535db71d4	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+ca025555-c2e2-4b53-9af7-3bdcb6aa5da7	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+23de61da-8a13-4720-89af-873cf375a486	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+0e01d1e0-cdee-4782-ab8d-766899ffa48f	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+9aafc77f-1c7a-4e68-8657-248772693e8d	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+585d0bc1-7940-4c9b-aa3c-faf9a98a90a8	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+8769c01a-ff84-4b3c-91f0-c7f029c0c5e7	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+e48e2a42-8d22-41bb-94c0-c92f02b352c6	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+31b7612e-7a2b-4312-bf85-1b228a05819f	GCK	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+a2cd0e1b-7646-4d8c-bd26-f2e6b6a581ff	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+dce33bbd-74df-4235-9cc1-e2ef0a02eeb9	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+438267c6-7ce7-4fce-9f42-f771f15c6548	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+10a41ed2-a058-4df3-b3ec-335ec9c2b90e	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+5ffe0ec7-6736-4676-bf37-412af923d449	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+5e3e9831-18b4-43bd-a2f0-8edec94b1ab8	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+a3bc2935-1bf2-4171-b759-ca1cfb249eb6	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+caf94c5b-c2a1-4625-a33e-27e9c0585d91	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+56298f68-c303-4c47-a9ca-cbedb4aa4448	GCK	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+25ef58a4-42b3-4c2a-b7b3-309273022646	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+6769e16e-1976-4b67-bf42-cbeb1e4c072b	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+7305dd73-b842-458c-b7f8-5d8dd9f9cd7a	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+72d1c915-4d9b-498b-8b28-b716ca0bb3ed	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+c6d46289-9537-46e1-99aa-e854f39affb2	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+c9164d1b-a076-4172-9de1-ae376621d484	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+54cf9f9a-d639-4180-ba22-37e9e7b60176	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+8d82fbaa-7809-471e-9743-1ba49a8fad29	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+dc0a8035-6e5a-4c6f-9c2e-bdda0a027ad3	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+855d90d4-f026-4d0c-914b-3a4c35485467	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+59414a1d-82ac-40ef-a68b-1b5ea642f7c4	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+a6580baa-8994-4038-8172-c07d1652074a	GCK	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+84911208-fd52-4e07-a900-8fcf36b1cb38	GCK	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+a5c6e8a9-39a1-438e-a5b8-805772c41d1b	GCK	Monogenic Diabetes VCEP	Likely Benign	29	3	9.6667
+77c881dd-2f00-4636-a5ae-ac1cae285bee	SLC26A4	Hearing Loss VCEP	Likely Pathogenic	43	5	8.6000
+fd54e511-37fc-437e-bf54-4757947ec10f	SLC26A4	Hearing Loss VCEP	Likely Pathogenic	43	5	8.6000
+faecd415-c6bd-4898-b360-35d0ec408f2a	BRAF	RASopathy VCEP	Pathogenic	95	11	8.6364
+f2cf40e6-1706-4a5e-b2f8-b7b396ddbde2	BRAF	RASopathy VCEP	Pathogenic	95	11	8.6364
+b7a354e0-2b3d-4005-bdb1-6de3635711f9	BRAF	RASopathy VCEP	Likely Pathogenic	31	4	7.7500
+fc4fa86e-060f-49dc-8ade-c259aa8ad24b	BRAF	RASopathy VCEP	Pathogenic	95	11	8.6364
+2c995b09-a4bb-4aac-a4ff-9717ea5fe648	BRAF	RASopathy VCEP	Likely Benign	65	8	8.1250
+e5ecafa9-fff7-4c7a-b851-9568873871a7	ENG	Hereditary Hemorrhagic Telangiectasia VCEP	Likely Benign	10	1	10.0000
+7e71d964-bb7a-40e1-9385-3393a4499ac5	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Benign	40	5	8.0000
+edc2d2aa-5ed3-465b-bc4b-138acd0194e5	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+a70f8802-2cb7-4ec3-a96e-180feda5744f	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Pathogenic	78	9	8.6667
+1e990d8b-603d-41ae-8ebc-16fdbf2a4ec8	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+56bcb76b-6224-4d55-be55-2c6c87f13b0f	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Pathogenic	78	9	8.6667
+186b5b74-1152-412c-bb7b-2d33fd28881b	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+79725587-5bdd-4698-937d-fe5be885608a	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+f863297b-8566-40d0-a26a-7be090b4f617	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+32615447-c2c9-4387-be7b-1dc963fceafa	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+69a88b2c-2497-4a1e-b499-7214cd078420	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+69fbb57e-4302-4ef4-a111-f376d2d8cd98	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+c40fdaef-3f68-4982-83dc-cf5495b9c040	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+b821ac51-0f6e-4d6f-8540-0ea50035319a	DCLRE1C	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+ad55f8aa-c75a-44f6-9a6e-2344d0525a05	CDH23	Hearing Loss VCEP	Pathogenic	51	6	8.5000
+dfd4f5fa-53f6-478c-911d-6946d1680d38	CDH23	Hearing Loss VCEP	Benign	28	3	9.3333
+f7c337df-9d3f-48fe-afac-1a5ce74511bd	CDH23	Hearing Loss VCEP	Uncertain Significance	45	5	9.0000
+d1c7275d-fc3f-4feb-b749-4a6562cbc2d9	PTEN	PTEN VCEP	Benign	10	1	10.0000
+9b8faad8-e78a-4d2f-8805-210367466752	PTEN	PTEN VCEP	Likely Pathogenic	35	4	8.7500
+2b40684d-92f4-40ce-8062-ffd5a0278fbd	PTEN	PTEN VCEP	Pathogenic	60	7	8.5714
+1d6c53d1-6cb2-4e76-a5e8-dcc135e646ff	PTEN	PTEN VCEP	Likely Pathogenic	35	4	8.7500
+2374c339-e2d7-4496-9d9a-d33c1abd8dce	PTEN	PTEN VCEP	Pathogenic	60	7	8.5714
+c18b6eab-2415-46f1-9018-781158bc9857	PTEN	PTEN VCEP	Uncertain Significance	48	6	8.0000
+851f4f7b-68ae-4d5e-9af3-a927611602ee	PTEN	PTEN VCEP	Likely Pathogenic	35	4	8.7500
+994ade45-e2c0-40c5-9bb6-a646666f386c	PTEN	PTEN VCEP	Pathogenic	60	7	8.5714
+049d3e03-b5ad-4a47-92e9-ee077179049a	PTEN	PTEN VCEP	Uncertain Significance	48	6	8.0000
+ca722131-1468-4343-b167-5e21cff05b0d	PTEN	PTEN VCEP	Pathogenic	60	7	8.5714
+e0072965-9b20-4fa8-bfab-2ec93223849b	PTEN	PTEN VCEP	Likely Benign	33	4	8.2500
+8f7f63bb-496b-4b77-8258-d706ccc91766	PTEN	PTEN VCEP	Likely Pathogenic	35	4	8.7500
+dce7b398-e447-420b-8da1-a51cbf6a8e69	PTEN	PTEN VCEP	Pathogenic	60	7	8.5714
+af7069ee-474b-491e-9317-5e91eeba5b76	PTEN	PTEN VCEP	Pathogenic	60	7	8.5714
+e0e01473-5fd0-4b46-8e9b-df1e717121e1	PTEN	PTEN VCEP	Uncertain Significance	48	6	8.0000
+c4bf5c74-cf88-47c3-812d-89a0c0e7f110	PTEN	PTEN VCEP	Uncertain Significance	48	6	8.0000
+844aa93c-ba66-4b09-825a-8e5e0fb0a775	PTEN	PTEN VCEP	Pathogenic	60	7	8.5714
+84ca1fb2-bf36-42c2-8262-5a470ed8dfa7	PTEN	PTEN VCEP	Uncertain Significance	48	6	8.0000
+ea71ad62-785a-426a-b9bd-7ffff8b8a049	PTEN	PTEN VCEP	Likely Benign	33	4	8.2500
+7447cf4b-3a7e-436e-94f3-5cbeb5f20d28	PTEN	PTEN VCEP	Likely Benign	33	4	8.2500
+fd86daf3-07ce-4482-918a-b7dd2d40fd3b	PTEN	PTEN VCEP	Uncertain Significance	48	6	8.0000
+92cafa09-77b4-4bd2-b120-436d9502b512	PTEN	PTEN VCEP	Likely Benign	33	4	8.2500
+b9bd11c9-4ef4-497e-a366-486d58683e19	SHOC2	RASopathy VCEP	Benign	132	16	8.2500
+ba4e5908-3b34-42d0-8df7-f0b029ff11e2	SHOC2	RASopathy VCEP	Benign	132	16	8.2500
+d37c8250-6a81-4f7a-b0df-8e5eb3216e8a	LRRC56	RASopathy VCEP	Benign	132	16	8.2500
+93bed336-58a0-4191-b1ad-0c2f0cd3325b	RRAS2	RASopathy VCEP	Likely Pathogenic	31	4	7.7500
+066b273c-814e-4a7e-b828-1c0b24a725c2	ANO5	Limb Girdle Muscular Dystrophy VCEP	Pathogenic	49	6	8.1667
+fbaa9261-0755-4e95-80b7-9e2d4a82b2ed	ANO5	Limb Girdle Muscular Dystrophy VCEP	Pathogenic	49	6	8.1667
+6e78f79c-ace5-4917-b4f4-e3ff31f1a665	RAG1	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+ff322d40-0d85-45cd-838f-9837973d10a6	RAG1	Severe Combined Immunodeficiency Disease  VCEP	Benign	40	5	8.0000
+3454b9e8-3665-4835-8fc9-2cc823ee5ebc	RAG2	Severe Combined Immunodeficiency Disease  VCEP	Likely Benign	45	5	9.0000
+012b2c34-2e90-48f3-8f6e-774c715f7cfb	RAG2	Severe Combined Immunodeficiency Disease  VCEP	Pathogenic	78	9	8.6667
+418ca304-b22e-4a9e-a014-7abfa82d833c	RAG2	Severe Combined Immunodeficiency Disease  VCEP	Pathogenic	78	9	8.6667
+fe99b50b-ba3f-4ebf-9816-12fa2f37b939	MYO7A	Hearing Loss VCEP	Pathogenic	51	6	8.5000
+63bd6cea-9e2a-4ad6-a8c4-5a0d13f28c7e	MYO7A	Hearing Loss VCEP	Likely Benign	29	3	9.6667
+99eea1cf-9c28-4b80-9057-8f3ed2a98c2c	MYO7A	Hearing Loss VCEP	Uncertain Significance	45	5	9.0000
+b16ffcc3-3e9d-4890-aca5-e535579a2453	MYO7A	Hearing Loss VCEP	Pathogenic	51	6	8.5000
+1f484128-351e-49bd-a7a1-877c462ffac6	MYO7A	Hearing Loss VCEP	Likely Pathogenic	43	5	8.6000
+69888cb6-ef49-4d1f-8999-03e7aefcf116	ATM	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Pathogenic	55	7	7.8571
+88756329-6368-459a-b1e3-a90dc4a0673c	ATM	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Pathogenic	55	7	7.8571
+23f7a67e-0ae1-4739-86e0-a2ba56a67099	ATM	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Pathogenic	55	7	7.8571
+f902c885-8b6e-4e29-a3bb-2b52a3a53330	ATM	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Likely Pathogenic	15	2	7.5000
+3c258d22-e521-4dfc-87a5-9bba7aaf7206	ATM	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Pathogenic	55	7	7.8571
+6f29b703-024c-4e91-a9d5-47d36a615bbc	ATM	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Pathogenic	55	7	7.8571
+d85e41f7-7a25-4f0c-b2eb-530a536f48f4	ATM	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Benign	14	2	7.0000
+1bc61c97-9ae1-4c72-83ab-128df71d03a8	ATM	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Pathogenic	55	7	7.8571
+91389823-cbf4-4c27-8324-9f7314078de7	ATM	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Uncertain Significance	27	3	9.0000
+756eeb9f-e985-4813-90f9-4aa49258e73a	ATM	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Likely Pathogenic	15	2	7.5000
+c26530cc-2e18-496c-a0aa-703d9b2c9533	VWF	von Willebrand Disease  VCEP	Uncertain Significance	11	1	11.0000
+8c83fcdc-3afc-44f1-a269-c2f1e73f9298	VWF	von Willebrand Disease  VCEP	Pathogenic	26	3	8.6667
+f029ee4a-f433-486b-a623-20df4ad77990	VWF	von Willebrand Disease  VCEP	Pathogenic	26	3	8.6667
+23ca549c-5557-4dbe-b8f1-c87ae80467a7	VWF	von Willebrand Disease  VCEP	Likely Pathogenic	10	1	10.0000
+3b27668f-206c-4b22-a66d-e407aaee7010	VWF	von Willebrand Disease  VCEP	Pathogenic	26	3	8.6667
+6c4fcdfa-5916-4b27-a95f-8a5f89a9c41b	VWF	von Willebrand Disease  VCEP	Benign	8	1	8.0000
+f186bfc7-d6a5-4e9b-8dfd-c592e28854ab	VWF	von Willebrand Disease  VCEP	Likely Benign	10	1	10.0000
+a8c6153e-d737-4b86-8d68-caf8ddd418fd	KRAS	RASopathy VCEP	Pathogenic	95	11	8.6364
+a3a12193-94e4-43f1-b3d4-cbc95920566a	ACVRL1	Hereditary Hemorrhagic Telangiectasia VCEP	Pathogenic	11	1	11.0000
+06132883-41d1-40e5-bc3c-9ec5c483cd79	ACVRL1	Hereditary Hemorrhagic Telangiectasia VCEP	Uncertain Significance	9	1	9.0000
+502c45ab-1f82-4c1e-ae27-c874a90210e4	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+d8d2e477-0bfe-4136-9489-617a94f7fda6	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+0979bb04-570d-4e72-8888-0071c2bc5bd4	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+3ef13555-39cd-454f-bafb-aa98f5ede6c9	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+efeae3bc-42d1-44aa-9a8b-de32b8bad069	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+70f8e388-4b46-4ba3-bfb6-102e901314c8	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+5373f3dd-e147-4449-974f-e804720298ee	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+c18b654a-1bd0-428b-b43f-2711b92f28a1	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+965cc26c-6464-4bdf-a47e-5ba989913277	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+e516e743-f45c-4a0e-98a7-ef3e734c0906	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+8686a349-d7cd-48e5-8286-1fc2466ab98c	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+e47a82f3-345d-4597-88be-ed161d371029	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+9a6918e9-715e-4432-9857-2279bf43050a	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+0977199f-62f0-46c1-b092-5206646c9ea4	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+0c1a54c0-a213-4fea-a6d1-b8aad5bdfdfa	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+b37dff23-d273-465e-ba1b-432ccb787caa	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+2470a255-3083-4956-9ff7-176203d54920	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+188919c9-703a-413b-bc52-514b81efd9ea	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+38be7825-9c4d-48ac-9e48-ca5e8135e062	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+83a0c192-3b59-4e0d-95de-e711ebb17cde	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+2237dbe2-a983-4dcc-8838-57eb31ccb465	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+bbf26ac8-3611-47c0-9a87-22fed4d3be26	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+601f952f-355c-4c0c-92ee-2746e651b68e	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+4081a5c6-1ea3-43ec-a823-3fd1e45d656c	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+ffc9ce25-3e96-452a-a50d-a684e04b5bff	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+fed7f4d2-1407-4dcb-b833-9194c1949c66	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+340b253a-4f3c-45ed-aef4-8e02574c8109	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+31e57f08-7be8-46c7-902d-8429b753f57c	PAH	Phenylketonuria VCEP	Benign	16	2	8.0000
+9c21c34e-abd4-41c0-bf30-c1cedc8e886e	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+d5b91f03-15c0-4ffe-9fe6-2a8fca19096a	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+159e0913-0a8e-4eef-9a1d-2cd35121aaca	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+d6d14bd0-a2b2-4507-b74e-14bc74734d32	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+75b9eddc-e554-4f4c-91a7-976ac6c27ba2	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+d8dab33d-d9aa-45d0-8e54-f50e90d27dd5	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+e218babf-baa5-4179-a104-b0252fef5c9c	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+a79e0701-cceb-4823-a816-a3acbb89f1b7	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+9cca2153-6d64-4ab3-923e-39673d123cd3	PAH	Phenylketonuria VCEP	Benign	16	2	8.0000
+fb82abb9-c0f3-4901-acad-0e2a6de4b34d	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+854f6ce8-5399-491b-9988-4dcb77d81850	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+334dab92-e6af-4ddc-84fb-6dd73004c37f	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+48ca806b-68b4-4031-bbb4-ea25d6cf27b9	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+41f11bcf-264b-4292-9ef7-9ad4dd44f526	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+2d746606-6991-490e-a6d3-9263659f37b8	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+83be9c96-02b3-4161-ae5b-30bade6f25c3	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+2152f218-f763-4b21-bdc6-6f57d1ed1c05	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+44d9ac99-47c1-46ae-827b-ab3adf214157	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+0de1731a-9fea-445e-ac38-11ce147f981a	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+30048068-37f4-4e70-8199-9fcdc164de9b	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+45d316d3-b5e7-4926-ac80-e3bf756f76b9	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+1c0ae89b-f759-4875-b648-8f454598bad8	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+db42ee8e-361d-4756-8504-caeaf67f6741	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+08d51386-af9e-4de1-8e7b-0dc6c2252c91	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+fa47c3ea-0e75-4e80-a83e-19d3fb7b4e99	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+17a486f7-ffbd-4259-8b78-60b54b661011	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+0798d43f-79e6-4d8e-86cc-b591342ba58c	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+54974578-304b-4ce9-bb26-5f6aa31359bb	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+aa4ba2e7-5604-4e53-ad0b-f24f7ed4339c	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+e9f34e4e-66a8-4bb8-bb23-91567aa6569a	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+c5437297-1b67-4097-ba03-479a5330c664	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+07f0020e-18ae-45f2-a945-03c89ea141ff	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+41f440f5-e9e9-4eb2-b622-59574cfefc61	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+43d4908f-6cb4-4058-865a-6c3f58dd5dc0	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+53f9d1a2-46ec-4f4e-847b-d6425aaa650f	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+a1719899-148c-4be8-9193-1d376d4059d9	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+8a5b1fbe-e4b4-425e-a73d-0dd635feca78	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+6a118ab0-2285-490f-8ce5-c42461c2f250	PAH	Phenylketonuria VCEP	Pathogenic	243	29	8.3793
+03580416-1048-4c5f-b2f2-112c77d4b7dd	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+fd0c5ef6-3ab2-4836-a05e-cb586847ef60	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+b36724d2-acba-40d1-a81f-071cd7340281	PAH	Phenylketonuria VCEP	Uncertain Significance	119	14	8.5000
+44685f9b-a06f-4d15-a65b-2a3632a64ab6	PAH	Phenylketonuria VCEP	Likely Pathogenic	211	25	8.4400
+44c75d04-cfb3-4a52-840e-30d2eb641915	PTPN11	RASopathy VCEP	Likely Benign	65	8	8.1250
+c650daaa-d00c-411a-9439-fe0b0570e53e	PTPN11	RASopathy VCEP	Pathogenic	95	11	8.6364
+2a9a7233-77c0-4d04-a2e1-0a1ac478a404	PTPN11	RASopathy VCEP	Likely Pathogenic	31	4	7.7500
+579af108-04e2-4cf7-9a40-35cbaa82b116	PTPN11	RASopathy VCEP	Pathogenic	95	11	8.6364
+3b04afbf-2784-4140-8597-2108c5253464	PTPN11	RASopathy VCEP	Pathogenic	95	11	8.6364
+9a983768-4bb6-4ea5-a081-ded31831d374	PTPN11	RASopathy VCEP	Likely Benign	65	8	8.1250
+398ecaa8-8d9a-41cc-9853-8f67eef44c26	HNF1A	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+890f4355-b322-4d63-ab2e-02ceb1436a6a	HNF1A	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+2120888b-86b4-49e2-a7cc-5a05d379faba	HNF1A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+f855892a-95c9-462b-88af-1d0c36eefe50	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+6ac0c528-2d5f-409b-974e-99a40fe99e7e	HNF1A	Monogenic Diabetes VCEP	Likely Benign	29	3	9.6667
+7e62708e-dd55-42f5-9e0a-e6bdb1c0b199	HNF1A	Monogenic Diabetes VCEP	Benign	20	2	10.0000
+f20b7d10-69ff-4356-8bed-f07919d31a0a	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+18f446a0-2192-43e6-afe0-e50751cb6115	HNF1A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+c6a76159-c20b-4c47-9da8-cc2e4f3fa27b	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+e971c487-4b68-4570-8c7c-097ce170b977	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+67860509-33fd-49ea-b96a-0de079e0f05c	HNF1A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+2df517d3-5781-4545-aaca-c9b51f71e0a1	HNF1A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+e182ccbb-ffe1-4d68-9dfa-81ce551eed87	HNF1A	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+2dcdfc66-1f2c-457e-a62f-5358605c3c5d	HNF1A	Monogenic Diabetes VCEP	Likely Benign	29	3	9.6667
+ab38715f-437b-43fc-9576-98294188b41e	HNF1A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+1d21620e-62c4-42c5-ab67-dd02dcd40182	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+e586f251-a3d4-479a-8235-73e932704a5b	HNF1A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+6946ce49-473e-4ab8-9a7e-16cf0e1351e5	HNF1A	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+67e9416b-ce50-4afe-a22b-1f593fc64a58	HNF1A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+f49c5251-d32e-41e2-a4d1-34a11cab80e9	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+41c877ea-0688-46fb-be79-b249f5d3f8fe	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+8bae88e6-30b7-49b6-a535-e4712a6eaa4c	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+9e46e8f8-87d3-4c13-be07-9cfabe90aac9	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+5352ce30-fa25-4320-be8e-b2b009b32c64	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+0e58f20e-3d68-4996-ae8d-cb99d8653f95	HNF1A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+b1ec8b81-961e-47de-94da-be293288ac39	HNF1A	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+8dabb95c-a145-4927-a396-88fc75ed3ca5	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+2e13c2de-6b67-4738-b89f-f88858c71a3b	HNF1A	Monogenic Diabetes VCEP	Benign	20	2	10.0000
+06453332-f33d-4b0a-b752-4da92e9f78fd	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+430524eb-596c-4e0c-ba78-057bb0e08cd9	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+09564224-5807-4d6b-b8dc-ce4a211ca180	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+d6065ace-d64f-4e3d-8c9f-f85f6efeb6aa	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+74ddabf6-1f20-4964-b316-c99e99a24146	HNF1A	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+4f7ac8c9-461a-4699-8865-f7a70c062ed4	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+56a009ca-84b7-4ad0-a177-aec2d9af11d2	HNF1A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+014e9d84-899b-4b42-a119-07d21b2ed660	C12orf43	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+a620f883-8ce6-41fb-9cd3-e02de3f542df	C12orf43	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+1bc36e45-acb7-4481-9d0a-da633beb2613	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+c3a23b93-909a-4aa6-98c3-7d4f336c0137	HNF1A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+73289133-df78-471e-83a2-9429ae616f4e	GJB2	Hearing Loss VCEP	Pathogenic	51	6	8.5000
+ae883dc2-3266-494c-88fd-5231ac12a103	BRCA2	ENIGMA BRCA1 and BRCA2 VCEP	Benign	15	2	7.5000
+6da4c47e-bc70-493e-9b56-bbbf75c63e28	MYH7	Cardiomyopathy VCEP	Uncertain Significance	62	7	8.8571
+2d3bef48-2c10-4eb4-a5bc-72a3180e0eb7	MYH7	Cardiomyopathy VCEP	Uncertain Significance	62	7	8.8571
+d9289d14-fc44-4dc3-b049-76350a7512e7	MYH7	Cardiomyopathy VCEP	Uncertain Significance	62	7	8.8571
+0fba9f4e-9716-4bd7-ab0b-8985781f4575	MYH7	Cardiomyopathy VCEP	Likely Pathogenic	25	3	8.3333
+292a4d25-0148-4928-97f4-e6ae23409769	MYH7	Cardiomyopathy VCEP	Uncertain Significance	62	7	8.8571
+6fe13380-41f6-4b69-a87b-3c8ac1372bc1	MYH7	Cardiomyopathy VCEP	Uncertain Significance	62	7	8.8571
+f42ed129-9158-4829-94b0-8537a2253063	MYH7	Cardiomyopathy VCEP	Uncertain Significance	62	7	8.8571
+8112b9be-baa4-485d-a686-c223e112af4e	MYH7	Cardiomyopathy VCEP	Pathogenic	29	3	9.6667
+0676e72c-311f-400d-af6e-a0c693fbd33a	MYH7	Cardiomyopathy VCEP	Benign	47	6	7.8333
+8b156efb-afd3-4dd9-9602-39a13d32a5b6	MYH7	Cardiomyopathy VCEP	Likely Benign	6	1	6.0000
+40ccb7f9-d0a7-4e61-9756-8fef5c463031	MYH7	Cardiomyopathy VCEP	Likely Pathogenic	25	3	8.3333
+6c7676cc-a729-42ee-bc9c-580feb015c57	MYH7	Cardiomyopathy VCEP	Pathogenic	29	3	9.6667
+bec6c1d7-894c-4ea5-a19d-b6bc063f2fde	MYH7	Cardiomyopathy VCEP	Uncertain Significance	62	7	8.8571
+9486153c-4de2-4686-927c-cbe960ccbc06	MYH7	Cardiomyopathy VCEP	Pathogenic	29	3	9.6667
+57cd51f7-3891-4b22-9d96-d564c65aabdb	MYH7	Cardiomyopathy VCEP	Benign	47	6	7.8333
+10979ad9-6d55-41ac-b094-a5afdc161970	MYH7	Cardiomyopathy VCEP	Benign	47	6	7.8333
+0fb73aff-c7e0-4250-bc83-dd47e679755e	MYH7	Cardiomyopathy VCEP	Likely Pathogenic	25	3	8.3333
+b4ae1402-0ded-4822-9b3a-6f0947d8c41e	MYH7	Cardiomyopathy VCEP	Benign	47	6	7.8333
+558edff6-7f85-4b3c-9436-15e222922594	MYH7	Cardiomyopathy VCEP	Benign	47	6	7.8333
+e26a6375-f03a-4542-9924-d09781723678	MYH7	Cardiomyopathy VCEP	Benign	47	6	7.8333
+87862518-0606-414b-8d0c-81b9cd260088	FOXG1	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+3f0124ab-b79d-45ed-90e7-a56317665c70	FOXG1	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+d9c130a5-bda0-4c59-9d9c-a90bf6550834	FOXG1	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+a79d4c23-1e44-4bc2-b0ab-4ac70d055a4f	FOXG1	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+3a30f66d-ebfc-4ef5-95fc-fb852e05df8a	COCH	Hearing Loss VCEP	Benign	28	3	9.3333
+37ca3170-6c30-4ded-a943-695ee2052510	SOS2	RASopathy VCEP	Benign	132	16	8.2500
+a564c1f9-54c6-4bd7-900d-c52a410c8e5a	DICER1	DICER1 and miRNA-Processing Gene VCEP	Uncertain Significance	65	8	8.1250
+d7c1ed7f-5574-4f05-87f0-4b609c62c81d	DICER1	DICER1 and miRNA-Processing Gene VCEP	Likely Benign	30	4	7.5000
+69cd03ac-1108-485f-a535-21f331b4dd9f	DICER1	DICER1 and miRNA-Processing Gene VCEP	Uncertain Significance	65	8	8.1250
+e49e9626-f9d2-482b-b05a-820ad7ad1185	DICER1	DICER1 and miRNA-Processing Gene VCEP	Uncertain Significance	65	8	8.1250
+13d61f90-d123-45d2-ac7d-9354e09e66d5	DICER1	DICER1 and miRNA-Processing Gene VCEP	Benign	10	1	10.0000
+fd293e6c-3221-4534-88f2-6527de85f4c8	DICER1	DICER1 and miRNA-Processing Gene VCEP	Uncertain Significance	65	8	8.1250
+31eeccfd-805d-4220-a4de-26b49bf39e49	DICER1	DICER1 and miRNA-Processing Gene VCEP	Uncertain Significance	65	8	8.1250
+d7bb7946-aea7-4885-9715-4a46a61fd29f	DICER1	DICER1 and miRNA-Processing Gene VCEP	Pathogenic	15	2	7.5000
+4aea1786-5074-47d4-8f93-4d157f9839e6	DICER1	DICER1 and miRNA-Processing Gene VCEP	Pathogenic	15	2	7.5000
+f575b0a3-4c52-42c6-8b73-5db64e531ea3	DICER1	DICER1 and miRNA-Processing Gene VCEP	Likely Benign	30	4	7.5000
+31f410e5-1f8e-4e3d-a6ec-3a719a0e2f91	DICER1	DICER1 and miRNA-Processing Gene VCEP	Likely Benign	30	4	7.5000
+9aebc673-f29a-4be9-911f-e7ab2b26e1c2	DICER1	DICER1 and miRNA-Processing Gene VCEP	Uncertain Significance	65	8	8.1250
+3d3008a7-77b6-4253-a375-b8db070aaaaf	DICER1	DICER1 and miRNA-Processing Gene VCEP	Likely Pathogenic	13	2	6.5000
+efaf6fc3-d5c9-4c9e-90d0-aa736abfd98d	DICER1	DICER1 and miRNA-Processing Gene VCEP	Likely Pathogenic	13	2	6.5000
+8708aa84-e7c8-4634-a3b8-43a43be6e3d1	DICER1	DICER1 and miRNA-Processing Gene VCEP	Uncertain Significance	65	8	8.1250
+53bfb323-9ad2-412e-b78f-84033b47d79a	DICER1	DICER1 and miRNA-Processing Gene VCEP	Uncertain Significance	65	8	8.1250
+2089884b-f9e8-4e9e-9b25-b13868f7a9ff	DICER1	DICER1 and miRNA-Processing Gene VCEP	Likely Benign	30	4	7.5000
+0b0cd308-4e86-4727-9fb9-c9120a58828c	UBE3A	Rett and Angelman-like Disorders VCEP	Likely Pathogenic	34	4	8.5000
+db3b7cba-cdf5-452f-981a-e93f530b51c7	UBE3A	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+8dde7cda-8276-4e8b-ac4d-757378884839	UBE3A	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+368dce9e-5faf-4081-a47b-86f65f9c96b4	UBE3A	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+7c2039e3-f9be-4d4a-8b2e-dcf75c7b770a	UBE3A	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+6c0d54b2-0ece-452a-bbe3-0b4b355005af	UBE3A	Rett and Angelman-like Disorders VCEP	Uncertain Significance	50	6	8.3333
+1388f3d4-94ee-46b1-962c-ba17d0b57847	CAPN3	Limb Girdle Muscular Dystrophy VCEP	Likely Benign	22	3	7.3333
+13677f0c-6e6f-4a05-ab23-d7f129ded13b	GATM	Cerebral Creatine Deficiency Syndromes VCEP	Uncertain Significance	90	11	8.1818
+96bc7f90-9bd0-4569-be73-e8698ead0b8e	GATM	Cerebral Creatine Deficiency Syndromes VCEP	Benign	29	3	9.6667
+2273d567-8ed8-470a-a09c-a18eee0abae9	GATM	Cerebral Creatine Deficiency Syndromes VCEP	Likely Benign	25	3	8.3333
+a58f0819-c1ac-4966-91d6-40758ccb8334	GATM	Cerebral Creatine Deficiency Syndromes VCEP	Likely Benign	25	3	8.3333
+a786cc98-612e-43dc-b59e-2261626694d0	GATM	Cerebral Creatine Deficiency Syndromes VCEP	Likely Pathogenic	56	7	8.0000
+4fabbdf3-d633-4321-b615-42406be120ef	GATM	Cerebral Creatine Deficiency Syndromes VCEP	Uncertain Significance	90	11	8.1818
+dd60c66c-62b0-479a-b82c-b85b5b8e357d	GATM	Cerebral Creatine Deficiency Syndromes VCEP	Likely Pathogenic	56	7	8.0000
+e032c1c9-5b36-4ec5-90d6-9e706970c15c	FBN1	FBN1 VCEP	Pathogenic	38	4	9.5000
+878146ab-5406-4852-b7a0-da0c3b4eaa24	FBN1	FBN1 VCEP	Likely Pathogenic	44	5	8.8000
+4af545ca-cc58-4dda-a435-17262478443f	FBN1	FBN1 VCEP	Pathogenic	38	4	9.5000
+013fd5cb-459d-4a9a-9621-16fdafd6d9bc	FBN1	FBN1 VCEP	Likely Pathogenic	44	5	8.8000
+b2b87aed-71d2-4475-b80a-65a39f73d1ce	FBN1	FBN1 VCEP	Likely Pathogenic	44	5	8.8000
+5ec31f85-0600-444a-80bc-517d8d4448fa	FBN1	FBN1 VCEP	Pathogenic	38	4	9.5000
+afc149f1-d8ba-4738-aee1-4df04897a09f	FBN1	FBN1 VCEP	Uncertain Significance	16	2	8.0000
+60c5b002-3ac2-4df2-8ded-86171378b2f5	FBN1	FBN1 VCEP	Likely Pathogenic	44	5	8.8000
+be2b5b34-a586-4849-bcc8-f5461e674e3f	FBN1	FBN1 VCEP	Uncertain Significance	16	2	8.0000
+a3ae3431-d3c3-44cf-b1ea-6d1787d7e255	FBN1	FBN1 VCEP	Likely Pathogenic	44	5	8.8000
+38d36d10-5c7c-455c-9338-0706c4a6f7f9	FBN1	FBN1 VCEP	Pathogenic	38	4	9.5000
+06981afe-9f52-4bdc-b6e0-b30bad5cda4d	FBN1	FBN1 VCEP	Benign	5	1	5.0000
+73aeb3b9-cf0f-441d-8fde-7baab940b780	MAP2K1	RASopathy VCEP	Benign	132	16	8.2500
+a895f2eb-4350-485d-b678-a8f94a4cc002	MAP2K1	RASopathy VCEP	Benign	132	16	8.2500
+eb76d7fe-96e9-4113-aa3b-de76d46d565d	MAP2K1	RASopathy VCEP	Benign	132	16	8.2500
+b809422c-0ced-4291-bd6f-c39d65e76e3e	POLG	Mitochondrial Diseases VCEP	Uncertain Significance	15	2	7.5000
+11dec182-b70a-412f-82d0-d883eef100df	POLG	Mitochondrial Diseases VCEP	Uncertain Significance	15	2	7.5000
+27b045d7-68a2-4cb4-b7f9-e2837a29e462	PALB2	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Benign	14	2	7.0000
+213dcc73-14c2-426c-a6e0-46d72f288c00	PALB2	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Pathogenic	55	7	7.8571
+41b0eb5f-9d5b-482c-bbdb-29ee7c325e9d	PALB2	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Uncertain Significance	27	3	9.0000
+6c7f2dd8-478c-4c7a-8a3c-4278300dc575	PALB2	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Likely Benign	5	1	5.0000
+168d5508-5262-4204-bdd9-e319bb7ff161	PALB2	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	Uncertain Significance	27	3	9.0000
+fcab5afd-fdd3-42f2-80d2-b7981264e7a7	CDH1	CDH1 VCEP	Uncertain Significance	41	5	8.2000
+916169ad-d424-4f36-8530-42c87c14d450	CDH1	CDH1 VCEP	Uncertain Significance	41	5	8.2000
+8b836460-28fb-4877-8402-7b4e8c19a81e	CDH1	CDH1 VCEP	Likely Benign	68	8	8.5000
+9b90b5f6-9dbb-4ca2-8a24-3bf4cbd439f6	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+0be29cc3-a4b0-4139-a8bf-c692422baea7	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+27459987-4e77-430a-a45a-6fece7004cb7	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+d9039763-3145-4298-b468-da3967101df3	CDH1	CDH1 VCEP	Benign	57	7	8.1429
+d24f25e0-35d1-41c7-aa8a-675f6fa2a9b8	CDH1	CDH1 VCEP	Likely Benign	68	8	8.5000
+e554779f-79ec-4bcc-b6dc-93e2ca5df2a7	CDH1	CDH1 VCEP	Likely Benign	68	8	8.5000
+a5c65338-7170-417c-941a-c6aec2c6df65	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+4f56b139-4c6b-4107-aebc-4368f6c6f68b	CDH1	CDH1 VCEP	Benign	57	7	8.1429
+26c6bf48-df87-4a41-afb6-583df51c559f	CDH1	CDH1 VCEP	Benign	57	7	8.1429
+8277d227-4d10-4ebb-bc74-fee3cba23a52	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+24d1a63e-11db-4d0c-85c0-5d1e6efcbcf0	CDH1	CDH1 VCEP	Likely Pathogenic	20	2	10.0000
+7d455de9-958f-460b-8990-85a41ab7450a	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+5d964472-4cd7-4f3e-a23e-6ada2ea26007	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+45f737de-9e44-47ac-85f5-404ecfd49ad4	CDH1	CDH1 VCEP	Likely Benign	68	8	8.5000
+002de39a-37d7-42dc-aa7b-2f386c531abf	CDH1	CDH1 VCEP	Benign	57	7	8.1429
+de121013-db34-4461-8027-65ef657a9e2a	CDH1	CDH1 VCEP	Benign	57	7	8.1429
+f4cc2a94-3541-4121-abe1-a72e59d7a6bf	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+b16b8eee-01a1-4a10-b40c-0f1bf8dc18b7	CDH1	CDH1 VCEP	Likely Benign	68	8	8.5000
+77378953-408f-4bee-85e0-ebd5248943f7	CDH1	CDH1 VCEP	Likely Benign	68	8	8.5000
+35f43e27-91c5-4b71-a8e1-136519f0106b	CDH1	CDH1 VCEP	Likely Pathogenic	20	2	10.0000
+9aea178a-3518-4d66-ae22-80a965e9331b	CDH1	CDH1 VCEP	Benign	57	7	8.1429
+c0b7ca7d-517c-418e-a1e3-22e57e6bd197	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+7f1ee4eb-54b0-4fe0-956c-fd0051660c2c	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+89edf24d-5117-4ff9-8e40-1aad098773dd	CDH1	CDH1 VCEP	Benign	57	7	8.1429
+1e9c8c1e-8248-4763-8eef-4cef9f5b2dcd	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+57c42482-7dfe-418f-9374-f3562e757ad4	CDH1	CDH1 VCEP	Likely Benign	68	8	8.5000
+fc7868d5-8f10-4e93-9838-9697956e06a6	CDH1	CDH1 VCEP	Uncertain Significance	41	5	8.2000
+a332ca58-7b4c-47eb-90e1-95264aa31cca	CDH1	CDH1 VCEP	Uncertain Significance	41	5	8.2000
+a111a578-1fc8-4793-9f23-269d537cd6a8	CDH1	CDH1 VCEP	Likely Benign	68	8	8.5000
+1a5e5e0d-db23-4e6c-a7f2-002891504b0f	CDH1	CDH1 VCEP	Pathogenic	98	12	8.1667
+da58d938-ba22-4e68-bea6-d7a3b508312b	CDH1	CDH1 VCEP	Uncertain Significance	41	5	8.2000
+3b96b5f5-5214-4e12-b7c9-0459227cd4b9	ACADVL	ACADVL VCEP	Uncertain Significance	50	6	8.3333
+57ef8ecb-928b-457b-8601-645990723c39	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+12144d96-58b0-4b96-86ce-031a6bd2ac80	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+09daa9d6-a08a-4438-8e98-82f288bebeee	ACADVL	ACADVL VCEP	Uncertain Significance	50	6	8.3333
+2d75a4be-c5a9-4bd1-8fab-88701a71a76b	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+30e50c2c-b11c-49de-859d-81c32c9f8a03	ACADVL	ACADVL VCEP	Pathogenic	31	4	7.7500
+a4fbfcb5-4511-48ef-b1a6-5e1adac97320	ACADVL	ACADVL VCEP	Uncertain Significance	50	6	8.3333
+b64f496e-c4f5-41fa-8bdb-bb572325a09d	ACADVL	ACADVL VCEP	Uncertain Significance	50	6	8.3333
+d1956c84-3f68-4c7c-a275-d88ca90be85b	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+408b3f5d-ed3a-4afa-9c00-19510b89bda0	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+e7c28e84-f524-4b28-9ab7-6c37e7a74529	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+8f14329e-15cc-4ab5-9fba-0d1602837b17	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+63b1baed-bb7f-4c9b-9848-53ed2dccbb2c	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+13e9aeca-373a-462d-91a4-ae936c164558	ACADVL	ACADVL VCEP	Benign	13	2	6.5000
+be3f2d24-a30e-4296-8434-63e0a61911aa	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+0d4f845e-6599-4504-a812-0d37441ca959	ACADVL	ACADVL VCEP	Pathogenic	31	4	7.7500
+10b5273f-7a1b-4007-882c-82d17b0ed875	ACADVL	ACADVL VCEP	Pathogenic	31	4	7.7500
+4e57b5cd-cf40-49c5-b6f3-ed05ff653615	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+276a0259-f229-43a5-8219-d7d7ba720039	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+09cb4f93-9073-4758-b6c9-1d4517c0e238	ACADVL	ACADVL VCEP	Likely Benign	8	1	8.0000
+f5c2e347-02bd-4380-903e-aa78e411cfb7	ACADVL	ACADVL VCEP	Likely Pathogenic	97	12	8.0833
+e36b43d6-08b9-4584-81d5-3cf5dd06654c	ACADVL	ACADVL VCEP	Benign	13	2	6.5000
+2bbfb4f8-569e-402e-ba10-8e48ef465ea8	ACADVL	ACADVL VCEP	Pathogenic	31	4	7.7500
+cb098d0b-8e22-4b4b-bc85-3e4c3e493a69	ACADVL	ACADVL VCEP	Uncertain Significance	50	6	8.3333
+c81e9cbb-091f-4bd8-8799-a865c5999243	ACADVL	ACADVL VCEP	Uncertain Significance	50	6	8.3333
+3cfae801-62ea-44b2-a4e9-c7993942151c	TP53	TP53 VCEP	Benign	21	2	10.5000
+5e0b5fcb-74ae-405b-ba9f-054ce7b5cd41	TP53	TP53 VCEP	Likely Benign	51	6	8.5000
+7b4332f9-03a6-43f1-afde-508d91bd92d5	TP53	TP53 VCEP	Likely Pathogenic	7	1	7.0000
+c3655e4d-7f5e-4830-b702-3893ec9be6ac	TP53	TP53 VCEP	Benign	21	2	10.5000
+fcf81c41-2ef5-4155-8668-25fc599a1d42	TP53	TP53 VCEP	Likely Benign	51	6	8.5000
+98acfed4-de66-4a8c-b6ba-bc9a67cd4189	TP53	TP53 VCEP	Pathogenic	27	3	9.0000
+b36419d2-274a-4464-b4c9-c0ff2471c0d9	TP53	TP53 VCEP	Pathogenic	27	3	9.0000
+8e43f0c3-2b97-4bca-97a7-e3afcfa1cd50	TP53	TP53 VCEP	Likely Benign	51	6	8.5000
+a1e9d7d7-42fc-4628-a8f2-f372d4d051d1	TP53	TP53 VCEP	Pathogenic	27	3	9.0000
+f2fc6a36-08b0-4d07-83a2-f60e3aed090e	TP53	TP53 VCEP	Likely Benign	51	6	8.5000
+3147e5cd-492f-4b46-9227-de2572c8bc19	TP53	TP53 VCEP	Uncertain Significance	15	2	7.5000
+b73a437c-26a5-4491-8b92-edbe32570d9e	TP53	TP53 VCEP	Uncertain Significance	15	2	7.5000
+9f61138a-40be-4434-b6e0-cba991e23049	TP53	TP53 VCEP	Likely Benign	51	6	8.5000
+7d2cb855-34af-45fd-82a4-737b107f9814	TP53	TP53 VCEP	Likely Benign	51	6	8.5000
+b6ea399d-f7a0-4cd2-b814-7e0bd870f57c	MYO15A	Hearing Loss VCEP	Likely Benign	29	3	9.6667
+dc84a66f-e7e7-4154-944f-1d48a50ea526	FOXN1	Severe Combined Immunodeficiency Disease  VCEP	Likely Benign	45	5	9.0000
+7ca8661b-1f2e-4d0c-882f-bfe8a40261db	FOXN1	Severe Combined Immunodeficiency Disease  VCEP	Likely Pathogenic	66	8	8.2500
+42c0eef4-e594-414f-9bb9-252401f65488	FOXN1	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+2d1eb815-6c23-4456-b617-5f09db470564	FOXN1	Severe Combined Immunodeficiency Disease  VCEP	Likely Pathogenic	66	8	8.2500
+5acef540-aba7-4a23-972c-338b15a41f06	FOXN1	Severe Combined Immunodeficiency Disease  VCEP	Likely Pathogenic	66	8	8.2500
+c2382582-dd2f-4aba-9bc0-c5ea47a2d0ab	FOXN1	Severe Combined Immunodeficiency Disease  VCEP	Pathogenic	78	9	8.6667
+74411820-9876-4f68-a494-019618664778	FOXN1	Severe Combined Immunodeficiency Disease  VCEP	Pathogenic	78	9	8.6667
+12815e90-cebc-41e3-b67d-c6495037768c	FOXN1	Severe Combined Immunodeficiency Disease  VCEP	Likely Pathogenic	66	8	8.2500
+1e8645c5-8084-4ad2-b3b4-b3f601c992c7	FOXN1	Severe Combined Immunodeficiency Disease  VCEP	Likely Benign	45	5	9.0000
+d7e4bc41-6574-4b2a-b54b-b0a54f4c6aac	FOXN1	Severe Combined Immunodeficiency Disease  VCEP	Likely Benign	45	5	9.0000
+03c35580-6129-4df7-b7b4-8055d39efda1	BRCA1	ENIGMA BRCA1 and BRCA2 VCEP	Pathogenic	16	2	8.0000
+fbbb5452-b586-4a7b-9f6b-8416630042bc	BRCA1	ENIGMA BRCA1 and BRCA2 VCEP	Benign	15	2	7.5000
+aed4706a-e502-48b4-8417-bb5c3aa01461	BRCA1	ENIGMA BRCA1 and BRCA2 VCEP	Pathogenic	16	2	8.0000
+7338d3f7-38e1-488b-96ac-85ea02ef23a6	ITGA2B	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+8a713b8e-9594-44d5-96a2-124c9e009890	ITGA2B	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+62988b7a-00c4-433d-a37c-1805b8a52e18	ITGA2B	Platelet Disorders VCEP	Likely Benign	43	5	8.6000
+aee242a3-5ff9-4bcf-ade0-8064f7f01e8b	ITGA2B	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+0ee33e3f-bcc1-498a-87da-e7f0c797c10b	ITGA2B	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+e8d529b9-a3b6-471a-a57b-1b42505a02c0	ITGA2B	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+f28f1fac-9f0c-4f6c-b95c-6e7711948e9b	ITGA2B	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+7e3fd2f9-4fdf-4e5f-90ee-eb4dec2d2fef	ITGA2B	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+5c7e18a9-fe33-4ca9-9926-2e09d90ac025	ITGA2B	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+a42a7514-27fb-48ef-95e7-ff2157e7ba75	ITGA2B	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+ac6a7969-418a-42b9-9a09-991c53659315	ITGA2B	Platelet Disorders VCEP	Benign	34	4	8.5000
+c6b42f33-92f7-4a71-822b-932469bd66ae	ITGA2B	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+ce7639f4-a59e-43df-b54d-a340158cfaeb	ITGA2B	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+dc562adf-9bd0-4dce-8334-17893518e61c	ITGA2B	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+2648fb9d-8747-4698-82c1-b61e45d0bef8	ITGA2B	Platelet Disorders VCEP	Likely Benign	43	5	8.6000
+bf1baa9d-ebc8-4a90-bf3c-126c19939212	ITGA2B	Platelet Disorders VCEP	Likely Benign	43	5	8.6000
+a6a8bd9d-35db-43df-ab39-5ae71ec0fd4c	ITGA2B	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+602edb97-8fcc-453c-9f94-64b933753620	ITGA2B	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+91547ad5-9a15-45bb-8ba8-0000c1b4a128	ITGA2B	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+23714f89-800d-4465-95d3-a4aff217cacb	ITGA2B	Platelet Disorders VCEP	Likely Benign	43	5	8.6000
+d0ec0d32-e549-4ba4-97cb-8de97b73ac2d	ITGA2B	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+702b6b90-c064-40be-a6e0-f75c3c170cbe	ITGA2B	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+ca60e11b-5cae-4602-9e96-ed937a93a20e	ITGA2B	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+de63d0f9-0c54-4db7-bb9c-646cd7f71b5e	ITGA2B	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+5d2d45e9-4992-4e03-bdd1-97f2720f7296	ITGA2B	Platelet Disorders VCEP	Benign	34	4	8.5000
+eb81f6e4-263e-4297-b459-3141e374cfb5	ITGA2B	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+d8906bce-d19b-42cb-8284-f30c324956cd	ITGA2B	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+2f3a1b45-c885-404e-9836-75fecc21a1f1	ITGA2B	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+01249594-0a67-4c5d-a972-5fc975cc3564	ITGA2B	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+f4ce3fb5-f58e-47a2-b330-cd59c37b77bb	ITGA2B	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+825f0739-77f8-41fe-8852-2f5c8ddbbb9e	ITGB3	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+21d8c19b-74cc-44d6-b29c-69f9c1ab1c68	ITGB3	Platelet Disorders VCEP	Benign	34	4	8.5000
+129883b4-8f0a-45a3-82f7-159a5f7e00ea	ITGB3	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+ab484f04-22a7-4b24-9093-5760147e5469	ITGB3	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+e4ad6f4d-1b93-4ead-8729-f651137791cf	ITGB3	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+0ac2ce25-1af9-4a5b-aee3-cae3ef88564e	ITGB3	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+8b714a8a-f7f4-44a6-8332-c5c1413e5e30	ITGB3	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+5a88ad57-bb3d-49ef-8dd3-2e7628ef1a81	ITGB3	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+397bd7bc-6990-4e72-9a0a-ba7e9bdbba9e	ITGB3	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+f1322688-a9bf-45a7-b51f-9b0956214124	ITGB3	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+b2194a84-f0e0-4aba-a7ea-46f0f3c3f5dd	ITGB3	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+712094bd-7187-4f2b-bc0f-90c0275d5d2f	ITGB3	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+5cfe055c-97a2-4530-9287-d69b13220702	ITGB3	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+7d103fd0-f9f9-4429-a42e-b93d0ec446c2	ITGB3	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+96a290ca-2034-477d-82dd-a8e62c4c5ce8	ITGB3	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+8a8e75a9-8380-452b-aecb-047b372dd08f	ITGB3	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+71b09e7f-4b6b-46fa-97aa-a963dac008cf	ITGB3	Platelet Disorders VCEP	Benign	34	4	8.5000
+c4ac081e-5a79-4468-b274-f8d363e98a9a	ITGB3	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+50c6d852-43dc-45fe-99cd-7eea271ae7d4	ITGB3	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+72cebe41-4367-4953-81a8-fb42ba7bc4c6	ITGB3	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+66d35f45-73aa-4a34-a3a0-c1772f0556ee	ITGB3	Platelet Disorders VCEP	Likely Pathogenic	119	14	8.5000
+a31fbdfe-a3ce-467e-956b-573cd317b11d	ITGB3	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+7ee8b02a-62e1-4a04-8a76-56ad88a08791	ITGB3	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+cd180f2a-b707-4f8d-9201-8a7e57ea550a	ITGB3	Platelet Disorders VCEP	Likely Benign	43	5	8.6000
+fc109f7d-50fd-4565-b5f2-92828c117ff9	ITGB3	Platelet Disorders VCEP	Pathogenic	143	17	8.4118
+a6821494-10c9-4e64-8e3c-7bf1f427f06c	ITGB3	Platelet Disorders VCEP	Uncertain Significance	134	16	8.3750
+fe7e80aa-ab00-4eb2-8b6b-e560c33f1b4b	SGCA	Limb Girdle Muscular Dystrophy VCEP	Pathogenic	49	6	8.1667
+e5736e98-a4d7-4384-bbb0-da1f2819c0d2	SGCA	Limb Girdle Muscular Dystrophy VCEP	Likely Pathogenic	19	2	9.5000
+29feb6c3-10a4-4799-9ca8-6c365f460b86	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+4adac83a-4077-4288-9a87-8f6c971bcd65	GAA	Lysosomal Diseases VCEP	Uncertain Significance	58	7	8.2857
+d8d42c24-8fba-4dc2-867e-3a34c06b0eb7	GAA	Lysosomal Diseases VCEP	Likely Pathogenic	89	11	8.0909
+1e551ab9-03f5-4129-9604-a9da6ebea09c	GAA	Lysosomal Diseases VCEP	Benign	30	4	7.5000
+fad4b958-eef9-4b84-96cf-9fa7bee3e3eb	GAA	Lysosomal Diseases VCEP	Likely Pathogenic	89	11	8.0909
+9490a55c-4cd0-44b3-859b-a915cd935f7e	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+929e0f6e-ab84-4745-940b-ae8a3ea39300	GAA	Lysosomal Diseases VCEP	Uncertain Significance	58	7	8.2857
+1f6327c8-2794-45a5-a3b1-4998dee695e7	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+b5e75561-1400-4069-9027-2a7c802ad249	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+f05787db-c895-447e-a3d9-af897f0d6d6f	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+6a43fe2d-1dea-4a99-bb53-737388ab566c	GAA	Lysosomal Diseases VCEP	Likely Pathogenic	89	11	8.0909
+de7d68cb-c9ba-4921-b83f-24231dd47c5c	GAA	Lysosomal Diseases VCEP	Likely Pathogenic	89	11	8.0909
+ea5eeffe-15f9-49be-9b02-6863bf2ea91b	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+47478b30-7442-41c3-a8b7-9bccaf02ed15	GAA	Lysosomal Diseases VCEP	Likely Pathogenic	89	11	8.0909
+4e8f639e-10b1-4001-88e9-46076af2c596	GAA	Lysosomal Diseases VCEP	Uncertain Significance	58	7	8.2857
+4d1ae9e6-ee32-4e9d-b802-71c188a8ca78	GAA	Lysosomal Diseases VCEP	Uncertain Significance	58	7	8.2857
+e6cd9da6-6885-4e33-8c81-2618a7acb9b5	GAA	Lysosomal Diseases VCEP	Benign	30	4	7.5000
+0dbf1624-9409-4543-ab0b-0d66118a2e88	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+66d16a76-468c-4150-9cd8-53ea0bb39512	GAA	Lysosomal Diseases VCEP	Likely Pathogenic	89	11	8.0909
+1fefc9e3-dd55-4aef-8e78-9cb27fd5bc81	GAA	Lysosomal Diseases VCEP	Uncertain Significance	58	7	8.2857
+9867ef98-ff25-4642-96c4-489c280d4a3a	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+bdcc8361-cfe2-43b1-b69e-5335fe41ed5f	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+32998b1b-724b-48dd-8e77-ff28373954c1	GAA	Lysosomal Diseases VCEP	Likely Pathogenic	89	11	8.0909
+23ff50a2-79d2-457f-bbc7-ddbab4abb5a4	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+644720c9-0e6c-4dc7-93f9-c58d6ba35575	GAA	Lysosomal Diseases VCEP	Uncertain Significance	58	7	8.2857
+779d712a-8d04-4013-8f4b-68f5464ecb1b	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+35dce1d2-1402-42d8-a0ea-bb2fd7bc225f	GAA	Lysosomal Diseases VCEP	Uncertain Significance	58	7	8.2857
+95270750-a614-4a98-84a6-5dee355863fa	GAA	Lysosomal Diseases VCEP	Likely Pathogenic	89	11	8.0909
+01fbc615-8e60-4987-ab1a-988de4e3e661	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+d9cad90e-ae6b-46d3-a933-96b29bf0227f	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+9d48e112-7668-4bd7-bd5b-12c256c5bf4e	GAA	Lysosomal Diseases VCEP	Likely Benign	15	2	7.5000
+da5aaa7a-fa4e-4ff7-9223-f3b799cd5d90	GAA	Lysosomal Diseases VCEP	Likely Pathogenic	89	11	8.0909
+6b1d795d-e095-4a45-947e-c3f543da6b19	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+366c8658-533a-41f8-add3-34e7313f2735	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+f1b0a8d8-3cc5-4dc5-9a2a-21e4715f92e1	GAA	Lysosomal Diseases VCEP	Benign	30	4	7.5000
+86e9d9c6-29f3-4e4a-b47d-4d300bbeba41	GAA	Lysosomal Diseases VCEP	Pathogenic	142	17	8.3529
+b4b4e028-4434-4362-a57e-8a50ad94182f	TCF4	Rett and Angelman-like Disorders VCEP	Pathogenic	64	8	8.0000
+b79ddda3-bf1e-4cee-8b49-6cc1423ac1a7	TCF4	Rett and Angelman-like Disorders VCEP	Pathogenic	64	8	8.0000
+0fda4a50-fa1a-4cbb-905b-6ecbaccc644e	TCF4	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+20230fce-2268-44ff-b7e7-2efcca6bf325	GAMT	Cerebral Creatine Deficiency Syndromes VCEP	Uncertain Significance	90	11	8.1818
+8d568e0a-6ff6-4008-b41c-6e3af28d6f2d	GAMT	Cerebral Creatine Deficiency Syndromes VCEP	Uncertain Significance	90	11	8.1818
+5d9121e7-6387-438a-a4d6-810f1c65d1e3	GAMT	Cerebral Creatine Deficiency Syndromes VCEP	Uncertain Significance	90	11	8.1818
+fd7e045d-f8c5-457a-bfef-c535608351ea	GAMT	Cerebral Creatine Deficiency Syndromes VCEP	Likely Pathogenic	56	7	8.0000
+48f2aa0e-c95d-486e-a0b6-f29bce515120	GAMT	Cerebral Creatine Deficiency Syndromes VCEP	Likely Pathogenic	56	7	8.0000
+9982600a-815b-4869-aaa0-c9456f12008e	GAMT	Cerebral Creatine Deficiency Syndromes VCEP	Likely Pathogenic	56	7	8.0000
+b1c5e4e4-4209-47e9-b53b-9d0e8483d2d0	GAMT	Cerebral Creatine Deficiency Syndromes VCEP	Likely Pathogenic	56	7	8.0000
+32490451-6514-4213-8812-6ac300cb461e	MAP2K2	RASopathy VCEP	Uncertain Significance	42	5	8.4000
+83c490e2-5683-4fc1-b3be-2fa89e92f868	MAP2K2	RASopathy VCEP	Benign	132	16	8.2500
+4aa8ed55-4b35-4739-9e18-4c63fd36145a	MAP2K2	RASopathy VCEP	Uncertain Significance	42	5	8.4000
+ab66208c-6c46-46b0-9c92-4872421693de	MAP2K2	RASopathy VCEP	Benign	132	16	8.2500
+bd530659-0ddb-40c4-bec5-738830eaca7f	MAP2K2	RASopathy VCEP	Benign	132	16	8.2500
+4731697f-56c4-4a30-9223-437e5bbf0068	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+f27b6ec6-e679-4473-85a9-2e64fa05f7c7	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+320c3f6b-2c64-4c1f-ae3b-00d74a35c5e1	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+5a3fa832-03e0-401e-89cd-97844d4d7bfa	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+b6e95616-fb67-494c-b874-db117c6535cc	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+2a5e70a7-3328-461c-97ec-ad2a36bcd68d	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+6663dc62-0d62-4323-967d-4431216d3b1f	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+c11017c3-bd59-4caa-8e79-2ba6693d1fc0	LDLR	Familial Hypercholesterolemia VCEP	Likely Benign	16	2	8.0000
+ecdf9c5f-f262-4f76-aee8-d7a7e435de78	LDLR	Familial Hypercholesterolemia VCEP	Pathogenic	62	7	8.8571
+f2f41bd9-ad4d-4237-b618-832f5cbc6885	LDLR	Familial Hypercholesterolemia VCEP	Pathogenic	62	7	8.8571
+9bd3b83b-b8ff-4ed8-84d5-c0735c0618bb	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+4ba182f6-7685-483b-b36f-bde68e89e7af	LDLR	Familial Hypercholesterolemia VCEP	Pathogenic	62	7	8.8571
+904d2a2f-31e6-4db5-904e-e74c4a7cfd07	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+da36a90c-1718-424e-83fa-5e42e5af70fa	LDLR	Familial Hypercholesterolemia VCEP	Pathogenic	62	7	8.8571
+e8a0ead8-7572-40fe-bdaa-ff7e2af9ad91	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+7d35f7d3-b40a-4137-ace3-7d0c87f989f6	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+d76af77c-2e61-4be5-9121-173c148bc3db	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+c516cee2-601e-4952-a3f1-d8db1acfda92	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+9eab8981-0be2-4163-97fc-231bb81ed509	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+43f1ef31-d52c-44ad-8fe0-b7b8f4dcec03	LDLR	Familial Hypercholesterolemia VCEP	Benign	16	2	8.0000
+50e4f7aa-2e0a-433c-88ba-08d28e21d8e2	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+baa65fd0-7621-400f-b358-8c8d1aaafcc5	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+10f9c785-44ea-4cac-8d0a-82364761cc6a	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+ccc16f7d-5c58-4e8c-ae15-1a7624c918e6	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+c6d40a01-0c3b-4989-8b0c-1a8ff638b450	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+a4cb57c2-99f7-4f49-9061-443b0d7a8f88	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+a557ff12-b68d-4824-b394-fcd35dc28f70	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+8c79da91-3573-4c97-9d38-6c1dd4ecdd09	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+c4be501c-7d06-4cc7-b16b-790eedd0fe3a	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+00b89750-e18b-4cbd-9fd6-a690ccbbdcd3	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+e11854cd-112b-4edb-9724-4d65e92d0220	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+7eefa188-b416-4524-a682-6645dee9f628	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+a390335a-4f0a-438d-ba92-1626cdf8fc21	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+e938aec0-0c40-48f1-8b32-8ccbc7bdb969	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+e76857b0-1c5f-44bc-b84b-9aca1b9395c6	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+85e6a99e-028a-471d-ae0b-7fb7b9c85c03	LDLR	Familial Hypercholesterolemia VCEP	Benign	16	2	8.0000
+bf9aaff6-ebfa-43dd-8599-f96ac01722f1	LDLR	Familial Hypercholesterolemia VCEP	Pathogenic	62	7	8.8571
+10b60a8f-b6e6-40ce-bf9a-7a99e5b2a35b	LDLR	Familial Hypercholesterolemia VCEP	Pathogenic	62	7	8.8571
+6f238252-988b-448e-966f-3865fda9608c	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+def4fe9c-fe45-47b3-a4a1-f88eff12dde1	LDLR	Familial Hypercholesterolemia VCEP	Likely Benign	16	2	8.0000
+8625c1db-5d72-4fd0-baab-8f9639bc9984	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+fd0cb6c9-7f1e-4644-9c34-95083a79a553	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+a90b351c-b5af-4371-9975-29978dc4247e	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+0295e6fb-e527-4826-a143-03161d46853d	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+67ec196b-6313-43ac-a7da-0017f218f6af	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+29ba2878-e776-400d-a89d-3ebaa40d7543	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+41562689-121e-4396-b119-5da2a8257660	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+218276d3-2d8e-4ff6-8f45-a17666d02565	LDLR	Familial Hypercholesterolemia VCEP	Likely Pathogenic	97	12	8.0833
+cc00e79a-6117-45c6-a00e-c5726b9419c4	LDLR	Familial Hypercholesterolemia VCEP	Uncertain Significance	224	27	8.2963
+1ae3ec5c-c9bd-4b0e-969b-7abf6e727dc1	LDLR	Familial Hypercholesterolemia VCEP	Pathogenic	62	7	8.8571
+71da273a-1c14-414c-bbaf-e6aab89c6aae	JAK3	Severe Combined Immunodeficiency Disease  VCEP	Pathogenic	78	9	8.6667
+a8274608-4e6d-42b9-a92a-a14282ba2d2a	JAK3	Severe Combined Immunodeficiency Disease  VCEP	Benign	40	5	8.0000
+5d9a8a9d-57c7-428f-9d6e-75cffc66d758	JAK3	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+c0c0226a-09fa-41b5-af2b-4ce5b026f17b	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+b2c419cf-7cdb-484f-8504-880aa4d39370	RYR1	Malignant Hyperthermia Susceptibility VCEP	Pathogenic	31	4	7.7500
+0cd03106-9228-4a14-bb51-69b0321a262f	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+8ddea12a-13d2-4712-8862-f104a7db3b2d	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+c6c2b3b8-5251-442f-aaae-d5dfe9ced9bb	RYR1	Malignant Hyperthermia Susceptibility VCEP	Likely Pathogenic	49	6	8.1667
+9afce82c-2e70-4ada-b016-d424b8f60629	RYR1	Congenital Myopathies VCEP	Benign	22	3	7.3333
+62358e6d-3ec7-4c81-ab67-9e26093c7766	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+55124b23-8091-424d-b744-d0820c6f87f3	RYR1	Malignant Hyperthermia Susceptibility VCEP	Likely Pathogenic	49	6	8.1667
+db1e9a13-5143-462b-8d02-86b85ab5b1c4	RYR1	Malignant Hyperthermia Susceptibility VCEP	Pathogenic	31	4	7.7500
+93979061-f613-43f6-a350-937e597ff4cd	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+70cc29b5-c8e6-4d4b-a2b2-e80f4e70a124	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+c8c7e594-139a-4a0f-8a9d-852ece152ea5	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+cfbe03cb-3331-440c-8598-5ac71cae1d18	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+2a0fdcc4-215a-4abf-8c14-e8826949184d	RYR1	Malignant Hyperthermia Susceptibility VCEP	Likely Benign	15	2	7.5000
+dbad8391-4c03-45b7-8aee-da787d0f6e29	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+59fd676f-2f1c-4ef6-a782-c4b6bfcabada	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+a46ac1aa-5303-4454-9288-ac87e1c4a493	RYR1	Malignant Hyperthermia Susceptibility VCEP	Likely Pathogenic	49	6	8.1667
+fbc6be1a-1710-435f-9866-6da6f59ab4d7	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+1436fa1b-2178-480a-9711-337815571f93	RYR1	Malignant Hyperthermia Susceptibility VCEP	Pathogenic	31	4	7.7500
+b4cbc77a-3fee-4506-8590-ba240224bdb4	RYR1	Malignant Hyperthermia Susceptibility VCEP	Likely Pathogenic	49	6	8.1667
+2e9567be-422b-4d6b-bc4a-371a26dcb0f9	RYR1	Malignant Hyperthermia Susceptibility VCEP	Benign	16	2	8.0000
+5bc17d0d-cdbe-4948-9494-0c40a38f26cc	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+40b5dff4-41b9-4491-8dca-04b7bf118f30	RYR1	Congenital Myopathies VCEP	Pathogenic	29	3	9.6667
+dad9b609-08a8-48fa-8cda-329873908808	RYR1	Congenital Myopathies VCEP	Likely Benign	8	1	8.0000
+9fc90212-f5da-4a79-b8a1-355b92454a8f	RYR1	Malignant Hyperthermia Susceptibility VCEP	Likely Benign	15	2	7.5000
+baa4af03-30ec-484e-804d-17c71401e60c	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+5ffcdc59-d1d4-4cc4-a189-ce1af5390baa	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+39bd4310-b3e1-4eb3-aae0-200dc2832790	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+1d37f726-e146-40b3-9863-833bb9740297	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+a547d652-d44e-4011-acc8-60f9bf27cdca	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+a51fdb33-f111-476c-aa86-949409f77623	RYR1	Malignant Hyperthermia Susceptibility VCEP	Benign	16	2	8.0000
+5d55a3c8-ec83-4d5e-b5e3-a9b7e2bd11c3	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+c007e9f7-f2ea-4f49-93aa-7177998da4ee	RYR1	Congenital Myopathies VCEP	Uncertain Significance	13	2	6.5000
+25ff5ca7-5ae6-42cf-8491-dee668263c63	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+329b4bc1-b6d7-4bf6-92ae-c9373116d6ef	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+29a2f628-136f-4ef4-a2b6-ae1e6cc296ed	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+42a2af64-407f-4e49-b300-069d0e19872a	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+a49fc6e3-69e0-4296-b6bb-c0ca8107aa35	RYR1	Malignant Hyperthermia Susceptibility VCEP	Likely Pathogenic	49	6	8.1667
+c0331ac2-972c-4b78-ad2a-8ceb6915a9db	RYR1	Malignant Hyperthermia Susceptibility VCEP	Pathogenic	31	4	7.7500
+d44be07a-a658-4e1b-a953-51726083f70d	RYR1	Malignant Hyperthermia Susceptibility VCEP	Likely Pathogenic	49	6	8.1667
+41c6928f-b046-413f-96dc-072c44560649	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+241d0c95-dbc6-46c8-9506-3ebaa88bf56a	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+e3e30641-abe5-4859-a3a6-4c0c6d0a6136	RYR1	Malignant Hyperthermia Susceptibility VCEP	Uncertain Significance	212	25	8.4800
+b3b3b60d-e53b-470a-aebe-9405bd9fa5d0	ETHE1	Mitochondrial Diseases VCEP	Benign	18	2	9.0000
+00257c9e-b540-4286-aa0e-f1a6c0e40cef	ETHE1	Mitochondrial Diseases VCEP	Pathogenic	8	1	8.0000
+05fe5801-146e-4dae-b9c5-6bb103ef7930	N/A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+e04246bc-5146-4ac3-b0aa-d74f0d62937d	HNF4A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+f6d4c84b-afc3-4936-82c3-f4fe26b1e27e	HNF4A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+14de735c-e1e7-4836-a9a3-4a9f83329388	HNF4A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+b3f02629-63c0-4004-ae89-406467301f00	HNF4A	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+eceb5f9f-35ab-4966-b4db-3b1961391f4d	HNF4A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+329ab610-d063-4a34-b626-ee785602e5db	HNF4A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+fea0648a-95c0-4e48-bf5c-8b7a3a0decd6	HNF4A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+3fb4a80e-d6d8-49b2-8b52-7ed16c23abe0	HNF4A	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+0a920e21-eaa7-4ca3-889a-b29fba2c365b	HNF4A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+42792535-d1f4-4374-ac8f-ea1b1506587d	HNF4A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+e88cc0cc-9fe0-46e0-955c-8b3c312a6958	HNF4A	Monogenic Diabetes VCEP	Likely Pathogenic	250	30	8.3333
+0ef8dd5f-ce70-41a5-a054-2171695b8bb7	HNF4A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+96eaf4a9-6ebf-43f2-8ad1-f4cfcb76ac71	HNF4A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+799d516d-6710-4c9c-a350-1d09b2121933	HNF4A	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+c3388a6a-bb70-404d-9071-818cc4259294	HNF4A	Monogenic Diabetes VCEP	Pathogenic	278	33	8.4242
+9d3267e1-fd69-4c36-b33d-79377a8fee15	HNF4A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+61553ca5-c6ef-4c35-a09d-d289ce55f55b	HNF4A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+7a01c79c-6276-4cff-bc47-1cd33751c6a9	HNF4A	Monogenic Diabetes VCEP	Uncertain Significance	248	30	8.2667
+7d64c528-32ad-468c-ab91-3f9f1a747ae9	ADA	Severe Combined Immunodeficiency Disease  VCEP	Likely Pathogenic	66	8	8.2500
+bc63b6a8-5667-4d03-9286-e8f9fd961619	ADA	Severe Combined Immunodeficiency Disease  VCEP	Pathogenic	78	9	8.6667
+4fb2c181-8222-4334-9881-43100da106d7	ADA	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+3d04b3e3-b3c9-4a74-990c-d85b6725a0fa	ADA	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+5f0e7152-8807-44b9-a176-9114617a1627	ADA	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+3fd10d1e-6029-4551-95a3-fcac1aaa27b5	ADA	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+22a9fb83-de28-42e2-9a6a-8823273ab3b6	ADA	Severe Combined Immunodeficiency Disease  VCEP	Likely Pathogenic	66	8	8.2500
+3c95e75d-735c-49cf-9bef-f6bd97b0da95	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+53ed64c7-8590-4a6a-957d-65cfda062a63	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+95aa088d-f424-4e83-9fff-8f6c1b1c7fcc	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+9f6dc474-f13c-4794-bb99-19dd69c52cc8	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+769cd169-4fec-408f-a51f-8ad96420b9ec	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+99b8d3fc-002a-45ad-ac49-c560be0144c6	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+fef04edf-87f0-4178-8389-289baf2d7318	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+edc53cc6-9e83-4015-be4e-35c544cb7b56	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+4e61a776-96a1-447d-b7b3-26b44f124e28	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+13a52a13-6d9c-4fac-889b-0e96dcfa5552	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+6220b404-e4a7-4f1e-b35d-e8e5f25fc6bd	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+7a266754-d5a5-4f62-905b-a36beee11337	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+cc7ae985-e7c4-499e-8f53-0a64606b5c99	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+ee255547-0ef8-4c6b-93bc-b5c535928b1f	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+f2c4b314-7ae7-4518-bd16-69a56968fc56	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+302d59be-dac7-44f4-96bd-c1c6d6c549bd	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+e03dd840-96c5-4316-a066-10f0bc46b6e0	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+ffa6bbd4-4467-4fa6-a3eb-99a5f87b79fc	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+ecacd35d-3b09-4dc4-903a-664f4f6516b3	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+d8dd1af7-c092-458e-be22-974559b79c92	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+50406f0b-f360-485f-867a-415db36c310b	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+98e0fc43-c2f5-4b1c-a073-67deaaf47a2e	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+b91c33a8-0f31-411c-95e1-c7295de44255	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+151d4f5d-fd5a-4d02-bb53-832da623bd50	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+41b15e95-a09a-4f42-97bf-6ddbb6576d89	RUNX1	Myeloid Malignancy VCEP	Likely Pathogenic	65	8	8.1250
+0080cd80-9ea0-44b0-9cf8-d8e5578c5105	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+abc6e71d-567b-4e45-9e37-e4291e31a76a	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+d494eb32-e830-4058-8d88-61a282649f6a	RUNX1	Myeloid Malignancy VCEP	Likely Pathogenic	65	8	8.1250
+ed3f266f-f0d8-4f7f-840c-5cb579b5c192	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+f4a80743-9655-49a4-ae49-617843862694	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+84a3d1df-ec6a-43bf-b7c9-208128f2e9d0	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+6d8ee08c-4581-4d89-9e6c-94e374ed4249	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+5492cdbd-c824-4c80-bc8c-730c27de91e0	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+1185f3a2-b902-4fd5-b269-a716507186c6	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+b9cf5fa5-e7b1-4f49-a181-494aead32f1a	RUNX1	Myeloid Malignancy VCEP	Likely Pathogenic	65	8	8.1250
+8621ef7d-a938-4e40-affa-d63cd8bbba80	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+baa15d73-e13b-4fcc-babb-938bec105d99	RUNX1	Myeloid Malignancy VCEP	Likely Pathogenic	65	8	8.1250
+b75b0690-3959-4c8f-b870-3007212b741b	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+8c7435ec-dfb2-488b-bcb9-a6ba5effec00	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+37cf5142-fd3f-4896-9da9-ca4c54b542ea	RUNX1	Myeloid Malignancy VCEP	Likely Pathogenic	65	8	8.1250
+952eb043-bd76-4a07-aedd-7a001a8c5d77	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+6c6615e0-717a-456f-8275-25e5e83c0aaf	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+be440400-5d8f-4faf-b90f-0a6b82be9a08	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+700ce952-66d2-4a45-8b00-8de2bcfb7997	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+7b69a20c-afea-4192-8f2f-8fe37a0e8070	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+baccfdf0-647b-4be7-b70e-f3f2d39390f5	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+287d755d-4733-4ab3-a1c7-99d77e7f1d96	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+2b88f63a-2794-4da0-b5ef-39a5b3331e3c	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+7359f025-9e6f-4c1d-bdd0-52ea205f9b3f	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+95283232-77a9-4bef-96b3-5127cfe15111	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+45771089-a250-478f-a502-32b0fd9adcde	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+c41b7dff-412a-4900-b75b-0fb78404acc3	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+41c03e7f-0c35-4bee-80fe-9e5be716fe2e	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+95d282c7-2a56-469b-b26c-ecde2f514069	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+8ce09c64-9ec9-472a-ae8d-fb50c0b19149	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+8f21e546-d90e-4048-b12a-07a93e0fda73	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+9f6ebb74-da3d-4ea7-94b7-71ffbfca1ba0	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+8fe2eb65-d1a6-46cb-9981-465634a75542	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+27f8647a-eb48-4ba5-8e9b-efb0c2a910c1	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+be9fb9d7-a4fa-45b1-a566-6de34a53ac14	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+dc64e79b-b35e-4050-ab26-2891d2afbe03	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+3594b712-6ff0-441f-840e-c48b0b6c2b1d	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+72f2f3fa-51c3-47f3-9272-0b1e61a5e7f7	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+98ce53ac-3bc0-4f0b-85f7-18317dc0e1b7	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+9f9c67cd-b098-4205-9c3d-2dcff11376fd	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+49297cf9-1149-4be1-943b-265b550db6e3	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+9614f8db-2f14-4f45-bb29-002cfd83646a	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+db0fa719-3a45-4d48-8b1e-5ea0dae6e9cb	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+5b3acc50-0784-4f70-a537-53d64d3d8d8c	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+8cd92f32-fdda-4562-844a-b909dc4b1ec3	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+e59f551d-41c3-46c3-9175-3f0e5f26ec5b	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+71661a8d-85f7-4ba7-a0f0-d9815c807144	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+91d25b4e-a4fa-4964-90c4-ca7625259e23	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+47929627-384b-4b3a-b381-d112f7b52182	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+15a6e480-e605-48f4-b6c2-e14c15e75440	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+de5fafeb-001a-422f-8d2b-6e3db80f0858	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+9206eb92-e7fe-454c-96d8-668f852be557	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+b33a9473-f095-4e52-b441-250467b19b90	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+660c591a-b502-45d2-bcae-1243131aca83	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+f44b73ca-dc8a-4c92-87ab-51a9798e7663	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+2c6eea7b-1e18-4100-aa96-a8a35990e1dc	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+9dc1b049-c6d6-4b8d-986a-d26ba361ec76	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+ba370852-56e5-45ec-9c95-6d954ae76bb1	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+025ee6b6-1377-49c3-abb4-35598fb1228f	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+c9116a27-fbc3-48b0-a88d-105f910ddde7	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+dd160ae3-0cd1-4ba9-b88b-b955eeb109ab	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+d373fa91-c710-400c-b092-28ab5693e5fd	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+1c4b6804-f641-4dd6-931b-84e1443249f2	RUNX1	Myeloid Malignancy VCEP	Pathogenic	72	9	8.0000
+861e0719-8ff0-46e8-b774-f791cfeb97ca	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+74a51148-dfc0-41ee-8f37-95a73df8d197	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+4b6d6bcb-da2e-42b4-886e-38565501ee4a	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+ef824946-537b-477f-9a05-42e7590264cf	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+6071f678-eb53-4ddb-8253-003be48adee3	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+37ab8c27-9b0b-4a7a-aa18-6ecd3e9b8a40	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+6e2f71f6-cbee-4925-91d8-25cb2aabe851	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+e5e3150c-8593-41b4-b9c7-ef6ab87624f5	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+bda5654c-615f-4918-b125-051619b044e6	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+42b26001-7bd7-4d32-8c95-f95452af2662	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+ef438fae-50e8-44f1-8777-9ce1e64582a7	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+de750d9a-56cc-4163-b7de-f2837e11ad9b	RUNX1	Myeloid Malignancy VCEP	Likely Pathogenic	65	8	8.1250
+103b573f-e480-49b5-bec0-3fca0e48a744	RUNX1	Myeloid Malignancy VCEP	Pathogenic	72	9	8.0000
+b9b7aa75-cb2b-4275-883f-54ff833a9582	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+ed548dc1-1a8a-4a16-8608-fddd64c8562e	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+315e4fc4-f0c0-4e7f-9c23-21502195bb44	RUNX1	Myeloid Malignancy VCEP	Pathogenic	72	9	8.0000
+f462708c-29cd-4edc-b166-f6a832cee349	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+af9938e2-50fd-4d02-acee-fc3b35e68351	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+ceaec1b6-521d-4b4a-b2f8-2ccff8f9811f	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+5274b4d3-94c0-46b4-98db-9f29baad422c	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+bc4b0994-4dad-4327-8294-077552c1ead1	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+ebcea198-1405-4120-9a33-4080e3439a21	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+ecb6ba2c-4c06-46c6-b200-df0a4983562f	RUNX1	Myeloid Malignancy VCEP	Likely Pathogenic	65	8	8.1250
+7bdeb898-0ff9-4075-aed1-5a45e2a2fb71	RUNX1	Myeloid Malignancy VCEP	Pathogenic	72	9	8.0000
+cf67125e-d9d7-4597-804a-1806d3e641d1	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+78d5219e-fd6a-41aa-ad83-9dcf935a1544	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+5c719f3b-cbd9-43d0-9813-1d807a4404ec	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+4df11a8a-66b6-4bf1-9ad2-b1edf5add537	RUNX1	Myeloid Malignancy VCEP	Likely Pathogenic	65	8	8.1250
+9d8c8e26-93ba-435b-bfb7-323026f3266b	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+334b0336-d005-4e3a-adb7-59c8c0d66ff6	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+7b1aaa92-3aab-4146-8a70-9cca2408f63b	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+313f863a-7694-4d05-b4e3-20c0e354d23e	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+d5e03ae0-3ff2-428d-87e3-ae93412f6bf1	RUNX1	Myeloid Malignancy VCEP	Pathogenic	72	9	8.0000
+512ddde8-a9b6-43c3-88e2-60911b52dacc	RUNX1	Myeloid Malignancy VCEP	Pathogenic	72	9	8.0000
+a41a435c-33cd-44a4-9711-c18fdbb0bfa4	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+6f13fbe7-8a80-405d-8497-cd9df527ca4f	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+36177c06-87f4-44ea-9de9-ecd333abc52d	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+a9d432c7-8944-40a1-9185-2d9cab9a68b4	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+603cd528-c485-4e30-934a-cabde6c6d80d	RUNX1	Myeloid Malignancy VCEP	Pathogenic	72	9	8.0000
+5bc88669-c275-483c-8c87-196871d11652	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+d37a12ac-fd91-4341-93ac-028aece5a043	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+4a85deec-6a00-4358-ab16-3fdd7d534534	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+71b75ed7-2118-4691-b808-8713fec1bd56	RUNX1	Myeloid Malignancy VCEP	Pathogenic	72	9	8.0000
+9b50b3c6-852c-4808-92af-a5477c274e0d	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+c7d5f740-5db2-435d-ac7f-595b64ba0f04	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+077289cd-8949-4a3a-8d65-e7db2cc80b2e	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+d27b3418-c06c-4f13-bd06-17e65588d6a7	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+eb2ad958-ac67-41e5-94f9-e077bcd72cd9	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+311731dc-23a3-422e-bf5a-a2526c47c70a	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+83eb9d71-5be9-482f-b0c4-d1096b085a3c	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+8b26b1a4-2e87-4257-ab5f-08bdec34fa45	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+dcd0d5ba-7b74-4a9d-b1a7-90dcba1784eb	RUNX1	Myeloid Malignancy VCEP	Pathogenic	72	9	8.0000
+3fb3ded9-665e-4f36-889e-dae83f30f117	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+e1fcab36-5b5f-4b75-80b9-329f389de224	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+fce7484a-f88a-4e20-a4ad-2467fb36c4ea	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+5363b54e-7a7a-4db1-a4fc-674ac90f0f49	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+69d76cd4-797f-4706-9797-b7f845cb0185	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+1909b9cf-7eca-4d89-902d-cce6d6544f07	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+4ceacdfa-56c1-4933-a48a-f8c97e4f92e9	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+4b72ae39-a933-4e48-9ed4-9539dc242144	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+026a2ebe-2f31-4778-b597-330e99ca3e4e	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+97c8e5f4-bcf9-4af1-a98a-c2626c200fcd	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+845b7bb8-6090-4c8c-8672-34c29c475533	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+23d6402d-e470-4fe2-b450-7772684ccb35	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+ed678727-041d-489c-8a87-459cbf918535	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+c94626c8-7bdf-4e67-8010-2cd126c6812a	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+aa41b89c-79a9-41ef-9413-63225fdf1dde	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+1b03a236-840b-488f-b120-45ff6c30b666	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+a25c99de-f2c1-46a5-a581-84790919971a	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+bdea36eb-db13-4ea7-9d70-efa5d6e16c01	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+88fb08dc-f86b-4580-895e-7525a8512811	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+fa56c2a6-badf-48dd-96fd-421bdda07488	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+6426c4e0-697d-4b39-a0dd-56f81c978e1a	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+b9c59330-8924-465e-8c49-9cc69489ae98	RUNX1	Myeloid Malignancy VCEP	Benign	100	12	8.3333
+9ccc823a-e760-436c-a8d0-5597cbf6853d	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+b012b1a1-477d-4a6c-9e3b-d45b16fae59f	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+57f3f803-7418-4105-9019-409e3785f269	RUNX1	Myeloid Malignancy VCEP	Uncertain Significance	775	92	8.4239
+ed3e9a69-189b-4d3e-9760-003b73d35603	RUNX1	Myeloid Malignancy VCEP	Likely Benign	375	45	8.3333
+64113cab-7282-4266-8fdb-c61398a85642	LZTR1	RASopathy VCEP	Uncertain Significance	42	5	8.4000
+55290865-0e5c-4222-aada-82db4411a514	LZTR1	RASopathy VCEP	Likely Pathogenic	31	4	7.7500
+c382a894-de4a-4be7-85f1-8003be6e6f47	LZTR1	RASopathy VCEP	Pathogenic	95	11	8.6364
+cd3df688-fed2-47ce-8454-6b160dfecaa2	CDKL5	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+575ead36-7b39-43d6-b52f-ea80eb326566	CDKL5	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+1bf4c21f-9836-4b36-9366-021907530816	CDKL5	Rett and Angelman-like Disorders VCEP	Pathogenic	64	8	8.0000
+ab4ea810-b1dc-444e-bf8f-1921e0dd058c	CDKL5	Rett and Angelman-like Disorders VCEP	Uncertain Significance	50	6	8.3333
+fba2c948-8d64-4381-abb6-5a41773d9c59	CDKL5	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+1a422efe-2fba-45fc-8954-3129d753de2d	CDKL5	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+7f8bf0db-1204-4240-937b-b8fb10254549	CDKL5	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+8068e478-0128-4e9e-ba26-c670045b3859	CDKL5	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+90874f2e-7c69-4877-92a3-5140f63c71d6	CDKL5	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+85d56eda-9660-4049-967d-93d797bab503	PDHA1	Mitochondrial Diseases VCEP	Benign	18	2	9.0000
+102e89ce-4550-481f-b12a-83c240ae02b2	IL2RG	Severe Combined Immunodeficiency Disease  VCEP	Pathogenic	78	9	8.6667
+0f2b3d6e-bedd-468a-8855-fba7a4478d7c	IL2RG	Severe Combined Immunodeficiency Disease  VCEP	Likely Benign	45	5	9.0000
+6d7accf0-655c-4f28-83ba-f6e2e0830f90	IL2RG	Severe Combined Immunodeficiency Disease  VCEP	Uncertain Significance	150	18	8.3333
+f4b6e37d-eb2c-4976-98a0-b17d680fac5d	IL2RG	Severe Combined Immunodeficiency Disease  VCEP	Likely Pathogenic	66	8	8.2500
+81b0a730-704f-4747-b373-6126b5702767	SLC9A6	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+8f2ff5f7-85a1-40c8-9cc2-708b3fd42382	SLC9A6	Rett and Angelman-like Disorders VCEP	Uncertain Significance	50	6	8.3333
+4520dcb8-3b20-4ff8-b989-38b3fdd3354e	F9	Coagulation Factor Deficiency VCEP	Pathogenic	40	5	8.0000
+28772313-2391-433a-85eb-86a59f7a4dd8	F9	Coagulation Factor Deficiency VCEP	Pathogenic	40	5	8.0000
+29ecb66b-21ba-432d-8d33-c05913d46900	F9	Coagulation Factor Deficiency VCEP	Pathogenic	40	5	8.0000
+851a65a8-4458-40fe-9463-1134bce75b53	F9	Coagulation Factor Deficiency VCEP	Likely Pathogenic	18	2	9.0000
+63ca0364-f7f7-4ed4-8127-18f4feff245f	MTM1	Congenital Myopathies VCEP	Pathogenic	29	3	9.6667
+9c2dcc8a-16cd-4cf6-b33c-15e6983a493c	MTM1	Congenital Myopathies VCEP	Uncertain Significance	13	2	6.5000
+6f835396-1167-44fa-8d26-aa96dbceb6fb	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Uncertain Significance	90	11	8.1818
+f95be10f-14a8-4ea4-a716-c76449688d34	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Uncertain Significance	90	11	8.1818
+91859ceb-d576-431c-b9fe-8e45c136f694	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Benign	29	3	9.6667
+a718e263-3938-48dd-baa7-e8cbd273c73d	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Likely Benign	25	3	8.3333
+dc592a90-52b6-4bf0-b8fc-2e393151632b	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Pathogenic	66	8	8.2500
+5936485d-66b5-4815-b603-43a6f50bab6c	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Pathogenic	66	8	8.2500
+1ef331c8-55a1-4e56-bb25-f63eb3accd85	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Uncertain Significance	90	11	8.1818
+c06deb57-6db4-495e-80f6-6a6e9ffb65cd	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Pathogenic	66	8	8.2500
+4a0b1d92-d788-453f-ae58-7c2db7ad90ba	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Benign	29	3	9.6667
+3bcf10b1-617f-4719-a169-302ecc1940dc	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Likely Pathogenic	56	7	8.0000
+4ad21784-b6c7-48a3-bc36-3bf8d7dee50d	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Uncertain Significance	90	11	8.1818
+b8bbf64c-58d4-4843-9f3e-0e01e3acb175	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Pathogenic	66	8	8.2500
+86586ae3-c668-4011-9395-6f68a7203e42	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Pathogenic	66	8	8.2500
+859fd587-83d6-4e9d-bb32-f46e1baf4756	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Pathogenic	66	8	8.2500
+cb53683c-b61b-40dd-aed1-484dd254e1a8	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Uncertain Significance	90	11	8.1818
+ffff00ed-7b84-47f8-b970-fb01172a5121	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Pathogenic	66	8	8.2500
+7a2b3564-a5be-43f7-a87a-aac4676e6986	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Uncertain Significance	90	11	8.1818
+9eaf3400-b509-4c71-8f98-e91f2baf9284	SLC6A8	Cerebral Creatine Deficiency Syndromes VCEP	Pathogenic	66	8	8.2500
+59542a41-0c1c-47cb-8ce1-4e85f89f2ae4	MECP2	Rett and Angelman-like Disorders VCEP	Pathogenic	64	8	8.0000
+090f55c0-5f35-4dde-8462-b853758a24c0	MECP2	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+94181559-64a8-47c9-8e46-171662a6bbfa	MECP2	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+34cac9de-909c-453c-b528-ba903eb30918	MECP2	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+cb6d3431-d972-4851-bc8e-700dee1752ff	MECP2	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+ed1ff5b9-300b-487d-8b4e-f7b18aa9de17	MECP2	Rett and Angelman-like Disorders VCEP	Uncertain Significance	50	6	8.3333
+1dc25b77-b3c0-457f-a134-5cd058b41c6f	MECP2	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+cf528a11-2c85-4e05-8886-8ad74ebf5159	MECP2	Rett and Angelman-like Disorders VCEP	Uncertain Significance	50	6	8.3333
+bc096855-bf39-49f2-897d-014bb1533717	MECP2	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+8af1b067-b760-49ea-8f1e-b0caa117f669	MECP2	Rett and Angelman-like Disorders VCEP	Likely Pathogenic	34	4	8.5000
+17c62194-5666-4b79-956d-b912cd779fb1	MECP2	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+11324803-9deb-4963-8788-8386d51c8983	MECP2	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+347060fc-6dd1-4d69-88d1-853b6e7ea0ae	MECP2	Rett and Angelman-like Disorders VCEP	Likely Pathogenic	34	4	8.5000
+0a26b7fc-3f4b-4b78-8d45-c795df8e7093	MECP2	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+073e9a0d-f2cc-49d2-bf45-62947b3c21a3	MECP2	Rett and Angelman-like Disorders VCEP	Likely Pathogenic	34	4	8.5000
+5115dac9-1941-4226-8241-2d62d5bc1bf9	MECP2	Rett and Angelman-like Disorders VCEP	Likely Benign	101	12	8.4167
+7c0d60c3-3c7d-4eaa-9029-8f79030fa221	MECP2	Rett and Angelman-like Disorders VCEP	Pathogenic	64	8	8.0000
+6c97e782-e936-4540-94ee-46205d786176	MECP2	Rett and Angelman-like Disorders VCEP	Pathogenic	64	8	8.0000
+4cc0ea18-84f8-4a59-b14d-908303cbe14c	MECP2	Rett and Angelman-like Disorders VCEP	Pathogenic	64	8	8.0000
+ebca151d-4737-4a75-b5f1-1cb0d64bae0f	MECP2	Rett and Angelman-like Disorders VCEP	Pathogenic	64	8	8.0000
+3f058a05-d354-4c3c-ab58-d9f040ab9270	MECP2	Rett and Angelman-like Disorders VCEP	Uncertain Significance	50	6	8.3333
+ddb1c36d-ce11-4d3d-934c-55ce859dee8f	MECP2	Rett and Angelman-like Disorders VCEP	Benign	138	16	8.6250
+a3bad0b0-ae42-494c-80b7-726b05fbbd9e	F8	Coagulation Factor Deficiency VCEP	Benign	18	2	9.0000
+3d921025-1d2e-41c3-9200-a2d11c4ad044	F8	Coagulation Factor Deficiency VCEP	Pathogenic	40	5	8.0000
+a2b52c30-02cc-49a6-9a79-849230686deb	F8	Coagulation Factor Deficiency VCEP	Pathogenic	40	5	8.0000
+509b91e3-ec2d-417c-9185-c829b28081ef	F8	Coagulation Factor Deficiency VCEP	Benign	18	2	9.0000
+d9542a46-0c68-4d4a-8ee3-397e73523366	F8	Coagulation Factor Deficiency VCEP	Uncertain Significance	9	1	9.0000
+65178e0c-0443-451f-95b7-660dec0f7b08	F8	Coagulation Factor Deficiency VCEP	Likely Pathogenic	18	2	9.0000
