@@ -4,10 +4,11 @@ Configuration for AIVA Benchmark.
 
 import os
 from pathlib import Path
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv(Path(__file__).parent / ".env")
+try:
+    from dotenv import load_dotenv
+    load_dotenv(Path(__file__).parent / ".env")
+except ImportError:
+    pass
 
 # Paths
 BASE_DIR = Path(__file__).parent

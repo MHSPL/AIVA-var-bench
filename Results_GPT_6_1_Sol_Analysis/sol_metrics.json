@@ -1,0 +1,146 @@
+{
+  "timestamp": "2026-11-03T19:25:51.127545",
+  "summary": {
+    "total_variants": 8387,
+    "successful": 8351,
+    "errors": 36,
+    "compared": 8351,
+    "error_rate": 0.0043
+  },
+  "accuracy": {
+    "exact_match": 0.3325,
+    "directional": 0.6402,
+    "exact_matches": 2777,
+    "directional_matches": 5346
+  },
+  "per_class_metrics": {
+    "Pathogenic": {
+      "precision": 0.3023,
+      "recall": 0.6258,
+      "f1": 0.4077,
+      "support": 1999,
+      "predicted": 4138,
+      "true_positives": 1251,
+      "false_positives": 2887,
+      "false_negatives": 748
+    },
+    "Likely Pathogenic": {
+      "precision": 0.2856,
+      "recall": 0.1892,
+      "f1": 0.2276,
+      "support": 1538,
+      "predicted": 1019,
+      "true_positives": 291,
+      "false_positives": 728,
+      "false_negatives": 1247
+    },
+    "Uncertain Significance": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 2764,
+      "predicted": 0,
+      "true_positives": 0,
+      "false_positives": 0,
+      "false_negatives": 2764
+    },
+    "Likely Benign": {
+      "precision": 0.4571,
+      "recall": 0.4587,
+      "f1": 0.4579,
+      "support": 1114,
+      "predicted": 1118,
+      "true_positives": 511,
+      "false_positives": 607,
+      "false_negatives": 603
+    },
+    "Benign": {
+      "precision": 0.3487,
+      "recall": 0.7735,
+      "f1": 0.4807,
+      "support": 936,
+      "predicted": 2076,
+      "true_positives": 724,
+      "false_positives": 1352,
+      "false_negatives": 212
+    }
+  },
+  "per_direction_metrics": {
+    "pathogenic": {
+      "precision": 0.6694,
+      "recall": 0.976,
+      "f1": 0.7941,
+      "support": 3537
+    },
+    "vus": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 2764
+    },
+    "benign": {
+      "precision": 0.593,
+      "recall": 0.9239,
+      "f1": 0.7224,
+      "support": 2050
+    }
+  },
+  "confusion_matrix_5class": {
+    "Pathogenic": {
+      "Pathogenic": 1251,
+      "Likely Pathogenic": 702,
+      "Uncertain Significance": 0,
+      "Likely Benign": 7,
+      "Benign": 39
+    },
+    "Likely Pathogenic": {
+      "Pathogenic": 1208,
+      "Likely Pathogenic": 291,
+      "Uncertain Significance": 0,
+      "Likely Benign": 2,
+      "Benign": 37
+    },
+    "Uncertain Significance": {
+      "Pathogenic": 1523,
+      "Likely Pathogenic": 26,
+      "Uncertain Significance": 0,
+      "Likely Benign": 434,
+      "Benign": 781
+    },
+    "Likely Benign": {
+      "Pathogenic": 108,
+      "Likely Pathogenic": 0,
+      "Uncertain Significance": 0,
+      "Likely Benign": 511,
+      "Benign": 495
+    },
+    "Benign": {
+      "Pathogenic": 48,
+      "Likely Pathogenic": 0,
+      "Uncertain Significance": 0,
+      "Likely Benign": 164,
+      "Benign": 724
+    }
+  },
+  "confusion_matrix_3class": {
+    "pathogenic": {
+      "pathogenic": 3452,
+      "vus": 0,
+      "benign": 85
+    },
+    "vus": {
+      "pathogenic": 1549,
+      "vus": 0,
+      "benign": 1215
+    },
+    "benign": {
+      "pathogenic": 156,
+      "vus": 0,
+      "benign": 1894
+    }
+  },
+  "execution_time": {
+    "mean_ms": 83936.5,
+    "median_ms": 50223
+  }
+}

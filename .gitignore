@@ -81,6 +81,8 @@ Results_Gemini_Pro_Analysis/figures/pdf/*.png
 Results_Gemini_Pro_Analysis/figures/png/*.pdf
 
 # ─── Results imported through the dashboard server ───
-!imported_results/*.jsonl
+!imported_results/*.json
+!Results_GPT_6_1_Sol_Analysis/sol_metrics.jsonl
 
 !imported_results/*.json
+!Results_GPT_6_1_Sol_Analysis/sol_metrics.json
