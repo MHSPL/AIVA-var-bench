@@ -153,15 +153,53 @@ def load_variants(filepath: Path) -> list[dict]:
 
 
 def get_variant_data(variant: dict) -> dict:
-    """Extract variant data for API call."""
-    # Prefer the variation field (primary HGVS)
-    if variant.get("variation"):
-        return {"hgvs": variant["variation"]}
+    """Extract variant data for API call with smart fallback."""
+    cand = variant.get("variation", "").strip()
+    if not cand or cand.lower() in ("single allele", "none", "n/a"):
+        cand = None
 
-    # Fallback to first HGVS expression
-    hgvs_list = variant.get("hgvs_expressions", [])
-    if hgvs_list:
-        return {"hgvs": hgvs_list[0]}
+    exprs = variant.get("hgvs_expressions", [])
+    GRCH37_NC_VERSIONS = {
+        "NC_000001.10", "NC_000002.11", "NC_000003.11", "NC_000004.11", "NC_000005.9", "NC_000006.11",
+        "NC_000007.13", "NC_000008.10", "NC_000009.11", "NC_000010.10", "NC_000011.9", "NC_000012.11",
+        "NC_000013.10", "NC_000014.8", "NC_000015.9", "NC_000016.9", "NC_000017.10", "NC_000018.9",
+        "NC_000019.9", "NC_000020.10", "NC_000021.8", "NC_000022.10", "NC_000023.10", "NC_000024.9"
+    }
+
+    def is_clean(s: str) -> bool:
+        return bool(s and "(" not in s and ")" not in s and "[" not in s and "]" not in s and not s.startswith("NR_"))
+
+    # 1. Look for clean GRCh37 NC expressions first (most reliable for genomic mapping on GRCh37)
+    for e in exprs:
+        if e.startswith("NC_") and is_clean(e):
+            acc = e.split(":")[0]
+            if acc in GRCH37_NC_VERSIONS:
+                return {"hgvs": e}
+
+    # 2. Look for clean NM_ coding transcript expressions
+    for e in exprs:
+        if e.startswith("NM_") and is_clean(e) and (":c." in e or ":g." in e):
+            return {"hgvs": e}
+
+    # 3. Clean candidate variation if clean
+    if cand and is_clean(cand) and (":c." in cand or ":g." in cand):
+        return {"hgvs": cand.split(" ")[0].strip()}
+
+    # 4. Any other clean expression
+    for e in exprs:
+        if is_clean(e) and (":c." in e or ":g." in e):
+            return {"hgvs": e}
+
+    # 5. Fallback to variant_key coordinates
+    if variant.get("variant_key"):
+        parts = variant["variant_key"].split(":")
+        if len(parts) == 4:
+            return {
+                "chromosome": parts[0].replace("chr", ""),
+                "position": int(parts[1]),
+                "ref": parts[2],
+                "alt": parts[3]
+            }
 
     return {}
 

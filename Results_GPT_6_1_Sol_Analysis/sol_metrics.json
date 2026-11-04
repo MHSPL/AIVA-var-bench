@@ -1,146 +1,464 @@
 {
-  "timestamp": "2026-11-03T19:25:51.127545",
+  "timestamp": "2026-11-03T21:55:37.899789",
   "summary": {
     "total_variants": 8387,
-    "successful": 8351,
-    "errors": 36,
-    "compared": 8351,
-    "error_rate": 0.0043
+    "successful": 8387,
+    "errors": 0,
+    "compared": 8387,
+    "error_rate": 0.0
   },
   "accuracy": {
-    "exact_match": 0.3325,
-    "directional": 0.6402,
-    "exact_matches": 2777,
-    "directional_matches": 5346
+    "exact_match": 0.4398,
+    "directional": 0.5522,
+    "exact_matches": 3689,
+    "directional_matches": 4631
   },
   "per_class_metrics": {
     "Pathogenic": {
-      "precision": 0.3023,
-      "recall": 0.6258,
-      "f1": 0.4077,
-      "support": 1999,
-      "predicted": 4138,
-      "true_positives": 1251,
-      "false_positives": 2887,
-      "false_negatives": 748
+      "precision": 0.9202,
+      "recall": 0.1208,
+      "f1": 0.2136,
+      "support": 2003,
+      "predicted": 263,
+      "true_positives": 242,
+      "false_positives": 21,
+      "false_negatives": 1761
     },
     "Likely Pathogenic": {
-      "precision": 0.2856,
-      "recall": 0.1892,
-      "f1": 0.2276,
-      "support": 1538,
-      "predicted": 1019,
-      "true_positives": 291,
-      "false_positives": 728,
-      "false_negatives": 1247
+      "precision": 0.2857,
+      "recall": 0.1889,
+      "f1": 0.2274,
+      "support": 1546,
+      "predicted": 1022,
+      "true_positives": 292,
+      "false_positives": 730,
+      "false_negatives": 1254
     },
     "Uncertain Significance": {
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "support": 2764,
-      "predicted": 0,
-      "true_positives": 0,
-      "false_positives": 0,
-      "false_negatives": 2764
+      "precision": 0.4133,
+      "recall": 0.8273,
+      "f1": 0.5513,
+      "support": 2779,
+      "predicted": 5562,
+      "true_positives": 2299,
+      "false_positives": 3263,
+      "false_negatives": 480
     },
     "Likely Benign": {
       "precision": 0.4571,
-      "recall": 0.4587,
-      "f1": 0.4579,
-      "support": 1114,
-      "predicted": 1118,
-      "true_positives": 511,
-      "false_positives": 607,
-      "false_negatives": 603
+      "recall": 0.458,
+      "f1": 0.4576,
+      "support": 1118,
+      "predicted": 1120,
+      "true_positives": 512,
+      "false_positives": 608,
+      "false_negatives": 606
     },
     "Benign": {
-      "precision": 0.3487,
-      "recall": 0.7735,
-      "f1": 0.4807,
-      "support": 936,
-      "predicted": 2076,
-      "true_positives": 724,
-      "false_positives": 1352,
-      "false_negatives": 212
+      "precision": 0.819,
+      "recall": 0.3656,
+      "f1": 0.5055,
+      "support": 941,
+      "predicted": 420,
+      "true_positives": 344,
+      "false_positives": 76,
+      "false_negatives": 597
     }
   },
   "per_direction_metrics": {
     "pathogenic": {
-      "precision": 0.6694,
-      "recall": 0.976,
-      "f1": 0.7941,
-      "support": 3537
+      "precision": 0.9798,
+      "recall": 0.3547,
+      "f1": 0.5209,
+      "support": 3549
     },
     "vus": {
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "support": 2764
+      "precision": 0.4133,
+      "recall": 0.8273,
+      "f1": 0.5513,
+      "support": 2779
     },
     "benign": {
-      "precision": 0.593,
-      "recall": 0.9239,
-      "f1": 0.7224,
-      "support": 2050
+      "precision": 0.6968,
+      "recall": 0.5211,
+      "f1": 0.5963,
+      "support": 2059
     }
   },
   "confusion_matrix_5class": {
     "Pathogenic": {
-      "Pathogenic": 1251,
-      "Likely Pathogenic": 702,
-      "Uncertain Significance": 0,
+      "Pathogenic": 242,
+      "Likely Pathogenic": 704,
+      "Uncertain Significance": 1048,
       "Likely Benign": 7,
-      "Benign": 39
+      "Benign": 2
     },
     "Likely Pathogenic": {
-      "Pathogenic": 1208,
-      "Likely Pathogenic": 291,
-      "Uncertain Significance": 0,
+      "Pathogenic": 21,
+      "Likely Pathogenic": 292,
+      "Uncertain Significance": 1229,
       "Likely Benign": 2,
-      "Benign": 37
+      "Benign": 2
     },
     "Uncertain Significance": {
-      "Pathogenic": 1523,
+      "Pathogenic": 0,
       "Likely Pathogenic": 26,
-      "Uncertain Significance": 0,
-      "Likely Benign": 434,
-      "Benign": 781
+      "Uncertain Significance": 2299,
+      "Likely Benign": 435,
+      "Benign": 19
     },
     "Likely Benign": {
-      "Pathogenic": 108,
+      "Pathogenic": 0,
       "Likely Pathogenic": 0,
-      "Uncertain Significance": 0,
-      "Likely Benign": 511,
-      "Benign": 495
+      "Uncertain Significance": 553,
+      "Likely Benign": 512,
+      "Benign": 53
     },
     "Benign": {
-      "Pathogenic": 48,
+      "Pathogenic": 0,
       "Likely Pathogenic": 0,
-      "Uncertain Significance": 0,
+      "Uncertain Significance": 433,
       "Likely Benign": 164,
-      "Benign": 724
+      "Benign": 344
     }
   },
   "confusion_matrix_3class": {
     "pathogenic": {
-      "pathogenic": 3452,
-      "vus": 0,
-      "benign": 85
+      "pathogenic": 1259,
+      "vus": 2277,
+      "benign": 13
     },
     "vus": {
-      "pathogenic": 1549,
-      "vus": 0,
-      "benign": 1215
+      "pathogenic": 26,
+      "vus": 2299,
+      "benign": 454
     },
     "benign": {
-      "pathogenic": 156,
-      "vus": 0,
-      "benign": 1894
+      "pathogenic": 0,
+      "vus": 986,
+      "benign": 1073
+    }
+  },
+  "criteria_analysis": {
+    "avg_jaccard_normalized": 0.4655,
+    "direction_agreement": 0.801,
+    "samples_evaluated": 8218,
+    "unique_criteria_in_ground_truth": 27,
+    "unique_criteria_in_predictions": 25,
+    "pathogenic_evidence_metrics": {
+      "precision": 0.8908,
+      "recall": 0.5075,
+      "f1": 0.6466
+    },
+    "benign_evidence_metrics": {
+      "precision": 0.6705,
+      "recall": 0.4551,
+      "f1": 0.5422
+    },
+    "per_criterion": {
+      "BA1": {
+        "precision": 0.7783,
+        "recall": 0.4167,
+        "f1": 0.5428,
+        "tp": 330,
+        "fp": 94,
+        "fn": 462,
+        "support": 792,
+        "predicted": 424,
+        "type": "benign"
+      },
+      "BP1": {
+        "precision": 0.9024,
+        "recall": 1.0,
+        "f1": 0.9487,
+        "tp": 37,
+        "fp": 4,
+        "fn": 0,
+        "support": 37,
+        "predicted": 41,
+        "type": "benign"
+      },
+      "BP2": {
+        "precision": 0.2059,
+        "recall": 0.0368,
+        "f1": 0.0625,
+        "tp": 7,
+        "fp": 27,
+        "fn": 183,
+        "support": 190,
+        "predicted": 34,
+        "type": "benign"
+      },
+      "BP3": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 7,
+        "support": 7,
+        "predicted": 0,
+        "type": "benign"
+      },
+      "BP4": {
+        "precision": 0.7836,
+        "recall": 0.7941,
+        "f1": 0.7888,
+        "tp": 1365,
+        "fp": 377,
+        "fn": 354,
+        "support": 1719,
+        "predicted": 1742,
+        "type": "benign"
+      },
+      "BP5": {
+        "precision": 0.2308,
+        "recall": 0.0151,
+        "f1": 0.0283,
+        "tp": 3,
+        "fp": 10,
+        "fn": 196,
+        "support": 199,
+        "predicted": 13,
+        "type": "benign"
+      },
+      "BP7": {
+        "precision": 0.675,
+        "recall": 0.4202,
+        "f1": 0.518,
+        "tp": 324,
+        "fp": 156,
+        "fn": 447,
+        "support": 771,
+        "predicted": 480,
+        "type": "benign"
+      },
+      "BS1": {
+        "precision": 0.3057,
+        "recall": 0.3406,
+        "f1": 0.3222,
+        "tp": 188,
+        "fp": 427,
+        "fn": 364,
+        "support": 552,
+        "predicted": 615,
+        "type": "benign"
+      },
+      "BS2": {
+        "precision": 0.7302,
+        "recall": 0.0796,
+        "f1": 0.1435,
+        "tp": 46,
+        "fp": 17,
+        "fn": 532,
+        "support": 578,
+        "predicted": 63,
+        "type": "benign"
+      },
+      "BS2_STAND": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "support": 1,
+        "predicted": 0,
+        "type": "benign"
+      },
+      "BS3": {
+        "precision": 0.4906,
+        "recall": 0.1097,
+        "f1": 0.1793,
+        "tp": 26,
+        "fp": 27,
+        "fn": 211,
+        "support": 237,
+        "predicted": 53,
+        "type": "benign"
+      },
+      "BS4": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 4,
+        "fn": 28,
+        "support": 28,
+        "predicted": 4,
+        "type": "benign"
+      },
+      "PM1": {
+        "precision": 0.8658,
+        "recall": 0.861,
+        "f1": 0.8634,
+        "tp": 948,
+        "fp": 147,
+        "fn": 153,
+        "support": 1101,
+        "predicted": 1095,
+        "type": "pathogenic"
+      },
+      "PM2": {
+        "precision": 0.9708,
+        "recall": 0.6588,
+        "f1": 0.7849,
+        "tp": 3653,
+        "fp": 110,
+        "fn": 1892,
+        "support": 5545,
+        "predicted": 3763,
+        "type": "pathogenic"
+      },
+      "PM3": {
+        "precision": 0.9397,
+        "recall": 0.2107,
+        "f1": 0.3442,
+        "tp": 296,
+        "fp": 19,
+        "fn": 1109,
+        "support": 1405,
+        "predicted": 315,
+        "type": "pathogenic"
+      },
+      "PM4": {
+        "precision": 0.8515,
+        "recall": 0.789,
+        "f1": 0.819,
+        "tp": 86,
+        "fp": 15,
+        "fn": 23,
+        "support": 109,
+        "predicted": 101,
+        "type": "pathogenic"
+      },
+      "PM5": {
+        "precision": 0.8188,
+        "recall": 0.277,
+        "f1": 0.4139,
+        "tp": 244,
+        "fp": 54,
+        "fn": 637,
+        "support": 881,
+        "predicted": 298,
+        "type": "pathogenic"
+      },
+      "PM6": {
+        "precision": 0.3535,
+        "recall": 0.1892,
+        "f1": 0.2465,
+        "tp": 35,
+        "fp": 64,
+        "fn": 150,
+        "support": 185,
+        "predicted": 99,
+        "type": "pathogenic"
+      },
+      "PP1": {
+        "precision": 0.819,
+        "recall": 0.0919,
+        "f1": 0.1652,
+        "tp": 86,
+        "fp": 19,
+        "fn": 850,
+        "support": 936,
+        "predicted": 105,
+        "type": "pathogenic"
+      },
+      "PP2": {
+        "precision": 0.7337,
+        "recall": 0.891,
+        "f1": 0.8048,
+        "tp": 507,
+        "fp": 184,
+        "fn": 62,
+        "support": 569,
+        "predicted": 691,
+        "type": "pathogenic"
+      },
+      "PP3": {
+        "precision": 0.859,
+        "recall": 0.9436,
+        "f1": 0.8993,
+        "tp": 2491,
+        "fp": 409,
+        "fn": 149,
+        "support": 2640,
+        "predicted": 2900,
+        "type": "pathogenic"
+      },
+      "PP4": {
+        "precision": 0.9577,
+        "recall": 0.0535,
+        "f1": 0.1014,
+        "tp": 136,
+        "fp": 6,
+        "fn": 2405,
+        "support": 2541,
+        "predicted": 142,
+        "type": "pathogenic"
+      },
+      "PS1": {
+        "precision": 0.6923,
+        "recall": 0.1286,
+        "f1": 0.2169,
+        "tp": 9,
+        "fp": 4,
+        "fn": 61,
+        "support": 70,
+        "predicted": 13,
+        "type": "pathogenic"
+      },
+      "PS2": {
+        "precision": 0.9231,
+        "recall": 0.0456,
+        "f1": 0.087,
+        "tp": 12,
+        "fp": 1,
+        "fn": 251,
+        "support": 263,
+        "predicted": 13,
+        "type": "pathogenic"
+      },
+      "PS3": {
+        "precision": 0.6697,
+        "recall": 0.3056,
+        "f1": 0.4197,
+        "tp": 294,
+        "fp": 145,
+        "fn": 668,
+        "support": 962,
+        "predicted": 439,
+        "type": "pathogenic"
+      },
+      "PS4": {
+        "precision": 0.7922,
+        "recall": 0.172,
+        "f1": 0.2826,
+        "tp": 263,
+        "fp": 69,
+        "fn": 1266,
+        "support": 1529,
+        "predicted": 332,
+        "type": "pathogenic"
+      },
+      "PVS1": {
+        "precision": 0.9893,
+        "recall": 0.8074,
+        "f1": 0.8891,
+        "tp": 1207,
+        "fp": 13,
+        "fn": 288,
+        "support": 1495,
+        "predicted": 1220,
+        "type": "pathogenic"
+      }
     }
   },
   "execution_time": {
-    "mean_ms": 83936.5,
-    "median_ms": 50223
-  }
+    "avg_ms": 51806.6,
+    "min_ms": 27345,
+    "max_ms": 456584
+  },
+  "error_types": {}
 }

@@ -23,10 +23,6 @@ import argparse
 import json
 import sys
 import warnings
-from pathlib import Path
-from collections import Counter, defaultdict
-from typing import Dict, List
-
 try:
     import numpy as np
     import pandas as pd
@@ -35,6 +31,9 @@ except ImportError:
     np = None
     pd = None
     plt = None
+from pathlib import Path
+from collections import Counter, defaultdict
+from typing import Dict, List
 
 # --- CONFIGURATION & CONSTANTS ---
 
