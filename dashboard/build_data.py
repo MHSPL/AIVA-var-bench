@@ -62,6 +62,19 @@ def get_vcep_category(panel: str) -> str:
     return VCEP_TO_CATEGORY.get(panel.strip(), "Other")
 
 
+# The benchmark variant set (scripts/build_variant_set.py). When present, the
+# dashboard is built on these variants only; without it, on the whole cohort.
+VARIANT_SET_FILE = REPO_ROOT / "data" / "aiva_bench_variants_v1.tsv"
+
+
+def read_variant_set(path: Path = VARIANT_SET_FILE) -> set[str] | None:
+    if not path.exists():
+        return None
+    with open(path, encoding="utf-8") as f:
+        return {line.split("\t", 1)[0] for line in f
+                if line.strip() and not line.startswith(("#", "variant_id"))}
+
+
 def load_unified_data(path: Path) -> tuple[dict, dict]:
     """Load unified dataset: id -> variant dict, and id -> metadata dict."""
     variants = {}
@@ -263,6 +276,10 @@ def build_dashboard_dataset():
     unified_path = REPO_ROOT / "data" / "erepo_bias_intervar_merged.jsonl"
     print(f"Loading Ground Truth & Baselines from {unified_path}...")
     unified_dict = load_unified_data(unified_path)
+    variant_set = read_variant_set()
+    if variant_set is not None:
+        unified_dict = {vid: v for vid, v in unified_dict.items() if vid in variant_set}
+        print(f"Restricted to the benchmark variant set ({VARIANT_SET_FILE.name}).")
     total_cohort = len(unified_dict)
     print(f"Loaded {total_cohort} ClinGen expert curated variants.")
 

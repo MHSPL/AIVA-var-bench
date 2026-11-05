@@ -994,7 +994,7 @@ footer code { font-size: 12px; }
     <div class="dlg-body">
       <div>
         <h3>Import model results</h3>
-        <p>A JSONL file (one record per line) or a JSON array. Each record needs a variant id (<code>variant_id</code> or <code>id</code>) and a call (<code>aiva_classification</code>, <code>classification</code> or <code>prediction</code>). <span id="impWhere">Scoring runs in this browser against the full cohort; nothing is uploaded, and the model stays only until the page is reloaded.</span></p>
+        <p>A JSONL file (one record per line) or a JSON array. Each record needs a variant id (<code>variant_id</code> or <code>id</code>) and a call (<code>aiva_classification</code>, <code>classification</code> or <code>prediction</code>). <span id="impWhere">Scoring runs in this browser against the benchmark's variants; nothing is uploaded, and the model stays only until the page is reloaded.</span></p>
       </div>
       <div class="drop" id="drop" tabindex="0" role="button">
         <input type="file" id="fileInput" accept=".jsonl,.json,.ndjson" hidden>
@@ -2516,7 +2516,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     $("modelsBtn").onclick = () => { $("modelsStatus").textContent = ""; $("modelsError").hidden = true; renderModelsDialog(); $("modelsDlg").showModal(); };
     if (LOCAL_SERVER) {
       $("impSaveWrap").hidden = false;
-      $("impWhere").textContent = "The file is scored against the full cohort. With the option below, it is also saved to the repository and the dashboard is rebuilt.";
+      $("impWhere").textContent = "The file is scored against the benchmark's variants. With the option below, it is also saved to the repository and the dashboard is rebuilt.";
     }
   }
 

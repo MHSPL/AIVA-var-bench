@@ -53,7 +53,9 @@ def load_benchmark_data() -> dict:
 
 
 def load_ground_truth_index() -> dict:
-    """Map variant id -> index into CLASSIFICATION_LABELS."""
+    """Map variant id -> index into CLASSIFICATION_LABELS, for the benchmark variant set."""
+    from dashboard.build_data import read_variant_set
+    variant_set = read_variant_set()
     index = {}
     if not UNIFIED_FILE.exists():
         return index
@@ -62,6 +64,8 @@ def load_ground_truth_index() -> dict:
             if not line.strip():
                 continue
             item = json.loads(line)
+            if variant_set is not None and item["id"] not in variant_set:
+                continue
             label = normalize_classification(item.get("classification", ""))
             if label in CLASSIFICATION_LABELS:
                 index[item["id"]] = CLASSIFICATION_LABELS.index(label)
