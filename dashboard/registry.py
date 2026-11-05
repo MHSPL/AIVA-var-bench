@@ -12,8 +12,9 @@ results file. Columns (tab-separated):
                 data:bias_classification or data:intervar_classification
     format      jsonl (AIVA output), json_array (Claude Code output),
                 auto (by file extension) or unified (baseline field)
-    color       optional hex colour; empty picks the provider's next colour
-    color_dark  optional lighter colour for the dark theme
+    color       optional hex colour; empty takes the next unused PALETTE colour
+    color_dark  optional colour for the dark theme; empty takes the PALETTE
+                pair of `color`, else `color` itself
     status      active, or removed to hide the model
     section     leaderboard section: aiva (AIVA agent runs), agent (other
                 agents such as Claude Code or Antigravity) or automated
@@ -38,14 +39,35 @@ def section_of(row: dict) -> str:
         return "aiva"
     return "agent"
 
-# Colours handed out, in order, to models whose row leaves `color` empty.
-PROVIDER_COLORS = {
-    "Anthropic": ["#eb6834", "#6250d6", "#1baf7a", "#a8461c", "#a097ee", "#0f7a55"],
-    "OpenAI": ["#eda100", "#8a6d00", "#c98500", "#5f4b00"],
-    "Google": ["#184f95", "#d55181", "#4f86d0", "#9c2f6b"],
-    "Rule-based": ["#0097a7", "#5c4033", "#4b6584"],
-    "Other": ["#008300", "#e34948", "#0d366b", "#8c5a2b"],
-}
+# Model colours, drawn from the Wes Anderson palettes (wesanderson R package).
+# Each entry is (light theme, dark theme, source palette). The dark-theme
+# colour keeps the hue and is lighter only where the light one falls below
+# 3:1 contrast on the dark surface (#0f2c21). The first eleven are assigned
+# to the current models in models.tsv; models added later, including results
+# imported in the browser, take the next unused entry. Every chart, table,
+# legend and swatch reads the model's colour from here, so a model keeps one
+# colour across the whole dashboard.
+PALETTE = [
+    ("#BD3027", "#D04438", "The French Dispatch"),
+    ("#FD6467", "#FD6467", "The Grand Budapest Hotel 1"),
+    ("#046C9A", "#237CAB", "Darjeeling Limited 2"),
+    ("#7FC0C6", "#7FC0C6", "The French Dispatch"),
+    ("#6C8645", "#6C8645", "Asteroid City 1"),
+    ("#D8A499", "#D8A499", "The Grand Budapest Hotel 2"),
+    ("#E1AF00", "#E1AF00", "The Life Aquatic (Zissou 1)"),
+    ("#C27D38", "#C27D38", "Moonrise Kingdom 2"),
+    ("#0A9F9D", "#0A9F9D", "Asteroid City 1"),
+    ("#79402E", "#A26552", "Isle of Dogs 1"),
+    ("#9986A5", "#9986A5", "Isle of Dogs 1"),
+    # Reserve for models added later
+    ("#5785C1", "#5785C1", "Asteroid City 3"),
+    ("#F98400", "#F98400", "Darjeeling Limited 1"),
+    ("#9A8822", "#9A8822", "The Royal Tenenbaums 2"),
+    ("#E6A0C4", "#E6A0C4", "The Grand Budapest Hotel 2"),
+    ("#3B9AB2", "#3B9AB2", "The Life Aquatic (Zissou 1)"),
+    ("#CB7A5C", "#CB7A5C", "Asteroid City 3"),
+]
+DARK_STEP = {light.lower(): dark for light, dark, _ in PALETTE}
 
 
 def read_registry(path: Path = REGISTRY_FILE) -> list[dict]:
@@ -89,14 +111,12 @@ def upsert(row: dict) -> None:
 
 
 def assign_colors(rows: list[dict]) -> None:
-    """Fill empty colours from each provider's list, skipping colours in use."""
+    """Fill empty colours with the next unused PALETTE entry, and dark-theme steps from it."""
     used = {r["color"].lower() for r in rows if r["color"]}
     for r in rows:
-        if r["color"]:
-            continue
-        palette = PROVIDER_COLORS.get(r["provider"], PROVIDER_COLORS["Other"])
-        choice = next((c for c in palette if c.lower() not in used), None)
-        if choice is None:
-            choice = next((c for p in PROVIDER_COLORS.values() for c in p if c.lower() not in used), palette[0])
-        r["color"] = choice
-        used.add(choice.lower())
+        if not r["color"]:
+            free = [light for light, _, _ in PALETTE if light.lower() not in used]
+            r["color"] = free[0] if free else PALETTE[len(used) % len(PALETTE)][0]
+            used.add(r["color"].lower())
+        if not r["color_dark"]:
+            r["color_dark"] = DARK_STEP.get(r["color"].lower(), "")

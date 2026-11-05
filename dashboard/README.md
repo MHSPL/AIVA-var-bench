@@ -6,6 +6,20 @@ GitHub Pages, or run the local server for editing.
 Two sections: **Variant Classification** (everything below) and **Variant
 Ranking** (`#ranking`, an empty state until ranking results are added).
 
+Variant Classification has three tabs:
+
+- **Leaderboard**: F1 by expert class and disease category with models
+  grouped by section (AIVA, Agents, Automated), the accuracy-against-safety
+  scatter, and the pairwise agreement heatmap. "Choose models" filters all three.
+- **Confusion matrices**: per model, with precision and recall by class.
+- **ACMG criteria**: share of variants citing each criterion, pathogenic
+  evidence above benign evidence.
+
+**Download variants (CSV)** in the header exports every benchmark variant
+(gene, HGVS, variant key, disease, category, expert panel, expert
+classification, criteria and points) with one column per model holding its
+call. Models imported in the browser are included.
+
 ## Adding a model
 
 1. Put the results file in the repository (AIVA JSONL output, or a Claude
@@ -15,13 +29,13 @@ Ranking** (`#ranking`, an empty state until ranking results are added).
    | column | example |
    |---|---|
    | key | `aiva_gpt_sol` |
-   | name | `AIVA-GPT-Sol` |
+   | name | `GPT-6.1 Sol` (the model name only; the section shows how it was run) |
    | provider | `Anthropic`, `OpenAI`, `Google`, `Rule-based` or `Other` |
    | method | `AIVA agent` |
    | path | `Results_GPT_Sol_Analysis/sol_full.jsonl` |
    | format | `jsonl`, `json_array`, or `auto` (by extension) |
-   | color | optional; empty takes the provider's next colour |
-   | color_dark | optional lighter colour for the dark theme |
+   | color | optional; empty takes the next unused colour of the model palette |
+   | color_dark | optional dark-theme colour; empty takes the palette's pair for `color` |
    | status | `active`, or `removed` to hide the model |
    | section | leaderboard section: `aiva`, `agent` (Claude Code, Antigravity, …) or `automated` (rule-based); empty derives it |
 
@@ -55,6 +69,20 @@ Serves the page at http://localhost:8050 and enables the Models dialog
 "Save to the repository" (writes `imported_results/` and a `models.tsv` row),
 and "Rebuild data". Each change rebuilds `index.html`; commit and push to
 publish it.
+
+## Model colours
+
+Each model has one colour, used in every chart, table, legend and swatch. The
+colours come from the Wes Anderson palettes (`PALETTE` in `registry.py`, from
+the wesanderson R package) and are fixed per model in `models.tsv`; models
+added later, including browser imports, take the next unused palette entry.
+In the dark theme, colours below 3:1 contrast on the dark surface use a
+lighter step of the same hue.
+
+Models are named without their method, so a model run through AIVA and
+through Claude Code shares a name (e.g. Opus 5.5). The leaderboard's section
+columns tell them apart; elsewhere, where both appear together, the method is
+added in brackets, e.g. "Opus 5.5 (Claude Code)".
 
 ## Theme and fonts
 

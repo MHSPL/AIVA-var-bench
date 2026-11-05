@@ -97,7 +97,7 @@ button, input, select { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
 [hidden] { display: none !important; }
 
-.wrap { max-width: 1280px; margin: 0 auto; padding: 0 16px; }
+.wrap { max-width: 1680px; margin: 0 auto; padding: 0 16px; }
 @media (min-width: 768px) { .wrap { padding: 0 32px; } }
 
 /* Header */
@@ -145,15 +145,6 @@ main.wrap { padding-top: 24px; padding-bottom: 48px; }
 .grid-2 { display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 1024px) { .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .note { color: var(--muted); font-size: 12px; margin: 12px 0 0; }
-
-/* Stat tiles */
-.tiles { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-.tile { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 14px 14px 0; padding: 16px 18px; box-shadow: var(--shadow); }
-.tile-label { font-size: 12px; color: var(--text-2); font-weight: 500; }
-.tile-value { font-family: var(--font-mono); font-size: 28px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; margin-top: 6px; }
-.tile-value small { font-size: 14px; font-weight: 500; color: var(--text-2); letter-spacing: 0; margin-left: 4px; }
-.tile-sub { font-size: 13px; color: var(--text-2); margin-top: 4px; }
-.tile-sub strong { color: var(--text); font-weight: 600; }
 
 /* Form controls */
 .seg { flex-wrap: wrap; max-width: 100%; display: inline-flex; border: 1px solid var(--border-strong); border-radius: 2px; padding: 2px; gap: 2px; background: var(--surface); }
@@ -213,59 +204,7 @@ table.cm td.xdir { box-shadow: inset 0 0 0 2px var(--critical); }
 .cm-axis { font-size: 11px; color: var(--muted); }
 .cm-title { font-size: 13px; font-weight: 600; margin: 0 0 8px; display: flex; align-items: center; }
 
-/* Row charts (HTML) */
-.rows { display: grid; gap: 6px; }
-.rrow { display: grid; grid-template-columns: minmax(96px, 150px) minmax(0, 1fr) 52px; gap: 12px; align-items: center; min-height: 26px; }
-.rrow .lbl { font-size: 12px; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.rrow .val { font-size: 12px; text-align: right; font-variant-numeric: tabular-nums; color: var(--text); }
-.plot { position: relative; height: 22px; }
-.plot .gl { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--grid); }
-.plot .gl.base { background: var(--axis); }
-.axis-row .plot { height: 16px; }
-.axis-row .tick { position: absolute; transform: translateX(-50%); font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
-.axis-row .tick.first { transform: none; }
-.axis-row .tick.last { transform: translateX(-100%); }
-.dot { position: absolute; top: 50%; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%; box-shadow: 0 0 0 2px var(--surface); }
-.dot::after { content: ""; position: absolute; inset: -8px; }
-.span { position: absolute; top: 50%; height: 2px; margin-top: -1px; background: var(--axis); }
-.bar { position: absolute; height: 8px; border-radius: 0 4px 4px 0; }
-.bar::after { content: ""; position: absolute; inset: -5px 0; }
-.bars-2 .rrow { min-height: 34px; }
-.bars-2 .plot { height: 32px; }
-.bars-2 .bar.a { top: 4px; background: var(--s1); }
-.bars-2 .bar.b { top: 20px; background: var(--s2); }
-.bar-lbl { position: absolute; font-size: 11px; line-height: 12px; color: var(--text-2); font-variant-numeric: tabular-nums; padding-left: 6px; white-space: nowrap; }
-
-/* Back-to-back chart */
-.b2b { display: grid; gap: 6px; }
-.b2b-row { display: grid; grid-template-columns: minmax(96px, 150px) minmax(0, 1fr) minmax(0, 1fr); gap: 0 12px; align-items: center; min-height: 26px; }
-.b2b-row .lbl { font-size: 12px; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.b2b-side { position: relative; height: 22px; }
-.b2b-side.left { border-right: 1px solid var(--axis); }
-.b2b-side .bar { top: 7px; }
-.b2b-side.left .bar { right: 0; border-radius: 4px 0 0 4px; background: var(--s2); }
-.b2b-side.right .bar { left: 0; background: var(--s1); }
-.b2b-side .cnt { position: absolute; top: 2px; font-size: 11px; font-variant-numeric: tabular-nums; color: var(--text-2); }
-.b2b-head { font-size: 12px; color: var(--text-2); }
-.b2b-head .left { text-align: right; padding-right: 8px; }
-.b2b-head .right { padding-left: 8px; }
-
-/* Variant explorer chips */
-.chip { display: inline-block; min-width: 38px; text-align: center; font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 4px; line-height: 18px; }
-.chip.truth { background: var(--surface-2); color: var(--text); box-shadow: inset 0 0 0 1px var(--border-strong); }
-.chip.m-exact { background: color-mix(in oklab, var(--good) 16%, transparent); color: var(--good); }
-.chip.m-dir { background: var(--surface-2); color: var(--text); }
-.chip.m-off { color: var(--text-2); box-shadow: inset 0 0 0 1px var(--border); }
-.chip.m-cross { background: color-mix(in oklab, var(--critical) 16%, transparent); color: var(--critical); box-shadow: inset 0 0 0 1px var(--critical); }
-.chip.m-none { color: var(--muted); }
-.pager { display: flex; align-items: center; gap: 8px; justify-content: flex-end; margin-top: 12px; font-size: 12px; color: var(--text-2); }
 .empty { color: var(--muted); padding: 24px 0; text-align: center; }
-.disease { max-width: 240px; }
-#varTable th.colh { min-width: 0; max-width: 76px; white-space: normal; text-align: center; line-height: 1.3; }
-#varTable td.mono { min-width: 170px; max-width: 220px; word-break: break-all; }
-.disease .d { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.disease .c { font-size: 12px; color: var(--text-2); }
-
 /* Tooltip */
 #tip {
   position: fixed; z-index: 100; pointer-events: none; max-width: 300px;
@@ -385,14 +324,6 @@ tr.lb-divider td { text-transform: none; letter-spacing: 0; font-size: 12px; fon
 .pk-item.off { opacity: 0.45; cursor: default; }
 .picker-note { margin: 8px 4px 0; font-size: 11px; color: var(--muted); }
 
-/* Tiles: focus vs comparators */
-.tile-cmps { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--grid); display: grid; gap: 3px; }
-.tile-cmp { display: grid; grid-template-columns: auto minmax(0, 1fr) auto 64px; align-items: center; font-size: 12px; color: var(--text-2); font-variant-numeric: tabular-nums; }
-.tile-cmp .tc-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.tile-cmp .tc-val { padding-left: 8px; }
-.tile-cmp .tc-d { text-align: right; font-weight: 600; }
-.tile-sub .swatch { margin-right: 4px; }
-
 .lb-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-top: -6px; }
 .lb-all-pill { margin: 0; padding: 2px 10px; border-radius: 999px; font-size: 12px; line-height: 18px; }
 
@@ -400,15 +331,15 @@ tr.lb-divider td { text-transform: none; letter-spacing: 0; font-size: 12px; fon
 table.lbt { font-size: 13px; border-collapse: separate; border-spacing: 0; }
 table.lbt th, table.lbt td { padding: 8px 8px; border-bottom: 1px solid var(--grid); }
 table.lbt thead th { vertical-align: bottom; border-bottom: 1.5px solid var(--text-2); }
-table.lbt .lbt-first { position: sticky; left: 0; z-index: 2; background: var(--surface); text-align: left; min-width: 230px; }
+table.lbt .lbt-first { position: sticky; left: 0; z-index: 2; background: var(--surface); text-align: left; min-width: 200px; }
 table.lbt thead .lbt-first { font-size: 12px; font-weight: 600; color: var(--text-2); }
 tr.lbt-groups th { border-bottom: 0; padding-bottom: 2px; }
 th.lbt-group { text-align: center; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); }
 th.lbt-group > * { display: block; }
 table.lbt .lbt-gs { border-left: 1px solid var(--axis); }
 th.lbt-group::after { content: ""; display: block; height: 2px; margin: 4px 6px 0; background: var(--axis); border-radius: 1px; }
-th.lbt-nh { text-align: right; font-size: 12px; font-weight: 600; color: var(--text-2); min-width: 92px; }
-table.lbt th.lbt-model { text-align: center; min-width: 82px; max-width: 112px; white-space: normal; }
+th.lbt-nh { text-align: right; font-size: 12px; font-weight: 600; color: var(--text-2); min-width: 84px; }
+table.lbt th.lbt-model { text-align: center; min-width: 76px; max-width: 120px; white-space: normal; }
 .lbt-name { appearance: none; border: 0; background: none; padding: 0; font: inherit; color: var(--text); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; width: 100%; }
 .lbt-name:hover .lbt-label { text-decoration: underline; text-underline-offset: 3px; }
 .lbt-rank { font-size: 11px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -462,97 +393,8 @@ tr.lbt-sec td { font-family: var(--font-mono); font-size: 11px; font-weight: 600
 .vb-xl { flex: 1; min-width: 0; text-align: center; padding-top: 8px; font-size: 12px; font-weight: 500; line-height: 1.3; }
 .vb-xl small { display: block; font-size: 11px; font-weight: 400; color: var(--muted); }
 
-/* Grouped horizontal bars */
-.gb { display: grid; }
-.gb-row { display: grid; grid-template-columns: minmax(110px, 190px) minmax(0, 1fr); gap: 4px 14px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--grid); }
-.gb-row:last-child { border-bottom: 0; }
-.gb-lbl { display: flex; flex-direction: column; min-width: 0; }
-.gb-name { font-size: 13px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.gb-sub { font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.gb-bars { display: grid; gap: 3px; margin-right: 60px; }
-.gb-wide .gb-bars { margin-right: 132px; }
-.gb-plot { position: relative; height: 14px; }
-.gb-plot .gl { position: absolute; top: -4px; bottom: -4px; width: 1px; background: var(--grid); }
-.gb-plot .gl.base { background: var(--axis); }
-.gb-fill { position: absolute; left: 0; top: 2px; height: 10px; border-radius: 0 3px 3px 0; }
-.gb-val { position: absolute; top: -1px; padding-left: 6px; font-size: 11px; line-height: 16px; color: var(--text-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.gb-axis { border-bottom: 0; padding-top: 2px; }
-.gb-axis .gb-plot { height: 14px; }
-.gb-axis .tick { position: absolute; transform: translateX(-50%); font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
-.gb-axis .tick.first { transform: none; }
-.gb-axis .tick.last { transform: translateX(-100%); }
-
-/* Stacked outcome bars */
-.st-legend { order: 10; flex-basis: 100%; }
-.st-legend i { display: inline-block; width: 22px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
-.st-seg { flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; overflow: hidden; white-space: nowrap; box-sizing: border-box; }
-.st-v { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 8px; }
-.st-yax { position: relative; height: 380px; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
-.st-yax span { position: absolute; right: 0; transform: translateY(50%); }
-.st-area { position: relative; }
-.st-grid { position: absolute; left: 0; right: 0; top: 0; height: 380px; border-bottom: 1px solid var(--axis); }
-.st-grid .gl { position: absolute; left: 0; right: 0; height: 1px; background: var(--grid); }
-.st-slots { position: relative; display: flex; justify-content: space-around; }
-.st-block { width: 162px; }
-.st-colwrap { position: relative; width: 84px; height: 380px; }
-.st-col { position: absolute; inset: 0; display: flex; flex-direction: column-reverse; }
-.st-v .st-seg { width: 100%; border-top: 2px solid var(--surface); }
-.st-v .st-seg:first-child { border-radius: 0 0 3px 3px; border-top-width: 0; }
-.st-v .st-seg:last-child { border-radius: 3px 3px 0 0; }
-.st-mk { position: absolute; left: calc(100% + 3px); width: 10px; height: 0; border-top: 1px solid var(--text-2); }
-.st-mk span { position: absolute; left: 14px; top: 0; transform: translateY(-50%); font-size: 11px; color: var(--text-2); white-space: nowrap; line-height: 1.25; }
-.st-mk b { display: block; color: var(--text); font-size: 12px; font-weight: 600; }
-.st-xl { width: 162px; margin-left: -39px; padding-top: 10px; text-align: center; font-size: 12px; color: var(--text-2); line-height: 1.4; font-variant-numeric: tabular-nums; }
-.st-xl .nm { display: block; color: var(--text); font-size: 13px; font-weight: 600; }
-.st-xl .nm .swatch { margin-right: 5px; }
-.st-crit { color: var(--critical); }
-.st-h .st-row { display: grid; grid-template-columns: minmax(110px, 170px) minmax(0, 1fr); gap: 4px 16px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--grid); }
-.st-h .st-row:last-of-type { border-bottom: 0; }
-@media (max-width: 640px) { .st-h .st-row, .st-h .st-axis { grid-template-columns: minmax(0, 1fr); } .st-h .st-axis > span:first-child { display: none; } .st-h .st-meta { grid-column: 1; } .st-h .st-name small { display: none; } }
-.st-h .st-name { font-weight: 600; font-size: 13px; min-width: 0; }
-.st-h .st-name small { display: block; font-weight: 400; color: var(--muted); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.st-h .st-bar { display: flex; height: 26px; }
-.st-h .st-seg { height: 100%; border-left: 2px solid var(--surface); }
-.st-h .st-seg:first-child { border-left-width: 0; border-radius: 4px 0 0 4px; }
-.st-h .st-seg:last-child { border-radius: 0 4px 4px 0; }
-.st-brk { position: relative; height: 14px; }
-.st-brk span { position: absolute; left: 0; top: 6px; height: 7px; border: 1px solid var(--muted); border-bottom: 0; }
-.st-brk em { position: absolute; top: -9px; left: 4px; font-style: normal; background: var(--surface); padding: 0 4px; white-space: nowrap; font-size: 11px; color: var(--text-2); }
-.st-brk.dr em { left: auto; right: 4px; }
-.st-meta { grid-column: 2; font-size: 12px; color: var(--text-2); font-variant-numeric: tabular-nums; display: flex; flex-wrap: wrap; gap: 2px 14px; }
-.st-meta b { color: var(--text); font-weight: 600; }
-.st-axis { display: grid; grid-template-columns: minmax(110px, 170px) minmax(0, 1fr); gap: 16px; }
-.st-axis .ticks { position: relative; height: 16px; font-size: 11px; color: var(--muted); }
-.st-axis .ticks span { position: absolute; transform: translateX(-50%); }
-.st-axis .ticks span:first-child { transform: none; }
-.st-axis .ticks span:last-child { transform: translateX(-100%); }
-
-/* Variant consensus and drawer */
-.cons { display: flex; align-items: center; gap: 8px; min-width: 150px; }
-.cons-bar { display: flex; width: 90px; height: 10px; border-radius: 3px; overflow: hidden; gap: 1px; background: var(--grid); }
-.cons-bar span { display: block; height: 100%; }
-.cons-txt { font-size: 12px; color: var(--text-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100vw); background: var(--surface); border-left: 1px solid var(--border-strong); box-shadow: -12px 0 40px rgba(0, 0, 0, 0.18); z-index: 90; display: flex; flex-direction: column; transform: translateX(16px); opacity: 0; transition: transform 0.15s, opacity 0.15s; }
-.drawer.open { transform: none; opacity: 1; }
-.drawer-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; padding: 18px 20px 12px; border-bottom: 1px solid var(--border); }
-.drawer-head h3 { margin: 0; font-size: 15px; font-weight: 600; word-break: break-word; }
-.drawer-head p { margin: 4px 0 0; font-size: 12px; color: var(--text-2); }
-.drawer-body { padding: 16px 20px 24px; overflow-y: auto; }
-.dr-expert { display: grid; gap: 4px; padding-bottom: 14px; margin-bottom: 6px; border-bottom: 1px solid var(--grid); }
-.dr-lbl { font-size: 12px; color: var(--text-2); font-weight: 600; }
-.dr-table td { vertical-align: top; }
-.dr-table tr.sel td:first-child { font-weight: 600; }
-.ev-top { display: flex; align-items: center; gap: 8px; font-size: 13px; }
-.pts { font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.pts.na { font-weight: 400; color: var(--muted); }
-.crit { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--text-2); line-height: 1.5; margin-top: 2px; }
-tr.grp-row td { font-size: 11px; font-weight: 600; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); padding: 5px 10px; }
-#varTable tr.row-link:focus-visible td { background: var(--surface-2); }
-
 /* Wide tables: first column stays put while scrolling sideways */
-#varTable th:first-child, #varTable td:first-child,
-#agreeHeat th:first-child, #agreeHeat td:first-child,
-#xdirTable th:first-child, #xdirTable td:first-child { position: sticky; left: 0; z-index: 1; background: var(--surface); }
+#agreeHeat th:first-child, #agreeHeat td:first-child { position: sticky; left: 0; z-index: 1; background: var(--surface); }
 
 /* Phones: wide tables become one card per row */
 @media (max-width: 640px) {
@@ -572,40 +414,15 @@ tr.grp-row td { font-size: 11px; font-weight: 600; color: var(--text-2); text-tr
 table.heat.compact td.h { min-width: 26px; height: 26px; padding: 0; }
 table.heat.compact th.colh { min-width: 26px; max-width: 56px; font-size: 10px; }
 
-/* Cross-direction list */
-#xdirCard { scroll-margin-top: 110px; }
-.xdir-filter { order: 10; flex-basis: 100%; font-size: 12px; color: var(--text-2); display: flex; align-items: center; gap: 8px; }
-.xdir-filter .pill { margin: 0; }
-#xdirTable td { vertical-align: top; }
-#xdirTable td.mono { min-width: 140px; max-width: 190px; word-break: break-all; }
-#xdirTable .ev { min-width: 130px; }
-#xdirTable .ev { display: flex; flex-direction: column; gap: 3px; min-width: 150px; }
-#xdirTable .ev-top { display: flex; align-items: center; gap: 8px; }
-#xdirTable .dir { white-space: nowrap; font-size: 12px; font-weight: 600; }
-table.cm td.xdir.link { cursor: pointer; }
-table.cm td.xdir.link:hover { box-shadow: inset 0 0 0 3px var(--critical); }
-.b2b-side .bar.link { cursor: pointer; }
-
-/* Sankey */
-.flow-grid { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); }
-@media (min-width: 1024px) { .flow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.flow-svg { width: 100%; }
-.sankey { display: block; overflow: visible; }
-.sk-link { fill-opacity: 0.32; transition: fill-opacity 0.12s; }
-.sk-link.diag { fill-opacity: 0.82; }
-.sankey.hl .sk-link { fill-opacity: 0.07; }
-.sankey.hl .sk-link.on { fill-opacity: 0.9; }
-.sk-lbl { fill: var(--text); font-size: 12px; font-weight: 600; }
-.sk-cnt { fill: var(--text-2); font-size: 11px; }
-.sk-head { fill: var(--muted); font-size: 11px; }
-.cm-n { font-weight: 400; color: var(--text-2); font-size: 12px; }
+/* ACMG criteria: pathogenic panel above the benign panel */
+.crit-panel + .crit-panel { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--grid); }
+.crit-h { margin: 0 0 24px; font-size: 13px; font-weight: 600; color: var(--text-2); }
 
 /* Confusion grid and tables */
 .cm-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
 #prTable td.grp { font-weight: 600; vertical-align: top; }
 #prTable tr.grp-end td { border-bottom: 1px solid var(--axis); }
 #prTable tr:not(.grp-end) td { border-bottom: 0; }
-#safetyTable tr.sel td { font-weight: 600; }
 tr.row-link.focus td { background: var(--surface-2); }
 tr.row-link.focus td:first-child { box-shadow: inset 3px 0 0 var(--mc); }
 .grp-toggle { appearance: none; border: 0; background: none; padding: 0; font: inherit; color: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer; }
@@ -648,6 +465,7 @@ footer code { font-size: 12px; }
     <div class="actions">
       <button class="btn" id="themeBtn" type="button">Theme: System</button>
       <button class="btn" id="refreshBtn" type="button" hidden>Rebuild data</button>
+      <button class="btn cls-only" id="csvBtn" type="button" title="Every benchmark variant with the expert classification and each model's call">Download variants (CSV)</button>
       <button class="btn cls-only" id="modelsBtn" type="button">Models</button>
       <button class="btn btn-primary cls-only" id="importBtn" type="button">Import results</button>
     </div>
@@ -664,14 +482,8 @@ footer code { font-size: 12px; }
   <div class="wrap">
     <nav class="tabs" role="tablist" aria-label="Dashboard sections">
       <button class="tab" role="tab" data-tab="leaderboard">Leaderboard</button>
-      <button class="tab" role="tab" data-tab="overview">Model analysis</button>
-      <button class="tab" role="tab" data-tab="categories">Disease categories</button>
-      <button class="tab" role="tab" data-tab="flows">Classification flows</button>
       <button class="tab" role="tab" data-tab="confusion">Confusion matrices</button>
-      <button class="tab" role="tab" data-tab="safety">Cross-direction errors</button>
       <button class="tab" role="tab" data-tab="criteria">ACMG criteria</button>
-      <button class="tab" role="tab" data-tab="agreement">Agreement</button>
-      <button class="tab" role="tab" data-tab="variants">Variants</button>
     </nav>
   </div>
   <div class="selbar">
@@ -711,7 +523,7 @@ footer code { font-size: 12px; }
         <div class="picker-pop" id="lbPickPop" hidden>
           <input type="search" id="lbPickQ" placeholder="Search models" aria-label="Search models">
           <div class="picker-list" id="lbPickList"></div>
-          <p class="picker-note">The leaderboard, scatter and headline facts show only the selected models.</p>
+          <p class="picker-note">The leaderboard, scatter and agreement heatmap show only the selected models.</p>
         </div>
       </div>
       <button type="button" class="btn picker-btn" id="lbAllBtn" hidden>Show all</button>
@@ -725,9 +537,6 @@ footer code { font-size: 12px; }
         <div class="controls">
           <div class="seg" id="lbScaleSeg" role="group" aria-label="Classification scale">
             <button data-v="3" type="button">3-class</button><button data-v="5" type="button">5-class</button>
-          </div>
-          <div class="seg" id="lbOrderSeg" role="group" aria-label="Column order">
-            <button data-v="section" type="button">By section</button><button data-v="rank" type="button">Overall rank</button>
           </div>
         </div>
       </div>
@@ -746,94 +555,18 @@ footer code { font-size: 12px; }
       </div>
       <div id="lbScatter"></div>
     </div>
-  </section>
-
-  <!-- OVERVIEW -->
-  <section class="view" id="view-overview" role="tabpanel" hidden>
-    <div class="tiles" id="tiles"></div>
-    <div class="card">
+    <div class="card" id="agreeCard" data-static>
       <div class="card-head">
-        <div>
-          <h3>Where each call lands</h3>
-          <p>Every evaluated variant, split by how the model's call relates to the expert classification. Markers give exact accuracy (first segment) and directional accuracy (first two segments). Shades follow each model's colour; red is cross-direction.</p>
-        </div>
-        <div class="legend st-legend" id="stLegend"></div>
-      </div>
-      <div id="stacked"></div>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-head">
-          <div><h3>Headline metrics</h3><p>All values are percentages of evaluated variants.</p></div>
-          <div class="legend" data-legend></div>
-        </div>
-        <div id="ovMetrics"></div>
-      </div>
-      <div class="card">
-        <div class="card-head">
-          <div><h3>F1 by ACMG class</h3><p>5-class F1 for each classification tier: pathogenic (P), likely pathogenic (LP), VUS, likely benign (LB), benign (B).</p></div>
-          <div class="legend" data-legend></div>
-        </div>
-        <div id="ovClass"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CATEGORIES -->
-  <section class="view" id="view-categories" role="tabpanel" hidden>
-    <div class="view-head">
-      <h2>Performance by disease category</h2>
-      <p>Variants are grouped by the ClinGen expert panel (VCEP) that curated them, largest category first.</p>
-    </div>
-    <div class="card">
-      <div class="card-head">
-        <div>
-          <h3>Correct calls by category</h3>
-          <p>Solid bar: exact 5-class match. Light bar: correct direction, 3-class (P/LP, VUS, B/LB). Bar length is the share of the category's variants. Labels read exact · directional / variants in category.</p>
-        </div>
-        <div class="legend" data-legend></div>
-      </div>
-      <div id="catCorrect"></div>
-    </div>
-    <div class="card">
-      <div class="card-head">
-        <div><h3 id="catMetricTitle"></h3><p id="catMetricSub"></p></div>
+        <div><h3 id="agreeTitle"></h3><p id="agreeSub"></p></div>
         <div class="controls">
-          <label class="field">Metric
-            <select id="catMetric">
-              <option value="macro_f1">Macro F1, 5-class</option>
-              <option value="exact_accuracy">Exact accuracy, 5-class</option>
-              <option value="directional_accuracy">Directional accuracy, 3-class</option>
-              <option value="plp_f1">Mean F1, P and LP</option>
-              <option value="vus_f1">F1, VUS</option>
-              <option value="blb_f1">Mean F1, LB and B</option>
-            </select>
-          </label>
-        </div>
-        <div class="legend" data-legend></div>
-      </div>
-      <div id="catMetricBars"></div>
-    </div>
-  </section>
-
-  <!-- FLOWS -->
-  <section class="view" id="view-flows" role="tabpanel" hidden>
-    <div class="view-head">
-      <h2>Classification flows</h2>
-      <p>Where each expert classification (left) ends up in the model's call (right). Bands take the colour of the expert class; band width is the number of variants, and the strongest bands are exact matches. Hover a band or a class to trace it.</p>
-    </div>
-    <div class="card">
-      <div class="card-head">
-        <div><h3 id="flowTitle"></h3><p id="flowSub"></p></div>
-        <div class="legend st-legend" id="flowLegend"></div>
-        <div class="controls">
-          <div class="seg" id="flowScaleSeg" role="group" aria-label="Class granularity">
-            <button data-v="5" type="button">5-class</button><button data-v="3" type="button">3-class</button>
+          <div class="seg" id="agreeSeg" role="group" aria-label="Agreement level">
+            <button data-v="exact_pct" type="button">Exact, 5-class</button><button data-v="dir_pct" type="button">Directional, 3-class</button>
           </div>
-          <select id="flowCat" aria-label="Disease category"></select>
+          <div class="scale"><span id="agreeMin"></span><span class="ramp"></span><span id="agreeMax"></span></div>
         </div>
       </div>
-      <div class="flow-grid" id="flowGrid"></div>
+      <div class="table-wrap"><table class="heat" id="agreeHeat"></table></div>
+      <p class="note" id="agreeNote"></p>
     </div>
   </section>
 
@@ -841,7 +574,7 @@ footer code { font-size: 12px; }
   <section class="view" id="view-confusion" role="tabpanel" hidden>
     <div class="view-head">
       <h2>Confusion matrices</h2>
-      <p>Rows are the expert classification, columns the model's call. Shading, in each model's colour, is the share of the row. Outlined cells are cross-direction errors; select one to list its variants.</p>
+      <p>Rows are the expert classification, columns the model's call. Shading, in each model's colour, is the share of the row. Outlined cells are cross-direction errors: a benign or likely benign variant called pathogenic or likely pathogenic, or the reverse.</p>
     </div>
     <div class="card">
       <div class="card-head">
@@ -866,41 +599,6 @@ footer code { font-size: 12px; }
     </div>
   </section>
 
-  <!-- SAFETY -->
-  <section class="view" id="view-safety" role="tabpanel" hidden>
-    <div class="view-head">
-      <h2>Cross-direction errors</h2>
-      <p>A cross-direction error places a variant on the opposite side of VUS from the expert call: a benign or likely benign variant called pathogenic or likely pathogenic, or the reverse. These are the misclassifications most likely to change clinical management.</p>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <div class="card-head">
-          <div><h3>Errors by direction</h3><p>Variant counts for the selected models, fewest total errors first.<span class="ui-hint"> Select a bar to list its variants.</span></p></div>
-        </div>
-        <div id="b2b"></div>
-      </div>
-      <div class="card" data-static>
-        <div class="card-head"><div><h3>Error rates</h3><p>Per 1,000 evaluated variants, all classifiers. Selected models in bold.</p></div></div>
-        <div class="table-wrap"><table id="safetyTable"></table></div>
-      </div>
-    </div>
-    <div class="card" id="xdirCard">
-      <div class="card-head">
-        <div><h3>Cross-direction variants</h3><p id="xdirSub"></p></div>
-        <div class="controls">
-          <select id="xdirModel" aria-label="Model"></select>
-          <div class="seg" id="xdirSeg" role="group" aria-label="Direction">
-            <button data-v="all" type="button">Both directions</button><button data-v="P→B" type="button">P/LP → B/LB</button><button data-v="B→P" type="button">B/LB → P/LP</button>
-          </div>
-          <button class="btn" id="xdirCsv" type="button">Download CSV</button>
-        </div>
-        <div class="xdir-filter" id="xdirFilter" hidden></div>
-      </div>
-      <div class="table-wrap"><table id="xdirTable" class="cards"></table></div>
-      <p class="note">Expert points are computed from the expert panel's criteria on the ClinGen point scale (supporting 1, moderate 2, strong 4, very strong 8; benign evidence negative; a strength modifier such as PM2_Supporting overrides the default). Model points are the score each model reported with its call; Gemini-3-Pro, BIAS-2015 and InterVar do not report one. For reference, ≥10 points is pathogenic, 6–9 likely pathogenic, 0–5 VUS, −1 to −6 likely benign, ≤−7 benign.</p>
-    </div>
-  </section>
-
   <!-- CRITERIA -->
   <section class="view" id="view-criteria" role="tabpanel" hidden>
     <div class="view-head">
@@ -909,72 +607,17 @@ footer code { font-size: 12px; }
     </div>
     <div class="card">
       <div class="card-head">
-        <div><h3 id="critTitle"></h3><p>Percentage of evaluated variants. Hover a code for its definition.</p></div>
-        <div class="controls">
-          <div class="seg" id="critSeg" role="group" aria-label="Evidence type">
-            <button data-v="pathogenic" type="button">Pathogenic evidence</button><button data-v="benign" type="button">Benign evidence</button>
-          </div>
-        </div>
+        <div><h3>Criteria cited, pathogenic and benign evidence</h3><p>Percentage of evaluated variants. Pathogenic criteria above, benign criteria below; each panel has its own scale. Hover a code for its definition.</p></div>
         <div class="legend" data-legend></div>
       </div>
-      <div id="critBars"></div>
-    </div>
-  </section>
-
-  <!-- AGREEMENT -->
-  <section class="view" id="view-agreement" role="tabpanel" hidden>
-    <div class="view-head">
-      <h2>Agreement between classifiers</h2>
-      <p>Share of shared variants on which two classifiers return the same call, independent of the expert classification.</p>
-    </div>
-    <div class="card" data-static>
-      <div class="card-head">
-        <div><h3 id="agreeFocusTitle"></h3><p>Solid bar: same 5-class call. Light bar: same direction (P/LP, VUS, B/LB).</p></div>
+      <div class="crit-panel">
+        <h4 class="crit-h">Pathogenic evidence</h4>
+        <div id="critPath"></div>
       </div>
-      <div id="agreeBars"></div>
-      <p class="note" id="agreeNote"></p>
-    </div>
-    <div class="card" data-static>
-      <div class="card-head">
-        <div><h3 id="agreeTitle"></h3><p>All pairs, ordered so models that agree sit together. Shading is scaled to the observed range; with more than 10 models, values show on hover.</p></div>
-        <div class="controls">
-          <div class="seg" id="agreeSeg" role="group" aria-label="Agreement level">
-            <button data-v="exact_pct" type="button">Exact, 5-class</button><button data-v="dir_pct" type="button">Directional, 3-class</button>
-          </div>
-          <div class="scale"><span id="agreeMin"></span><span class="ramp"></span><span id="agreeMax"></span></div>
-        </div>
+      <div class="crit-panel">
+        <h4 class="crit-h">Benign evidence</h4>
+        <div id="critBen"></div>
       </div>
-      <div class="table-wrap"><table class="heat" id="agreeHeat"></table></div>
-    </div>
-  </section>
-
-  <!-- VARIANTS -->
-  <section class="view" id="view-variants" role="tabpanel" hidden>
-    <div class="view-head">
-      <h2>Variants</h2>
-      <p id="varIntro"></p>
-    </div>
-    <div class="card">
-      <div class="card-head">
-        <div class="controls">
-          <input type="search" id="vq" placeholder="Gene, variant or disease" aria-label="Search variants">
-          <select id="vcat" aria-label="Category"></select>
-          <select id="vgt" aria-label="Expert classification"></select>
-          <div class="seg" id="vonlySeg" role="group" aria-label="Show">
-            <button data-v="all" type="button">All</button>
-            <button data-v="disagree" type="button">Models disagree</button>
-            <button data-v="cross" type="button">Any cross-direction error</button>
-          </div>
-        </div>
-        <div class="legend">
-          <span><span class="chip m-exact">LP</span> Exact match</span>
-          <span><span class="chip m-dir">P</span> Same direction</span>
-          <span><span class="chip m-off">VUS</span> Adjacent to VUS</span>
-          <span><span class="chip m-cross">B</span> Cross-direction</span>
-        </div>
-      </div>
-      <div class="table-wrap"><table id="varTable" class="cards"></table></div>
-      <div class="pager" id="pager"></div>
     </div>
   </section>
 
@@ -1000,7 +643,7 @@ footer code { font-size: 12px; }
         <input type="file" id="fileInput" accept=".jsonl,.json,.ndjson" hidden>
         <span id="dropText"><strong>Choose a file</strong> or drop it here</span>
       </div>
-      <label class="field">Display name <input type="text" id="impName" placeholder="e.g. Claude Sonnet 5.5 (AIVA re-run)"></label>
+      <label class="field">Display name <input type="text" id="impName" placeholder="e.g. Sonnet 5.5"></label>
       <label class="field">Provider
         <select id="impFamily">
           <option>Anthropic</option>
@@ -1040,14 +683,6 @@ footer code { font-size: 12px; }
     </div>
   </form>
 </dialog>
-
-<aside class="drawer" id="drawer" hidden aria-labelledby="drawerTitle">
-  <div class="drawer-head">
-    <div><h3 id="drawerTitle"></h3><p id="drawerSub"></p></div>
-    <button type="button" class="btn" id="drawerClose">Close</button>
-  </div>
-  <div class="drawer-body" id="drawerBody"></div>
-</aside>
 
 <div id="tip" hidden></div>
 <div class="toast" id="toast" hidden></div>
@@ -1104,18 +739,12 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
 
   const state = {
     tab: "leaderboard", clsTab: "leaderboard", clsSubtitle: "",
-    rankBy: "macro_f1_5", scatterScale: "5", lbScale: "3", lbCols: null, lbOrder: "section",
+    scatterScale: "5", lbScale: "3", lbCols: null,
     focus: null,
     comps: ["baseline_bias", "baseline_intervar"],
-    catMetric: "macro_f1",
-    flowScale: "5", flowCat: "all",
     cmScale: "5", cmMode: "count",
-    errModel: "selected", errDir: "all", errCell: null,
-    critGroup: "pathogenic",
-    agree: "exact_pct",
-    vq: "", vcat: "all", vgt: "all", vonly: "all", vpage: 0
+    agree: "exact_pct"
   };
-  const PAGE = 25;
 
   // ---------- helpers ----------
   const $ = (id) => document.getElementById(id);
@@ -1165,12 +794,6 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     clearTimeout(toast._t);
     toast._t = setTimeout(() => (t.hidden = true), 4000);
   }
-
-  function axisRow(ticks) {
-    return `<div class="rrow axis-row"><span></span><div class="plot">${ticks.map((v, i) =>
-      `<span class="tick${i === 0 ? " first" : ""}${i === ticks.length - 1 ? " last" : ""}" style="left:${v}%">${v}</span>`).join("")}</div><span></span></div>`;
-  }
-  const gridlines = (ticks) => ticks.map((v) => `<span class="gl${v === 0 ? " base" : ""}" style="left:${v}%"></span>`).join("");
 
   // ---------- tooltip ----------
   const tip = $("tip");
@@ -1227,7 +850,16 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
   const selModels = () => [state.focus, ...state.comps].map(byKey).filter(Boolean);
   const focusModel = () => byKey(state.focus);
   const swatch = (m) => `<span class="swatch" style="background:${m.color}"></span>`;
-  const mname = (m) => `${swatch(m)}${esc(m.short_name)}`;
+  // Models are named without their method: Opus 5.5 runs through AIVA and through
+  // Claude Code. On the leaderboard the section columns tell them apart; elsewhere,
+  // where two models with the same name appear together, the method is added.
+  function nameIn(m, set) {
+    const dup = (set || []).some((o) => o !== m && o.short_name === m.short_name);
+    return dup ? `${m.short_name} (${methodShort(m.type)})` : m.short_name;
+  }
+  // Tooltips and the CSV name a model unambiguously among all models.
+  const fullName = (m) => (D.models.some((o) => o !== m && o.name === m.name) ? `${m.name} (${methodShort(m.type)})` : m.name);
+  const mname = (m, set) => `${swatch(m)}${esc(nameIn(m, set))}`;
 
   function defaultFocus() {
     const full = D.models.filter((m) => isFull(m) && m.is_anthropic && !m.imported);
@@ -1269,14 +901,15 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
   function renderSelector() {
     normalizeSelection();
     $("focusSel").innerHTML = byProvider(D.models).map(([p, ms]) => `<optgroup label="${esc(p)}">${ms.map((m) =>
-      `<option value="${esc(m.key)}">${esc(m.name)}${isFull(m) ? "" : " (subset)"}</option>`).join("")}</optgroup>`).join("");
+      `<option value="${esc(m.key)}">${esc(fullName(m))}${isFull(m) ? "" : " (subset)"}</option>`).join("")}</optgroup>`).join("");
     $("focusSel").value = state.focus;
+    const sel = selModels();
     $("compChips").innerHTML = state.comps.map(byKey).filter(Boolean).map((m) =>
-      `<button type="button" class="mchip" data-key="${esc(m.key)}" aria-pressed="true"${tipAttr("Remove from comparison")}>${swatch(m)}${esc(m.short_name)}<span class="x" aria-hidden="true">×</span></button>`).join("");
+      `<button type="button" class="mchip" data-key="${esc(m.key)}" aria-pressed="true"${tipAttr("Remove from comparison")}>${swatch(m)}${esc(nameIn(m, sel))}<span class="x" aria-hidden="true">×</span></button>`).join("");
     $("compChips").querySelectorAll(".mchip").forEach((b) => b.onclick = () => toggleComp(b.dataset.key));
     $("pickerBtn").textContent = state.comps.length ? "Add or remove" : "Add models";
     renderPicker();
-    const legend = selModels().map((m) => `<span>${mname(m)}</span>`).join("");
+    const legend = sel.map((m) => `<span>${mname(m, sel)}</span>`).join("");
     document.querySelectorAll("[data-legend]").forEach((el) => (el.innerHTML = legend));
   }
 
@@ -1336,26 +969,6 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
   }
 
   // ---------- chart builders ----------
-  // Horizontal grouped bars. groups: [{label, sub, bars: [{m, v, v2, text, tip}]}]
-  // v2 (optional) draws a lighter bar behind v, e.g. directional behind exact.
-  function groupedBars(groups, opts = {}) {
-    const max = opts.max || 100;
-    const ticks = opts.ticks || [0, 25, 50, 75, 100];
-    const pos = (v) => Math.max(0, Math.min(100, (v / max) * 100));
-    const gl = ticks.map((t) => `<span class="gl${t === 0 ? " base" : ""}" style="left:${pos(t)}%"></span>`).join("");
-    const rows = groups.map((g) => `<div class="gb-row">
-      <div class="gb-lbl"><span class="gb-name"${g.tip ? tipAttr(g.tip) : ""}>${g.label}</span>${g.sub ? `<span class="gb-sub">${g.sub}</span>` : ""}</div>
-      <div class="gb-bars">${g.bars.map((b) => {
-        if (b.v == null) return `<div class="gb-plot">${gl}<span class="gb-val" style="left:0">${esc(b.text || "no data")}</span></div>`;
-        const light = b.v2 != null ? `<span class="gb-fill gb-light" style="width:${pos(b.v2)}%;background:color-mix(in srgb, ${b.m.color} 34%, transparent)"></span>` : "";
-        const end = Math.max(pos(b.v), b.v2 != null ? pos(b.v2) : 0);
-        return `<div class="gb-plot"${tipAttr(b.tip || "")}>${gl}${light}<span class="gb-fill" style="width:${pos(b.v)}%;background:${b.m.color}"></span><span class="gb-val" style="left:${end}%">${b.text}</span></div>`;
-      }).join("")}</div></div>`).join("");
-    const axis = `<div class="gb-row gb-axis"><div></div><div class="gb-bars"><div class="gb-plot">${ticks.map((t, i) =>
-      `<span class="tick${i === 0 ? " first" : ""}${i === ticks.length - 1 ? " last" : ""}" style="left:${pos(t)}%">${t}${opts.unit || ""}</span>`).join("")}</div></div></div>`;
-    return `<div class="gb${opts.wide ? " gb-wide" : ""}">${rows}${axis}</div>`;
-  }
-
   // Vertical grouped bars: groups along x, one bar per model in each group.
   // groups: [{label, sub, tip, bars: [{m, v, text, tip}]}]
   function verticalBars(groups, opts = {}) {
@@ -1401,139 +1014,6 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     return out;
   };
 
-  // ---------- overview ----------
-  function renderTiles() {
-    const f = focusModel();
-    const comps = selModels().slice(1);
-    const metrics = [
-      { k: "macro_f1_5", label: "Macro F1, 5-class" },
-      { k: "exact_accuracy", label: "Exact accuracy, 5-class" },
-      { k: "directional_accuracy", label: "Directional accuracy, 3-class" },
-      { k: "critical_error_count", label: "Cross-direction errors", low: true, count: true }
-    ];
-    $("tiles").innerHTML = metrics.map((x) => {
-      const fv = f[x.k] ?? 0;
-      const value = x.count ? `${int(fv)}<small>of ${int(f.evaluated_count)}</small>` : pct(fv);
-      const lines = comps.map((c) => {
-        const cv = c[x.k] ?? 0, d = fv - cv;
-        const cls = d === 0 ? "" : (x.low ? d < 0 : d > 0) ? "pos" : "neg";
-        const dtxt = x.count ? signed(d, 0) : `${signed(d)} pp`;
-        return `<div class="tile-cmp">${swatch(c)}<span class="tc-name">${esc(c.short_name)}</span><span class="tc-val">${x.count ? int(cv) : f1(cv)}</span><span class="tc-d ${cls}">${dtxt}</span></div>`;
-      }).join("");
-      return `<div class="tile"><div class="tile-label">${x.label}</div><div class="tile-value">${value}</div>
-        <div class="tile-sub">${swatch(f)}${esc(f.short_name)}${isFull(f) ? "" : ` · ${pct(f.coverage_pct)} of cohort`}</div>${lines ? `<div class="tile-cmps">${lines}</div>` : ""}</div>`;
-    }).join("");
-  }
-
-  // Every call falls in exactly one outcome, so the segments sum to 100%.
-  const OUTCOMES = [
-    ["exact", "Exact match", 1],
-    ["tier", "Right direction, wrong tier", 0.55],
-    ["hedge", "Expert P/LP or B/LB, called VUS", 0.3],
-    ["over", "Expert VUS, called P/LP or B/LB", 0.14],
-    ["cross", "Cross-direction", null]
-  ];
-
-  function outcomeCounts(m) {
-    const mat = (D.confusion_matrices[m.key] || {}).matrix_5;
-    if (!mat) return null;
-    const dir = ["p", "p", "v", "b", "b"];
-    const c = { exact: 0, tier: 0, hedge: 0, over: 0, cross: 0, n: 0 };
-    mat.forEach((row, i) => row.forEach((v, j) => {
-      c.n += v;
-      if (i === j) c.exact += v;
-      else if (dir[i] === dir[j]) c.tier += v;
-      else if (dir[j] === "v") c.hedge += v;
-      else if (dir[i] === "v") c.over += v;
-      else c.cross += v;
-    }));
-    return c;
-  }
-
-  function outcomeStyle(m, a) {
-    if (a == null) return "background:var(--critical);color:#ffffff";
-    const surface = getComputedStyle(document.documentElement).getPropertyValue("--surface").trim() || "#ffffff";
-    const L = hexLum(m.color) * a + hexLum(surface) * (1 - a);
-    return `background:color-mix(in srgb, ${m.color} ${Math.round(a * 100)}%, var(--surface));color:${L < 0.36 ? "#ffffff" : "#134734"}`;
-  }
-
-  function renderStacked() {
-    const ms = selModels().map((m) => ({ m, c: outcomeCounts(m) })).filter((x) => x.c && x.c.n);
-    const box = $("stacked");
-    $("stLegend").innerHTML = OUTCOMES.map(([, label, a]) => {
-      const fill = a == null ? "var(--critical)" : `linear-gradient(90deg, ${ms.map((x, i) =>
-        `color-mix(in srgb, ${x.m.color} ${Math.round(a * 100)}%, var(--surface)) ${(i * 100) / ms.length}% ${((i + 1) * 100) / ms.length}%`).join(", ")})`;
-      return `<span><i style="background:${fill}"></i>${label}</span>`;
-    }).join("");
-    if (!ms.length) { box.innerHTML = `<p class="empty">No confusion matrices for the selected models.</p>`; return; }
-    const pctOf = (c, k) => (c[k] / c.n) * 100;
-    const segTip = (m, c, k, label) => `${m.short_name}\n${label}: ${int(c[k])} of ${int(c.n)} (${pct(pctOf(c, k))})`;
-    const vertical = ms.length <= 5 && (box.clientWidth || 1000) >= ms.length * 175 + 60;
-
-    if (vertical) {
-      const ticks = [0, 25, 50, 75, 100];
-      box.innerHTML = `<div class="st-v">
-        <div class="st-yax">${ticks.map((t) => `<span style="bottom:${t}%">${t}%</span>`).join("")}</div>
-        <div class="st-area">
-          <div class="st-grid">${ticks.slice(1).map((t) => `<span class="gl" style="bottom:${t}%"></span>`).join("")}</div>
-          <div class="st-slots">${ms.map(({ m, c }) => {
-            const ex = pctOf(c, "exact"), dr = ex + pctOf(c, "tier");
-            const segs = OUTCOMES.map(([k, label, a]) => c[k] ? `<div class="st-seg" style="height:${pctOf(c, k)}%;${k === "cross" ? "min-height:3px;" : ""}${outcomeStyle(m, a)}"${tipAttr(segTip(m, c, k, label))}>${pctOf(c, k) >= 5 ? f1(pctOf(c, k)) : ""}</div>` : "").join("");
-            return `<div class="st-block">
-              <div class="st-colwrap"><div class="st-col">${segs}</div>
-                <div class="st-mk" style="bottom:${ex}%"><span>Exact<b>${f1(ex)}%</b></span></div>
-                <div class="st-mk" style="bottom:${dr}%"><span>Directional<b>${f1(dr)}%</b></span></div>
-              </div>
-              <div class="st-xl"><span class="nm">${mname(m)}</span>${int(c.exact)} exact · ${int(c.exact + c.tier)} directional<br><span class="st-crit">${int(c.cross)} cross-direction</span> of ${int(c.n)}</div>
-            </div>`;
-          }).join("")}</div>
-        </div></div>`;
-      return;
-    }
-
-    const barPx = Math.max(120, (box.clientWidth || 800) - (window.innerWidth <= 640 ? 0 : 186));
-    const minLabel = (40 / barPx) * 100;
-    box.innerHTML = `<div class="st-h">${ms.map(({ m, c }) => {
-      const ex = pctOf(c, "exact"), dr = ex + pctOf(c, "tier");
-      const segs = OUTCOMES.map(([k, label, a]) => c[k] ? `<div class="st-seg" style="width:${pctOf(c, k)}%;${k === "cross" ? "min-width:3px;" : ""}${outcomeStyle(m, a)}"${tipAttr(segTip(m, c, k, label))}>${pctOf(c, k) >= minLabel ? f1(pctOf(c, k)) : ""}</div>` : "").join("");
-      return `<div class="st-row"><div class="st-name">${mname(m)}${m.name !== m.short_name ? `<small>${esc(m.name)}</small>` : ""}</div>
-        <div><div class="st-brk"><span style="width:${ex}%"></span><em>Exact ${f1(ex)}%</em></div>
-          <div class="st-brk dr" style="margin-top:-2px"><span style="width:${dr}%"></span><em style="right:calc(${100 - dr}% + 4px)">Directional ${f1(dr)}%</em></div>
-          <div class="st-bar">${segs}</div></div>
-        <div class="st-meta"><span>Exact <b>${int(c.exact)}</b></span><span>Wrong tier <b>${int(c.tier)}</b></span><span>Hedged to VUS <b>${int(c.hedge)}</b></span><span>Called from VUS <b>${int(c.over)}</b></span><span class="st-crit">Cross-direction <b class="st-crit">${int(c.cross)}</b></span><span>of ${int(c.n)}</span></div></div>`;
-    }).join("")}<div class="st-axis"><span></span><div class="ticks">${[0, 25, 50, 75, 100].map((t) => `<span style="left:${t}%">${t}%</span>`).join("")}</div></div></div>`;
-  }
-
-  function renderOvMetrics() {
-    const ms = selModels();
-    const metrics = [
-      ["macro_f1_5", "Macro F1", "5-class"], ["macro_f1_3", "Macro F1", "3-class"],
-      ["exact_accuracy", "Exact accuracy", "5-class"], ["directional_accuracy", "Directional accuracy", "3-class"]
-    ];
-    $("ovMetrics").innerHTML = verticalBars(metrics.map(([k, l, sub]) => ({
-      label: l, sub,
-      bars: ms.map((m) => ({ m, v: m[k], text: f1(m[k]), tip: `${m.name}\n${l} (${sub}): ${pct(m[k])}${isFull(m) ? "" : `\nScored on ${int(m.evaluated_count)} variants`}` }))
-    })), { width: $("ovMetrics").clientWidth });
-  }
-
-  function renderOvClass() {
-    const ms = selModels();
-    $("ovClass").innerHTML = verticalBars(LABELS.map((l) => ({
-      label: ABBR[l], tip: l, sub: `n = ${int((focusModel().per_class_5[l] || {}).support)}`,
-      bars: ms.map((m) => {
-        const c = (m.per_class_5 || {})[l] || {};
-        return { m, v: c.f1, text: f1(c.f1), tip: `${m.name}\n${l}\nF1 ${pct(c.f1)} · precision ${pct(c.precision)} · recall ${pct(c.recall)}` };
-      })
-    })), { width: $("ovClass").clientWidth });
-  }
-
-  const RANK_METRICS = [
-    { key: "macro_f1_5", label: "Macro F1", sub: "5-class" },
-    { key: "exact_accuracy", label: "Exact accuracy", sub: "5-class" },
-    { key: "directional_accuracy", label: "Directional accuracy", sub: "3-class" },
-    { key: "macro_f1_3", label: "Macro F1", sub: "3-class" },
-    { key: "per1k", label: "Cross-direction", sub: "per 1,000", low: true }
-  ];
   const per1k = (m) => (m.evaluated_count ? (m.critical_error_count / m.evaluated_count) * 1000 : 0);
   const metricVal = (m, k) => (k === "per1k" ? per1k(m) : m[k] ?? 0);
   const metricTxt = (m, k) => (k === "per1k" ? per1k(m).toFixed(2) : f1(m[k]));
@@ -1561,7 +1041,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     const all = !state.lbCols;
     $("lbChips").innerHTML = all
       ? `<span class="pill lb-all-pill">All ${D.models.length} models</span>`
-      : shown.map((m) => `<button type="button" class="mchip" data-key="${esc(m.key)}" aria-pressed="true"${tipAttr("Remove from the leaderboard")}>${swatch(m)}${esc(m.short_name)}<span class="x" aria-hidden="true">×</span></button>`).join("");
+      : shown.map((m) => `<button type="button" class="mchip" data-key="${esc(m.key)}" aria-pressed="true"${tipAttr(`${fullName(m)}\nRemove from the leaderboard`)}>${swatch(m)}${esc(nameIn(m, shown))}<span class="x" aria-hidden="true">×</span></button>`).join("");
     $("lbChips").querySelectorAll(".mchip").forEach((b) => b.onclick = () => toggleLbCol(b.dataset.key));
     $("lbAllBtn").hidden = all;
     $("lbPickBtn").textContent = all ? "Choose models" : "Add or remove";
@@ -1611,18 +1091,17 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     $("lbSub").innerHTML = (three
       ? "Calls grouped as pathogenic or likely pathogenic (P/LP), uncertain significance (VUS), and benign or likely benign (B/LB). Overall and category rows are macro F1 across these three groups."
       : "The five ACMG classes. Overall and category rows are macro F1 across the five classes.") +
-      ` All values are percentages. The best value in each row is bold and shaded in that model's colour.<span class="ui-hint"> Select a model name to open its analysis.</span>`;
+      ` All values are percentages. The best value in each row is bold and shaded in that model's colour.<span class="ui-hint"> Select a model name to open its confusion matrices.</span>`;
 
     renderLbScatter(cols);
+    renderAgreeHeat();
 
-    seg("lbOrderSeg", state.lbOrder, (v) => { state.lbOrder = v; renderLeaderboard(); writeHash(); });
     if (!cols.length) { $("lbTable").innerHTML = `<tbody><tr><td class="empty">No models selected.</td></tr></tbody>`; return; }
 
-    // Column order: grouped by section (rank order within each), or by overall rank
-    const bySec = state.lbOrder === "section";
+    // Columns grouped by section, in rank order within each
     const groups = bySection(cols);
-    const order = bySec ? groups.flatMap(([, ms]) => ms) : cols;
-    const groupStart = new Set(bySec ? groups.slice(1).map(([, ms]) => ms[0].key) : []);
+    const order = groups.flatMap(([, ms]) => ms);
+    const groupStart = new Set(groups.slice(1).map(([, ms]) => ms[0].key));
     const gs = (m) => (groupStart.has(m.key) ? " lbt-gs" : "");
     const rankOf = (m) => (isFull(m) ? ranked.indexOf(m) + 1 : null);
     const SMALL_N = 100;
@@ -1652,15 +1131,13 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     ];
 
 
-    const groupHead = bySec
-      ? `<tr class="lbt-groups"><th class="lbt-first" colspan="2"></th>${groups.map(([g, ms, k], i) => `<th colspan="${ms.length}" class="lbt-group${i ? " lbt-gs" : ""}"${tipAttr(SECTION_TIP[k])}>${esc(g)}</th>`).join("")}</tr>`
-      : "";
+    const groupHead = `<tr class="lbt-groups"><th class="lbt-first" colspan="2"></th>${groups.map(([g, ms, k], i) => `<th colspan="${ms.length}" class="lbt-group${i ? " lbt-gs" : ""}"${tipAttr(SECTION_TIP[k])}>${esc(g)}</th>`).join("")}</tr>`;
     const head = `<thead>${groupHead}<tr><th class="lbt-first">Measure</th><th class="lbt-nh">Variants</th>${order.map((m) => {
       const r = rankOf(m);
-      return `<th class="lbt-model${gs(m)}"><button type="button" class="lbt-name" data-key="${esc(m.key)}"${tipAttr(`${m.name}\n${sectionLabel(m)} · ${groupOf(m)}${isComplete(m) ? "" : `\nScored on ${int(m.evaluated_count)} of ${int(m.total_cohort)} variants${isFull(m) ? "" : "; not ranked"}`}\nSelect to open its analysis`)}>
+      return `<th class="lbt-model${gs(m)}"><button type="button" class="lbt-name" data-key="${esc(m.key)}"${tipAttr(`${fullName(m)}\n${sectionLabel(m)} · ${groupOf(m)}${isComplete(m) ? "" : `\nScored on ${int(m.evaluated_count)} of ${int(m.total_cohort)} variants${isFull(m) ? "" : "; not ranked"}`}\nSelect to open its analysis`)}>
         <span class="lbt-rank">${r ? "#" + r : "not ranked"}</span>
         <span class="lbt-label">${swatch(m)}${esc(m.short_name)}${isFull(m) ? "" : "*"}</span>
-        <span class="lbt-meta">${bySec ? esc(providerOf(m)) : esc(sectionLabel(m))}${isComplete(m) ? "" : ` · n=${int(m.evaluated_count)}`}</span>
+        <span class="lbt-meta">${esc(providerOf(m))}${isComplete(m) ? "" : ` · n=${int(m.evaluated_count)}`}</span>
       </button></th>`;
     }).join("")}</tr></thead>`;
 
@@ -1678,7 +1155,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
         const isBest = bestVal != null && isFull(m) && Math.abs(v - bestVal) < 1e-9;
         // The best value in each row is tinted in the winning model's colour
         const tint = isBest ? ` style="background:color-mix(in srgb, ${m.color} 18%, var(--surface))"` : "";
-        return `<td class="lbt-v${gs(m)}${isBest ? " best" : ""}${isFull(m) ? "" : " partial"}"${tint}${tipAttr(`${m.name}\n${r.label}${r.f1 ? " F1" : ""}: ${fmt(v)}${r.fmt ? "" : "%"}${r.n != null ? `\nn = ${int(r.n)} variants` : ""}${isBest ? "\nBest in row" : ""}`)}>${fmt(v)}</td>`;
+        return `<td class="lbt-v${gs(m)}${isBest ? " best" : ""}${isFull(m) ? "" : " partial"}"${tint}${tipAttr(`${fullName(m)}\n${r.label}${r.f1 ? " F1" : ""}: ${fmt(v)}${r.fmt ? "" : "%"}${r.n != null ? `\nn = ${int(r.n)} variants` : ""}${isBest ? "\nBest in row" : ""}`)}>${fmt(v)}</td>`;
       }).join("")}</tr>`;
     };
     const span = order.length + 2;
@@ -1698,7 +1175,6 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     "5": { key: "macro_f1_5", label: "Macro F1, 5-class" },
     "3": { key: "directional_accuracy", label: "Directional accuracy, 3-class" }
   };
-  const median = (vals) => { const v = vals.slice().sort((a, b) => a - b); const n = v.length; return n ? (n % 2 ? v[(n - 1) / 2] : (v[n / 2 - 1] + v[n / 2]) / 2) : 0; };
 
   function renderLbScatter(models) {
     seg("scSeg", state.scatterScale, (v) => { state.scatterScale = v; renderLeaderboard(); });
@@ -1733,7 +1209,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     const overlaps = (b, list) => list.some((o) => !(b[2] < o[0] || b[0] > o[2] || b[3] < o[1] || b[1] > o[3]));
     // On narrow screens the colour key above the chart names the models instead.
     if (!narrow) pts.slice().sort((a, b) => a.cy - b.cy || b.cx - a.cx).forEach((p) => {
-      const text = `${p.m.short_name}${isFull(p.m) ? "" : "*"}${narrow ? "" : "  " + f1(p.m[ax.key])}`;
+      const text = `${nameIn(p.m, models)}${isFull(p.m) ? "" : "*"}${narrow ? "" : "  " + f1(p.m[ax.key])}`;
       const w = measureCtx.measureText(text).width + 4, h = 14;
       const cands = [[12, 4, "start"], [-12, 4, "end"], [0, -14, "middle"], [0, 22, "middle"], [12, -12, "start"], [12, 20, "start"], [-12, -12, "end"], [-12, 20, "end"]];
       p.text = text;
@@ -1747,14 +1223,14 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     });
     pts.forEach((p) => {
       const m = p.m, full = isFull(m);
-      const tip = `${m.name}${full ? "" : ` (scored on ${int(m.evaluated_count)} variants)`}\n${ax.label}: ${pct(m[ax.key])}\nCross-direction errors: ${int(m.critical_error_count)} (${per1k(m).toFixed(2)} per 1,000)`;
+      const tip = `${fullName(m)}${full ? "" : `, scored on ${int(m.evaluated_count)} variants`}\n${ax.label}: ${pct(m[ax.key])}\nCross-direction errors: ${int(m.critical_error_count)} (${per1k(m).toFixed(2)} per 1,000)`;
       out.push(`<g class="sc-pt" data-key="${esc(m.key)}"${tipAttr(tip)}>
         <circle cx="${n2(p.cx)}" cy="${n2(p.cy)}" r="7" style="fill:${full ? m.color : "var(--surface)"};stroke:${full ? "var(--surface)" : m.color};stroke-width:2"/>
         ${p.lab ? `<text class="sc-lbl" x="${n2(p.lab[0])}" y="${n2(p.lab[1])}" text-anchor="${p.lab[2]}">${esc(p.text)}</text>` : ""}
       </g>`);
     });
     const unlabelled = narrow ? pts : pts.filter((p) => !p.lab);
-    const key = unlabelled.length ? `<div class="legend sc-key">${models.map((m) => `<span>${mname(m)}${isFull(m) ? "" : "*"}</span>`).join("")}</div>` : "";
+    const key = unlabelled.length ? `<div class="legend sc-key">${models.map((m) => `<span>${mname(m, models)}${isFull(m) ? "" : "*"}</span>`).join("")}</div>` : "";
     box.innerHTML = key + `<svg class="scatter" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(ax.label)} against cross-direction errors for each model">${out.join("")}</svg>` +
       (models.some((m) => !isFull(m)) ? `<p class="note">* Scored on part of the cohort, not ranked.</p>` : "");
   }
@@ -1773,7 +1249,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     state.focus = key;
     normalizeSelection();
     renderSelector();
-    setTab("overview");
+    setTab("confusion");
     window.scrollTo({ top: 0 });
   }
 
@@ -1782,145 +1258,6 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     return (D.metadata.categories || []).filter((c) => D.models.some((m) => (D.categories_data[m.key] || {})[c]?.count));
   }
   const catCount = (c) => Math.max(0, ...D.models.map((m) => ((D.categories_data[m.key] || {})[c] || {}).count || 0));
-
-  function renderCatCorrect() {
-    const ms = selModels();
-    const cats = categoriesWithData().sort((a, b) => catCount(b) - catCount(a));
-    $("catCorrect").innerHTML = groupedBars(cats.map((c) => ({
-      label: esc(c), sub: `n = ${int(catCount(c))}`,
-      bars: ms.map((m) => {
-        const r = (D.categories_data[m.key] || {})[c];
-        if (!r || !r.count) return { m, v: null, text: "not evaluated" };
-        const ex = r.exact_correct ?? Math.round(r.exact_accuracy * r.count / 100);
-        const dr = r.directional_correct ?? Math.round(r.directional_accuracy * r.count / 100);
-        return {
-          m, v: (ex / r.count) * 100, v2: (dr / r.count) * 100,
-          text: `${int(ex)} · ${int(dr)} / ${int(r.count)}`,
-          tip: `${m.name}\n${c}\nExact (5-class): ${int(ex)} of ${int(r.count)} (${pct(ex / r.count * 100)})\nDirectional (3-class): ${int(dr)} of ${int(r.count)} (${pct(dr / r.count * 100)})`
-        };
-      })
-    })), { wide: true, unit: "%" });
-  }
-
-  function renderCatMetric() {
-    const metric = state.catMetric;
-    const label = [...$("catMetric").options].find((o) => o.value === metric).textContent;
-    $("catMetricTitle").textContent = label + " by category";
-    $("catMetricSub").textContent = "Percentages. Categories with fewer variants have wider uncertainty.";
-    const ms = selModels();
-    const cats = categoriesWithData().sort((a, b) => catCount(b) - catCount(a));
-    $("catMetricBars").innerHTML = groupedBars(cats.map((c) => ({
-      label: esc(c), sub: `n = ${int(catCount(c))}`,
-      bars: ms.map((m) => {
-        const r = (D.categories_data[m.key] || {})[c];
-        if (!r || !r.count) return { m, v: null, text: "not evaluated" };
-        return { m, v: r[metric], text: f1(r[metric]), tip: `${m.name}\n${c}\n${label}: ${pct(r[metric])}\nEvaluated: ${int(r.count)} variants` };
-      })
-    })));
-  }
-
-  function renderCategories() { renderCatCorrect(); renderCatMetric(); }
-
-  // ---------- flows (Sankey) ----------
-  function flowMatrix(m) {
-    let mat;
-    if (state.flowCat === "all") mat = (D.confusion_matrices[m.key] || {}).matrix_5;
-    else mat = ((D.categories_data[m.key] || {})[state.flowCat] || {}).matrix_5;
-    if (!mat) return null;
-    return state.flowScale === "5" ? mat : collapse3(mat);
-  }
-
-  // Diverging class palette: pathogenic (red) through VUS (neutral grey) to benign (blue).
-  const CLASS_COLORS_5 = ["#b2182b", "#ef8a62", "#9e9d97", "#67a9cf", "#2166ac"];
-  const CLASS_COLORS_3 = ["#b2182b", "#9e9d97", "#2166ac"];
-  const classColors = (k) => (k === 5 ? CLASS_COLORS_5 : CLASS_COLORS_3);
-
-  function sankeySvg(m, mat, width) {
-    const five = mat.length === 5;
-    const short = five ? LABELS.map((l) => ABBR[l]) : ["P/LP", "VUS", "B/LB"];
-    const full = five ? LABELS : ["Pathogenic or likely pathogenic", "Uncertain significance", "Benign or likely benign"];
-    const dirOf = five ? ["p", "p", "v", "b", "b"] : ["p", "v", "b"];
-    const k = mat.length;
-    const rowT = mat.map((r) => r.reduce((a, b) => a + b, 0));
-    const colT = mat[0].map((_, j) => mat.reduce((a, r) => a + r[j], 0));
-    const total = rowT.reduce((a, b) => a + b, 0);
-    const H = 360, top = 26, bottom = 6, gap = 10, nodeW = 10;
-    const Lx = 92, Rx = Math.max(Lx + 80, width - 104 - nodeW);
-    const sc = (H - top - bottom - gap * (k - 1)) / Math.max(1, total);
-    const place = (tots) => { let y = top; return tots.map((t) => { const y0 = y; y += t * sc + gap; return y0; }); };
-    const ly = place(rowT), ry = place(colT);
-    const lOff = ly.slice(), rOff = ry.slice();
-    const x0 = Lx + nodeW, x1 = Rx, xm = (x0 + x1) / 2;
-    const links = [];
-    for (let i = 0; i < k; i++) {
-      for (let j = 0; j < k; j++) {
-        const v = mat[i][j];
-        if (!v) continue;
-        const h = Math.max(0.6, v * sc);
-        const a = lOff[i], b = rOff[j];
-        lOff[i] += v * sc; rOff[j] += v * sc;
-        const kind = i === j ? "diag" : dirOf[i] === dirOf[j] ? "near" : (dirOf[i] === "v" || dirOf[j] === "v") ? "near" : "cross";
-        const d = `M${n2(x0)},${n2(a)} C${n2(xm)},${n2(a)} ${n2(xm)},${n2(b)} ${n2(x1)},${n2(b)} L${n2(x1)},${n2(b + h)} C${n2(xm)},${n2(b + h)} ${n2(xm)},${n2(a + h)} ${n2(x0)},${n2(a + h)} Z`;
-        links.push(`<path class="sk-link ${kind}" d="${d}" fill="${classColors(k)[i]}" data-s="${i}" data-t="${j}"${tipAttr(`${m.short_name}\nExpert ${full[i]} → model ${full[j]}\n${int(v)} variants · ${pct(v / rowT[i] * 100)} of expert ${short[i]}${kind === "cross" ? "\nCross-direction error" : ""}`)}/>`);
-      }
-    }
-    const nodes = [];
-    for (let i = 0; i < k; i++) {
-      const h = Math.max(1, rowT[i] * sc), y = ly[i];
-      nodes.push(`<rect class="sk-node" x="${Lx}" y="${n2(y)}" width="${nodeW}" height="${n2(h)}" fill="${classColors(k)[i]}" data-side="s" data-i="${i}"${tipAttr(`Expert ${full[i]}\n${int(rowT[i])} variants`)}/>`);
-      nodes.push(`<text class="sk-lbl" x="${Lx - 8}" y="${n2(y + h / 2 - 1)}" text-anchor="end">${short[i]}</text><text class="sk-cnt" x="${Lx - 8}" y="${n2(y + h / 2 + 12)}" text-anchor="end">${int(rowT[i])}</text>`);
-    }
-    for (let j = 0; j < k; j++) {
-      const h = Math.max(1, colT[j] * sc), y = ry[j];
-      nodes.push(`<rect class="sk-node" x="${Rx}" y="${n2(y)}" width="${nodeW}" height="${n2(h)}" fill="${classColors(k)[j]}" data-side="t" data-i="${j}"${tipAttr(`Model ${full[j]}\n${int(colT[j])} variants`)}/>`);
-      nodes.push(`<text class="sk-lbl" x="${Rx + nodeW + 8}" y="${n2(y + h / 2 - 1)}">${short[j]}</text><text class="sk-cnt" x="${Rx + nodeW + 8}" y="${n2(y + h / 2 + 12)}">${int(colT[j])}</text>`);
-    }
-    const heads = `<text class="sk-head" x="${Lx + nodeW}" y="14" text-anchor="end">Expert</text><text class="sk-head" x="${Rx}" y="14">Model</text>`;
-    return `<svg class="sankey" width="${width}" height="${H}" viewBox="0 0 ${width} ${H}" role="img" aria-label="Classification flow for ${esc(m.name)}">${heads}${links.join("")}${nodes.join("")}</svg>`;
-  }
-
-  function renderFlows() {
-    seg("flowScaleSeg", state.flowScale, (v) => { state.flowScale = v; renderFlows(); });
-    const cats = categoriesWithData().sort((a, b) => catCount(b) - catCount(a));
-    $("flowCat").innerHTML = `<option value="all">All categories</option>` + cats.map((c) => `<option value="${esc(c)}">${esc(c)} (${int(catCount(c))})</option>`).join("");
-    if (state.flowCat !== "all" && !cats.includes(state.flowCat)) state.flowCat = "all";
-    $("flowCat").value = state.flowCat;
-    $("flowTitle").textContent = `Expert classification to model call, ${state.flowScale}-class`;
-    const legendLabels = state.flowScale === "5" ? LABELS : ["Pathogenic or likely pathogenic", "Uncertain significance", "Benign or likely benign"];
-    $("flowLegend").innerHTML = `<span>Bands coloured by expert class:</span>` + legendLabels.map((l, i) =>
-      `<span><span class="swatch" style="background:${classColors(legendLabels.length)[i]}"></span>${l}</span>`).join("");
-    $("flowSub").textContent = state.flowCat === "all" ? `All ${int(D.metadata.total_variants)} cohort variants.` : `${state.flowCat}.`;
-    const grid = $("flowGrid");
-    const ms = selModels();
-    grid.innerHTML = ms.map((m) => `<div class="flow-panel" data-key="${esc(m.key)}"><p class="cm-title">${mname(m)}<span class="cm-n"></span></p><div class="flow-svg"></div></div>`).join("");
-    grid.querySelectorAll(".flow-panel").forEach((panel) => {
-      const m = byKey(panel.dataset.key);
-      const mat = flowMatrix(m);
-      const box = panel.querySelector(".flow-svg");
-      if (!mat) {
-        box.innerHTML = `<p class="empty">${m.archived ? "Per-category flows need this model's raw results, which are not in the repository." : "No data for this selection."}</p>`;
-        return;
-      }
-      const total = mat.reduce((a, r) => a + r.reduce((x, y) => x + y, 0), 0);
-      panel.querySelector(".cm-n").textContent = ` · ${int(total)} variants`;
-      box.innerHTML = sankeySvg(m, mat, Math.max(280, Math.floor(box.clientWidth || 520)));
-    });
-  }
-
-  function setupFlowHover() {
-    const grid = $("flowGrid");
-    const clear = () => grid.querySelectorAll("svg.hl").forEach((s) => { s.classList.remove("hl"); s.querySelectorAll(".on").forEach((e) => e.classList.remove("on")); });
-    grid.addEventListener("pointerover", (e) => {
-      const el = e.target.closest(".sk-link, .sk-node");
-      clear();
-      if (!el) return;
-      const svg = el.ownerSVGElement;
-      svg.classList.add("hl");
-      if (el.classList.contains("sk-link")) el.classList.add("on");
-      else svg.querySelectorAll(`.sk-link[data-${el.dataset.side}="${el.dataset.i}"]`).forEach((l) => l.classList.add("on"));
-    });
-    grid.addEventListener("pointerleave", clear);
-  }
 
   // ---------- confusion ----------
   function confusionTable(m) {
@@ -1938,8 +1275,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
         const share = sum ? v / sum : 0;
         const x = (dirOf(i) === "p" && dirOf(j) === "b") || (dirOf(i) === "b" && dirOf(j) === "p");
         const shown = state.cmMode === "count" ? int(v) : (share * 100).toFixed(1);
-        const link = x && v > 0 && (D.cross_direction || {})[m.key];
-        return `<td class="h${i === j ? " diag" : ""}${x && v > 0 ? " xdir" : ""}${link ? " link" : ""}"${link ? ` data-key="${esc(m.key)}" data-i="${i}" data-j="${j}" data-five="${five ? 1 : 0}"` : ""} style="${modelHeat(m.color, share)}"${tipAttr(`${m.short_name}\nExpert: ${full[i]}\nModel: ${full[j]}\n${int(v)} variants, ${(share * 100).toFixed(1)}% of row${link ? "\nSelect to list these variants" : ""}`)}>${shown}</td>`;
+        return `<td class="h${i === j ? " diag" : ""}${x && v > 0 ? " xdir" : ""}" style="${modelHeat(m.color, share)}"${tipAttr(`${fullName(m)}\nExpert: ${full[i]}\nModel: ${full[j]}\n${int(v)} variants, ${(share * 100).toFixed(1)}% of row${x && v > 0 ? "\nCross-direction error" : ""}`)}>${shown}</td>`;
       }).join("")}</tr>`;
     }).join("");
     return `<div class="table-wrap"><table class="heat cm">${head}<tbody>${body}</tbody></table></div>`;
@@ -1949,304 +1285,114 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     seg("cmScaleSeg", state.cmScale, (v) => { state.cmScale = v; renderConfusion(); });
     seg("cmModeSeg", state.cmMode, (v) => { state.cmMode = v; renderConfusion(); });
     $("cmSub").textContent = state.cmMode === "count" ? "Cell values are variant counts." : "Cell values are the percentage of the row.";
-    $("cmGrid").innerHTML = selModels().map((m) => `<div><p class="cm-title">${mname(m)}</p>${confusionTable(m)}</div>`).join("");
-    $("cmGrid").querySelectorAll("td.link").forEach((td) => td.onclick = () => {
-      const i = +td.dataset.i, j = +td.dataset.j, five = td.dataset.five === "1";
-      const groups = [["Pathogenic", "Likely Pathogenic"], ["Uncertain Significance"], ["Likely Benign", "Benign"]];
-      const gt = five ? [LABELS[i]] : groups[i], pred = five ? [LABELS[j]] : groups[j];
-      const short = (l) => l.map((x) => ABBR[x]).join("/");
-      showCross(td.dataset.key, null, { gt, pred, label: `expert ${short(gt)} → model ${short(pred)}` });
-    });
     const ms = selModels();
+    $("cmGrid").innerHTML = ms.map((m) => `<div><p class="cm-title">${mname(m, ms)}</p>${confusionTable(m)}</div>`).join("");
     const head = `<thead><tr><th>Class</th><th>Model</th><th class="r">Precision</th><th class="r">Recall</th><th class="r">F1</th><th class="r">Support</th></tr></thead>`;
     const body = LABELS.map((l) => ms.map((m, i) => {
       const c = (m.per_class_5 || {})[l] || {};
-      return `<tr class="${i === ms.length - 1 ? "grp-end" : ""}">${i === 0 ? `<td rowspan="${ms.length}" class="grp">${l}</td>` : ""}<td>${mname(m)}</td><td class="r num">${f1(c.precision)}</td><td class="r num">${f1(c.recall)}</td><td class="r num"><strong>${f1(c.f1)}</strong></td><td class="r num">${int(c.support)}</td></tr>`;
+      return `<tr class="${i === ms.length - 1 ? "grp-end" : ""}">${i === 0 ? `<td rowspan="${ms.length}" class="grp">${l}</td>` : ""}<td>${mname(m, ms)}</td><td class="r num">${f1(c.precision)}</td><td class="r num">${f1(c.recall)}</td><td class="r num"><strong>${f1(c.f1)}</strong></td><td class="r num">${int(c.support)}</td></tr>`;
     }).join("")).join("");
     $("prTable").innerHTML = head + `<tbody>${body}</tbody>`;
   }
 
-  // ---------- safety ----------
-  function renderSafety() {
-    const sel = selModels();
-    const rows = sel.slice().sort((a, b) => a.critical_error_count - b.critical_error_count || a.name.localeCompare(b.name));
-    const max = Math.max(1, ...rows.map((m) => Math.max(m.false_pathogenic_count, m.false_benign_count)));
-    $("b2b").innerHTML = `<div class="b2b">
-      <div class="b2b-row b2b-head"><span></span><span class="left">B/LB truth called P/LP</span><span class="right">P/LP truth called B/LB</span></div>
-      ${rows.map((m) => {
-        const fp = m.false_pathogenic_count, fb = m.false_benign_count;
-        const wp = (fp / max) * 82, wb = (fb / max) * 82;
-        return `<div class="b2b-row"><span class="lbl">${mname(m)}</span>
-          <div class="b2b-side left">${fp ? `<span class="bar link" data-key="${esc(m.key)}" data-dir="B→P" style="width:${wp}%;background:${m.color}"${tipAttr(`${m.name}\n${fp} benign or likely benign variants called P/LP\nSelect to list them`)}></span>` : ""}<span class="cnt" style="right:${wp}%;padding-right:6px">${fp}</span></div>
-          <div class="b2b-side right">${fb ? `<span class="bar link" data-key="${esc(m.key)}" data-dir="P→B" style="width:${wb}%;background:${m.color}"${tipAttr(`${m.name}\n${fb} pathogenic or likely pathogenic variants called B/LB\nSelect to list them`)}></span>` : ""}<span class="cnt" style="left:${wb}%;padding-left:6px">${fb}</span></div>
-        </div>`;
-      }).join("")}</div>`;
-
-    const all = D.models.slice().sort((a, b) => (a.critical_error_count / a.evaluated_count) - (b.critical_error_count / b.evaluated_count));
-    const per1k = (n, m) => (m.evaluated_count ? (n / m.evaluated_count) * 1000 : 0).toFixed(2);
-    $("safetyTable").innerHTML = `<thead><tr><th>Model</th><th class="r">B/LB called P/LP</th><th class="r">P/LP called B/LB</th><th class="r">Total</th><th class="r">Evaluated</th></tr></thead><tbody>${all.map((m) => {
-      const on = sel.includes(m);
-      return `<tr class="${on ? "sel" : ""}"><td>${mname(m)}</td><td class="r num">${per1k(m.false_pathogenic_count, m)}</td><td class="r num">${per1k(m.false_benign_count, m)}</td><td class="r num"><strong>${per1k(m.critical_error_count, m)}</strong></td><td class="r num">${int(m.evaluated_count)}</td></tr>`;
-    }).join("")}</tbody>`;
-
-    $("b2b").querySelectorAll(".bar.link").forEach((bar) => bar.onclick = () => showCross(bar.dataset.key, bar.dataset.dir, null));
-    renderCross();
-  }
-
-  // ---------- cross-direction variants ----------
-  const DIR_LABEL_LONG = { "P→B": "P/LP → B/LB", "B→P": "B/LB → P/LP" };
-
-  function crossRows() {
-    const keys = state.errModel === "selected" ? selModels().map((m) => m.key) : [state.errModel];
-    const rows = [];
-    keys.forEach((k) => ((D.cross_direction || {})[k] || []).forEach((r) => rows.push({ ...r, m: byKey(k) })));
-    return rows.filter((r) => r.m
-      && (state.errDir === "all" || r.direction === state.errDir)
-      && (!state.errCell || (state.errCell.gt.includes(r.ground_truth) && state.errCell.pred.includes(r.predicted))));
-  }
-
-  function showCross(key, dir, cell) {
-    state.errModel = key;
-    state.errDir = dir || "all";
-    state.errCell = cell;
-    setTab("safety");
-    $("xdirCard").scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function renderCross() {
-    if (state.errModel !== "selected" && !byKey(state.errModel)) state.errModel = "selected";
-    $("xdirModel").innerHTML = `<option value="selected">Selected models</option>` + D.models.filter((m) => (D.cross_direction || {})[m.key]).map((m) =>
-      `<option value="${esc(m.key)}">${esc(m.name)} (${int(m.critical_error_count)})</option>`).join("");
-    $("xdirModel").value = state.errModel;
-    seg("xdirSeg", state.errDir, (v) => { state.errDir = v; renderCross(); });
-    const f = $("xdirFilter");
-    f.hidden = !state.errCell;
-    if (state.errCell) {
-      f.innerHTML = `<span class="pill">Cell: ${esc(state.errCell.label)}</span><button type="button" class="btn" id="xdirClear">Show all cells</button>`;
-      $("xdirClear").onclick = () => { state.errCell = null; renderCross(); };
-    }
-    const rows = crossRows();
-    const scope = state.errModel === "selected" ? "the selected models" : byKey(state.errModel).name;
-    $("xdirSub").textContent = `${int(rows.length)} variant${rows.length === 1 ? "" : "s"} for ${scope}, with the expert's and the model's ACMG criteria and points.`;
-    const pts = (v, computed) => v == null ? `<span class="pts na">not reported</span>` : `<span class="pts"${computed ? tipAttr("Computed from the expert criteria") : ""}>${v > 0 ? "+" : ""}${v} pts</span>`;
-    const crit = (list) => `<span class="crit">${(list || []).map(esc).join(", ") || "none cited"}</span>`;
-    const head = `<thead><tr><th>Model</th><th>Error</th><th>Gene</th><th>Variant</th><th>Disease</th><th>Expert classification</th><th>Model call</th><th>Confidence</th></tr></thead>`;
-    const body = rows.length ? rows.map((r) => `<tr>
-      <td style="white-space:nowrap" data-label="Model">${mname(r.m)}</td>
-      <td class="dir" data-label="Error">${DIR_LABEL_LONG[r.direction]}</td>
-      <td data-label="Gene"><strong>${esc(r.gene)}</strong></td>
-      <td class="mono" data-label="Variant">${esc(r.variant)}</td>
-      <td class="disease" data-label="Disease"><span class="d" title="${esc(r.disease)}">${esc(r.disease)}</span><span class="c">${esc(r.category)}${r.expert_panel ? " · " + esc(r.expert_panel) : ""}</span></td>
-      <td data-label="Expert"><div class="ev"><div class="ev-top"><span class="chip truth"${tipAttr(r.ground_truth)}>${ABBR[r.ground_truth] || esc(r.ground_truth)}</span>${pts(r.expert_points, true)}</div>${crit(r.expert_criteria)}</div></td>
-      <td data-label="Model call"><div class="ev"><div class="ev-top"><span class="chip m-cross"${tipAttr(r.predicted)}>${ABBR[r.predicted] || esc(r.predicted)}</span>${pts(r.model_points, false)}</div>${crit(r.model_criteria)}</div></td>
-      <td class="model-meta" data-label="Confidence">${esc(r.confidence) || "—"}</td></tr>`).join("")
-      : `<tr><td colspan="8" class="empty">No cross-direction errors for this selection.</td></tr>`;
-    $("xdirTable").innerHTML = head + `<tbody>${body}</tbody>`;
-  }
-
-  function crossCsv() {
-    const cols = ["model", "direction", "gene", "variant", "disease", "category", "expert_panel", "expert_classification", "expert_criteria", "expert_points_computed", "model_classification", "model_criteria", "model_points_reported", "confidence", "variant_id"];
-    const q = (v) => { const t = v == null ? "" : String(v); return /[",\n]/.test(t) ? `"${t.replace(/"/g, '""')}"` : t; };
-    const lines = [cols.join(",")].concat(crossRows().map((r) => [
-      r.m.name, DIR_LABEL_LONG[r.direction], r.gene, r.variant, r.disease, r.category, r.expert_panel, r.ground_truth,
-      (r.expert_criteria || []).join(" "), r.expert_points, r.predicted, (r.model_criteria || []).join(" "), r.model_points, r.confidence, r.id
-    ].map(q).join(",")));
-    const scope = state.errModel === "selected" ? selModels().map((m) => m.short_name).join(" ") : byKey(state.errModel).short_name;
-    download(new Blob([lines.join("\n") + "\n"], { type: "text/csv" }), `${slug("aiva cross-direction " + scope + (state.errDir === "all" ? "" : " " + DIR_LABEL_LONG[state.errDir]))}.csv`);
-  }
-
   // ---------- criteria ----------
-  function renderCriteria() {
-    seg("critSeg", state.critGroup, (v) => { state.critGroup = v; renderCriteria(); });
-    const list = CRITERIA[state.critGroup];
-    $("critTitle").textContent = state.critGroup === "pathogenic" ? "Pathogenic criteria" : "Benign criteria";
-    const ms = selModels();
+  function criteriaBars(el, list, ms) {
     const share = (m, c) => (D.criteria_data[m.key] ? ((D.criteria_data[m.key][c] || 0) / (m.evaluated_count || 1)) * 100 : null);
     let max = 0;
     list.forEach(([c]) => ms.forEach((m) => (max = Math.max(max, share(m, c) || 0))));
     const top = niceMax(max);
     const ticks = [0, top / 4, top / 2, (3 * top) / 4, top].map((t) => +t.toFixed(1));
-    $("critBars").innerHTML = verticalBars(list.map(([c, def]) => ({
+    el.innerHTML = verticalBars(list.map(([c, def]) => ({
       label: `<span class="mono">${c}</span>`, tip: `${c}: ${def}`,
       bars: ms.map((m) => {
         const v = share(m, c);
         if (v == null) return { m, v: null, text: "no criteria recorded" };
         const n = D.criteria_data[m.key][c] || 0;
-        return { m, v, text: v > 0 && v < 0.1 ? "<0.1" : v.toFixed(1), tip: `${c} · ${m.name}\n${int(n)} variants, ${v.toFixed(1)}% of evaluated\n${def}` };
+        return { m, v, text: v > 0 && v < 0.1 ? "<0.1" : v.toFixed(1), tip: `${c} · ${fullName(m)}\n${int(n)} variants, ${v.toFixed(1)}% of evaluated\n${def}` };
       })
-    })), { max: top, ticks, unit: "%", width: $("critBars").clientWidth });
+    })), { max: top, ticks, unit: "%", width: el.clientWidth });
   }
 
-  // ---------- agreement ----------
-  function renderAgreement() {
-    const f = focusModel();
-    $("agreeFocusTitle").innerHTML = `Agreement with ${mname(f)}`;
-    const conc = D.concordance[f.key] || {};
-    const others = D.models.filter((m) => m !== f);
-    const have = others.filter((m) => conc[m.key] && conc[m.key].overlap);
-    const missing = others.filter((m) => !(conc[m.key] && conc[m.key].overlap));
-    have.sort((a, b) => conc[b.key].dir_pct - conc[a.key].dir_pct);
-    $("agreeBars").innerHTML = have.length ? groupedBars(have.map((m) => {
-      const r = conc[m.key];
-      return {
-        label: mname(m), sub: `${int(r.overlap)} shared variants`,
-        bars: [{ m, v: r.exact_pct, v2: r.dir_pct, text: `${f1(r.exact_pct)} · ${f1(r.dir_pct)}`, tip: `${f.short_name} vs ${m.short_name}\nSame 5-class call: ${pct(r.exact_pct)}\nSame direction: ${pct(r.dir_pct)}\n${int(r.overlap)} shared variants` }]
-      };
-    }), { unit: "%" }) : `<p class="empty">No variant-level comparisons are available for this model.</p>`;
-    $("agreeNote").textContent = missing.length ? `Not available for ${missing.map((m) => m.short_name).join(", ")}: one of the pair was carried over from an earlier build without variant-level results.` : "";
+  function renderCriteria() {
+    const ms = selModels();
+    criteriaBars($("critPath"), CRITERIA.pathogenic, ms);
+    criteriaBars($("critBen"), CRITERIA.benign, ms);
+  }
 
-    seg("agreeSeg", state.agree, (v) => { state.agree = v; renderAgreement(); });
-    // Order models so similar ones sit together: start from the focus model,
-    // then repeatedly take the model that agrees most with the previous one.
-    const pool = D.models.filter((m) => D.concordance[m.key]);
+  // ---------- agreement (leaderboard) ----------
+  // Pairwise agreement among the models shown on the leaderboard. Models that
+  // agree sit together: start from the top-ranked model, then repeatedly take
+  // the model that agrees most with the previous one.
+  function renderAgreeHeat() {
+    seg("agreeSeg", state.agree, (v) => { state.agree = v; renderAgreeHeat(); });
+    const overallKey = state.lbScale === "3" ? "macro_f1_3" : "macro_f1_5";
+    const shown = lbShown();
+    const pool = shown.filter((m) => D.concordance[m.key]).sort((a, b) => (isFull(b) - isFull(a)) || b[overallKey] - a[overallKey]);
+    const missing = shown.filter((m) => !D.concordance[m.key]);
     const agreeOf = (a, b) => { const r = D.concordance[a.key]?.[b.key]; return r && r.overlap ? r[state.agree] : -1; };
     const models = [];
-    let cur = pool.find((m) => m.key === state.focus) || pool[0];
+    let cur = pool[0];
     while (cur) {
       models.push(cur);
       const rest = pool.filter((m) => !models.includes(m));
       cur = rest.sort((a, b) => agreeOf(cur, b) - agreeOf(cur, a))[0];
     }
-    const compact = models.length > 10;
+    const exact = state.agree === "exact_pct";
+    $("agreeTitle").textContent = `Agreement between classifiers, ${exact ? "same 5-class call" : "same direction (P/LP, VUS, B/LB)"}`;
+    $("agreeSub").textContent = "Share of shared variants on which two classifiers return the same call, independent of the expert classification. Models that agree sit together; shading is scaled to the observed range.";
+    $("agreeNote").textContent = missing.length ? `Not shown: ${missing.map((m) => m.short_name).join(", ")}, carried over from an earlier build without variant-level results.` : "";
+    const table = $("agreeHeat");
+    if (models.length < 2) {
+      table.innerHTML = `<tbody><tr><td class="empty">Show at least two models to compare their calls.</td></tr></tbody>`;
+      $("agreeMin").textContent = $("agreeMax").textContent = "";
+      return;
+    }
     const vals = [];
     models.forEach((a) => models.forEach((b) => { if (a !== b) { const v = D.concordance[a.key]?.[b.key]; if (v && v.overlap) vals.push(v[state.agree]); } }));
     const lo = vals.length ? Math.floor(Math.min(...vals)) : 0, hi = vals.length ? Math.ceil(Math.max(...vals)) : 100;
     $("agreeMin").textContent = lo + "%";
     $("agreeMax").textContent = hi + "%";
-    $("agreeTitle").textContent = state.agree === "exact_pct" ? "All pairs, same 5-class call" : "All pairs, same direction";
-    const head = `<thead><tr><th></th>${models.map((m) => `<th class="colh"${tipAttr(m.name)}>${swatch(m)}<br>${esc(m.short_name)}</th>`).join("")}</tr></thead>`;
-    const body = models.map((a) => `<tr><td class="rowh">${mname(a)}</td>${models.map((b) => {
-      const r = D.concordance[a.key]?.[b.key];
-      if (a === b || !r || !r.overlap) return `<td class="h" style="color:var(--muted)">—</td>`;
-      const v = r[state.agree];
-      return `<td class="h" style="${heatStyle((v - lo) / Math.max(1, hi - lo))}"${tipAttr(`${a.short_name} vs ${b.short_name}\n${pct(v)} agreement\n${int(r.overlap)} shared variants`)}>${compact ? "" : f1(v)}</td>`;
-    }).join("")}</tr>`).join("");
-    $("agreeHeat").innerHTML = head + `<tbody>${body}</tbody>`;
-    $("agreeHeat").classList.toggle("compact", compact);
+    const draw = (compact) => {
+      const head = `<thead><tr><th></th>${models.map((m) => `<th class="colh"${tipAttr(fullName(m))}>${swatch(m)}<br>${esc(nameIn(m, models))}</th>`).join("")}</tr></thead>`;
+      const body = models.map((a) => `<tr><td class="rowh">${mname(a, models)}</td>${models.map((b) => {
+        const r = D.concordance[a.key]?.[b.key];
+        if (a === b || !r || !r.overlap) return `<td class="h" style="color:var(--muted)">—</td>`;
+        const v = r[state.agree];
+        return `<td class="h" style="${heatStyle((v - lo) / Math.max(1, hi - lo))}"${tipAttr(`${fullName(a)} vs ${fullName(b)}\n${pct(v)} agreement\n${int(r.overlap)} shared variants`)}>${compact ? "" : f1(v)}</td>`;
+      }).join("")}</tr>`).join("");
+      table.innerHTML = head + `<tbody>${body}</tbody>`;
+      table.classList.toggle("compact", compact);
+    };
+    // Values print in the cells when the table fits the card; otherwise they show on hover.
+    draw(false);
+    const wrap = table.parentElement;
+    if (wrap.scrollWidth > wrap.clientWidth + 1) draw(true);
   }
 
-  // ---------- variants ----------
-  function matchClass(gt, p) {
-    if (!p || p === "Pending" || !ABBR[p]) return "m-none";
-    if (p === gt) return "m-exact";
-    const g = DIR[gt], d = DIR[p];
-    if (g === d) return "m-dir";
-    if (g === "vus" || d === "vus") return "m-off";
-    return "m-cross";
-  }
+  // ---------- variants CSV ----------
+  // Every benchmark variant with the expert classification and each model's call.
+  const CSV_COLUMN = { id: "variant_id", variation: "variant", ground_truth: "expert_classification" };
+  const csvCell = (v) => { const t = v == null ? "" : String(v); return /[",\r\n]/.test(t) ? `"${t.replace(/"/g, '""')}"` : t; };
 
-  function renderVariantFilters() {
-    const vs = D.explorer_variants || [];
-    const cats = [...new Set(vs.map((v) => v.category))].sort();
-    $("vcat").innerHTML = `<option value="all">All categories</option>` + cats.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join("");
-    $("vgt").innerHTML = `<option value="all">Any expert call</option>` + LABELS.map((l) => `<option value="${esc(l)}">${l}</option>`).join("");
-    $("vcat").value = state.vcat;
-    $("vgt").value = state.vgt;
-    $("varIntro").textContent = `${int(vs.length)} of ${int(D.metadata.total_variants)} cohort variants, sampled across disease categories, are embedded for inspection. Selected models are listed first.`;
-  }
-
-  // Calls from every model with a prediction for the variant.
-  function variantCalls(v) {
-    return D.models.map((m) => ({ m, p: v.predictions[m.key] })).filter((x) => ABBR[x.p]);
-  }
-
-  function consensusCell(v) {
-    const calls = variantCalls(v);
-    if (!calls.length) return `<span class="model-meta">no calls</span>`;
-    const counts = LABELS.map((l) => calls.filter((x) => x.p === l).length);
-    const exact = counts[LABELS.indexOf(v.ground_truth)] || 0;
-    const tip = `${calls.length} models\n` + LABELS.map((l, i) => counts[i] ? `${ABBR[l]}: ${counts[i]}` : "").filter(Boolean).join(" · ") + `\n${exact} of ${calls.length} match the expert (${ABBR[v.ground_truth]})`;
-    return `<div class="cons"${tipAttr(tip)}><div class="cons-bar">${counts.map((c, i) => c ? `<span style="width:${(c / calls.length) * 100}%;background:${CLASS_COLORS_5[i]}"></span>` : "").join("")}</div><span class="cons-txt">${exact}/${calls.length} exact</span></div>`;
-  }
-
-  function renderVariants() {
-    seg("vonlySeg", state.vonly, (v) => { state.vonly = v; state.vpage = 0; renderVariants(); });
-    const sel = selModels().filter((m) => (D.explorer_variants || []).some((v) => v.predictions && v.predictions[m.key]));
-    const q = state.vq.trim().toLowerCase();
-    const list = (D.explorer_variants || []).filter((v) => {
-      if (state.vcat !== "all" && v.category !== state.vcat) return false;
-      if (state.vgt !== "all" && v.ground_truth !== state.vgt) return false;
-      if (q && !(`${v.gene} ${v.variation} ${v.disease} ${v.category}`.toLowerCase().includes(q))) return false;
-      const calls = variantCalls(v).map((x) => x.p);
-      if (state.vonly === "disagree" && new Set(calls).size < 2) return false;
-      if (state.vonly === "cross" && !calls.some((p) => matchClass(v.ground_truth, p) === "m-cross")) return false;
-      return true;
+  function downloadVariantsCsv() {
+    const t = D.variant_table;
+    if (!t || !t.rows || !t.rows.length) { toast("This build has no variant table; rebuild with python scripts/update_dashboard.py."); return; }
+    const ms = D.models.filter((m) => t.calls[m.key]);
+    const head = [...t.columns.map((c) => CSV_COLUMN[c] || c), ...ms.map(fullName)];
+    const lines = [head.map(csvCell).join(",")];
+    t.rows.forEach((r, i) => {
+      const calls = ms.map((m) => t.labels[t.calls[m.key][i]] || "");
+      lines.push([...r, ...calls].map(csvCell).join(","));
     });
-    const pages = Math.max(1, Math.ceil(list.length / PAGE));
-    state.vpage = Math.min(state.vpage, pages - 1);
-    const slice = list.slice(state.vpage * PAGE, state.vpage * PAGE + PAGE);
-    const nAll = D.models.filter((m) => (D.explorer_variants || []).some((v) => v.predictions && ABBR[v.predictions[m.key]])).length;
-    const head = `<thead><tr><th>Gene</th><th>Variant</th><th>Disease</th><th class="c">Expert</th>${sel.map((m) => `<th class="colh selcol"${tipAttr(m.name)}>${swatch(m)}<br>${esc(m.short_name)}</th>`).join("")}<th${tipAttr("Calls from every model, coloured by class")}>All ${nAll} models</th></tr></thead>`;
-    const body = slice.length ? slice.map((v) => `<tr class="row-link" tabindex="0" data-id="${esc(v.id)}">
-      <td data-label="Gene"><strong>${esc(v.gene)}</strong></td>
-      <td class="mono" data-label="Variant">${esc(v.variation)}</td>
-      <td class="disease" data-label="Disease"><span class="d" title="${esc(v.disease)}">${esc(v.disease)}</span><span class="c">${esc(v.category)}${v.expert_panel ? " · " + esc(v.expert_panel) : ""}</span></td>
-      <td class="c" data-label="Expert"><span class="chip truth"${tipAttr(v.ground_truth)}>${ABBR[v.ground_truth] || "—"}</span></td>
-      ${sel.map((m) => { const p = v.predictions[m.key]; return `<td class="c" data-label="${esc(m.short_name)}"><span class="chip ${matchClass(v.ground_truth, p)}"${tipAttr(`${m.name}\n${p || "No call"}`)}>${ABBR[p] || "—"}</span></td>`; }).join("")}
-      <td data-label="All models">${consensusCell(v)}</td></tr>`).join("")
-      : `<tr><td colspan="${sel.length + 5}" class="empty">No variants match these filters.</td></tr>`;
-    $("varTable").innerHTML = head + `<tbody>${body}</tbody>`;
-    $("varTable").querySelectorAll("tr.row-link").forEach((tr) => {
-      tr.onclick = () => openDrawer(tr.dataset.id);
-      tr.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDrawer(tr.dataset.id); } };
-    });
-    const from = list.length ? state.vpage * PAGE + 1 : 0, to = Math.min(list.length, (state.vpage + 1) * PAGE);
-    $("pager").innerHTML = `<span>${from}–${to} of ${int(list.length)}</span>
-      <button class="btn" id="pgPrev" type="button" ${state.vpage === 0 ? "disabled" : ""}>Previous</button>
-      <button class="btn" id="pgNext" type="button" ${state.vpage >= pages - 1 ? "disabled" : ""}>Next</button>`;
-    $("pgPrev").onclick = () => { state.vpage--; renderVariants(); };
-    $("pgNext").onclick = () => { state.vpage++; renderVariants(); };
-  }
-
-  // ---------- variant drawer ----------
-  let drawerReturn = null;
-  function openDrawer(id) {
-    const v = (D.explorer_variants || []).find((x) => x.id === id);
-    if (!v) return;
-    drawerReturn = document.activeElement;
-    $("drawerTitle").textContent = `${v.gene} · ${v.variation}`;
-    $("drawerSub").textContent = `${v.disease} · ${v.category}${v.expert_panel ? " · " + v.expert_panel : ""}`;
-    const pts = (n, computed) => n == null ? `<span class="pts na">score not reported</span>` : `<span class="pts"${computed ? tipAttr("Computed from the expert criteria") : ""}>${n > 0 ? "+" : ""}${n} pts</span>`;
-    const crit = (list) => `<span class="crit">${(list || []).map(esc).join(", ") || "none cited"}</span>`;
-    const sel = selModels().map((m) => m.key);
-    const rows = byProvider(D.models).map(([p, ms]) => {
-      const items = ms.filter((m) => ABBR[v.predictions[m.key]]);
-      if (!items.length) return "";
-      return `<tr class="grp-row"><td colspan="3">${esc(p)}</td></tr>` + items.map((m) => {
-        const p2 = v.predictions[m.key], d = (v.details || {})[m.key] || {};
-        return `<tr class="${sel.includes(m.key) ? "sel" : ""}"><td>${mname(m)}</td>
-          <td><div class="ev-top"><span class="chip ${matchClass(v.ground_truth, p2)}"${tipAttr(p2)}>${ABBR[p2]}</span>${pts(d.score, false)}</div>${crit(d.criteria)}</td>
-          <td class="model-meta">${esc(d.confidence) || "—"}</td></tr>`;
-      }).join("");
-    }).join("");
-    $("drawerBody").innerHTML = `<div class="dr-expert"><div class="dr-lbl">Expert classification</div>
-        <div class="ev-top"><span class="chip truth">${ABBR[v.ground_truth] || "—"}</span><span>${esc(v.ground_truth)}</span>${pts(v.expert_points, true)}</div>${crit(v.expert_criteria)}</div>
-      <div class="table-wrap"><table class="dr-table"><thead><tr><th>Model</th><th>Call, score and criteria</th><th>Confidence</th></tr></thead><tbody>${rows}</tbody></table></div>
-      <p class="note">Selected models in bold. Chip colours: green exact match, grey same direction, outlined adjacent to VUS, red cross-direction.</p>`;
-    const dr = $("drawer");
-    dr.hidden = false;
-    requestAnimationFrame(() => dr.classList.add("open"));
-    $("drawerClose").focus();
-  }
-  function closeDrawer() {
-    const dr = $("drawer");
-    if (dr.hidden) return;
-    dr.classList.remove("open");
-    dr.hidden = true;
-    if (drawerReturn) drawerReturn.focus();
+    download(new Blob([lines.join("\r\n") + "\r\n"], { type: "text/csv" }), `aiva-bench-variants-${t.rows.length}.csv`);
+    toast(`Downloaded ${int(t.rows.length)} variants with calls from ${ms.length} models.`);
   }
 
   // ---------- tabs & URL ----------
   const RENDER = {
     leaderboard: renderLeaderboard,
-    overview: () => { renderTiles(); renderStacked(); renderOvMetrics(); renderOvClass(); },
-    categories: renderCategories,
-    flows: renderFlows,
     confusion: renderConfusion,
-    safety: renderSafety,
     criteria: renderCriteria,
-    agreement: renderAgreement,
-    variants: () => { renderVariantFilters(); renderVariants(); },
     ranking: () => {}
   };
   const sectionOf = (tab) => (tab === "ranking" ? "ranking" : "classification");
@@ -2254,14 +1400,13 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
   function readHash() {
     const [tab, q] = location.hash.slice(1).split("?");
     const p = new URLSearchParams(q || "");
-    return { tab: tab || "leaderboard", m: p.get("m"), c: p.get("c"), r: p.get("r"), s: p.get("s"), show: p.get("show"), order: p.get("order") };
+    return { tab: tab || "leaderboard", m: p.get("m"), c: p.get("c"), s: p.get("s"), show: p.get("show") };
   }
 
   function lbHashQuery() {
     const q = [];
     if (state.lbScale !== "3") q.push("s=" + state.lbScale);
     if (state.lbCols) q.push("show=" + state.lbCols.map(encodeURIComponent).join(","));
-    if (state.lbOrder !== "section") q.push("order=" + state.lbOrder);
     return q.length ? "?" + q.join("&") : "";
   }
 
@@ -2277,7 +1422,6 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     if (h.m && byKey(h.m)) state.focus = h.m;
     if (h.c != null) state.comps = h.c.split(",").filter(Boolean);
     if (h.s === "3" || h.s === "5") state.lbScale = h.s;
-    if (h.order === "rank") state.lbOrder = "rank";
     if (h.tab === "leaderboard") {
       const keys = (h.show || "").split(",").filter((k) => byKey(k));
       state.lbCols = keys.length && keys.length < D.models.length ? keys : null;
@@ -2358,10 +1502,11 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     const diag = (mat) => mat.reduce((a, row, i) => a + row[i], 0);
     const total = D.metadata.total_variants;
     const key = "imported_" + Date.now();
+    const [color, color_dark] = nextPaletteColor();
 
     D.models.push({
       key, name, short_name: name.length > 22 ? name.slice(0, 21) + "…" : name, family,
-      color: ["#008300", "#e34948", "#0d366b", "#8c5a2b"][D.models.filter((x) => x.imported).length % 4],
+      color, color_dark,
       is_anthropic: family === "Anthropic", type: "Imported results", imported: true,
       evaluated_count: n, total_cohort: total, coverage_pct: +((n / total) * 100).toFixed(1),
       exact_accuracy: +((diag(m5) / n) * 100).toFixed(2), directional_accuracy: +((diag(m3) / n) * 100).toFixed(2),
@@ -2371,8 +1516,17 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
       per_class_5: pc5, per_class_3: pc3
     });
     D.confusion_matrices[key] = { matrix_5: m5, matrix_3: m3 };
-    (D.explorer_variants || []).forEach((v) => { if (preds[v.id]) v.predictions[key] = preds[v.id]; });
+    const t = D.variant_table;
+    if (t && t.rows) t.calls[key] = t.rows.map((r) => (preds[r[0]] ? String(t.labels.indexOf(preds[r[0]])) : "-")).join("");
     return { key, n };
+  }
+
+  // Next unused colour from the model palette (PALETTE in dashboard/registry.py),
+  // so an imported model matches the rest: [light theme, dark theme].
+  function nextPaletteColor() {
+    const used = new Set(D.models.map((m) => (m.color_light || m.color || "").toLowerCase()));
+    const pal = D.metadata.palette || [];
+    return pal.find(([light]) => !used.has(light.toLowerCase())) || pal[D.models.length % Math.max(1, pal.length)] || ["#5785C1", "#5785C1"];
   }
 
   function setupImport() {
@@ -2405,7 +1559,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
             parseRecords(String(reader.result));
             const data = await postModels("import", { name, provider: $("impFamily").value, content: String(reader.result) });
             dlg.close();
-            state.tab = "overview";
+            state.tab = "confusion";
             state.focus = data.changed_key;
             applyServerData(data);
             const m = byKey(data.changed_key);
@@ -2420,7 +1574,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
         try {
           const res = scoreImport(name, $("impFamily").value, parseRecords(String(reader.result)));
           dlg.close();
-          state.tab = "overview";
+          state.tab = "confusion";
           state.focus = res.key;
           renderAll();
           toast(`${name}: scored ${int(res.n)} of ${int(D.metadata.total_variants)} variants.`);
@@ -2439,7 +1593,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     D.models = D.models.filter((m) => m.key !== key);
     ["confusion_matrices", "categories_data", "criteria_data", "safety_data", "concordance"].forEach((k) => { if (D[k]) delete D[k][key]; });
     Object.values(D.concordance || {}).forEach((row) => delete row[key]);
-    (D.explorer_variants || []).forEach((v) => { if (v.predictions) delete v.predictions[key]; });
+    if (D.variant_table) delete D.variant_table.calls[key];
   }
 
   function applyServerData(data) {
@@ -2952,13 +2106,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
   function figureName(card) {
     const parts = ["aiva", card.querySelector(".card-head h3").textContent];
     if (!card.hasAttribute("data-static")) parts.push(selModels().map((m) => m.short_name).join(" vs "));
-    if (card.querySelector("#flowGrid") && state.flowCat !== "all") parts.push(state.flowCat);
     if (card.querySelector("#cmGrid")) parts.push(state.cmScale + "-class", state.cmMode === "count" ? "counts" : "row-pct");
-    if (card.querySelector("#xdirTable")) {
-      if (state.errModel !== "selected") parts.push(byKey(state.errModel)?.short_name || "");
-      if (state.errDir !== "all") parts.push(DIR_LABEL_LONG[state.errDir]);
-      if (state.errCell) parts.push(state.errCell.label);
-    }
     if (card.querySelector("#agreeHeat")) parts.push(state.agree === "exact_pct" ? "exact" : "directional");
     return slug(parts.join(" ")).slice(0, 140).replace(/-$/, "");
   }
@@ -3006,13 +2154,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
   document.querySelectorAll(".tab").forEach((b) => (b.onclick = () => setTab(b.dataset.tab)));
   document.querySelectorAll(".section-tab").forEach((b) => (b.onclick = () => setTab(b.dataset.section === "ranking" ? "ranking" : state.clsTab || "leaderboard")));
   $("focusSel").onchange = (e) => setFocus(e.target.value);
-  $("catMetric").onchange = (e) => { state.catMetric = e.target.value; renderCatMetric(); };
-  $("flowCat").onchange = (e) => { state.flowCat = e.target.value; renderFlows(); };
-  $("xdirModel").onchange = (e) => { state.errModel = e.target.value; state.errCell = null; renderCross(); };
-  $("xdirCsv").onclick = crossCsv;
-  $("vq").oninput = (e) => { state.vq = e.target.value; state.vpage = 0; renderVariants(); };
-  $("vcat").onchange = (e) => { state.vcat = e.target.value; state.vpage = 0; renderVariants(); };
-  $("vgt").onchange = (e) => { state.vgt = e.target.value; state.vpage = 0; renderVariants(); };
+  $("csvBtn").onclick = downloadVariantsCsv;
   window.addEventListener("hashchange", () => { applyHash(); normalizeSelection(); renderSelector(); setTab(state.tab); });
   let resizeT;
   window.addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(() => { if (RENDER[state.tab]) RENDER[state.tab](); }, 150); });
@@ -3022,12 +2164,9 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
   setupImport();
   setupModels();
   setupExport();
-  setupFlowHover();
   setupPicker();
   setupLbScatter();
   setupLbPicker();
-  $("drawerClose").onclick = closeDrawer;
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
   applyHash();
   renderAll();
 })();
