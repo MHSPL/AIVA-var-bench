@@ -17,7 +17,7 @@ import os
 import re
 import sys
 import time
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
@@ -35,7 +35,7 @@ from scripts.metrics import (
     calculate_macro_f1,
 )
 from scripts.generate_results import VCEP_TO_CATEGORY, CATEGORY_ORDER
-from dashboard.registry import read_registry, assign_colors
+from dashboard.registry import PALETTE, read_registry, assign_colors
 
 
 # Models removed through the dashboard before the registry existed.
@@ -269,6 +269,33 @@ def load_model_predictions(model_info: dict, unified_dict: dict) -> dict[str, di
         return preds
 
     return preds
+
+
+VARIANT_COLUMNS = ["id", "gene", "variation", "variant_key", "disease", "category", "expert_panel",
+                   "ground_truth", "expert_criteria", "expert_points"]
+NO_CALL = "-"
+
+
+def build_variant_table(unified_dict: dict, model_predictions: dict, model_keys: list[str]) -> dict:
+    """
+    Every benchmark variant with the expert classification and each model's call,
+    kept compact for embedding in the page: one row per variant (VARIANT_COLUMNS),
+    and per model a string with one character per row, the index of the call in
+    CLASSIFICATION_LABELS or NO_CALL.
+    """
+    ids = sorted(unified_dict, key=lambda v: (unified_dict[v]["gene"], unified_dict[v]["variation"], v))
+    rows = []
+    for vid in ids:
+        u = unified_dict[vid]
+        rows.append([vid, u["gene"], u["variation"], u["variant_key"], u["disease"], u["category"], u["expert_panel"],
+                     u["ground_truth"], " ".join(u["criteria_met_raw"]),
+                     sum(criterion_points(c) for c in u["criteria_met_raw"])])
+    code = {label: str(i) for i, label in enumerate(CLASSIFICATION_LABELS)}
+    calls = {}
+    for k in model_keys:
+        preds = model_predictions[k]
+        calls[k] = "".join(code.get(preds[vid]["prediction"], NO_CALL) if vid in preds else NO_CALL for vid in ids)
+    return {"columns": VARIANT_COLUMNS, "labels": CLASSIFICATION_LABELS, "rows": rows, "calls": calls}
 
 
 def build_dashboard_dataset():
@@ -563,50 +590,9 @@ def build_dashboard_dataset():
             }
 
     # -------------------------------------------------------------------------
-    # CURATED REPRESENTATIVE VARIANTS FOR INTERACTIVE EXPLORER
+    # EVERY BENCHMARK VARIANT WITH EACH MODEL'S CALL (the page's CSV download)
     # -------------------------------------------------------------------------
-    explorer_variants = []
-    # Round-robin across categories so every category is represented
-    by_category = defaultdict(list)
-    for vid, u in unified_dict.items():
-        by_category[u["category"]].append(vid)
-    queues = [by_category[c] for c in CATEGORY_ORDER if by_category.get(c)]
-    sample_vids = []
-    while len(sample_vids) < 250 and any(queues):
-        for q in queues:
-            if q and len(sample_vids) < 250:
-                sample_vids.append(q.pop(0))
-    for vid in sample_vids:
-        u = unified_dict[vid]
-        preds_for_var = {}
-        details = {}
-        for m_key in model_keys:
-            p = model_predictions[m_key].get(vid)
-            if p:
-                preds_for_var[m_key] = p["prediction"]
-                details[m_key] = {
-                    "criteria": p.get("criteria_raw") or p.get("criteria") or [],
-                    "score": p.get("score"),
-                    "confidence": p.get("confidence") or "",
-                }
-            else:
-                preds_for_var[m_key] = "Pending"
-
-        explorer_variants.append({
-            "id": vid,
-            "gene": u["gene"],
-            "variation": u["variation"],
-            "disease": u["disease"],
-            "category": u["category"],
-            "expert_panel": u["expert_panel"],
-            "ground_truth": u["ground_truth"],
-            "ground_truth_direction": u["ground_truth_direction"],
-            "ground_truth_criteria": u["criteria_met"][:5],
-            "expert_criteria": u["criteria_met_raw"],
-            "expert_points": sum(criterion_points(c) for c in u["criteria_met_raw"]),
-            "predictions": preds_for_var,
-            "details": details,
-        })
+    variant_table = build_variant_table(unified_dict, model_predictions, model_keys)
 
     # -------------------------------------------------------------------------
     # LIVE RE-RUN BACKGROUND JOB MONITORING
@@ -666,6 +652,7 @@ def build_dashboard_dataset():
             "classification_labels": CLASSIFICATION_LABELS,
             "direction_labels": DIRECTION_LABELS,
             "excluded_models": excluded_models,
+            "palette": [[light, dark] for light, dark, _ in PALETTE],
         },
         "models": models_summary,
         "confusion_matrices": models_confusion,
@@ -674,7 +661,7 @@ def build_dashboard_dataset():
         "safety_data": models_safety,
         "cross_direction": models_cross,
         "concordance": concordance_matrix,
-        "explorer_variants": explorer_variants,
+        "variant_table": variant_table,
         "live_jobs": live_jobs,
     }
 
@@ -740,10 +727,10 @@ def carry_over_archived_models(payload: dict, missing: set[str]) -> None:
             if o in payload["concordance"] and o != k:
                 payload["concordance"][o][k] = v
 
-        old_preds = {v["id"]: v["predictions"].get(k) for v in previous.get("explorer_variants", [])}
-        for v in payload["explorer_variants"]:
-            if old_preds.get(v["id"]):
-                v["predictions"][k] = old_preds[v["id"]]
+        old_table = previous.get("variant_table") or {}
+        old_calls = dict(zip((r[0] for r in old_table.get("rows", [])), old_table.get("calls", {}).get(k, "")))
+        table = payload["variant_table"]
+        table["calls"][k] = "".join(old_calls.get(r[0], NO_CALL) for r in table["rows"])
         print(f"  Carried over {m['name']} from the previous build (raw results not found).")
 
 
