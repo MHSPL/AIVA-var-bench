@@ -92,6 +92,36 @@ def check_build(record: dict) -> str:
     return f"position {pos} is {offset} bases from GRCh37 HGVS position {ref[1]}"
 
 
+UUID = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
+VARIANT_KEY = re.compile(r"^chr([1-9]|1[0-9]|2[0-2]|X|Y|MT?):\d+:[ACGTN]+:[ACGTN]+$")
+
+
+def check_format(records: list[dict]) -> list[str]:
+    """
+    Every record must have the approved format: exactly FIELDS, in order, a
+    unique UUID id, a chrom:pos:ref:alt variant_key, genome_build GRCh37, and
+    a gene and expert panel. Nothing else (no classification, criteria or
+    other tools' results) can get into the file.
+    """
+    problems, seen = [], set()
+    for n, r in enumerate(records, 1):
+        where = f"record {n} ({r.get('id', '?')})"
+        if list(r) != FIELDS:
+            problems.append(f"{where}: fields {list(r)} differ from {FIELDS}")
+            continue
+        if not UUID.match(r["id"]) or r["id"] in seen:
+            problems.append(f"{where}: id is not a unique UUID")
+        seen.add(r["id"])
+        if not VARIANT_KEY.match(r["variant_key"]):
+            problems.append(f"{where}: variant_key {r['variant_key']!r} is not chrom:pos:ref:alt")
+        if r["genome_build"] != GENOME_BUILD:
+            problems.append(f"{where}: genome_build is {r['genome_build']!r}")
+        for field in ("variation", "gene_symbol", "disease", "expert_panel"):
+            if not r[field]:
+                problems.append(f"{where}: {field} is empty")
+    return problems
+
+
 def to_input(record: dict) -> tuple[dict, bool]:
     variation = record.get("variation") or ""
     filled = False
@@ -152,6 +182,10 @@ def main():
         records.append(rec)
         if was_filled:
             filled.append(f"{rec['id']} {rec['gene_symbol']}: {rec['variation']}")
+
+    problems = check_format(records)
+    if problems:
+        sys.exit(f"{len(problems)} records do not have the approved format; nothing written:\n  " + "\n  ".join(problems[:10]))
 
     with open(out_file, "w", encoding="utf-8") as f:
         for rec in records:
