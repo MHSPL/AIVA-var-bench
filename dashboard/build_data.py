@@ -276,12 +276,32 @@ VARIANT_COLUMNS = ["id", "gene", "variation", "variant_key", "disease", "categor
 NO_CALL = "-"
 
 
+def base36(n: int) -> str:
+    """Same digits as JavaScript's n.toString(36)."""
+    digits = "0123456789abcdefghijklmnopqrstuvwxyz"
+    out = ""
+    while True:
+        n, r = divmod(n, 36)
+        out = digits[r] + out
+        if not n:
+            return out
+
+
+def model_criteria(p: dict) -> list[str]:
+    """The criteria a model cited for one variant, as it wrote them (strength modifiers kept)."""
+    return list(p.get("criteria_raw") or p.get("criteria") or [])
+
+
 def build_variant_table(unified_dict: dict, model_predictions: dict, model_keys: list[str]) -> dict:
     """
-    Every benchmark variant with the expert classification and each model's call,
-    kept compact for embedding in the page: one row per variant (VARIANT_COLUMNS),
-    and per model a string with one character per row, the index of the call in
-    CLASSIFICATION_LABELS or NO_CALL.
+    Every benchmark variant with the expert classification and each model's call
+    and ACMG criteria, kept compact for embedding in the page:
+
+    rows            one row per variant (VARIANT_COLUMNS)
+    calls[model]    one character per row: the index of the call in
+                    CLASSIFICATION_LABELS, or NO_CALL
+    criteria[model] per row, the criteria the model cited as base-36 indices
+                    into criteria_vocab separated by spaces; rows separated by "|"
     """
     ids = sorted(unified_dict, key=lambda v: (unified_dict[v]["gene"], unified_dict[v]["variation"], v))
     rows = []
@@ -291,11 +311,17 @@ def build_variant_table(unified_dict: dict, model_predictions: dict, model_keys:
                      u["ground_truth"], " ".join(u["criteria_met_raw"]),
                      sum(criterion_points(c) for c in u["criteria_met_raw"])])
     code = {label: str(i) for i, label in enumerate(CLASSIFICATION_LABELS)}
-    calls = {}
+    counts = Counter(c for k in model_keys for vid in ids if vid in model_predictions[k]
+                     for c in model_criteria(model_predictions[k][vid]))
+    vocab = [c for c, _ in counts.most_common()]
+    index = {c: base36(i) for i, c in enumerate(vocab)}
+    calls, criteria = {}, {}
     for k in model_keys:
         preds = model_predictions[k]
         calls[k] = "".join(code.get(preds[vid]["prediction"], NO_CALL) if vid in preds else NO_CALL for vid in ids)
-    return {"columns": VARIANT_COLUMNS, "labels": CLASSIFICATION_LABELS, "rows": rows, "calls": calls}
+        criteria[k] = "|".join(" ".join(index[c] for c in model_criteria(preds[vid])) if vid in preds else "" for vid in ids)
+    return {"columns": VARIANT_COLUMNS, "labels": CLASSIFICATION_LABELS, "rows": rows, "calls": calls,
+            "criteria_vocab": vocab, "criteria": criteria}
 
 
 def build_dashboard_dataset():
@@ -731,6 +757,20 @@ def carry_over_archived_models(payload: dict, missing: set[str]) -> None:
         old_calls = dict(zip((r[0] for r in old_table.get("rows", [])), old_table.get("calls", {}).get(k, "")))
         table = payload["variant_table"]
         table["calls"][k] = "".join(old_calls.get(r[0], NO_CALL) for r in table["rows"])
+        # Criteria: decode with the previous vocabulary, re-encode with this one
+        old_vocab = old_table.get("criteria_vocab", [])
+        old_crit = old_table.get("criteria", {}).get(k, "")
+        old_lists = dict(zip((r[0] for r in old_table.get("rows", [])), old_crit.split("|") if old_crit else []))
+        vocab = table["criteria_vocab"]
+
+        def encode(c: str) -> str:
+            if c not in vocab:
+                vocab.append(c)
+            return base36(vocab.index(c))
+
+        table["criteria"][k] = "|".join(
+            " ".join(encode(old_vocab[int(t, 36)]) for t in old_lists.get(r[0], "").split())
+            for r in table["rows"])
         print(f"  Carried over {m['name']} from the previous build (raw results not found).")
 
 

@@ -17,8 +17,11 @@ Variant Classification has three tabs:
 
 **Download variants (CSV)** in the header exports every benchmark variant
 (gene, HGVS, variant key, disease, category, expert panel, expert
-classification, criteria and points) with one column per model holding its
-call. Models imported in the browser are included.
+classification, criteria and points) with two columns per model: its
+classification and the ACMG criteria it cited, as the model wrote them
+(strength modifiers kept, e.g. `PM2_Supporting`). Models imported in the
+browser are included; their criteria come from `aiva_criteria`, `criteria`,
+or Claude Code's `criteria.met`.
 
 ## Adding a model
 
@@ -57,6 +60,12 @@ once by `scripts/build_variant_set.py` from the reference classifiers named in
 its header. `build_data.py` restricts every view to this list, and browser
 imports are scored against it. The list stays fixed as models are added;
 delete the file to build on the whole cohort, or write a new version on purpose.
+
+`data/aiva_bench_variants_v1_input.jsonl` is the classifier input for the same
+2,894 variants (`python scripts/build_variant_input.py`): id, variation,
+variation_original, variant_key, gene_symbol, disease, mode_of_inheritance,
+genome_build (GRCh37) and expert_panel, with no expert classification or
+criteria. Run a new model on it, then add the results file to `models.tsv`.
 
 ## Local server
 

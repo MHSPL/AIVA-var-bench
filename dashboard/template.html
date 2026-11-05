@@ -465,7 +465,7 @@ footer code { font-size: 12px; }
     <div class="actions">
       <button class="btn" id="themeBtn" type="button">Theme: System</button>
       <button class="btn" id="refreshBtn" type="button" hidden>Rebuild data</button>
-      <button class="btn cls-only" id="csvBtn" type="button" title="Every benchmark variant with the expert classification and each model's call">Download variants (CSV)</button>
+      <button class="btn cls-only" id="csvBtn" type="button" title="Every benchmark variant with the expert classification and criteria, and each model's call and ACMG criteria">Download variants (CSV)</button>
       <button class="btn cls-only" id="modelsBtn" type="button">Models</button>
       <button class="btn btn-primary cls-only" id="importBtn" type="button">Import results</button>
     </div>
@@ -637,7 +637,7 @@ footer code { font-size: 12px; }
     <div class="dlg-body">
       <div>
         <h3>Import model results</h3>
-        <p>A JSONL file (one record per line) or a JSON array. Each record needs a variant id (<code>variant_id</code> or <code>id</code>) and a call (<code>aiva_classification</code>, <code>classification</code> or <code>prediction</code>). <span id="impWhere">Scoring runs in this browser against the benchmark's variants; nothing is uploaded, and the model stays only until the page is reloaded.</span></p>
+        <p>A JSONL file (one record per line) or a JSON array. Each record needs a variant id (<code>variant_id</code> or <code>id</code>) and a call (<code>aiva_classification</code>, <code>classification</code> or <code>prediction</code>); a criteria list (<code>aiva_criteria</code> or <code>criteria</code>), if present, goes into the variants CSV. <span id="impWhere">Scoring runs in this browser against the benchmark's variants; nothing is uploaded, and the model stays only until the page is reloaded.</span></p>
       </div>
       <div class="drop" id="drop" tabindex="0" role="button">
         <input type="file" id="fileInput" accept=".jsonl,.json,.ndjson" hidden>
@@ -1370,22 +1370,49 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
   }
 
   // ---------- variants CSV ----------
-  // Every benchmark variant with the expert classification and each model's call.
+  // Every benchmark variant with the expert classification and criteria, and
+  // each model's call and the ACMG criteria it cited (as the model wrote them).
   const CSV_COLUMN = { id: "variant_id", variation: "variant", ground_truth: "expert_classification" };
   const csvCell = (v) => { const t = v == null ? "" : String(v); return /[",\r\n]/.test(t) ? `"${t.replace(/"/g, '""')}"` : t; };
+
+  // Per row, the criteria a model cited, decoded from the table's vocabulary (see build_variant_table).
+  function criteriaLists(t, key) {
+    const enc = (t.criteria || {})[key];
+    const vocab = t.criteria_vocab || [];
+    const rows = enc ? enc.split("|") : [];
+    return t.rows.map((_, i) => (rows[i] || "").split(" ").filter(Boolean).map((x) => vocab[parseInt(x, 36)]).join(" "));
+  }
+
+  // Criteria from an imported record: a list (aiva_criteria or criteria), or Claude Code's criteria.met object.
+  function criteriaOf(r) {
+    const c = r.aiva_criteria || r.criteria;
+    if (Array.isArray(c)) return c.map(String);
+    if (c && typeof c === "object" && c.met && typeof c.met === "object") return Object.keys(c.met);
+    return [];
+  }
+
+  function encodeCriteria(t, list) {
+    t.criteria_vocab = t.criteria_vocab || [];
+    return list.map((c) => {
+      let i = t.criteria_vocab.indexOf(c);
+      if (i < 0) i = t.criteria_vocab.push(c) - 1;
+      return i.toString(36);
+    }).join(" ");
+  }
 
   function downloadVariantsCsv() {
     const t = D.variant_table;
     if (!t || !t.rows || !t.rows.length) { toast("This build has no variant table; rebuild with python scripts/update_dashboard.py."); return; }
     const ms = D.models.filter((m) => t.calls[m.key]);
-    const head = [...t.columns.map((c) => CSV_COLUMN[c] || c), ...ms.map(fullName)];
+    const crit = ms.map((m) => criteriaLists(t, m.key));
+    const head = [...t.columns.map((c) => CSV_COLUMN[c] || c), ...ms.flatMap((m) => [`${fullName(m)} classification`, `${fullName(m)} criteria`])];
     const lines = [head.map(csvCell).join(",")];
     t.rows.forEach((r, i) => {
-      const calls = ms.map((m) => t.labels[t.calls[m.key][i]] || "");
-      lines.push([...r, ...calls].map(csvCell).join(","));
+      const perModel = ms.flatMap((m, j) => [t.labels[t.calls[m.key][i]] || "", crit[j][i]]);
+      lines.push([...r, ...perModel].map(csvCell).join(","));
     });
     download(new Blob([lines.join("\r\n") + "\r\n"], { type: "text/csv" }), `aiva-bench-variants-${t.rows.length}.csv`);
-    toast(`Downloaded ${int(t.rows.length)} variants with calls from ${ms.length} models.`);
+    toast(`Downloaded ${int(t.rows.length)} variants with calls and criteria from ${ms.length} models.`);
   }
 
   // ---------- tabs & URL ----------
@@ -1464,11 +1491,11 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
   }
 
   function scoreImport(name, family, records) {
-    const preds = {};
+    const preds = {}, crits = {};
     records.forEach((r) => {
       const id = r.variant_id || r.id;
       const cls = normalizeClass(r.aiva_classification || r.classification || r.prediction);
-      if (id && cls && GT[id] != null) preds[id] = cls;
+      if (id && cls && GT[id] != null) { preds[id] = cls; crits[id] = criteriaOf(r); }
     });
     const ids = Object.keys(preds);
     const n = ids.length;
@@ -1517,7 +1544,11 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     });
     D.confusion_matrices[key] = { matrix_5: m5, matrix_3: m3 };
     const t = D.variant_table;
-    if (t && t.rows) t.calls[key] = t.rows.map((r) => (preds[r[0]] ? String(t.labels.indexOf(preds[r[0]])) : "-")).join("");
+    if (t && t.rows) {
+      t.calls[key] = t.rows.map((r) => (preds[r[0]] ? String(t.labels.indexOf(preds[r[0]])) : "-")).join("");
+      t.criteria = t.criteria || {};
+      t.criteria[key] = t.rows.map((r) => encodeCriteria(t, crits[r[0]] || [])).join("|");
+    }
     return { key, n };
   }
 
@@ -1593,7 +1624,7 @@ window.BENCHMARK_DATA = __BENCHMARK_DATA__;
     D.models = D.models.filter((m) => m.key !== key);
     ["confusion_matrices", "categories_data", "criteria_data", "safety_data", "concordance"].forEach((k) => { if (D[k]) delete D[k][key]; });
     Object.values(D.concordance || {}).forEach((row) => delete row[key]);
-    if (D.variant_table) delete D.variant_table.calls[key];
+    if (D.variant_table) { delete D.variant_table.calls[key]; if (D.variant_table.criteria) delete D.variant_table.criteria[key]; }
   }
 
   function applyServerData(data) {
