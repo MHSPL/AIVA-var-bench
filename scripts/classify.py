@@ -153,17 +153,87 @@ def load_variants(filepath: Path) -> list[dict]:
 
 
 def get_variant_data(variant: dict) -> dict:
-    """Extract variant data for API call."""
-    # Prefer the variation field (primary HGVS)
-    if variant.get("variation"):
-        return {"hgvs": variant["variation"]}
+    """Extract variant data for API call with smart fallback."""
+    cand = variant.get("variation", "").strip()
+    if not cand or cand.lower() in ("single allele", "none", "n/a"):
+        cand = None
 
-    # Fallback to first HGVS expression
-    hgvs_list = variant.get("hgvs_expressions", [])
-    if hgvs_list:
-        return {"hgvs": hgvs_list[0]}
+    exprs = variant.get("hgvs_expressions", [])
+    GRCH37_NC_VERSIONS = {
+        "NC_000001.10", "NC_000002.11", "NC_000003.11", "NC_000004.11", "NC_000005.9", "NC_000006.11",
+        "NC_000007.13", "NC_000008.10", "NC_000009.11", "NC_000010.10", "NC_000011.9", "NC_000012.11",
+        "NC_000013.10", "NC_000014.8", "NC_000015.9", "NC_000016.9", "NC_000017.10", "NC_000018.9",
+        "NC_000019.9", "NC_000020.10", "NC_000021.8", "NC_000022.10", "NC_000023.10", "NC_000024.9"
+    }
+
+    def is_clean(s: str) -> bool:
+        return bool(s and "(" not in s and ")" not in s and "[" not in s and "]" not in s and not s.startswith("NR_"))
+
+    # 1. Look for clean GRCh37 NC expressions first (most reliable for genomic mapping on GRCh37)
+    for e in exprs:
+        if e.startswith("NC_") and is_clean(e):
+            acc = e.split(":")[0]
+            if acc in GRCH37_NC_VERSIONS:
+                return {"hgvs": e}
+
+    # 2. Look for clean NM_ coding transcript expressions
+    for e in exprs:
+        if e.startswith("NM_") and is_clean(e) and (":c." in e or ":g." in e):
+            return {"hgvs": e}
+
+    # 3. Clean candidate variation if clean
+    if cand and is_clean(cand) and (":c." in cand or ":g." in cand):
+        return {"hgvs": cand.split(" ")[0].strip()}
+
+    # 4. Any other clean expression
+    for e in exprs:
+        if is_clean(e) and (":c." in e or ":g." in e):
+            return {"hgvs": e}
+
+    # 5. Fallback to variant_key coordinates
+    if variant.get("variant_key"):
+        parts = variant["variant_key"].split(":")
+        if len(parts) == 4:
+            return {
+                "chromosome": parts[0].replace("chr", ""),
+                "position": int(parts[1]),
+                "ref": parts[2],
+                "alt": parts[3]
+            }
 
     return {}
+
+
+def already_classified(paths, model: Optional[str] = None) -> set[str]:
+    """
+    variant_ids a previous run classified without error, for this model.
+    Read from the result files themselves so coverage cannot drift out of sync
+    with what is actually on disk. A run that half-finished still counts for the
+    rows it wrote. Rows with an error are not counted, so they get retried.
+    """
+    done = set()
+    files = []
+    for path in paths:
+        path = Path(path)
+        if path.is_dir():
+            files.extend(sorted(path.glob("*.jsonl")))
+        elif path.exists():
+            files.append(path)
+    for path in files:
+        with open(path, "r", encoding="utf-8") as f:
+            for line in f:
+                try:
+                    rec = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                cls = rec.get("aiva_classification")
+                if rec.get("error") or not cls or cls == "Not classified":
+                    continue
+                if model and rec.get("model_used") != model:
+                    continue
+                if rec.get("variant_id"):
+                    done.add(rec["variant_id"])
+    return done
 
 
 async def classify_batch(
@@ -171,7 +241,8 @@ async def classify_batch(
     variants: list[dict],
     concurrency: int = CONCURRENCY_LIMIT,
     model: Optional[str] = None,
-    progress_callback=None
+    progress_callback=None,
+    sink=None
 ) -> list[dict]:
     """
     Classify a batch of variants with concurrency control.
@@ -182,13 +253,21 @@ async def classify_batch(
         concurrency: Max concurrent requests
         model: LLM model to use for classification
         progress_callback: Optional callback(completed, total)
+        sink: Optional open file handle for real-time streaming results.
 
     Returns:
         List of result dicts
     """
     semaphore = asyncio.Semaphore(concurrency)
+    sink_lock = asyncio.Lock()
     results = []
     completed = 0
+
+    async def emit(res: dict):
+        if sink is not None:
+            async with sink_lock:
+                sink.write(json.dumps(res) + "\n")
+                sink.flush()
 
     async def classify_one(variant: dict) -> dict:
         nonlocal completed
@@ -198,12 +277,14 @@ async def classify_batch(
 
             variant_data = get_variant_data(variant)
             if not variant_data:
-                return {
+                res = {
                     "variant_id": variant.get("id"),
                     "variant": variant.get("variation"),
                     "error": "No valid variant identifier",
                     "execution_time_ms": 0
                 }
+                await emit(res)
+                return res
 
             response = await client.classify_variant(
                 variant_data=variant_data,
@@ -230,29 +311,23 @@ async def classify_batch(
             if "error" in response:
                 result["error"] = response["error"]
             else:
-                # Extract classification from response
-                # Handle nested data structure
                 data = response.get("data", response)
                 result["aiva_classification"] = data.get("classification")
                 result["aiva_confidence"] = data.get("confidence")
                 result["aiva_criteria"] = data.get("criteria_met", [])
                 result["aiva_evidence"] = data.get("evidence_summary", {})
 
+            await emit(result)
+
             completed += 1
             if progress_callback:
                 progress_callback(completed, len(variants))
 
-            # Small delay after each request to avoid bursting
             await asyncio.sleep(1)
-
             return result
 
-    # Run all classifications with semaphore controlling concurrency
-    # Semaphore ensures only `concurrency` requests run at a time
-    # New requests start as soon as a slot frees up
     tasks = [classify_one(v) for v in variants]
     results = await asyncio.gather(*tasks)
-
     return results
 
 
@@ -274,6 +349,10 @@ async def main():
                         help="LLM model to use (e.g., openai/gpt-4o, google/gemini-2.5-flash)")
     parser.add_argument("--limit", type=int, help="Limit number of variants to classify")
     parser.add_argument("--api-url", default=AIVA_API_URL, help="AIVA API URL")
+    parser.add_argument("--no-resume", action="store_true",
+                        help="classify every input row, even ones already done, and overwrite the output file")
+    parser.add_argument("--skip-dir", action="append",
+                        help="extra results dir or file whose variants count as done (repeatable; default: the output's directory)")
 
     args = parser.parse_args()
 
@@ -281,7 +360,6 @@ async def main():
     if args.input:
         input_path = Path(args.input)
     else:
-        # Find most recent sample file
         sample_files = list(DATA_DIR.glob("sample_*.jsonl"))
         if not sample_files:
             print("Error: No sample files found. Run parse_erepo.py first.")
@@ -293,21 +371,39 @@ async def main():
     variants = load_variants(input_path)
     print(f"Loaded {len(variants)} variants")
 
-    if args.limit:
-        variants = variants[:args.limit]
-        print(f"Limited to {len(variants)} variants")
-
-    # Check for API token
-    if not AIVA_API_TOKEN:
-        print("Error: AIVA_API_TOKEN not set. Add it to .env file.")
-        sys.exit(1)
-
     # Setup output path
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     if args.output:
         output_path = Path(args.output)
     else:
         output_path = RESULTS_DIR / f"classifications_{timestamp}.jsonl"
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # Check for already classified variants to resume
+    write_mode = "w" if args.no_resume else "a"
+    if not args.no_resume:
+        sources = [output_path.parent]
+        if args.skip_dir:
+            sources.extend(args.skip_dir)
+        done = already_classified(sources, model=args.model)
+        if done:
+            print(f"Already done for {args.model or 'AIVA default'}: {len(done)} (from {', '.join(str(s) for s in sources)})")
+            variants = [v for v in variants if v.get("id") not in done]
+            if not variants:
+                print("Nothing left to classify.")
+                return
+
+    if args.limit:
+        variants = variants[:args.limit]
+        print(f"Limited to {len(variants)} variants")
+
+    print(f"To classify: {len(variants)}")
+
+    # Check for API token
+    if not AIVA_API_TOKEN:
+        print("Error: AIVA_API_TOKEN not set. Add it to .env file.")
+        sys.exit(1)
 
     # Progress callback
     def show_progress(completed: int, total: int):
@@ -319,19 +415,20 @@ async def main():
     print(f"\nClassifying variants (concurrency={args.concurrency}, model={model_display})...")
     start_time = time.time()
 
-    async with AIVAClient(base_url=args.api_url) as client:
-        results = await classify_batch(
-            client, variants,
-            concurrency=args.concurrency,
-            model=args.model,
-            progress_callback=show_progress
-        )
+    with open(output_path, write_mode, encoding="utf-8") as sink:
+        async with AIVAClient(base_url=args.api_url) as client:
+            results = await classify_batch(
+                client, variants,
+                concurrency=args.concurrency,
+                model=args.model,
+                progress_callback=show_progress,
+                sink=sink
+            )
 
     elapsed = time.time() - start_time
     print(f"\n\nCompleted in {elapsed:.1f}s ({elapsed/len(variants):.1f}s per variant)")
-
-    # Save results
-    save_results(results, output_path)
+    verb = "Wrote" if write_mode == "w" else "Appended"
+    print(f"{verb} {len(results)} results to {output_path}")
 
     # Quick stats
     errors = sum(1 for r in results if r.get("error"))

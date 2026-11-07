@@ -48,7 +48,7 @@ def normalize_classification(classification: str) -> str:
 
     # Check VUS patterns FIRST (before pathogenic/benign which are substrings)
     # AIVA returns "VUS (leaning pathogenic)" or "VUS (leaning benign)"
-    if lower.startswith("vus") or "uncertain significance" in lower:
+    if lower.startswith("vus") or "uncertain" in lower:
         return "Uncertain Significance"
 
     # Then check compound terms before simple ones

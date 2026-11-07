@@ -1,0 +1,14 @@
+# key	name	provider	method	path	format	color	color_dark	status
+aiva_opus_rerun	Opus 5.5	Anthropic	AIVA agent	Results_Claude_Opus_5_5_Analysis_rerun/opus_full.jsonl	jsonl	#BD3027	#D04438	active
+aiva_sonnet_rerun	Sonnet 5.5	Anthropic	AIVA agent	Results_Claude_Sonnet_5_5_Analysis_rerun/sonnet_full.jsonl	jsonl	#046C9A	#237CAB	active
+aiva_haiku_rerun	Haiku 5.5	Anthropic	AIVA agent	Results_Claude_Haiku_5_5_Analysis_rerun/haiku_full.jsonl	jsonl	#6C8645		active
+claude_code_opus	Opus 5.5	Anthropic	Direct prompt (Claude Code)	Claude_code_results/acmg_classifications_manual_opus.json	json_array	#FD6467		active
+claude_code_sonnet	Sonnet 5.5	Anthropic	Direct prompt (Claude Code)	Claude_code_results/acmg_classifications_manual_sonnet.json	json_array	#7FC0C6		active
+claude_code_haiku	Haiku 5.5	Anthropic	Direct prompt (Claude Code)	Claude_code_results/acmg_classifications_manual_Haiku.json	json_array	#D8A499		active
+aiva_gemini_pro	Gemini 3 Pro	Google	AIVA agent	Results_Gemini_Pro_Analysis/classifications_google_gemini-3-pro-preview_combined.jsonl	jsonl	#E1AF00		active
+aiva_gemini_flash	Gemini 3.8 Flash	Google	AIVA agent	Results_Gemini_3_8_Flash_Analysis/gemini_flash_full.jsonl	jsonl	#C27D38		active
+aiva_gemini_argon	Gemini 4 Argon	Google	AIVA agent	Results_Gemini_4_Argon_Analysis/argon_full.jsonl	jsonl	#184f95	#4f86d0	active
+aiva_gpt_sol	GPT-6.1 Sol	OpenAI	AIVA agent	Results_GPT_6_1_Sol_Analysis/sol_full.jsonl	jsonl	#0A9F9D		active
+aiva_gpt_astra	GPT-6 Astra	OpenAI	AIVA agent	Results_GPT_6_Astra_Analysis/astra_full.jsonl	jsonl	#eda100	#c98500	active
+baseline_bias	BIAS-2015 v3	Rule-based	ACMG rules engine	data:bias_classification	unified	#79402E	#A26552	active
+baseline_intervar	InterVar	Rule-based	ACMG rules engine	data:intervar_classification	unified	#9986A5		active

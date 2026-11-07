@@ -163,6 +163,19 @@ def main():
     results = load_results(input_path)
     print(f"Loaded {len(results)} results")
 
+    # Deduplicate by variant_id keeping valid over error and later over earlier
+    by_id = {}
+    for r in results:
+        vid = r.get("variant_id") or r.get("id")
+        if not vid:
+            continue
+        if vid in by_id and not by_id[vid].get("error") and (r.get("error") or r.get("aiva_classification") == "Not classified"):
+            continue
+        by_id[vid] = r
+    if by_id:
+        results = list(by_id.values())
+        print(f"Unique variants: {len(results)}")
+
     metrics = calculate_metrics(results)
 
     if not args.quiet:

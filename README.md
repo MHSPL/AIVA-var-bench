@@ -122,6 +122,8 @@ aiva-var-bench/
 ├── data/
 │   ├── erepo-tabbed.tsv         # Raw eRepo download
 │   ├── erepo_bias_intervar_merged.jsonl  # Merged dataset (8,387 variants) - PRIMARY BASELINE
+│   ├── aiva_bench_variants_v1.tsv        # AIVA Bench variant set (2,894 variants)
+│   ├── aiva_bench_variants_v1_input.jsonl # Classifier input for that set (no expert labels)
 │   └── bias_unified.jsonl       # Legacy BIAS-2015 dataset (7,617 variants, deprecated)
 ├── Results_Gemini_Pro_Analysis/ # Main benchmark results
 │   ├── BENCHMARK_FINDINGS.md    # Comprehensive benchmark report
@@ -308,6 +310,7 @@ The comparison is **fair** - all tools are evaluated on the exact same variants 
 | `generate_results.py` | Metrics calculation and figure generation |
 | `metrics.py` | Shared metric utilities |
 | `retry_errors.py` | Re-run failed classifications in a results file |
+| `build_variant_input.py` | Write the classifier input JSONL for the AIVA Bench variant set |
 
 ## Metrics Explained
 

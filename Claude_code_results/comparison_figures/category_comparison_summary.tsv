@@ -1,0 +1,13 @@
+category	count	cc_macro_f1	rerun_macro_f1	delta_f1	cc_exact_acc	rerun_exact_acc	delta_exact_acc	cc_dir_acc	rerun_dir_acc	delta_dir_acc
+Cancer Predisposition	2382	34.27	35.54	1.27	44.5	51.26	6.76	58.23	57.72	-0.5
+Metabolic Disorders	2677	39.64	36.13	-3.51	42.62	40.53	-2.09	57.19	49.46	-7.73
+Cardiovascular Disorders	341	28.66	39.22	10.56	38.42	46.92	8.5	50.73	58.06	7.33
+Hematologic Disorders	695	40.68	28.26	-12.41	42.3	33.81	-8.49	59.14	39.42	-19.71
+Immunodeficiency Disorders	379	47.67	41.92	-5.75	53.56	53.83	0.26	70.71	65.17	-5.54
+Neurodevelopmental Disorders	387	16.45	22.96	6.51	21.71	28.42	6.72	41.34	35.14	-6.2
+Neuromuscular Disorders	524	34.63	35.45	0.82	52.29	53.24	0.95	62.79	56.3	-6.49
+Ophthalmologic Disorders	332	36.91	43.75	6.84	56.33	55.42	-0.9	67.77	59.34	-8.43
+Hearing Disorders	196	25.56	32.25	6.7	33.16	36.73	3.57	46.43	41.84	-4.59
+RASopathies	407	23.23	21.0	-2.23	28.26	25.55	-2.7	56.51	42.26	-14.25
+Vascular Disorders	36	29.32	35.9	6.58	47.22	36.11	-11.11	61.11	41.67	-19.44
+Epilepsy / Neurological	31	10.67	24.64	13.98	19.35	38.71	19.35	35.48	41.94	6.45

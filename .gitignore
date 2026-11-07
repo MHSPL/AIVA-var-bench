@@ -1,7 +1,8 @@
 # ─── Python ───
 *.pyc
 __pycache__
-venv
+venv/
+.venv/
 .env
 
 # ─── OS / editor junk ───
@@ -15,13 +16,33 @@ venv
 *.csv
 !data/bias_unified.jsonl
 !data/erepo_bias_intervar_merged.jsonl
+!data/aiva_bench_core_v1.jsonl
+!data/aiva_bench_variants_*_input.jsonl
 !data/bias_2015/
+!Claude_code_results/*.json
 
 # ─── Generated results ───
 results/
+Results_Claude_Sonnet_5_5_Analysis_rerun/partial_1454/
+!Results_Claude_Sonnet_5_5_Analysis_rerun/sonnet_full.jsonl
+!Results_Claude_Sonnet_5_5_Analysis_rerun/sonnet_metrics.json
+!Results_Gemini_4_Argon_Analysis/argon_full.jsonl
+!Results_GPT_6_Astra_Analysis/astra_full.jsonl
+!Results_Claude_Opus_5_5_Analysis_rerun/opus_full.jsonl
+!Results_Claude_Opus_5_5_Analysis_rerun/opus_metrics.json
+!Results_Claude_Sonnet_5_5_Analysis/sonnet_full.jsonl
+!Results_Claude_Opus_5_5_Analysis/opus_full.jsonl
+!Results_GPT_6_1_Sol_Analysis/sol_full.jsonl
+!Results_Gemini_3_8_Flash_Analysis/gemini_flash_full.jsonl
+
+# ─── Large database archives & tables ───
+*.tar
+*.tar.gz
+data/bias_v3_tables/
 
 # ─── Logs & ad-hoc debug output ───
 *.log
+*.pid
 /nohup.out
 /log*
 /debug_*
@@ -61,3 +82,10 @@ Results_Gemini_Pro_Analysis/figures/*.png
 Results_Gemini_Pro_Analysis/figures/*.pdf
 Results_Gemini_Pro_Analysis/figures/pdf/*.png
 Results_Gemini_Pro_Analysis/figures/png/*.pdf
+
+# ─── Results imported through the dashboard server ───
+!imported_results/*.json
+!Results_GPT_6_1_Sol_Analysis/sol_metrics.jsonl
+
+!imported_results/*.json
+!Results_GPT_6_1_Sol_Analysis/sol_metrics.json

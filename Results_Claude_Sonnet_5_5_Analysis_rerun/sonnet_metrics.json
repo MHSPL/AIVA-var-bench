@@ -1,0 +1,464 @@
+{
+  "timestamp": "2026-10-28T10:47:45.410632",
+  "summary": {
+    "total_variants": 8387,
+    "successful": 8387,
+    "errors": 0,
+    "compared": 8387,
+    "error_rate": 0.0
+  },
+  "accuracy": {
+    "exact_match": 0.5106,
+    "directional": 0.6385,
+    "exact_matches": 4282,
+    "directional_matches": 5355
+  },
+  "per_class_metrics": {
+    "Pathogenic": {
+      "precision": 0.9476,
+      "recall": 0.1173,
+      "f1": 0.2088,
+      "support": 2003,
+      "predicted": 248,
+      "true_positives": 235,
+      "false_positives": 13,
+      "false_negatives": 1768
+    },
+    "Likely Pathogenic": {
+      "precision": 0.2945,
+      "recall": 0.2516,
+      "f1": 0.2714,
+      "support": 1546,
+      "predicted": 1321,
+      "true_positives": 389,
+      "false_positives": 932,
+      "false_negatives": 1157
+    },
+    "Uncertain Significance": {
+      "precision": 0.4774,
+      "recall": 0.9575,
+      "f1": 0.6371,
+      "support": 2779,
+      "predicted": 5574,
+      "true_positives": 2661,
+      "false_positives": 2913,
+      "false_negatives": 118
+    },
+    "Likely Benign": {
+      "precision": 0.6633,
+      "recall": 0.2943,
+      "f1": 0.4077,
+      "support": 1118,
+      "predicted": 496,
+      "true_positives": 329,
+      "false_positives": 167,
+      "false_negatives": 789
+    },
+    "Benign": {
+      "precision": 0.893,
+      "recall": 0.7099,
+      "f1": 0.791,
+      "support": 941,
+      "predicted": 748,
+      "true_positives": 668,
+      "false_positives": 80,
+      "false_negatives": 273
+    }
+  },
+  "per_direction_metrics": {
+    "pathogenic": {
+      "precision": 0.9834,
+      "recall": 0.4348,
+      "f1": 0.603,
+      "support": 3549
+    },
+    "vus": {
+      "precision": 0.4774,
+      "recall": 0.9575,
+      "f1": 0.6371,
+      "support": 2779
+    },
+    "benign": {
+      "precision": 0.9252,
+      "recall": 0.559,
+      "f1": 0.6969,
+      "support": 2059
+    }
+  },
+  "confusion_matrix_5class": {
+    "Pathogenic": {
+      "Pathogenic": 235,
+      "Likely Pathogenic": 907,
+      "Uncertain Significance": 860,
+      "Likely Benign": 1,
+      "Benign": 0
+    },
+    "Likely Pathogenic": {
+      "Pathogenic": 12,
+      "Likely Pathogenic": 389,
+      "Uncertain Significance": 1145,
+      "Likely Benign": 0,
+      "Benign": 0
+    },
+    "Uncertain Significance": {
+      "Pathogenic": 1,
+      "Likely Pathogenic": 25,
+      "Uncertain Significance": 2661,
+      "Likely Benign": 73,
+      "Benign": 19
+    },
+    "Likely Benign": {
+      "Pathogenic": 0,
+      "Likely Pathogenic": 0,
+      "Uncertain Significance": 728,
+      "Likely Benign": 329,
+      "Benign": 61
+    },
+    "Benign": {
+      "Pathogenic": 0,
+      "Likely Pathogenic": 0,
+      "Uncertain Significance": 180,
+      "Likely Benign": 93,
+      "Benign": 668
+    }
+  },
+  "confusion_matrix_3class": {
+    "pathogenic": {
+      "pathogenic": 1543,
+      "vus": 2005,
+      "benign": 1
+    },
+    "vus": {
+      "pathogenic": 26,
+      "vus": 2661,
+      "benign": 92
+    },
+    "benign": {
+      "pathogenic": 0,
+      "vus": 908,
+      "benign": 1151
+    }
+  },
+  "criteria_analysis": {
+    "avg_jaccard_normalized": 0.5223,
+    "direction_agreement": 0.8299,
+    "samples_evaluated": 8266,
+    "unique_criteria_in_ground_truth": 27,
+    "unique_criteria_in_predictions": 25,
+    "pathogenic_evidence_metrics": {
+      "precision": 0.9004,
+      "recall": 0.5679,
+      "f1": 0.6965
+    },
+    "benign_evidence_metrics": {
+      "precision": 0.676,
+      "recall": 0.4246,
+      "f1": 0.5216
+    },
+    "per_criterion": {
+      "BA1": {
+        "precision": 0.8673,
+        "recall": 0.8169,
+        "f1": 0.8414,
+        "tp": 647,
+        "fp": 99,
+        "fn": 145,
+        "support": 792,
+        "predicted": 746,
+        "type": "benign"
+      },
+      "BP1": {
+        "precision": 0.9286,
+        "recall": 0.7027,
+        "f1": 0.8,
+        "tp": 26,
+        "fp": 2,
+        "fn": 11,
+        "support": 37,
+        "predicted": 28,
+        "type": "benign"
+      },
+      "BP2": {
+        "precision": 0.75,
+        "recall": 0.0158,
+        "f1": 0.0309,
+        "tp": 3,
+        "fp": 1,
+        "fn": 187,
+        "support": 190,
+        "predicted": 4,
+        "type": "benign"
+      },
+      "BP3": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 7,
+        "support": 7,
+        "predicted": 0,
+        "type": "benign"
+      },
+      "BP4": {
+        "precision": 0.8337,
+        "recall": 0.4724,
+        "f1": 0.603,
+        "tp": 812,
+        "fp": 162,
+        "fn": 907,
+        "support": 1719,
+        "predicted": 974,
+        "type": "benign"
+      },
+      "BP5": {
+        "precision": 0.6,
+        "recall": 0.0151,
+        "f1": 0.0294,
+        "tp": 3,
+        "fp": 2,
+        "fn": 196,
+        "support": 199,
+        "predicted": 5,
+        "type": "benign"
+      },
+      "BP7": {
+        "precision": 0.6897,
+        "recall": 0.4527,
+        "f1": 0.5466,
+        "tp": 349,
+        "fp": 157,
+        "fn": 422,
+        "support": 771,
+        "predicted": 506,
+        "type": "benign"
+      },
+      "BS1": {
+        "precision": 0.3246,
+        "recall": 0.5145,
+        "f1": 0.398,
+        "tp": 284,
+        "fp": 591,
+        "fn": 268,
+        "support": 552,
+        "predicted": 875,
+        "type": "benign"
+      },
+      "BS2": {
+        "precision": 0.75,
+        "recall": 0.0467,
+        "f1": 0.0879,
+        "tp": 27,
+        "fp": 9,
+        "fn": 551,
+        "support": 578,
+        "predicted": 36,
+        "type": "benign"
+      },
+      "BS2_STAND": {
+        "precision": 0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "support": 1,
+        "predicted": 0,
+        "type": "benign"
+      },
+      "BS3": {
+        "precision": 0.5429,
+        "recall": 0.0802,
+        "f1": 0.1397,
+        "tp": 19,
+        "fp": 16,
+        "fn": 218,
+        "support": 237,
+        "predicted": 35,
+        "type": "benign"
+      },
+      "BS4": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0,
+        "tp": 0,
+        "fp": 1,
+        "fn": 28,
+        "support": 28,
+        "predicted": 1,
+        "type": "benign"
+      },
+      "PM1": {
+        "precision": 0.9279,
+        "recall": 0.842,
+        "f1": 0.8829,
+        "tp": 927,
+        "fp": 72,
+        "fn": 174,
+        "support": 1101,
+        "predicted": 999,
+        "type": "pathogenic"
+      },
+      "PM2": {
+        "precision": 0.9205,
+        "recall": 0.9068,
+        "f1": 0.9136,
+        "tp": 5028,
+        "fp": 434,
+        "fn": 517,
+        "support": 5545,
+        "predicted": 5462,
+        "type": "pathogenic"
+      },
+      "PM3": {
+        "precision": 0.9433,
+        "recall": 0.2014,
+        "f1": 0.332,
+        "tp": 283,
+        "fp": 17,
+        "fn": 1122,
+        "support": 1405,
+        "predicted": 300,
+        "type": "pathogenic"
+      },
+      "PM4": {
+        "precision": 0.89,
+        "recall": 0.8165,
+        "f1": 0.8517,
+        "tp": 89,
+        "fp": 11,
+        "fn": 20,
+        "support": 109,
+        "predicted": 100,
+        "type": "pathogenic"
+      },
+      "PM5": {
+        "precision": 0.6941,
+        "recall": 0.2395,
+        "f1": 0.3561,
+        "tp": 211,
+        "fp": 93,
+        "fn": 670,
+        "support": 881,
+        "predicted": 304,
+        "type": "pathogenic"
+      },
+      "PM6": {
+        "precision": 0.4545,
+        "recall": 0.1892,
+        "f1": 0.2672,
+        "tp": 35,
+        "fp": 42,
+        "fn": 150,
+        "support": 185,
+        "predicted": 77,
+        "type": "pathogenic"
+      },
+      "PP1": {
+        "precision": 0.8409,
+        "recall": 0.0395,
+        "f1": 0.0755,
+        "tp": 37,
+        "fp": 7,
+        "fn": 899,
+        "support": 936,
+        "predicted": 44,
+        "type": "pathogenic"
+      },
+      "PP2": {
+        "precision": 0.7512,
+        "recall": 0.7961,
+        "f1": 0.773,
+        "tp": 453,
+        "fp": 150,
+        "fn": 116,
+        "support": 569,
+        "predicted": 603,
+        "type": "pathogenic"
+      },
+      "PP3": {
+        "precision": 0.8972,
+        "recall": 0.9155,
+        "f1": 0.9063,
+        "tp": 2417,
+        "fp": 277,
+        "fn": 223,
+        "support": 2640,
+        "predicted": 2694,
+        "type": "pathogenic"
+      },
+      "PP4": {
+        "precision": 0.9759,
+        "recall": 0.0319,
+        "f1": 0.0617,
+        "tp": 81,
+        "fp": 2,
+        "fn": 2460,
+        "support": 2541,
+        "predicted": 83,
+        "type": "pathogenic"
+      },
+      "PS1": {
+        "precision": 0.4412,
+        "recall": 0.2143,
+        "f1": 0.2885,
+        "tp": 15,
+        "fp": 19,
+        "fn": 55,
+        "support": 70,
+        "predicted": 34,
+        "type": "pathogenic"
+      },
+      "PS2": {
+        "precision": 1.0,
+        "recall": 0.0304,
+        "f1": 0.059,
+        "tp": 8,
+        "fp": 0,
+        "fn": 255,
+        "support": 263,
+        "predicted": 8,
+        "type": "pathogenic"
+      },
+      "PS3": {
+        "precision": 0.7159,
+        "recall": 0.262,
+        "f1": 0.3836,
+        "tp": 252,
+        "fp": 100,
+        "fn": 710,
+        "support": 962,
+        "predicted": 352,
+        "type": "pathogenic"
+      },
+      "PS4": {
+        "precision": 0.8893,
+        "recall": 0.1576,
+        "f1": 0.2678,
+        "tp": 241,
+        "fp": 30,
+        "fn": 1288,
+        "support": 1529,
+        "predicted": 271,
+        "type": "pathogenic"
+      },
+      "PVS1": {
+        "precision": 0.9881,
+        "recall": 0.9445,
+        "f1": 0.9658,
+        "tp": 1412,
+        "fp": 17,
+        "fn": 83,
+        "support": 1495,
+        "predicted": 1429,
+        "type": "pathogenic"
+      }
+    }
+  },
+  "execution_time": {
+    "avg_ms": 34738.4,
+    "min_ms": 13842,
+    "max_ms": 200838
+  },
+  "error_types": {}
+}

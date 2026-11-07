@@ -1,0 +1,12 @@
+category	variant_count	vcep_count	gene_count	pathogenic	likely_pathogenic	vus	likely_benign	benign	expert_panels	genes
+Cancer Predisposition	382	4	10	133	71	85	49	44	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP; InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP; PTEN VCEP; VHL VCEP	APC; ATM; C11orf65; KLLN; MLH1; MSH2; MSH6; PMS2; PTEN; VHL
+Metabolic Disorders	925	3	3	375	327	174	17	32	Lysosomal Diseases VCEP; Monogenic Diabetes VCEP; Phenylketonuria VCEP	GCK; IDUA; PAH
+Cardiovascular Disorders	66	1	1	11	14	23	14	4	Pulmonary Hypertension VCEP	BMPR2
+Hematologic Disorders	135	2	2	45	18	33	25	14	Thrombosis VCEP; von Willebrand Disease  VCEP	SERPINC1; VWF
+Immunodeficiency Disorders	202	1	4	29	27	100	19	27	Severe Combined Immunodeficiency Disease  VCEP	DCLRE1C; IL7R; RAG1; RAG2
+Neuromuscular Disorders	103	2	6	44	12	9	19	19	Congenital Myopathies VCEP; Limb Girdle Muscular Dystrophy VCEP	ACTA1; ANO5; DYSF; NEB; SGCB; SGCD
+Ophthalmologic Disorders	332	2	2	67	52	157	39	17	Glaucoma VCEP; Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	MYOC; RPE65
+Hearing Disorders	147	1	8	33	32	34	25	23	Hearing Loss VCEP	CDH23; KCNQ4; MYO6; MYO7A; OTOF; SLC26A4; TECTA; USH2A
+RASopathies	268	2	15	74	20	35	54	85	Brain Malformations VCEP; RASopathy VCEP	AKT3; BRAF; HRAS; KRAS; LRRC56; MRAS; MTOR; NRAS; PIK3CA; PPP1CB; RAF1; RIT1; RRAS2; SHOC2; SOS1
+Vascular Disorders	36	1	2	11	4	9	10	2	Hereditary Hemorrhagic Telangiectasia VCEP	ACVRL1; ENG
+Epilepsy / Neurological	31	1	4	8	6	5	3	9	Epilepsy Sodium Channel VCEP	SCN1A; SCN2A; SCN3A; SCN8A

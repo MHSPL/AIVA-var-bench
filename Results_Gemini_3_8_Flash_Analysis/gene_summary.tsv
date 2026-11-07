@@ -1,0 +1,58 @@
+gene	variant_count	phenotypes	expert_panels	pathogenic	likely_pathogenic	vus	likely_benign	benign
+PAH	548	phenylketonuria	Phenylketonuria VCEP	222	197	111	4	14
+GCK	325	maturity-onset diabetes of the young type 2; monogenic diabetes	Monogenic Diabetes VCEP	143	117	56	6	3
+MYOC	207	juvenile open angle glaucoma; open-angle glaucoma; primary open angle glaucoma	Glaucoma VCEP	9	19	146	24	9
+PTEN	181	PTEN hamartoma tumor syndrome	PTEN VCEP	60	35	48	31	7
+RPE65	125	RPE65-related recessive retinopathy	Leber Congenital Amaurosis/early onset Retinal Dystrophy VCEP	58	33	11	15	8
+DCLRE1C	89	severe combined immunodeficiency due to DCLRE1C deficiency	Severe Combined Immunodeficiency Disease  VCEP	11	9	56	6	7
+ATM	79	ATM-related cancer predisposition	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	45	10	13	2	9
+SERPINC1	70	antithrombin III deficiency	Thrombosis VCEP	19	8	22	15	6
+SOS1	66	Noonan syndrome; RASopathy	RASopathy VCEP	11	4	8	17	26
+BMPR2	66	pulmonary arterial hypertension	Pulmonary Hypertension VCEP	11	14	23	14	4
+VWF	65	hereditary von Willebrand disease; von Willebrand disease 2; von Willebrand disease type 2A; von Willebrand disease type 2B; von Willebrand disease type 2M; von Willebrand disease type 2N	von Willebrand Disease  VCEP	26	10	11	10	8
+IDUA	52	mucopolysaccharidosis type 1	Lysosomal Diseases VCEP	10	13	7	7	15
+APC	49	familial adenomatous polyposis 1	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	6	13	10	6	14
+USH2A	44	Usher syndrome; inherited retinal dystrophy	Hearing Loss VCEP	14	6	10	7	7
+BRAF	44	RASopathy; cardiofaciocutaneous syndrome	RASopathy VCEP	20	4	1	5	14
+RAF1	41	Noonan syndrome; RASopathy	RASopathy VCEP	9	2	3	9	18
+RAG2	40	recombinase activating gene 2 deficiency	Severe Combined Immunodeficiency Disease  VCEP	6	11	18	2	3
+RAG1	37	recombinase activating gene 1 deficiency	Severe Combined Immunodeficiency Disease  VCEP	6	2	17	3	9
+IL7R	36	severe combined immunodeficiency, autosomal recessive, T cell-negative, B cell-positive, NK cell-positive	Severe Combined Immunodeficiency Disease  VCEP	6	5	9	8	8
+DYSF	32	autosomal recessive limb-girdle muscular dystrophy	Limb Girdle Muscular Dystrophy VCEP	19	0	0	4	9
+VHL	29	von Hippel-Lindau disease	VHL VCEP	13	1	6	1	8
+MYO7A	29	Usher syndrome; Usher syndrome type 1; Usher syndrome type 1B; nonsyndromic genetic deafness	Hearing Loss VCEP	4	13	8	2	2
+ACTA1	27	alpha-actinopathy	Congenital Myopathies VCEP	10	8	3	2	4
+SLC26A4	26	Pendred syndrome; nonsyndromic genetic deafness	Hearing Loss VCEP	6	7	4	5	4
+MTOR	24	overgrowth syndrome and/or cerebral malformations due to abnormalities in MTOR pathway genes	Brain Malformations VCEP	8	2	8	5	1
+ENG	21	telangiectasia, hereditary hemorrhagic, type 1	Hereditary Hemorrhagic Telangiectasia VCEP	5	3	5	6	2
+CDH23	18	Usher syndrome; nonsyndromic genetic deafness; sensorineural hearing loss disorder	Hearing Loss VCEP	3	1	10	1	3
+SHOC2	18	Noonan syndrome-like disorder with loose anagen hair 1; RASopathy	RASopathy VCEP	2	0	2	6	8
+MLH1	16	Lynch syndrome; Lynch syndrome 1; colorectal cancer, hereditary nonpolyposis, type 2	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	2	4	5	2	3
+SGCB	16	autosomal recessive limb-girdle muscular dystrophy	Limb Girdle Muscular Dystrophy VCEP	4	2	1	6	3
+NRAS	15	Noonan syndrome; RASopathy	RASopathy VCEP	4	1	5	3	2
+ACVRL1	15	telangiectasia, hereditary hemorrhagic, type 2	Hereditary Hemorrhagic Telangiectasia VCEP	6	1	4	4	0
+KRAS	14	Noonan syndrome; RASopathy; cardiofaciocutaneous syndrome	RASopathy VCEP	7	1	0	3	3
+SCN1A	13	Dravet syndrome; complex neurodevelopmental disorder; familial hemiplegic migraine; generalized epilepsy with febrile seizures plus	Epilepsy Sodium Channel VCEP	3	4	3	2	1
+OTOF	12	autosomal recessive nonsyndromic deafness 9; nonsyndromic genetic deafness	Hearing Loss VCEP	3	3	2	2	2
+MSH2	12	Lynch syndrome; Lynch syndrome 1	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	6	2	0	4	0
+ANO5	12	autosomal recessive limb-girdle muscular dystrophy	Limb Girdle Muscular Dystrophy VCEP	5	1	2	3	1
+LRRC56	11	Costello syndrome; Noonan syndrome; RASopathy	RASopathy VCEP	2	0	0	1	8
+NEB	10	nemaline myopathy	Congenital Myopathies VCEP	4	1	0	3	2
+PIK3CA	10	overgrowth syndrome and/or cerebral malformations due to abnormalities in MTOR pathway genes	Brain Malformations VCEP	4	0	2	2	2
+TECTA	10	nonsyndromic genetic deafness	Hearing Loss VCEP	1	0	0	7	2
+SCN2A	9	complex neurodevelopmental disorder	Epilepsy Sodium Channel VCEP	2	1	2	1	3
+HRAS	9	Costello syndrome; RASopathy	RASopathy VCEP	2	1	4	1	1
+SGCD	6	autosomal recessive limb-girdle muscular dystrophy	Limb Girdle Muscular Dystrophy VCEP	2	0	3	1	0
+MSH6	5	Lynch syndrome	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	0	3	1	1	0
+SCN3A	5	developmental and epileptic encephalopathy	Epilepsy Sodium Channel VCEP	2	0	0	0	3
+PMS2	5	colorectal cancer, hereditary nonpolyposis, type 4	InSiGHT Hereditary Colorectal Cancer/Polyposis VCEP	0	3	2	0	0
+KLLN	5	PTEN hamartoma tumor syndrome	PTEN VCEP	0	0	0	2	3
+KCNQ4	4	hearing loss; nonsyndromic genetic deafness	Hearing Loss VCEP	1	2	0	1	0
+MYO6	4	nonsyndromic genetic deafness	Hearing Loss VCEP	1	0	0	0	3
+RRAS2	4	Noonan syndrome; RASopathy	RASopathy VCEP	2	1	0	0	1
+SCN8A	4	complex neurodevelopmental disorder	Epilepsy Sodium Channel VCEP	1	1	0	0	2
+RIT1	3	RASopathy	RASopathy VCEP	1	0	2	0	0
+AKT3	3	overgrowth syndrome and/or cerebral malformations due to abnormalities in MTOR pathway genes	Brain Malformations VCEP	1	0	0	2	0
+PPP1CB	3	RASopathy	RASopathy VCEP	1	1	0	0	1
+MRAS	3	RASopathy	RASopathy VCEP	0	3	0	0	0
+C11orf65	1	ATM-related cancer predisposition	Hereditary Breast, Ovarian and Pancreatic Cancer VCEP	1	0	0	0	0

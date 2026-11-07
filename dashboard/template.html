@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIVA Bench</title>
+<link rel="icon" type="image/png" href="__MAMIDI_ICON__">
+<style id="fontFaces">__FONT_FACES__</style>
+<style>
+:root {
+  color-scheme: light;
+  --font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Source Code Pro", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --page: #eee4d6;
+  --surface: #ffffff;
+  --surface-2: #f7f1e8;
+  --text: #134734;
+  --text-2: #4a5f55;
+  --muted: #737373;
+  --grid: #efe7dc;
+  --axis: #cdbfad;
+  --border: rgba(19, 71, 52, 0.14);
+  --border-strong: rgba(19, 71, 52, 0.28);
+  --s1: #134734;
+  --s2: #d55b1f;
+  --seq-lo: #f5efe6;
+  --seq-hi: #134734;
+  --good: #1d7a4c;
+  --critical: #c0362c;
+  --accent: #d55b1f;
+  --accent-ink: #ffffff;
+  --focus: #d55b1f;
+  --shadow: 0 1px 2px rgba(19, 71, 52, 0.05), 0 8px 24px -12px rgba(19, 71, 52, 0.12);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0a2219;
+    --surface: #0f2c21;
+    --surface-2: #163a2c;
+    --text: #f1e9dd;
+    --text-2: #c6bdae;
+    --muted: #93a197;
+    --grid: #1c3d30;
+    --axis: #2e5243;
+    --border: rgba(241, 233, 221, 0.10);
+    --border-strong: rgba(241, 233, 221, 0.20);
+    --s1: #8fcfaa;
+    --s2: #ea7a42;
+    --seq-lo: #12311f;
+    --seq-hi: #8fcfaa;
+    --good: #55c58e;
+    --critical: #f07d6d;
+    --accent: #ea7a42;
+    --accent-ink: #0a2219;
+    --focus: #ea7a42;
+    --shadow: none;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0a2219;
+  --surface: #0f2c21;
+  --surface-2: #163a2c;
+  --text: #f1e9dd;
+  --text-2: #c6bdae;
+  --muted: #93a197;
+  --grid: #1c3d30;
+  --axis: #2e5243;
+  --border: rgba(241, 233, 221, 0.10);
+  --border-strong: rgba(241, 233, 221, 0.20);
+  --s1: #8fcfaa;
+  --s2: #ea7a42;
+  --seq-lo: #12311f;
+  --seq-hi: #8fcfaa;
+  --good: #55c58e;
+  --critical: #f07d6d;
+  --accent: #ea7a42;
+  --accent-ink: #0a2219;
+  --focus: #ea7a42;
+  --shadow: none;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font: 14px/1.5 var(--font);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: var(--font-mono); font-size: 12px; }
+.num { font-variant-numeric: tabular-nums; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+[hidden] { display: none !important; }
+
+.wrap { max-width: 1680px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 768px) { .wrap { padding: 0 32px; } }
+
+/* Header */
+.app-header { background: var(--page); }
+.app-header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 22px; padding-bottom: 6px; }
+.brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.brand-logo { display: block; flex-shrink: 0; border-radius: 50%; box-shadow: 0 1px 3px rgba(19, 71, 52, 0.18); }
+.brand-logo img { display: block; width: 48px; height: 48px; border-radius: 50%; }
+.brand-text { min-width: 0; }
+@media (max-width: 640px) { .brand { gap: 12px; } .brand-logo img { width: 40px; height: 40px; } }
+.brand h1 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+.brand p { margin: 2px 0 0; color: var(--text-2); font-size: 13px; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  appearance: none; border: 1px solid var(--border-strong); background: var(--surface);
+  border-radius: 0; padding: 6px 14px; font-size: 13px; font-weight: 500; cursor: pointer;
+  line-height: 20px; white-space: nowrap;
+}
+.btn:hover { background: var(--surface-2); }
+.btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+.btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, #000); border-color: color-mix(in srgb, var(--accent) 88%, #000); }
+
+.tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; margin-bottom: -1px; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  appearance: none; background: none; border: 0; border-bottom: 2px solid transparent;
+  padding: 10px 10px 9px; font-size: 13px; font-weight: 500; color: var(--text-2);
+  cursor: pointer; white-space: nowrap;
+}
+.tab:hover { color: var(--text); }
+.tab[aria-selected="true"] { color: var(--text); font-weight: 600; border-bottom-color: var(--accent); }
+.tab-bar { background: var(--page); border-bottom: 1px solid var(--border-strong); position: sticky; top: 0; z-index: 20; }
+
+main.wrap { padding-top: 24px; padding-bottom: 48px; }
+.view { display: grid; gap: 20px; }
+.view-head h2 { margin: 0; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+.view-head p { margin: 4px 0 0; color: var(--text-2); max-width: 78ch; }
+
+/* Cards */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; box-shadow: var(--shadow); min-width: 0; }
+.card-head { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+.card-head h3 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+.card-head p { margin: 2px 0 0; color: var(--text-2); font-size: 13px; max-width: 70ch; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.grid-2 { display: grid; gap: 20px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1024px) { .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.note { color: var(--muted); font-size: 12px; margin: 12px 0 0; }
+
+/* Form controls */
+.seg { flex-wrap: wrap; max-width: 100%; display: inline-flex; border: 1px solid var(--border-strong); border-radius: 2px; padding: 2px; gap: 2px; background: var(--surface); }
+.seg button { appearance: none; border: 0; background: none; padding: 3px 10px; border-radius: 0; font-size: 12px; font-weight: 500; color: var(--text-2); cursor: pointer; white-space: nowrap; }
+.seg button:hover { color: var(--text); }
+.seg button[aria-pressed="true"] { background: var(--text); color: var(--surface); }
+.field { display: grid; gap: 4px; font-size: 12px; color: var(--text-2); }
+select, input[type="search"], input[type="text"] {
+  border: 1px solid var(--border-strong); background: var(--surface); border-radius: 2px;
+  padding: 5px 8px; font-size: 13px; min-height: 32px; max-width: 100%;
+}
+input[type="search"] { width: 260px; }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: -1px; margin-right: 6px; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--text-2); }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin: 0 -20px; padding: 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; font-weight: 500; color: var(--text-2); font-size: 12px; padding: 8px 10px; border-bottom: 1px solid var(--axis); white-space: nowrap; vertical-align: bottom; }
+td { padding: 9px 10px; border-bottom: 1px solid var(--grid); vertical-align: middle; }
+tbody tr:last-child td { border-bottom: 0; }
+th.r, td.r { text-align: right; }
+th.c, td.c { text-align: center; }
+td.num, th.num { font-variant-numeric: tabular-nums; }
+tbody tr.row-link { cursor: pointer; }
+tbody tr.row-link:hover td { background: var(--surface-2); }
+.th-sort { appearance: none; background: none; border: 0; padding: 0; color: inherit; font: inherit; cursor: pointer; text-align: inherit; display: inline-flex; flex-direction: column; align-items: inherit; }
+.th-sort:hover { color: var(--text); }
+th[aria-sort] .th-sort { color: var(--text); }
+.th-sub { font-size: 11px; color: var(--muted); font-weight: 400; }
+.sort-ind { font-size: 10px; margin-left: 2px; }
+.model-cell { display: flex; flex-direction: column; min-width: 180px; }
+.model-name { font-weight: 600; }
+.model-meta { font-size: 12px; color: var(--text-2); }
+.rank { color: var(--muted); width: 28px; font-variant-numeric: tabular-nums; }
+.pill { display: inline-block; font-size: 11px; font-weight: 500; padding: 0 6px; border-radius: 4px; border: 1px solid var(--border-strong); color: var(--text-2); margin-left: 6px; line-height: 18px; white-space: nowrap; }
+.inline-bar { display: inline-flex; align-items: center; gap: 8px; justify-content: flex-end; }
+.inline-bar .track { width: 72px; height: 6px; border-radius: 3px; background: var(--grid); overflow: hidden; }
+.inline-bar .fill { display: block; height: 100%; background: var(--s1); border-radius: 0 3px 3px 0; }
+.pos { color: var(--good); }
+.neg { color: var(--critical); }
+
+/* Heatmap tables */
+table.heat td.h { text-align: center; font-variant-numeric: tabular-nums; border: 2px solid var(--surface); border-radius: 4px; padding: 7px 6px; min-width: 56px; font-size: 12px; }
+table.heat th.colh { text-align: center; white-space: normal; min-width: 64px; max-width: 96px; line-height: 1.3; }
+table.heat td.rowh { white-space: nowrap; font-weight: 500; border-bottom: 0; }
+table.heat td { border-bottom: 0; }
+table.heat tr.group td { font-size: 12px; font-weight: 600; color: var(--text-2); padding-top: 14px; }
+.scale { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-2); }
+.scale .ramp { width: 120px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, var(--seq-lo), var(--seq-hi)); border: 1px solid var(--border); }
+
+/* Confusion matrix */
+table.cm { table-layout: fixed; }
+table.cm td.h { position: relative; }
+table.cm td.diag { font-weight: 650; }
+table.cm td.xdir { box-shadow: inset 0 0 0 2px var(--critical); }
+.cm-axis { font-size: 11px; color: var(--muted); }
+.cm-title { font-size: 13px; font-weight: 600; margin: 0 0 8px; display: flex; align-items: center; }
+
+.empty { color: var(--muted); padding: 24px 0; text-align: center; }
+/* Tooltip */
+#tip {
+  position: fixed; z-index: 100; pointer-events: none; max-width: 300px;
+  background: var(--text); color: var(--surface); font-size: 12px; line-height: 1.45;
+  padding: 7px 9px; border-radius: 6px; white-space: pre-line; font-variant-numeric: tabular-nums;
+}
+
+/* Dialog */
+dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; background: var(--surface); color: var(--text); width: min(520px, calc(100vw - 32px)); box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25); }
+dialog::backdrop { background: rgba(0, 0, 0, 0.45); }
+.dlg-body { padding: 20px; display: grid; gap: 16px; }
+.dlg-body h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.dlg-body p { margin: 4px 0 0; color: var(--text-2); font-size: 13px; }
+.drop { border: 1px dashed var(--border-strong); border-radius: 8px; padding: 22px; text-align: center; color: var(--text-2); font-size: 13px; cursor: pointer; }
+.drop.over, .drop:hover { border-color: var(--s1); background: var(--surface-2); }
+.drop strong { color: var(--text); }
+.dlg-foot { display: flex; justify-content: flex-end; gap: 8px; padding: 14px 20px; border-top: 1px solid var(--border); }
+.dlg-error { color: var(--critical); font-size: 13px; }
+
+dialog.dlg-wide { width: min(760px, calc(100vw - 32px)); }
+.dlg-sub { margin: 0 0 4px; font-size: 13px; font-weight: 600; color: var(--text-2); }
+.dlg-status { margin-right: auto; font-size: 12px; color: var(--text-2); align-self: center; }
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--text-2); }
+.check input { margin-top: 3px; }
+#modelsTable td, #removedTable td { padding: 7px 8px; }
+.btn-danger { color: var(--critical); }
+.btn-danger.armed { background: var(--critical); color: #ffffff; border-color: var(--critical); }
+.btn:disabled { opacity: 0.5; cursor: default; }
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--text); color: var(--surface); padding: 9px 14px; border-radius: 8px; font-size: 13px; z-index: 110; max-width: calc(100vw - 32px); }
+
+footer { color: var(--muted); font-size: 12px; padding-top: 24px; }
+.card-head > [data-legend] { order: 10; flex-basis: 100%; }
+.card-head > .fig-export { margin-left: auto; }
+.card-head > .controls + .fig-export, .card-head > .seg + .fig-export, .card-head > .field + .fig-export { margin-left: 0; }
+@media (max-width: 767px) { .tab-bar { position: static; } }
+
+/* Leaderboard landing */
+body[data-tab="leaderboard"] .selbar { display: none; }
+
+/* Benchmark sections: Variant Classification, Variant Ranking */
+.sections { display: flex; gap: 4px; margin-bottom: -1px; overflow-x: auto; scrollbar-width: none; }
+.section-tab {
+  appearance: none; border: 1px solid transparent; border-bottom: 0; background: none; cursor: pointer;
+  padding: 10px 18px; font-size: 15px; font-weight: 600; color: var(--text-2); white-space: nowrap;
+}
+.section-tab:hover { color: var(--text); }
+.section-tab[aria-selected="true"] { color: var(--text); background: var(--surface); border-color: var(--border-strong); box-shadow: inset 0 3px 0 var(--accent); }
+.app-header { border-bottom: 1px solid var(--border-strong); }
+.tab-bar { background: var(--surface); }
+body[data-section="ranking"] .tab-bar, body[data-section="ranking"] .cls-only, body[data-section="ranking"] footer { display: none; }
+.rank-empty { padding: 48px 24px; text-align: center; }
+.rank-empty h3 { margin: 0; font-size: 18px; font-weight: 700; }
+.rank-empty p { margin: 6px auto 0; color: var(--text-2); max-width: 52ch; }
+.lb-hero { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
+.lb-hero h2 { margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
+.lb-hero p { margin: 4px 0 0; color: var(--text-2); max-width: 70ch; }
+.lb-card { padding-bottom: 12px; }
+table.lb td { padding-top: 13px; padding-bottom: 13px; }
+.lb-rank { display: inline-block; min-width: 24px; font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--muted); }
+.lb-rank.top { color: var(--text); }
+table.lb .model-name { font-size: 14px; }
+table.lb th { vertical-align: bottom; }
+table.lb th .th-sort, table.lb th.r > span { display: inline-flex; flex-direction: column; }
+table.lb th.r > span + .th-sub { display: block; }
+table.lb th.lb-active-h { color: var(--text); width: 30%; }
+table.lb td:nth-child(2) { min-width: 240px; }
+table.lb .model-meta { white-space: nowrap; }
+.lb-bar { display: flex; align-items: center; gap: 10px; min-width: 200px; }
+.lb-track { flex: 1; height: 10px; border-radius: 5px; background: var(--grid); overflow: hidden; }
+.lb-fill { display: block; height: 100%; border-radius: 5px; }
+.lb-val { min-width: 44px; text-align: right; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+table.lb td.lb-active { padding-left: 16px; }
+table.lb td.lb-best { font-weight: 700; }
+table.lb tr.row-link:focus-visible td { background: var(--surface-2); }
+table.lb tr.row-link:hover td:nth-child(2) .model-name { text-decoration: underline; text-underline-offset: 3px; }
+tr.lb-divider td { text-transform: none; letter-spacing: 0; font-size: 12px; font-weight: 500; }
+@media (max-width: 640px) {
+  table.cards.lb td.rank { display: flex; justify-content: flex-start; padding-bottom: 0; }
+  table.cards.lb td.rank::before { content: "Rank"; margin-right: 8px; align-self: center; }
+  table.cards.lb td:nth-child(2) { justify-content: flex-start; text-align: left; padding-bottom: 6px; }
+  table.cards.lb td:nth-child(2)::before { content: none; }
+  table.cards.lb td:nth-child(2) .model-cell { text-align: left; }
+  table.cards.lb td::before { font-weight: 400; }
+  table.cards.lb .model-meta { white-space: normal; }
+  table.lb .lb-bar { min-width: 0; width: 60%; }
+}
+
+/* Model selection bar */
+.selbar { border-top: 1px solid var(--border); }
+.selbar .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding-top: 8px; padding-bottom: 8px; }
+.sel-focus { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
+.sel-focus select { font-weight: 500; max-width: 280px; }
+.sel-comps { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-width: 0; }
+.sel-lbl { font-size: 13px; color: var(--text-2); }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.mchip { appearance: none; border: 1px solid var(--border); background: none; border-radius: 999px; padding: 2px 10px 2px 8px; font-size: 12px; color: var(--muted); cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; }
+.mchip .swatch { opacity: 0.35; }
+.mchip:hover { color: var(--text); border-color: var(--border-strong); }
+.mchip[aria-pressed="true"] { color: var(--text); border-color: var(--border-strong); background: var(--surface-2); font-weight: 500; }
+.mchip[aria-pressed="true"] .swatch { opacity: 1; }
+
+.mchip .x { margin-left: 6px; color: var(--muted); font-size: 13px; line-height: 1; }
+.mchip:hover .x { color: var(--critical); }
+.picker { position: relative; }
+.picker-btn { padding: 2px 10px; font-size: 12px; line-height: 18px; border-radius: 999px; }
+.picker-pop { position: absolute; z-index: 40; top: calc(100% + 6px); left: 0; width: min(360px, calc(100vw - 32px)); background: var(--surface); border: 1px solid var(--border-strong); border-radius: 14px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16); padding: 10px; }
+@media (max-width: 640px) { .picker-pop { position: fixed; left: 16px; right: 16px; top: auto; width: auto; } }
+.picker-pop input[type="search"] { width: 100%; }
+.picker-list { max-height: 340px; overflow-y: auto; margin-top: 8px; }
+.pk-group + .pk-group { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--grid); }
+.pk-head { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 4px 4px; }
+.pk-all { appearance: none; border: 0; background: none; color: var(--focus); font-size: 12px; cursor: pointer; text-transform: none; letter-spacing: 0; font-weight: 500; }
+.pk-item { display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; column-gap: 6px; padding: 5px 4px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+.pk-item:hover { background: var(--surface-2); }
+.pk-item small { grid-column: 3; font-size: 11px; color: var(--muted); }
+.pk-item .swatch { margin: 0; }
+.pk-item.off { opacity: 0.45; cursor: default; }
+.picker-note { margin: 8px 4px 0; font-size: 11px; color: var(--muted); }
+
+.lb-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-top: -6px; }
+.lb-all-pill { margin: 0; padding: 2px 10px; border-radius: 999px; font-size: 12px; line-height: 18px; }
+
+/* Leaderboard table: measures as rows, models as columns */
+table.lbt { font-size: 13px; border-collapse: separate; border-spacing: 0; }
+table.lbt th, table.lbt td { padding: 8px 8px; border-bottom: 1px solid var(--grid); }
+table.lbt thead th { vertical-align: bottom; border-bottom: 1.5px solid var(--text-2); }
+table.lbt .lbt-first { position: sticky; left: 0; z-index: 2; background: var(--surface); text-align: left; min-width: 200px; }
+table.lbt thead .lbt-first { font-size: 12px; font-weight: 600; color: var(--text-2); }
+tr.lbt-groups th { border-bottom: 0; padding-bottom: 2px; }
+th.lbt-group { text-align: center; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); }
+th.lbt-group > * { display: block; }
+table.lbt .lbt-gs { border-left: 1px solid var(--axis); }
+th.lbt-group::after { content: ""; display: block; height: 2px; margin: 4px 6px 0; background: var(--axis); border-radius: 1px; }
+th.lbt-nh { text-align: right; font-size: 12px; font-weight: 600; color: var(--text-2); min-width: 84px; }
+table.lbt th.lbt-model { text-align: center; min-width: 76px; max-width: 120px; white-space: normal; }
+.lbt-name { appearance: none; border: 0; background: none; padding: 0; font: inherit; color: var(--text); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; width: 100%; }
+.lbt-name:hover .lbt-label { text-decoration: underline; text-underline-offset: 3px; }
+.lbt-rank { font-size: 11px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+.lbt-label { font-size: 12px; font-weight: 650; line-height: 1.3; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+.lbt-label .swatch { margin-right: 4px; }
+.lbt-meta { font-size: 10.5px; font-weight: 400; color: var(--muted); line-height: 1.3; }
+td.lbt-v { text-align: center; font-variant-numeric: tabular-nums; }
+td.lbt-v.best { font-weight: 700; }
+td.lbt-v.partial { font-style: italic; color: var(--text-2); }
+td.lbt-v.na { color: var(--muted); }
+td.lbt-n { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--text-2); font-size: 12px; }
+td.lbt-n.small { color: var(--muted); }
+.lbt-nv { display: inline-block; min-width: 40px; }
+.lbt-nbar { display: inline-block; width: 40px; height: 6px; margin-left: 6px; background: var(--grid); border-radius: 3px; vertical-align: 1px; overflow: hidden; }
+.lbt-nbar span { display: block; height: 100%; background: var(--text-2); border-radius: 3px; }
+.lbt-row { font-weight: 500; }
+td.lbt-first.indent { padding-left: 22px; }
+.lbt-abbr { display: inline-block; min-width: 38px; font-weight: 650; }
+.lbt-dag { color: var(--muted); font-weight: 600; margin-left: 2px; }
+tr.lbt-small .lbt-row { color: var(--text-2); }
+tr.lbt-overall td { font-size: 14px; }
+tr.lbt-overall .lbt-row { font-weight: 700; }
+tr.lbt-overall td.lbt-v { font-weight: 650; }
+tr.lbt-sec td { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); background: var(--surface); padding-top: 16px; padding-bottom: 6px; border-bottom: 1px solid var(--axis); }
+@media (max-width: 640px) { table.lbt .lbt-first { min-width: 150px; } .lbt-nbar { display: none; } th.lbt-nh, td.lbt-n { min-width: 56px; } }
+
+/* Leaderboard scatter */
+.scatter { display: block; overflow: visible; }
+.sc-grid { stroke: var(--grid); stroke-width: 1; }
+.sc-axis { stroke: var(--axis); stroke-width: 1; }
+.sc-tick { fill: var(--muted); font-size: 11px; }
+.sc-axl { fill: var(--text); font-size: 12px; font-weight: 600; }
+.sc-lbl { fill: var(--text); font-size: 12px; font-weight: 500; paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+.sc-key { margin-bottom: 10px; }
+.sc-pt { cursor: pointer; transition: opacity 0.12s; }
+.scatter.hl .sc-pt { opacity: 0.25; }
+.scatter.hl .sc-pt.on { opacity: 1; }
+.scatter.hl .sc-pt.on circle { stroke-width: 3; }
+
+/* Grouped vertical bars */
+.vb { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 8px; }
+.vb-y { position: relative; height: 280px; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.vb-y span { position: absolute; right: 0; transform: translateY(50%); }
+.vb-plot { position: relative; height: 280px; display: flex; gap: 12px; padding: 0 6px; border-bottom: 1px solid var(--axis); }
+.vb-plot .gl { position: absolute; left: 0; right: 0; height: 1px; background: var(--grid); }
+.vb-group { position: relative; flex: 1; display: flex; align-items: flex-end; justify-content: center; gap: 2px; min-width: 0; }
+.vb-bar { position: relative; flex: 1; max-width: 34px; min-height: 1px; border-radius: 3px 3px 0 0; }
+.vb-bar.vb-empty { height: 100%; background: repeating-linear-gradient(0deg, transparent 0 6px, var(--grid) 6px 7px); border-radius: 0; opacity: 0.6; }
+.vb-val { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); padding-bottom: 3px; font-size: 10px; color: var(--text-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.vb-x { display: flex; gap: 12px; padding: 0 6px; }
+.vb-xl { flex: 1; min-width: 0; text-align: center; padding-top: 8px; font-size: 12px; font-weight: 500; line-height: 1.3; }
+.vb-xl small { display: block; font-size: 11px; font-weight: 400; color: var(--muted); }
+
+/* Wide tables: first column stays put while scrolling sideways */
+#agreeHeat th:first-child, #agreeHeat td:first-child { position: sticky; left: 0; z-index: 1; background: var(--surface); }
+
+/* Phones: wide tables become one card per row */
+@media (max-width: 640px) {
+  table.cards thead { display: none; }
+  table.cards, table.cards tbody, table.cards tr, table.cards td { display: block; width: 100%; }
+  table.cards tr { border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; margin-bottom: 10px; }
+  table.cards tr.grp-row { border: 0; padding: 0; }
+  table.cards td { border: 0; padding: 4px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; text-align: right; position: static !important; background: none !important; }
+  table.cards td::before { content: attr(data-label); color: var(--text-2); font-size: 12px; text-align: left; flex-shrink: 0; }
+  table.cards td:not([data-label])::before { content: none; }
+  table.cards td.rank { display: none; }
+  table.cards .model-cell, table.cards .disease { min-width: 0; max-width: none; text-align: right; }
+  table.cards .inline-bar .track { display: none; }
+  .table-wrap:has(table.cards) { margin: 0; padding: 0; }
+}
+
+table.heat.compact td.h { min-width: 26px; height: 26px; padding: 0; }
+table.heat.compact th.colh { min-width: 26px; max-width: 56px; font-size: 10px; }
+
+/* ACMG criteria: pathogenic panel above the benign panel */
+.crit-panel + .crit-panel { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--grid); }
+.crit-h { margin: 0 0 24px; font-size: 13px; font-weight: 600; color: var(--text-2); }
+
+/* Confusion grid and tables */
+.cm-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+#prTable td.grp { font-weight: 600; vertical-align: top; }
+#prTable tr.grp-end td { border-bottom: 1px solid var(--axis); }
+#prTable tr:not(.grp-end) td { border-bottom: 0; }
+tr.row-link.focus td { background: var(--surface-2); }
+tr.row-link.focus td:first-child { box-shadow: inset 3px 0 0 var(--mc); }
+.grp-toggle { appearance: none; border: 0; background: none; padding: 0; font: inherit; color: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer; }
+.grp-n { font-weight: 400; color: var(--muted); text-transform: none; letter-spacing: 0; margin-left: 4px; }
+.pill-strong { color: var(--text); border-color: var(--text-2); }
+.model-name .swatch, .lbl .swatch, .rowh .swatch, .cm-title .swatch { margin-right: 6px; }
+th.selcol { color: var(--text); }
+
+/* Exports render on pure white */
+:root.exporting-root { --surface: #ffffff; }
+
+/* Figure export */
+.fig-export { position: relative; }
+.fig-export summary { list-style: none; }
+.fig-export summary::-webkit-details-marker { display: none; }
+.fig-export .menu {
+  position: absolute; right: 0; top: calc(100% + 4px); z-index: 30; min-width: 168px;
+  background: var(--surface); border: 1px solid var(--border-strong); border-radius: 8px;
+  padding: 4px; display: grid; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+.fig-export .menu button { appearance: none; border: 0; background: none; text-align: left; padding: 6px 10px; border-radius: 4px; font-size: 13px; cursor: pointer; }
+.fig-export .menu button:hover { background: var(--surface-2); }
+.fig-export .menu .menu-note { font-size: 11px; color: var(--muted); padding: 4px 10px 2px; }
+.card.exporting .table-wrap { overflow: visible; }
+
+footer code { font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="wrap">
+    <div class="brand">
+      <a class="brand-logo" href="https://mamidi.ai/" target="_blank" rel="noopener"><img src="__MAMIDI_LOGO__" alt="Mamidi Health" width="48" height="48"></a>
+      <div class="brand-text">
+        <h1>AIVA Bench</h1>
+        <p id="subtitle"></p>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="themeBtn" type="button">Theme: System</button>
+      <button class="btn" id="refreshBtn" type="button" hidden>Rebuild data</button>
+      <button class="btn cls-only" id="csvBtn" type="button" title="Every benchmark variant with the expert classification and criteria, and each model's call and ACMG criteria">Download variants (CSV)</button>
+      <button class="btn cls-only" id="modelsBtn" type="button">Models</button>
+      <button class="btn btn-primary cls-only" id="importBtn" type="button">Import results</button>
+    </div>
+  </div>
+  <div class="wrap">
+    <nav class="sections" role="tablist" aria-label="Benchmarks">
+      <button class="section-tab" role="tab" type="button" data-section="classification">Variant Classification</button>
+      <button class="section-tab" role="tab" type="button" data-section="ranking">Variant Ranking</button>
+    </nav>
+  </div>
+</header>
+
+<div class="tab-bar">
+  <div class="wrap">
+    <nav class="tabs" role="tablist" aria-label="Dashboard sections">
+      <button class="tab" role="tab" data-tab="leaderboard">Leaderboard</button>
+      <button class="tab" role="tab" data-tab="confusion">Confusion matrices</button>
+      <button class="tab" role="tab" data-tab="criteria">ACMG criteria</button>
+    </nav>
+  </div>
+  <div class="selbar">
+    <div class="wrap">
+      <label class="sel-focus"><span>Model</span><select id="focusSel" aria-label="Model"></select></label>
+      <div class="sel-comps">
+        <span class="sel-lbl">compared with</span>
+        <div class="chips" id="compChips" role="group" aria-label="Comparison models"></div>
+        <div class="picker">
+          <button type="button" class="btn picker-btn" id="pickerBtn" aria-haspopup="true" aria-expanded="false">Add or remove</button>
+          <div class="picker-pop" id="pickerPop" hidden>
+            <input type="search" id="pickerQ" placeholder="Search models" aria-label="Search models">
+            <div class="picker-list" id="pickerList"></div>
+            <p class="picker-note" id="pickerNote"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- LEADERBOARD -->
+  <section class="view" id="view-leaderboard" role="tabpanel">
+    <div class="lb-hero">
+      <div>
+        <h2>Leaderboard</h2>
+        <p id="lbLead"></p>
+      </div>
+    </div>
+    <div class="lb-pick">
+      <span class="sel-lbl">Showing</span>
+      <div class="chips" id="lbChips" role="group" aria-label="Models shown"></div>
+      <div class="picker">
+        <button type="button" class="btn picker-btn" id="lbPickBtn" aria-haspopup="true" aria-expanded="false">Choose models</button>
+        <div class="picker-pop" id="lbPickPop" hidden>
+          <input type="search" id="lbPickQ" placeholder="Search models" aria-label="Search models">
+          <div class="picker-list" id="lbPickList"></div>
+          <p class="picker-note">The leaderboard, scatter and agreement heatmap show only the selected models.</p>
+        </div>
+      </div>
+      <button type="button" class="btn picker-btn" id="lbAllBtn" hidden>Show all</button>
+    </div>
+    <div class="card lb-card" data-static>
+      <div class="card-head">
+        <div>
+          <h3 id="lbTitle"></h3>
+          <p id="lbSub"></p>
+        </div>
+        <div class="controls">
+          <div class="seg" id="lbScaleSeg" role="group" aria-label="Classification scale">
+            <button data-v="3" type="button">3-class</button><button data-v="5" type="button">5-class</button>
+          </div>
+        </div>
+      </div>
+      <div class="table-wrap"><table id="lbTable" class="lbt"></table></div>
+      <p class="note" id="lbNote"></p>
+    </div>
+    <div class="card" id="lbScatterCard" data-static>
+      <div class="card-head">
+        <div>
+          <h3 id="scTitle"></h3>
+          <p id="scSub"></p>
+        </div>
+        <div class="seg" id="scSeg" role="group" aria-label="Score">
+          <button data-v="5" type="button">5-class</button><button data-v="3" type="button">3-class</button>
+        </div>
+      </div>
+      <div id="lbScatter"></div>
+    </div>
+    <div class="card" id="agreeCard" data-static>
+      <div class="card-head">
+        <div><h3 id="agreeTitle"></h3><p id="agreeSub"></p></div>
+        <div class="controls">
+          <div class="seg" id="agreeSeg" role="group" aria-label="Agreement level">
+            <button data-v="exact_pct" type="button">Exact, 5-class</button><button data-v="dir_pct" type="button">Directional, 3-class</button>
+          </div>
+          <div class="scale"><span id="agreeMin"></span><span class="ramp"></span><span id="agreeMax"></span></div>
+        </div>
+      </div>
+      <div class="table-wrap"><table class="heat" id="agreeHeat"></table></div>
+      <p class="note" id="agreeNote"></p>
+    </div>
+  </section>
+
+  <!-- CONFUSION -->
+  <section class="view" id="view-confusion" role="tabpanel" hidden>
+    <div class="view-head">
+      <h2>Confusion matrices</h2>
+      <p>Rows are the expert classification, columns the model's call. Shading, in each model's colour, is the share of the row. Outlined cells are cross-direction errors: a benign or likely benign variant called pathogenic or likely pathogenic, or the reverse.</p>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div><h3>Confusion matrices</h3><p id="cmSub"></p></div>
+        <div class="controls">
+          <div class="seg" id="cmScaleSeg" role="group" aria-label="Class granularity">
+            <button data-v="5" type="button">5-class</button><button data-v="3" type="button">3-class</button>
+          </div>
+          <div class="seg" id="cmModeSeg" role="group" aria-label="Cell values">
+            <button data-v="count" type="button">Counts</button><button data-v="pct" type="button">Row %</button>
+          </div>
+        </div>
+      </div>
+      <div class="cm-grid" id="cmGrid"></div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div><h3>Precision and recall by class</h3><p>5-class labels. Support is the number of expert-classified variants in the class.</p></div>
+        <div class="legend" data-legend></div>
+      </div>
+      <div class="table-wrap"><table id="prTable"></table></div>
+    </div>
+  </section>
+
+  <!-- CRITERIA -->
+  <section class="view" id="view-criteria" role="tabpanel" hidden>
+    <div class="view-head">
+      <h2>ACMG/AMP criteria invoked</h2>
+      <p>Share of evaluated variants for which each model cited a criterion, with strength modifiers collapsed (PM2_Supporting counts as PM2).</p>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <div><h3>Criteria cited, pathogenic and benign evidence</h3><p>Percentage of evaluated variants. Pathogenic criteria above, benign criteria below; each panel has its own scale. Hover a code for its definition.</p></div>
+        <div class="legend" data-legend></div>
+      </div>
+      <div class="crit-panel">
+        <h4 class="crit-h">Pathogenic evidence</h4>
+        <div id="critPath"></div>
+      </div>
+      <div class="crit-panel">
+        <h4 class="crit-h">Benign evidence</h4>
+        <div id="critBen"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VARIANT RANKING -->
+  <section class="view" id="view-ranking" role="tabpanel" hidden>
+    <div class="card rank-empty" data-static>
+      <h3>No ranking results yet</h3>
+      <p>Variant ranking results will appear here once they are added to the repository.</p>
+    </div>
+  </section>
+
+  <footer id="footer"></footer>
+</main>
+
+<dialog id="importDlg">
+  <form method="dialog" id="importForm">
+    <div class="dlg-body">
+      <div>
+        <h3>Import model results</h3>
+        <p>A JSONL file (one record per line) or a JSON array. Each record needs a variant id (<code>variant_id</code> or <code>id</code>) and a call (<code>aiva_classification</code>, <code>classification</code> or <code>prediction</code>); a criteria list (<code>aiva_criteria</code> or <code>criteria</code>), if present, goes into the variants CSV. <span id="impWhere">Scoring runs in this browser against the benchmark's variants; nothing is uploaded, and the model stays only until the page is reloaded.</span></p>
+      </div>
+      <div class="drop" id="drop" tabindex="0" role="button">
+        <input type="file" id="fileInput" accept=".jsonl,.json,.ndjson" hidden>
+        <span id="dropText"><strong>Choose a file</strong> or drop it here</span>
+      </div>
+      <label class="field">Display name <input type="text" id="impName" placeholder="e.g. Sonnet 5.5"></label>
+      <label class="field">Provider
+        <select id="impFamily">
+          <option>Anthropic</option>
+          <option>OpenAI</option>
+          <option>Google</option>
+          <option>Rule-based</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label class="check" id="impSaveWrap" hidden><input type="checkbox" id="impSave" checked> Save to the repository and rebuild (writes <code>imported_results/</code>; a model with the same name is replaced)</label>
+      <div class="dlg-error" id="impError" hidden></div>
+    </div>
+    <div class="dlg-foot">
+      <button class="btn" value="cancel" type="submit">Cancel</button>
+      <button class="btn btn-primary" id="impGo" type="button">Score and add</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="modelsDlg" class="dlg-wide">
+  <form method="dialog">
+    <div class="dlg-body">
+      <div>
+        <h3>Models</h3>
+        <p id="modelsNote"></p>
+      </div>
+      <div class="table-wrap"><table id="modelsTable"></table></div>
+      <div id="removedWrap" hidden>
+        <h4 class="dlg-sub">Removed</h4>
+        <div class="table-wrap"><table id="removedTable"></table></div>
+      </div>
+      <div class="dlg-error" id="modelsError" hidden></div>
+    </div>
+    <div class="dlg-foot">
+      <span class="dlg-status" id="modelsStatus"></span>
+      <button class="btn" value="close" type="submit">Close</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="tip" hidden></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+window.BENCHMARK_DATA = __BENCHMARK_DATA__;
+</script>
+<script>
+(function () {
+  "use strict";
+
+  let D = window.BENCHMARK_DATA;
+  const GT = D.ground_truth_index || {};
+  const LABELS = ["Pathogenic", "Likely Pathogenic", "Uncertain Significance", "Likely Benign", "Benign"];
+  const ABBR = { "Pathogenic": "P", "Likely Pathogenic": "LP", "Uncertain Significance": "VUS", "Likely Benign": "LB", "Benign": "B" };
+  const DIR = { "Pathogenic": "pathogenic", "Likely Pathogenic": "pathogenic", "Uncertain Significance": "vus", "Likely Benign": "benign", "Benign": "benign" };
+  const DIR_LABEL = { pathogenic: "P/LP", vus: "VUS", benign: "B/LB" };
+  const FAMILY_SHORT = {};
+  const PROVIDER_ORDER = ["Anthropic", "OpenAI", "Google", "Rule-based", "Other"];
+  const MAX_COMPARE = 5;
+  const CRITERIA = {
+    pathogenic: [
+      ["PVS1", "Null variant in a gene where loss of function is a known mechanism"],
+      ["PS1", "Same amino-acid change as an established pathogenic variant"],
+      ["PS2", "De novo, maternity and paternity confirmed"],
+      ["PS3", "Well-established functional studies show a damaging effect"],
+      ["PS4", "Prevalence in affected individuals significantly above controls"],
+      ["PM1", "Located in a mutational hot spot or critical functional domain"],
+      ["PM2", "Absent or at extremely low frequency in population databases"],
+      ["PM3", "Detected in trans with a pathogenic variant (recessive disorders)"],
+      ["PM4", "Protein length change from an in-frame indel or stop-loss"],
+      ["PM5", "Novel missense at a residue where another pathogenic missense is known"],
+      ["PM6", "Assumed de novo, without confirmation of parentage"],
+      ["PP1", "Cosegregation with disease in multiple affected family members"],
+      ["PP2", "Missense in a gene with a low rate of benign missense variation"],
+      ["PP3", "Computational evidence supports a deleterious effect"],
+      ["PP4", "Patient phenotype or family history highly specific for the gene"],
+      ["PP5", "Reputable source reports the variant as pathogenic"]
+    ],
+    benign: [
+      ["BA1", "Allele frequency above 5% in population databases"],
+      ["BS1", "Allele frequency greater than expected for the disorder"],
+      ["BS2", "Observed in a healthy adult where full penetrance is expected"],
+      ["BS3", "Well-established functional studies show no damaging effect"],
+      ["BS4", "Lack of segregation in affected family members"],
+      ["BP1", "Missense in a gene where truncating variants cause disease"],
+      ["BP2", "Observed in trans or in cis with a pathogenic variant"],
+      ["BP3", "In-frame indel in a repetitive region without known function"],
+      ["BP4", "Computational evidence suggests no impact"],
+      ["BP5", "Variant found in a case with an alternate molecular basis"],
+      ["BP7", "Synonymous variant with no predicted splice impact"]
+    ]
+  };
+
+  const state = {
+    tab: "leaderboard", clsTab: "leaderboard", clsSubtitle: "",
+    scatterScale: "5", lbScale: "3", lbCols: null,
+    focus: null,
+    comps: ["baseline_bias", "baseline_intervar"],
+    cmScale: "5", cmMode: "count",
+    agree: "exact_pct"
+  };
+
+  // ---------- helpers ----------
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const f1 = (v) => (v == null || isNaN(v) ? "—" : Number(v).toFixed(1));
+  const pct = (v) => (v == null || isNaN(v) ? "—" : Number(v).toFixed(1) + "%");
+  const int = (v) => Number(v || 0).toLocaleString("en-US");
+  const signed = (v, d = 1) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(d);
+  const byKey = (k) => D.models.find((m) => m.key === k);
+  // Ranked when at least 99% of the cohort was scored; the rest are partial runs
+  const FULL_COVERAGE = 0.99;
+  const isFull = (m) => m.evaluated_count >= FULL_COVERAGE * m.total_cohort;
+  const isComplete = (m) => m.evaluated_count >= m.total_cohort;
+  const shortFam = (f) => FAMILY_SHORT[f] || f;
+  const tipAttr = (s) => ` data-tip="${esc(s)}"`;
+
+  function heatStyle(t) {
+    t = Math.max(0, Math.min(1, t || 0));
+    const p = Math.round(t * 100);
+    const ink = t > 0.55 ? "#ffffff" : "var(--text)";
+    return `background:color-mix(in oklab, var(--seq-hi) ${p}%, var(--seq-lo));color:${ink}`;
+  }
+
+  function normalizeClass(raw) {
+    if (!raw) return "";
+    const s = String(raw).trim().toLowerCase();
+    if (s.startsWith("vus") || s.includes("uncertain significance")) return "Uncertain Significance";
+    if (s.includes("likely pathogenic")) return "Likely Pathogenic";
+    if (s.includes("likely benign")) return "Likely Benign";
+    if (s.includes("pathogenic")) return "Pathogenic";
+    if (s.includes("benign")) return "Benign";
+    return "";
+  }
+
+  function seg(id, value, onPick) {
+    const el = $(id);
+    el.querySelectorAll("button").forEach((b) => {
+      b.setAttribute("aria-pressed", String(b.dataset.v === value));
+      b.onclick = () => onPick(b.dataset.v);
+    });
+  }
+
+  function toast(msg) {
+    const t = $("toast");
+    t.textContent = msg;
+    t.hidden = false;
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => (t.hidden = true), 4000);
+  }
+
+  // ---------- tooltip ----------
+  const tip = $("tip");
+  function placeTip(e) {
+    const pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+    let x = e.clientX + pad, y = e.clientY + pad;
+    if (x + w > window.innerWidth - 8) x = e.clientX - w - pad;
+    if (y + h > window.innerHeight - 8) y = e.clientY - h - pad;
+    tip.style.left = Math.max(8, x) + "px";
+    tip.style.top = Math.max(8, y) + "px";
+  }
+  document.addEventListener("pointerover", (e) => {
+    const t = e.target.closest && e.target.closest("[data-tip]");
+    if (!t) { tip.hidden = true; return; }
+    tip.textContent = t.dataset.tip;
+    tip.hidden = false;
+    placeTip(e);
+  });
+  document.addEventListener("pointermove", (e) => { if (!tip.hidden) placeTip(e); });
+  document.addEventListener("pointerout", (e) => { if (!e.relatedTarget) tip.hidden = true; });
+  window.addEventListener("scroll", () => (tip.hidden = true), { passive: true });
+
+  // ---------- header / footer ----------
+  function renderChrome() {
+    const md = D.metadata;
+    state.clsSubtitle = `ACMG classification against ClinGen expert curations · ${int(md.total_variants)} variants · ${D.models.length} classifiers`;
+    const archived = D.models.filter((m) => m.archived);
+    $("footer").innerHTML = `Dataset built ${esc(md.evaluation_date)}. Ground truth: ClinGen Evidence Repository expert-panel classifications. ` +
+      `Rebuild with <code>python scripts/update_dashboard.py</code>.` +
+      (archived.length ? ` ${archived.map((m) => esc(m.name)).join(" and ")} ${archived.length > 1 ? "are" : "is"} carried over from an earlier build because the raw results are not in this repository; variant-level comparisons with later runs are unavailable for ${archived.length > 1 ? "them" : "it"}.` : "");
+  }
+
+  // ---------- model colours ----------
+  // Each model carries a light-theme colour and, where needed, a lighter
+  // step for the dark theme; m.color always holds the one in use.
+  function isDarkTheme() {
+    const surface = getComputedStyle(document.documentElement).getPropertyValue("--surface").trim() || "#ffffff";
+    return hexLum(surface) < 0.2;
+  }
+  function applyThemeColors() {
+    const dark = isDarkTheme();
+    D.models.forEach((m) => {
+      if (!m.color_light) m.color_light = m.color;
+      m.color = dark && m.color_dark ? m.color_dark : m.color_light;
+    });
+  }
+  function rerenderForTheme() {
+    applyThemeColors();
+    renderSelector();
+    RENDER[state.tab]();
+  }
+
+  // ---------- model selection ----------
+  const selModels = () => [state.focus, ...state.comps].map(byKey).filter(Boolean);
+  const focusModel = () => byKey(state.focus);
+  const swatch = (m) => `<span class="swatch" style="background:${m.color}"></span>`;
+  // Models are named without their method: Opus 5.5 runs through AIVA and through
+  // Claude Code. On the leaderboard the section columns tell them apart; elsewhere,
+  // where two models with the same name appear together, the method is added.
+  function nameIn(m, set) {
+    const dup = (set || []).some((o) => o !== m && o.short_name === m.short_name);
+    return dup ? `${m.short_name} (${methodShort(m.type)})` : m.short_name;
+  }
+  // Tooltips and the CSV name a model unambiguously among all models.
+  const fullName = (m) => (D.models.some((o) => o !== m && o.name === m.name) ? `${m.name} (${methodShort(m.type)})` : m.name);
+  const mname = (m, set) => `${swatch(m)}${esc(nameIn(m, set))}`;
+
+  function defaultFocus() {
+    const full = D.models.filter((m) => isFull(m) && m.is_anthropic && !m.imported);
+    const pool = full.length ? full : D.models;
+    return pool.reduce((a, b) => (b.macro_f1_5 > a.macro_f1_5 ? b : a)).key;
+  }
+
+  function normalizeSelection() {
+    if (!byKey(state.focus)) state.focus = defaultFocus();
+    state.comps = [...new Set(state.comps)].filter((k) => byKey(k) && k !== state.focus).slice(0, MAX_COMPARE);
+  }
+
+  const providerOf = (m) => (PROVIDER_ORDER.includes(m.family) ? m.family : "Other");
+  const methodShort = (t) => (/claude code/i.test(t || "") ? "Claude Code" : /aiva/i.test(t || "") ? "AIVA" : (t || "Other"));
+  // A provider with models from more than one method is split, e.g. "Anthropic · AIVA" and "Anthropic · Claude Code".
+  function groupOf(m) {
+    const p = providerOf(m);
+    const methods = new Set(D.models.filter((x) => providerOf(x) === p).map((x) => methodShort(x.type)));
+    return methods.size > 1 ? `${p} · ${methodShort(m.type)}` : p;
+  }
+  const METHOD_ORDER = ["AIVA", "Claude Code"];
+  const groupRank = (g) => {
+    const [p, meth] = g.split(" · ");
+    const mi = meth ? METHOD_ORDER.indexOf(meth) : 0;
+    return PROVIDER_ORDER.indexOf(p) * 100 + (mi < 0 ? 50 : mi);
+  };
+  // Leaderboard sections: AIVA runs, other agents (Claude Code, Antigravity, ...), automated rule-based pipelines
+  const SECTIONS = [["aiva", "AIVA"], ["agent", "Agents"], ["automated", "Automated"]];
+  const SECTION_TIP = { aiva: "Models run through the AIVA agent", agent: "General-purpose agents such as Claude Code or Antigravity", automated: "Rule-based ACMG classification pipelines" };
+  const sectionKey = (m) => {
+    if (SECTIONS.some(([k]) => k === m.section)) return m.section;
+    if (m.family === "Rule-based" || /rules/i.test(m.type || "")) return "automated";
+    return /aiva/i.test(`${m.type || ""} ${m.name}`) ? "aiva" : "agent";
+  };
+  const sectionLabel = (m) => SECTIONS.find(([k]) => k === sectionKey(m))[1];
+  const bySection = (models) => SECTIONS.map(([k, label]) => [label, models.filter((m) => sectionKey(m) === k), k]).filter(([, ms]) => ms.length);
+  const byProvider = (models) => [...new Set(models.map(groupOf))].sort((a, b) => groupRank(a) - groupRank(b)).map((g) => [g, models.filter((m) => groupOf(m) === g)]);
+
+  function renderSelector() {
+    normalizeSelection();
+    $("focusSel").innerHTML = byProvider(D.models).map(([p, ms]) => `<optgroup label="${esc(p)}">${ms.map((m) =>
+      `<option value="${esc(m.key)}">${esc(fullName(m))}${isFull(m) ? "" : " (subset)"}</option>`).join("")}</optgroup>`).join("");
+    $("focusSel").value = state.focus;
+    const sel = selModels();
+    $("compChips").innerHTML = state.comps.map(byKey).filter(Boolean).map((m) =>
+      `<button type="button" class="mchip" data-key="${esc(m.key)}" aria-pressed="true"${tipAttr("Remove from comparison")}>${swatch(m)}${esc(nameIn(m, sel))}<span class="x" aria-hidden="true">×</span></button>`).join("");
+    $("compChips").querySelectorAll(".mchip").forEach((b) => b.onclick = () => toggleComp(b.dataset.key));
+    $("pickerBtn").textContent = state.comps.length ? "Add or remove" : "Add models";
+    renderPicker();
+    const legend = sel.map((m) => `<span>${mname(m, sel)}</span>`).join("");
+    document.querySelectorAll("[data-legend]").forEach((el) => (el.innerHTML = legend));
+  }
+
+  function toggleComp(k) {
+    if (state.comps.includes(k)) state.comps = state.comps.filter((x) => x !== k);
+    else if (state.comps.length >= MAX_COMPARE) { toast(`Compare up to ${MAX_COMPARE} models at once; remove one first.`); return; }
+    else state.comps = [...state.comps, k];
+    onSelectionChange();
+  }
+
+  function renderPicker() {
+    const q = ($("pickerQ").value || "").trim().toLowerCase();
+    const full = state.comps.length >= MAX_COMPARE;
+    const others = D.models.filter((m) => m.key !== state.focus && (!q || `${m.name} ${m.family} ${m.type}`.toLowerCase().includes(q)));
+    $("pickerList").innerHTML = byProvider(others).map(([p, ms]) => {
+      const allOn = ms.every((m) => state.comps.includes(m.key));
+      return `<div class="pk-group"><div class="pk-head"><span>${esc(p)}</span><button type="button" class="pk-all" data-provider="${esc(p)}">${allOn ? "Clear" : "Select all"}</button></div>${ms.map((m) => {
+        const on = state.comps.includes(m.key);
+        return `<label class="pk-item${!on && full ? " off" : ""}"><input type="checkbox" data-key="${esc(m.key)}"${on ? " checked" : ""}${!on && full ? " disabled" : ""}>${swatch(m)}<span>${esc(m.name)}</span><small>${esc(m.type)}${isFull(m) ? "" : " · subset"}</small></label>`;
+      }).join("")}</div>`;
+    }).join("") || `<p class="empty">No models match.</p>`;
+    $("pickerNote").textContent = `${state.comps.length} of ${MAX_COMPARE} comparison slots used. Charts stay readable and colours distinguishable with up to ${MAX_COMPARE + 1} models.`;
+    $("pickerList").querySelectorAll("input[data-key]").forEach((c) => c.onchange = () => toggleComp(c.dataset.key));
+    $("pickerList").querySelectorAll(".pk-all").forEach((b) => b.onclick = () => {
+      const ms = others.filter((m) => groupOf(m) === b.dataset.provider).map((m) => m.key);
+      if (ms.every((k) => state.comps.includes(k))) state.comps = state.comps.filter((k) => !ms.includes(k));
+      else {
+        const add = ms.filter((k) => !state.comps.includes(k));
+        const room = MAX_COMPARE - state.comps.length;
+        if (add.length > room) toast(`Added ${room} of ${add.length}: compare up to ${MAX_COMPARE} models at once.`);
+        state.comps = [...state.comps, ...add.slice(0, room)];
+      }
+      onSelectionChange();
+    });
+  }
+
+  function setupPicker() {
+    const pop = $("pickerPop"), btn = $("pickerBtn");
+    const close = () => { pop.hidden = true; btn.setAttribute("aria-expanded", "false"); };
+    btn.onclick = () => { pop.hidden = !pop.hidden; btn.setAttribute("aria-expanded", String(!pop.hidden)); if (!pop.hidden) { renderPicker(); $("pickerQ").focus(); } };
+    $("pickerQ").oninput = renderPicker;
+    document.addEventListener("click", (e) => { if (!pop.hidden && !e.target.closest(".picker")) close(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !pop.hidden) { close(); btn.focus(); } });
+  }
+
+  function setFocus(key) {
+    if (!byKey(key)) return;
+    state.comps = state.comps.filter((k) => k !== key);
+    state.focus = key;
+    onSelectionChange();
+  }
+
+  function onSelectionChange() {
+    renderSelector();
+    RENDER[state.tab]();
+    writeHash();
+  }
+
+  // ---------- chart builders ----------
+  // Vertical grouped bars: groups along x, one bar per model in each group.
+  // groups: [{label, sub, tip, bars: [{m, v, text, tip}]}]
+  function verticalBars(groups, opts = {}) {
+    const max = opts.max || 100;
+    const ticks = opts.ticks || [0, 25, 50, 75, 100];
+    const pos = (v) => Math.max(0, Math.min(100, (v / max) * 100));
+    const nBars = Math.max(1, ...groups.map((g) => g.bars.length));
+    const width = opts.width || 1000;
+    const slot = (width - 48) / groups.length / (nBars + 1);
+    const showVals = slot >= 30;
+    const y = ticks.map((t) => `<span style="bottom:${pos(t)}%">${t}${opts.unit || ""}</span>`).join("");
+    const gl = ticks.slice(1).map((t) => `<span class="gl" style="bottom:${pos(t)}%"></span>`).join("");
+    const cols = groups.map((g) => `<div class="vb-group">${g.bars.map((b) => b.v == null
+      ? `<div class="vb-bar vb-empty"${tipAttr(b.tip || `${b.m.name}: no data`)}></div>`
+      : `<div class="vb-bar" style="height:${pos(b.v)}%;background:${b.m.color}"${tipAttr(b.tip || "")}>${showVals ? `<span class="vb-val">${b.text}</span>` : ""}</div>`).join("")}</div>`).join("");
+    const xl = groups.map((g) => `<div class="vb-xl"><span${g.tip ? tipAttr(g.tip) : ""}>${g.label}</span>${g.sub ? `<small>${g.sub}</small>` : ""}</div>`).join("");
+    return `<div class="vb"><div class="vb-y">${y}</div><div class="vb-plot">${gl}${cols}</div><div></div><div class="vb-x">${xl}</div></div>` +
+      (showVals ? "" : `<p class="note">Values on hover.</p>`);
+  }
+
+  function niceMax(v) {
+    const steps = [5, 10, 20, 25, 40, 50, 60, 75, 80, 100];
+    return steps.find((s) => s >= v) || Math.ceil(v / 10) * 10;
+  }
+
+  function hexLum(hex) {
+    const c = rgba(hex);
+    if (!c) return 1;
+    const [r, g, b] = [1, 3, 5].map((i) => parseInt(c.hex.slice(i, i + 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  }
+  function modelHeat(color, t) {
+    t = Math.max(0, Math.min(1, t || 0));
+    const surface = getComputedStyle(document.documentElement).getPropertyValue("--surface").trim() || "#ffffff";
+    const L = hexLum(surface) * (1 - t) + hexLum(color) * t;
+    return `background:color-mix(in oklab, ${color} ${Math.round(t * 100)}%, var(--surface));color:${L < 0.36 ? "#ffffff" : "#134734"}`;
+  }
+
+  const collapse3 = (m5) => {
+    const idx = [0, 0, 1, 2, 2];
+    const out = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+    m5.forEach((row, i) => row.forEach((v, j) => (out[idx[i]][idx[j]] += v)));
+    return out;
+  };
+
+  const per1k = (m) => (m.evaluated_count ? (m.critical_error_count / m.evaluated_count) * 1000 : 0);
+  const metricVal = (m, k) => (k === "per1k" ? per1k(m) : m[k] ?? 0);
+  const metricTxt = (m, k) => (k === "per1k" ? per1k(m).toFixed(2) : f1(m[k]));
+
+  // Models shown on the leaderboard page: null means all.
+  const lbShown = () => (state.lbCols ? D.models.filter((m) => state.lbCols.includes(m.key)) : D.models.slice());
+
+  function setLbCols(keys) {
+    const valid = keys.filter((k) => byKey(k));
+    state.lbCols = !valid.length || valid.length === D.models.length ? null : valid;
+    renderLeaderboard();
+    writeHash();
+  }
+
+  function toggleLbCol(key) {
+    const cur = lbShown().map((m) => m.key);
+    if (cur.includes(key)) {
+      if (cur.length === 1) { toast("Keep at least one model."); return; }
+      setLbCols(cur.filter((k) => k !== key));
+    } else setLbCols([...cur, key]);
+  }
+
+  function renderLbPicker() {
+    const shown = lbShown();
+    const all = !state.lbCols;
+    $("lbChips").innerHTML = all
+      ? `<span class="pill lb-all-pill">All ${D.models.length} models</span>`
+      : shown.map((m) => `<button type="button" class="mchip" data-key="${esc(m.key)}" aria-pressed="true"${tipAttr(`${fullName(m)}\nRemove from the leaderboard`)}>${swatch(m)}${esc(nameIn(m, shown))}<span class="x" aria-hidden="true">×</span></button>`).join("");
+    $("lbChips").querySelectorAll(".mchip").forEach((b) => b.onclick = () => toggleLbCol(b.dataset.key));
+    $("lbAllBtn").hidden = all;
+    $("lbPickBtn").textContent = all ? "Choose models" : "Add or remove";
+    const q = ($("lbPickQ").value || "").trim().toLowerCase();
+    const keys = shown.map((m) => m.key);
+    const list = D.models.filter((m) => !q || `${m.name} ${m.family} ${m.type}`.toLowerCase().includes(q));
+    $("lbPickList").innerHTML = bySection(list).map(([g, ms]) => {
+      const allOn = ms.every((m) => keys.includes(m.key));
+      return `<div class="pk-group"><div class="pk-head"><span>${esc(g)}</span><button type="button" class="pk-all" data-group="${esc(g)}">${allOn ? "Clear" : "Select all"}</button></div>${ms.map((m) =>
+        `<label class="pk-item"><input type="checkbox" data-key="${esc(m.key)}"${keys.includes(m.key) ? " checked" : ""}>${swatch(m)}<span>${esc(m.name)}</span><small>${esc(m.type)}${isFull(m) ? "" : " · subset"}</small></label>`).join("")}</div>`;
+    }).join("") || `<p class="empty">No models match.</p>`;
+    $("lbPickList").querySelectorAll("input[data-key]").forEach((c) => c.onchange = () => toggleLbCol(c.dataset.key));
+    $("lbPickList").querySelectorAll(".pk-all").forEach((b) => b.onclick = () => {
+      const ms = list.filter((m) => sectionLabel(m) === b.dataset.group).map((m) => m.key);
+      const cur = lbShown().map((m) => m.key);
+      if (ms.every((k) => cur.includes(k))) {
+        const rest = cur.filter((k) => !ms.includes(k));
+        if (!rest.length) { toast("Keep at least one model."); return; }
+        setLbCols(rest);
+      } else setLbCols([...new Set([...cur, ...ms])]);
+    });
+  }
+
+  function setupLbPicker() {
+    const pop = $("lbPickPop"), btn = $("lbPickBtn");
+    const close = () => { pop.hidden = true; btn.setAttribute("aria-expanded", "false"); };
+    btn.onclick = () => { pop.hidden = !pop.hidden; btn.setAttribute("aria-expanded", String(!pop.hidden)); if (!pop.hidden) { renderLbPicker(); $("lbPickQ").focus(); } };
+    $("lbPickQ").oninput = renderLbPicker;
+    $("lbAllBtn").onclick = () => setLbCols([]);
+    document.addEventListener("click", (e) => { if (!pop.hidden && !e.target.closest(".lb-pick .picker")) close(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !pop.hidden) { close(); btn.focus(); } });
+  }
+
+  function renderLeaderboard() {
+    renderLbPicker();
+    seg("lbScaleSeg", state.lbScale, (v) => { state.lbScale = v; renderLeaderboard(); writeHash(); });
+    const three = state.lbScale === "3";
+    const overallKey = three ? "macro_f1_3" : "macro_f1_5";
+    const visible = lbShown();
+    const ranked = visible.filter(isFull).sort((a, b) => b[overallKey] - a[overallKey]);
+    const partial = visible.filter((m) => !isFull(m)).sort((a, b) => b[overallKey] - a[overallKey]);
+    const cols = [...ranked, ...partial];
+    $("lbLead").textContent = state.lbCols
+      ? `Showing ${visible.length} of ${D.models.length} classifiers, each scored against the ClinGen expert classification of ${int(D.metadata.total_variants)} variants. Ranks and highlights are among the models shown.`
+      : `${D.models.length} classifiers (${bySection(D.models).map(([g, ms]) => `${g} ${ms.length}`).join(", ")}), each scored against the ClinGen expert classification of ${int(D.metadata.total_variants)} variants.`;
+    $("lbTitle").textContent = `F1 score by expert classification and disease category, ${three ? "3-class" : "5-class"}`;
+    $("lbSub").innerHTML = (three
+      ? "Calls grouped as pathogenic or likely pathogenic (P/LP), uncertain significance (VUS), and benign or likely benign (B/LB). Overall and category rows are macro F1 across these three groups."
+      : "The five ACMG classes. Overall and category rows are macro F1 across the five classes.") +
+      ` All values are percentages. The best value in each row is bold and shaded in that model's colour.<span class="ui-hint"> Select a model name to open its confusion matrices.</span>`;
+
+    renderLbScatter(cols);
+    renderAgreeHeat();
+
+    if (!cols.length) { $("lbTable").innerHTML = `<tbody><tr><td class="empty">No models selected.</td></tr></tbody>`; return; }
+
+    // Columns grouped by section, in rank order within each
+    const groups = bySection(cols);
+    const order = groups.flatMap(([, ms]) => ms);
+    const groupStart = new Set(groups.slice(1).map(([, ms]) => ms[0].key));
+    const gs = (m) => (groupStart.has(m.key) ? " lbt-gs" : "");
+    const rankOf = (m) => (isFull(m) ? ranked.indexOf(m) + 1 : null);
+    const SMALL_N = 100;
+
+    // Rows: F1 rows are shaded on one shared scale; other measures are not
+    const catKey = three ? "macro_f1_3" : "macro_f1";
+    const classRows = three
+      ? [["pathogenic", "P/LP", "Pathogenic or likely pathogenic"], ["vus", "VUS", "Uncertain significance"], ["benign", "B/LB", "Benign or likely benign"]]
+          .map(([k, abbr, label]) => ({ label, abbr, n: (cols[0].per_class_3[k] || {}).support, get: (m) => (m.per_class_3 || {})[k]?.f1, f1: true, indent: true }))
+      : LABELS.map((l) => ({ label: l, abbr: ABBR[l], n: (cols[0].per_class_5[l] || {}).support, get: (m) => (m.per_class_5 || {})[l]?.f1, f1: true, indent: true }));
+    const cats = categoriesWithData().sort((a, b) => catCount(b) - catCount(a));
+    const maxCat = Math.max(1, ...cats.map(catCount));
+    const catRows = cats.map((c) => ({
+      label: c, n: catCount(c), bar: catCount(c) / maxCat, small: catCount(c) < SMALL_N, f1: true,
+      get: (m) => { const r = (D.categories_data[m.key] || {})[c]; return r && r.count ? r[catKey] : null; }
+    }));
+    const otherRows = [
+      { label: "Exact accuracy, 5-class", get: (m) => m.exact_accuracy },
+      { label: "Directional accuracy, 3-class", get: (m) => m.directional_accuracy },
+      { label: "Cross-direction errors per 1,000 variants", get: per1k, low: true, fmt: (v) => v.toFixed(2) }
+    ];
+    const overall = { label: "Overall", n: D.metadata.total_variants, get: (m) => m[overallKey], f1: true, strong: true };
+    const sections = [
+      ["By expert classification", [overall, ...classRows]],
+      ["By disease category (ClinGen expert panel)", catRows],
+      ["Other measures", otherRows]
+    ];
+
+
+    const groupHead = `<tr class="lbt-groups"><th class="lbt-first" colspan="2"></th>${groups.map(([g, ms, k], i) => `<th colspan="${ms.length}" class="lbt-group${i ? " lbt-gs" : ""}"${tipAttr(SECTION_TIP[k])}>${esc(g)}</th>`).join("")}</tr>`;
+    const head = `<thead>${groupHead}<tr><th class="lbt-first">Measure</th><th class="lbt-nh">Variants</th>${order.map((m) => {
+      const r = rankOf(m);
+      return `<th class="lbt-model${gs(m)}"><button type="button" class="lbt-name" data-key="${esc(m.key)}"${tipAttr(`${fullName(m)}\n${sectionLabel(m)} · ${groupOf(m)}${isComplete(m) ? "" : `\nScored on ${int(m.evaluated_count)} of ${int(m.total_cohort)} variants${isFull(m) ? "" : "; not ranked"}`}\nSelect to open its analysis`)}>
+        <span class="lbt-rank">${r ? "#" + r : "not ranked"}</span>
+        <span class="lbt-label">${swatch(m)}${esc(m.short_name)}${isFull(m) ? "" : "*"}</span>
+        <span class="lbt-meta">${esc(providerOf(m))}${isComplete(m) ? "" : ` · n=${int(m.evaluated_count)}`}</span>
+      </button></th>`;
+    }).join("")}</tr></thead>`;
+
+    const rowHtml = (r) => {
+      const rankedVals = order.filter(isFull).map((m) => r.get(m)).filter((v) => v != null);
+      const bestVal = !rankedVals.length ? null : (r.low ? Math.min(...rankedVals) : Math.max(...rankedVals));
+      const fmt = r.fmt || ((v) => f1(v));
+      const label = `<td class="lbt-first${r.indent ? " indent" : ""}"><span class="lbt-row">${r.abbr ? `<span class="lbt-abbr">${r.abbr}</span>` : ""}${esc(r.label)}${r.small ? `<sup class="lbt-dag"${tipAttr(`Fewer than ${SMALL_N} variants: interpret with caution`)}>†</sup>` : ""}</span></td>`;
+      const n = r.n != null
+        ? `<td class="lbt-n${r.small ? " small" : ""}"><span class="lbt-nv">${int(r.n)}</span>${r.bar != null ? `<span class="lbt-nbar"><span style="width:${Math.max(2, r.bar * 100)}%"></span></span>` : ""}</td>`
+        : `<td class="lbt-n"></td>`;
+      return `<tr class="${r.strong ? "lbt-overall" : ""}${r.small ? " lbt-small" : ""}">${label}${n}${order.map((m) => {
+        const v = r.get(m);
+        if (v == null) return `<td class="lbt-v na${gs(m)}">—</td>`;
+        const isBest = bestVal != null && isFull(m) && Math.abs(v - bestVal) < 1e-9;
+        // The best value in each row is tinted in the winning model's colour
+        const tint = isBest ? ` style="background:color-mix(in srgb, ${m.color} 18%, var(--surface))"` : "";
+        return `<td class="lbt-v${gs(m)}${isBest ? " best" : ""}${isFull(m) ? "" : " partial"}"${tint}${tipAttr(`${fullName(m)}\n${r.label}${r.f1 ? " F1" : ""}: ${fmt(v)}${r.fmt ? "" : "%"}${r.n != null ? `\nn = ${int(r.n)} variants` : ""}${isBest ? "\nBest in row" : ""}`)}>${fmt(v)}</td>`;
+      }).join("")}</tr>`;
+    };
+    const span = order.length + 2;
+    const body = sections.map(([title, rows]) => `<tr class="lbt-sec"><td class="lbt-first" colspan="${span}">${title}</td></tr>` + rows.map(rowHtml).join("")).join("");
+    $("lbTable").innerHTML = head + `<tbody>${body}</tbody>`;
+    $("lbTable").querySelectorAll(".lbt-name").forEach((b) => b.onclick = () => openAnalysis(b.dataset.key));
+    $("lbNote").innerHTML = [
+      partial.length ? `* ${partial.map((m) => esc(m.short_name)).join(", ")} ${partial.length > 1 ? "were" : "was"} scored on part of the cohort, so ${partial.length > 1 ? "they are" : "it is"} not ranked and not eligible for best-in-row.` : "",
+      ranked.filter((m) => !isComplete(m)).map((m) => `${esc(m.short_name)} returned no call for ${int(m.total_cohort - m.evaluated_count)} variant${m.total_cohort - m.evaluated_count === 1 ? "" : "s"}; it is ranked on the ${int(m.evaluated_count)} it classified.`).join("<br>"),
+      cats.some((c) => catCount(c) < SMALL_N) ? `† Fewer than ${SMALL_N} variants; F1 on small categories varies widely.` : "",
+      "Categories group variants by the ClinGen expert panel (VCEP) that curated them. Cross-direction errors: a benign or likely benign variant called pathogenic or likely pathogenic, or the reverse."
+    ].filter(Boolean).join("<br>");
+  }
+
+  // Accuracy against safety: score across, cross-direction errors up (inverted).
+  const SCATTER_X = {
+    "5": { key: "macro_f1_5", label: "Macro F1, 5-class" },
+    "3": { key: "directional_accuracy", label: "Directional accuracy, 3-class" }
+  };
+
+  function renderLbScatter(models) {
+    seg("scSeg", state.scatterScale, (v) => { state.scatterScale = v; renderLeaderboard(); });
+    const ax = SCATTER_X[state.scatterScale];
+    $("scTitle").textContent = `Accuracy against safety: ${ax.label}`;
+    $("scSub").innerHTML = `Right is a higher ${ax.label.replace("Macro", "macro").replace("Directional", "directional")}; up is fewer cross-direction errors per 1,000 variants. Hollow dots were scored on part of the cohort.<span class="ui-hint"> Hover a dot for its values; select it to open the model.</span>`;
+    const box = $("lbScatter");
+    if (!models.length) { box.innerHTML = `<p class="empty">No models for this filter.</p>`; return; }
+    const W = Math.max(300, box.clientWidth || 1000);
+    const narrow = W < 640;
+    const H = narrow ? 340 : 440, top = 14, bottom = 52, left = narrow ? 44 : 64, right = narrow ? 8 : 24;
+    const xs = models.map((m) => m[ax.key] ?? 0), es = models.map(per1k);
+    const lo = Math.max(0, Math.floor((Math.min(...xs) - 3) / 10) * 10), hi = Math.min(100, Math.ceil((Math.max(...xs) + 2) / 10) * 10);
+    const ymax = Math.max(2, Math.ceil((Math.max(...es) + 0.4) / 2) * 2);
+    // Padding inside both axes so no dot or label sits on the plot edge
+    const xPad = (hi - lo) * 0.04, yPad = ymax * 0.08;
+    const x = (v) => left + ((v - (lo - xPad)) / Math.max(1, hi - lo + 2 * xPad)) * (W - left - right);
+    const y = (v) => top + ((v + yPad) / (ymax + yPad)) * (H - top - bottom);
+    const out = [];
+    for (let t = lo; t <= hi; t += 10) out.push(`<line class="sc-grid" x1="${n2(x(t))}" x2="${n2(x(t))}" y1="${top}" y2="${H - bottom}"/><text class="sc-tick" x="${n2(x(t))}" y="${H - bottom + 16}" text-anchor="middle">${t}%</text>`);
+    const ystep = ymax > 6 ? 2 : 1;
+    for (let t = 0; t <= ymax; t += ystep) out.push(`<line class="sc-grid" x1="${left}" x2="${W - right}" y1="${n2(y(t))}" y2="${n2(y(t))}"/><text class="sc-tick" x="${left - 8}" y="${n2(y(t) + 4)}" text-anchor="end">${t}</text>`);
+    out.push(`<line class="sc-axis" x1="${left}" x2="${W - right}" y1="${H - bottom}" y2="${H - bottom}"/><line class="sc-axis" x1="${left}" x2="${left}" y1="${top}" y2="${H - bottom}"/>`);
+    out.push(`<text class="sc-axl" x="${n2((left + W - right) / 2)}" y="${H - 12}" text-anchor="middle">${ax.label} →</text>`);
+    const yc = (top + H - bottom) / 2;
+    out.push(`<text class="sc-axl" x="14" y="${n2(yc)}" text-anchor="middle" transform="rotate(-90 14 ${n2(yc)})">${narrow ? "↑ Fewer errors / 1,000" : "↑ Fewer cross-direction errors per 1,000"}</text>`);
+
+    // Labels: try eight positions around each dot, keep the first that collides with nothing
+    measureCtx.font = `500 12px ${getComputedStyle(document.body).fontFamily}`;
+    const pts = models.map((m) => ({ m, cx: x(m[ax.key] ?? 0), cy: y(per1k(m)) }));
+    const boxes = pts.map((p) => [p.cx - 8, p.cy - 8, p.cx + 8, p.cy + 8]);
+    const overlaps = (b, list) => list.some((o) => !(b[2] < o[0] || b[0] > o[2] || b[3] < o[1] || b[1] > o[3]));
+    // On narrow screens the colour key above the chart names the models instead.
+    if (!narrow) pts.slice().sort((a, b) => a.cy - b.cy || b.cx - a.cx).forEach((p) => {
+      const text = `${nameIn(p.m, models)}${isFull(p.m) ? "" : "*"}${narrow ? "" : "  " + f1(p.m[ax.key])}`;
+      const w = measureCtx.measureText(text).width + 4, h = 14;
+      const cands = [[12, 4, "start"], [-12, 4, "end"], [0, -14, "middle"], [0, 22, "middle"], [12, -12, "start"], [12, 20, "start"], [-12, -12, "end"], [-12, 20, "end"]];
+      p.text = text;
+      p.lab = null;
+      for (const [dx, dy, a] of cands) {
+        const lx = p.cx + dx, ly = p.cy + dy;
+        const x0 = a === "start" ? lx : a === "end" ? lx - w : lx - w / 2;
+        const b = [x0, ly - h + 3, x0 + w, ly + 3];
+        if (!overlaps(b, boxes) && b[0] > left && b[2] < W - 2 && b[1] > 0 && b[3] < H - bottom) { boxes.push(b); p.lab = [lx, ly, a]; break; }
+      }
+    });
+    pts.forEach((p) => {
+      const m = p.m, full = isFull(m);
+      const tip = `${fullName(m)}${full ? "" : `, scored on ${int(m.evaluated_count)} variants`}\n${ax.label}: ${pct(m[ax.key])}\nCross-direction errors: ${int(m.critical_error_count)} (${per1k(m).toFixed(2)} per 1,000)`;
+      out.push(`<g class="sc-pt" data-key="${esc(m.key)}"${tipAttr(tip)}>
+        <circle cx="${n2(p.cx)}" cy="${n2(p.cy)}" r="7" style="fill:${full ? m.color : "var(--surface)"};stroke:${full ? "var(--surface)" : m.color};stroke-width:2"/>
+        ${p.lab ? `<text class="sc-lbl" x="${n2(p.lab[0])}" y="${n2(p.lab[1])}" text-anchor="${p.lab[2]}">${esc(p.text)}</text>` : ""}
+      </g>`);
+    });
+    const unlabelled = narrow ? pts : pts.filter((p) => !p.lab);
+    const key = unlabelled.length ? `<div class="legend sc-key">${models.map((m) => `<span>${mname(m, models)}${isFull(m) ? "" : "*"}</span>`).join("")}</div>` : "";
+    box.innerHTML = key + `<svg class="scatter" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(ax.label)} against cross-direction errors for each model">${out.join("")}</svg>` +
+      (models.some((m) => !isFull(m)) ? `<p class="note">* Scored on part of the cohort, not ranked.</p>` : "");
+  }
+
+  function setupLbScatter() {
+    const box = $("lbScatter");
+    const clear = () => { const svg = box.querySelector("svg"); if (svg) { svg.classList.remove("hl"); svg.querySelectorAll(".on").forEach((e) => e.classList.remove("on")); } };
+    box.addEventListener("pointerover", (e) => { const g = e.target.closest(".sc-pt"); clear(); if (g) { g.ownerSVGElement.classList.add("hl"); g.classList.add("on"); } });
+    box.addEventListener("pointerleave", clear);
+    box.addEventListener("click", (e) => { const g = e.target.closest(".sc-pt"); if (g) openAnalysis(g.dataset.key); });
+  }
+
+  function openAnalysis(key) {
+    if (!byKey(key)) return;
+    state.comps = state.comps.filter((k) => k !== key);
+    state.focus = key;
+    normalizeSelection();
+    renderSelector();
+    setTab("confusion");
+    window.scrollTo({ top: 0 });
+  }
+
+  // ---------- categories ----------
+  function categoriesWithData() {
+    return (D.metadata.categories || []).filter((c) => D.models.some((m) => (D.categories_data[m.key] || {})[c]?.count));
+  }
+  const catCount = (c) => Math.max(0, ...D.models.map((m) => ((D.categories_data[m.key] || {})[c] || {}).count || 0));
+
+  // ---------- confusion ----------
+  function confusionTable(m) {
+    const cm = D.confusion_matrices[m.key];
+    if (!cm) return `<p class="empty">No confusion matrix for this model.</p>`;
+    const five = state.cmScale === "5";
+    const mat = five ? cm.matrix_5 : collapse3(cm.matrix_5);
+    const labels = five ? LABELS.map((l) => ABBR[l]) : ["P/LP", "VUS", "B/LB"];
+    const full = five ? LABELS : ["Pathogenic or likely pathogenic", "Uncertain significance", "Benign or likely benign"];
+    const dirOf = (i) => (five ? ["p", "p", "v", "b", "b"] : ["p", "v", "b"])[i];
+    const head = `<thead><tr><th class="cm-axis">Expert \\ Model</th>${labels.map((l) => `<th class="colh">${l}</th>`).join("")}</tr></thead>`;
+    const body = mat.map((row, i) => {
+      const sum = row.reduce((a, b) => a + b, 0);
+      return `<tr><td class="rowh">${labels[i]}</td>${row.map((v, j) => {
+        const share = sum ? v / sum : 0;
+        const x = (dirOf(i) === "p" && dirOf(j) === "b") || (dirOf(i) === "b" && dirOf(j) === "p");
+        const shown = state.cmMode === "count" ? int(v) : (share * 100).toFixed(1);
+        return `<td class="h${i === j ? " diag" : ""}${x && v > 0 ? " xdir" : ""}" style="${modelHeat(m.color, share)}"${tipAttr(`${fullName(m)}\nExpert: ${full[i]}\nModel: ${full[j]}\n${int(v)} variants, ${(share * 100).toFixed(1)}% of row${x && v > 0 ? "\nCross-direction error" : ""}`)}>${shown}</td>`;
+      }).join("")}</tr>`;
+    }).join("");
+    return `<div class="table-wrap"><table class="heat cm">${head}<tbody>${body}</tbody></table></div>`;
+  }
+
+  function renderConfusion() {
+    seg("cmScaleSeg", state.cmScale, (v) => { state.cmScale = v; renderConfusion(); });
+    seg("cmModeSeg", state.cmMode, (v) => { state.cmMode = v; renderConfusion(); });
+    $("cmSub").textContent = state.cmMode === "count" ? "Cell values are variant counts." : "Cell values are the percentage of the row.";
+    const ms = selModels();
+    $("cmGrid").innerHTML = ms.map((m) => `<div><p class="cm-title">${mname(m, ms)}</p>${confusionTable(m)}</div>`).join("");
+    const head = `<thead><tr><th>Class</th><th>Model</th><th class="r">Precision</th><th class="r">Recall</th><th class="r">F1</th><th class="r">Support</th></tr></thead>`;
+    const body = LABELS.map((l) => ms.map((m, i) => {
+      const c = (m.per_class_5 || {})[l] || {};
+      return `<tr class="${i === ms.length - 1 ? "grp-end" : ""}">${i === 0 ? `<td rowspan="${ms.length}" class="grp">${l}</td>` : ""}<td>${mname(m, ms)}</td><td class="r num">${f1(c.precision)}</td><td class="r num">${f1(c.recall)}</td><td class="r num"><strong>${f1(c.f1)}</strong></td><td class="r num">${int(c.support)}</td></tr>`;
+    }).join("")).join("");
+    $("prTable").innerHTML = head + `<tbody>${body}</tbody>`;
+  }
+
+  // ---------- criteria ----------
+  function criteriaBars(el, list, ms) {
+    const share = (m, c) => (D.criteria_data[m.key] ? ((D.criteria_data[m.key][c] || 0) / (m.evaluated_count || 1)) * 100 : null);
+    let max = 0;
+    list.forEach(([c]) => ms.forEach((m) => (max = Math.max(max, share(m, c) || 0))));
+    const top = niceMax(max);
+    const ticks = [0, top / 4, top / 2, (3 * top) / 4, top].map((t) => +t.toFixed(1));
+    el.innerHTML = verticalBars(list.map(([c, def]) => ({
+      label: `<span class="mono">${c}</span>`, tip: `${c}: ${def}`,
+      bars: ms.map((m) => {
+        const v = share(m, c);
+        if (v == null) return { m, v: null, text: "no criteria recorded" };
+        const n = D.criteria_data[m.key][c] || 0;
+        return { m, v, text: v > 0 && v < 0.1 ? "<0.1" : v.toFixed(1), tip: `${c} · ${fullName(m)}\n${int(n)} variants, ${v.toFixed(1)}% of evaluated\n${def}` };
+      })
+    })), { max: top, ticks, unit: "%", width: el.clientWidth });
+  }
+
+  function renderCriteria() {
+    const ms = selModels();
+    criteriaBars($("critPath"), CRITERIA.pathogenic, ms);
+    criteriaBars($("critBen"), CRITERIA.benign, ms);
+  }
+
+  // ---------- agreement (leaderboard) ----------
+  // Pairwise agreement among the models shown on the leaderboard. Models that
+  // agree sit together: start from the top-ranked model, then repeatedly take
+  // the model that agrees most with the previous one.
+  function renderAgreeHeat() {
+    seg("agreeSeg", state.agree, (v) => { state.agree = v; renderAgreeHeat(); });
+    const overallKey = state.lbScale === "3" ? "macro_f1_3" : "macro_f1_5";
+    const shown = lbShown();
+    const pool = shown.filter((m) => D.concordance[m.key]).sort((a, b) => (isFull(b) - isFull(a)) || b[overallKey] - a[overallKey]);
+    const missing = shown.filter((m) => !D.concordance[m.key]);
+    const agreeOf = (a, b) => { const r = D.concordance[a.key]?.[b.key]; return r && r.overlap ? r[state.agree] : -1; };
+    const models = [];
+    let cur = pool[0];
+    while (cur) {
+      models.push(cur);
+      const rest = pool.filter((m) => !models.includes(m));
+      cur = rest.sort((a, b) => agreeOf(cur, b) - agreeOf(cur, a))[0];
+    }
+    const exact = state.agree === "exact_pct";
+    $("agreeTitle").textContent = `Agreement between classifiers, ${exact ? "same 5-class call" : "same direction (P/LP, VUS, B/LB)"}`;
+    $("agreeSub").textContent = "Share of shared variants on which two classifiers return the same call, independent of the expert classification. Models that agree sit together; shading is scaled to the observed range.";
+    $("agreeNote").textContent = missing.length ? `Not shown: ${missing.map((m) => m.short_name).join(", ")}, carried over from an earlier build without variant-level results.` : "";
+    const table = $("agreeHeat");
+    if (models.length < 2) {
+      table.innerHTML = `<tbody><tr><td class="empty">Show at least two models to compare their calls.</td></tr></tbody>`;
+      $("agreeMin").textContent = $("agreeMax").textContent = "";
+      return;
+    }
+    const vals = [];
+    models.forEach((a) => models.forEach((b) => { if (a !== b) { const v = D.concordance[a.key]?.[b.key]; if (v && v.overlap) vals.push(v[state.agree]); } }));
+    const lo = vals.length ? Math.floor(Math.min(...vals)) : 0, hi = vals.length ? Math.ceil(Math.max(...vals)) : 100;
+    $("agreeMin").textContent = lo + "%";
+    $("agreeMax").textContent = hi + "%";
+    const draw = (compact) => {
+      const head = `<thead><tr><th></th>${models.map((m) => `<th class="colh"${tipAttr(fullName(m))}>${swatch(m)}<br>${esc(nameIn(m, models))}</th>`).join("")}</tr></thead>`;
+      const body = models.map((a) => `<tr><td class="rowh">${mname(a, models)}</td>${models.map((b) => {
+        const r = D.concordance[a.key]?.[b.key];
+        if (a === b || !r || !r.overlap) return `<td class="h" style="color:var(--muted)">—</td>`;
+        const v = r[state.agree];
+        return `<td class="h" style="${heatStyle((v - lo) / Math.max(1, hi - lo))}"${tipAttr(`${fullName(a)} vs ${fullName(b)}\n${pct(v)} agreement\n${int(r.overlap)} shared variants`)}>${compact ? "" : f1(v)}</td>`;
+      }).join("")}</tr>`).join("");
+      table.innerHTML = head + `<tbody>${body}</tbody>`;
+      table.classList.toggle("compact", compact);
+    };
+    // Values print in the cells when the table fits the card; otherwise they show on hover.
+    draw(false);
+    const wrap = table.parentElement;
+    if (wrap.scrollWidth > wrap.clientWidth + 1) draw(true);
+  }
+
+  // ---------- variants CSV ----------
+  // Every benchmark variant with the expert classification and criteria, and
+  // each model's call and the ACMG criteria it cited (as the model wrote them).
+  const CSV_COLUMN = { id: "variant_id", variation: "variant", ground_truth: "expert_classification" };
+  const csvCell = (v) => { const t = v == null ? "" : String(v); return /[",\r\n]/.test(t) ? `"${t.replace(/"/g, '""')}"` : t; };
+
+  // Per row, the criteria a model cited, decoded from the table's vocabulary (see build_variant_table).
+  function criteriaLists(t, key) {
+    const enc = (t.criteria || {})[key];
+    const vocab = t.criteria_vocab || [];
+    const rows = enc ? enc.split("|") : [];
+    return t.rows.map((_, i) => (rows[i] || "").split(" ").filter(Boolean).map((x) => vocab[parseInt(x, 36)]).join(" "));
+  }
+
+  // Criteria from an imported record: a list (aiva_criteria or criteria), or Claude Code's criteria.met object.
+  function criteriaOf(r) {
+    const c = r.aiva_criteria || r.criteria;
+    if (Array.isArray(c)) return c.map(String);
+    if (c && typeof c === "object" && c.met && typeof c.met === "object") return Object.keys(c.met);
+    return [];
+  }
+
+  function encodeCriteria(t, list) {
+    t.criteria_vocab = t.criteria_vocab || [];
+    return list.map((c) => {
+      let i = t.criteria_vocab.indexOf(c);
+      if (i < 0) i = t.criteria_vocab.push(c) - 1;
+      return i.toString(36);
+    }).join(" ");
+  }
+
+  function downloadVariantsCsv() {
+    const t = D.variant_table;
+    if (!t || !t.rows || !t.rows.length) { toast("This build has no variant table; rebuild with python scripts/update_dashboard.py."); return; }
+    const ms = D.models.filter((m) => t.calls[m.key]);
+    const crit = ms.map((m) => criteriaLists(t, m.key));
+    const head = [...t.columns.map((c) => CSV_COLUMN[c] || c), ...ms.flatMap((m) => [`${fullName(m)} classification`, `${fullName(m)} criteria`])];
+    const lines = [head.map(csvCell).join(",")];
+    t.rows.forEach((r, i) => {
+      const perModel = ms.flatMap((m, j) => [t.labels[t.calls[m.key][i]] || "", crit[j][i]]);
+      lines.push([...r, ...perModel].map(csvCell).join(","));
+    });
+    download(new Blob([lines.join("\r\n") + "\r\n"], { type: "text/csv" }), `aiva-bench-variants-${t.rows.length}.csv`);
+    toast(`Downloaded ${int(t.rows.length)} variants with calls and criteria from ${ms.length} models.`);
+  }
+
+  // ---------- tabs & URL ----------
+  const RENDER = {
+    leaderboard: renderLeaderboard,
+    confusion: renderConfusion,
+    criteria: renderCriteria,
+    ranking: () => {}
+  };
+  const sectionOf = (tab) => (tab === "ranking" ? "ranking" : "classification");
+
+  function readHash() {
+    const [tab, q] = location.hash.slice(1).split("?");
+    const p = new URLSearchParams(q || "");
+    return { tab: tab || "leaderboard", m: p.get("m"), c: p.get("c"), s: p.get("s"), show: p.get("show") };
+  }
+
+  function lbHashQuery() {
+    const q = [];
+    if (state.lbScale !== "3") q.push("s=" + state.lbScale);
+    if (state.lbCols) q.push("show=" + state.lbCols.map(encodeURIComponent).join(","));
+    return q.length ? "?" + q.join("&") : "";
+  }
+
+  function writeHash() {
+    const h = state.tab === "ranking" ? "#ranking" : state.tab === "leaderboard"
+      ? `#leaderboard${lbHashQuery()}`
+      : `#${state.tab}?m=${encodeURIComponent(state.focus)}&c=${state.comps.map(encodeURIComponent).join(",")}`;
+    if (location.hash !== h) history.replaceState(null, "", h);
+  }
+
+  function applyHash() {
+    const h = readHash();
+    if (h.m && byKey(h.m)) state.focus = h.m;
+    if (h.c != null) state.comps = h.c.split(",").filter(Boolean);
+    if (h.s === "3" || h.s === "5") state.lbScale = h.s;
+    if (h.tab === "leaderboard") {
+      const keys = (h.show || "").split(",").filter((k) => byKey(k));
+      state.lbCols = keys.length && keys.length < D.models.length ? keys : null;
+    }
+    state.tab = RENDER[h.tab] ? h.tab : "leaderboard";
+  }
+
+  function setTab(tab) {
+    if (!RENDER[tab]) tab = "leaderboard";
+    state.tab = tab;
+    if (tab !== "ranking") state.clsTab = tab;
+    const section = sectionOf(tab);
+    document.body.dataset.tab = tab;
+    document.body.dataset.section = section;
+    document.querySelectorAll(".section-tab").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.section === section)));
+    $("subtitle").textContent = section === "ranking" ? "" : state.clsSubtitle;
+    document.querySelectorAll(".tab").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
+    document.querySelectorAll(".view").forEach((v) => (v.hidden = v.id !== "view-" + tab));
+    RENDER[tab]();
+    writeHash();
+  }
+
+  function renderAll() {
+    applyThemeColors();
+    renderChrome();
+    renderSelector();
+    setTab(state.tab);
+  }
+
+  // ---------- import ----------
+  let pendingFile = null;
+
+  function parseRecords(text) {
+    const t = text.trim();
+    if (t.startsWith("[")) return JSON.parse(t);
+    if (t.startsWith("{") && !t.includes("\n")) return [JSON.parse(t)];
+    const out = [];
+    t.split(/\r?\n/).forEach((line) => { if (line.trim()) { try { out.push(JSON.parse(line)); } catch (_) { /* skip malformed line */ } } });
+    return out;
+  }
+
+  function scoreImport(name, family, records) {
+    const preds = {}, crits = {};
+    records.forEach((r) => {
+      const id = r.variant_id || r.id;
+      const cls = normalizeClass(r.aiva_classification || r.classification || r.prediction);
+      if (id && cls && GT[id] != null) { preds[id] = cls; crits[id] = criteriaOf(r); }
+    });
+    const ids = Object.keys(preds);
+    const n = ids.length;
+    if (!n) throw new Error("No records matched cohort variant ids with a recognisable classification.");
+
+    const m5 = LABELS.map(() => LABELS.map(() => 0));
+    const D3 = ["pathogenic", "vus", "benign"];
+    const m3 = D3.map(() => D3.map(() => 0));
+    let fp = 0, fb = 0;
+    ids.forEach((id) => {
+      const g = LABELS[GT[id]], p = preds[id];
+      m5[GT[id]][LABELS.indexOf(p)]++;
+      m3[D3.indexOf(DIR[g])][D3.indexOf(DIR[p])]++;
+      if (DIR[g] === "benign" && DIR[p] === "pathogenic") fp++;
+      if (DIR[g] === "pathogenic" && DIR[p] === "benign") fb++;
+    });
+    const perClass = (mat, labels) => {
+      const res = {};
+      labels.forEach((l, i) => {
+        const tp = mat[i][i];
+        const sup = mat[i].reduce((a, b) => a + b, 0);
+        const predN = mat.reduce((a, row) => a + row[i], 0);
+        const p = predN ? tp / predN : 0, r = sup ? tp / sup : 0;
+        const f = p + r ? (2 * p * r) / (p + r) : 0;
+        res[l] = { precision: +(p * 100).toFixed(2), recall: +(r * 100).toFixed(2), f1: +(f * 100).toFixed(2), support: sup };
+      });
+      return res;
+    };
+    const macro = (pc) => { const v = Object.values(pc).filter((c) => c.support > 0); return v.length ? +(v.reduce((a, c) => a + c.f1, 0) / v.length).toFixed(2) : 0; };
+    const pc5 = perClass(m5, LABELS), pc3 = perClass(m3, D3);
+    const diag = (mat) => mat.reduce((a, row, i) => a + row[i], 0);
+    const total = D.metadata.total_variants;
+    const key = "imported_" + Date.now();
+    const [color, color_dark] = nextPaletteColor();
+
+    D.models.push({
+      key, name, short_name: name.length > 22 ? name.slice(0, 21) + "…" : name, family,
+      color, color_dark,
+      is_anthropic: family === "Anthropic", type: "Imported results", imported: true,
+      evaluated_count: n, total_cohort: total, coverage_pct: +((n / total) * 100).toFixed(1),
+      exact_accuracy: +((diag(m5) / n) * 100).toFixed(2), directional_accuracy: +((diag(m3) / n) * 100).toFixed(2),
+      macro_f1_5: macro(pc5), macro_f1_3: macro(pc3),
+      critical_error_count: fp + fb, critical_error_rate: +(((fp + fb) / n) * 100).toFixed(2),
+      false_pathogenic_count: fp, false_benign_count: fb, avg_latency_sec: 0,
+      per_class_5: pc5, per_class_3: pc3
+    });
+    D.confusion_matrices[key] = { matrix_5: m5, matrix_3: m3 };
+    const t = D.variant_table;
+    if (t && t.rows) {
+      t.calls[key] = t.rows.map((r) => (preds[r[0]] ? String(t.labels.indexOf(preds[r[0]])) : "-")).join("");
+      t.criteria = t.criteria || {};
+      t.criteria[key] = t.rows.map((r) => encodeCriteria(t, crits[r[0]] || [])).join("|");
+    }
+    return { key, n };
+  }
+
+  // Next unused colour from the model palette (PALETTE in dashboard/registry.py),
+  // so an imported model matches the rest: [light theme, dark theme].
+  function nextPaletteColor() {
+    const used = new Set(D.models.map((m) => (m.color_light || m.color || "").toLowerCase()));
+    const pal = D.metadata.palette || [];
+    return pal.find(([light]) => !used.has(light.toLowerCase())) || pal[D.models.length % Math.max(1, pal.length)] || ["#5785C1", "#5785C1"];
+  }
+
+  function setupImport() {
+    const dlg = $("importDlg"), drop = $("drop"), input = $("fileInput"), err = $("impError");
+    const pick = (file) => {
+      pendingFile = file;
+      $("dropText").innerHTML = `<strong>${esc(file.name)}</strong> · ${(file.size / 1024).toFixed(0)} KB`;
+      if (!$("impName").value) $("impName").value = file.name.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ");
+      err.hidden = true;
+    };
+    $("importBtn").onclick = () => {
+      if (!Object.keys(GT).length) { toast("Ground-truth index is missing from this build; regenerate the page to enable import."); return; }
+      pendingFile = null; $("impName").value = ""; $("dropText").innerHTML = "<strong>Choose a file</strong> or drop it here"; err.hidden = true;
+      dlg.showModal();
+    };
+    drop.onclick = () => input.click();
+    drop.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); input.click(); } };
+    input.onchange = () => { if (input.files[0]) pick(input.files[0]); };
+    drop.ondragover = (e) => { e.preventDefault(); drop.classList.add("over"); };
+    drop.ondragleave = () => drop.classList.remove("over");
+    drop.ondrop = (e) => { e.preventDefault(); drop.classList.remove("over"); if (e.dataTransfer.files[0]) pick(e.dataTransfer.files[0]); };
+    $("impGo").onclick = () => {
+      if (!pendingFile) { err.textContent = "Choose a file first."; err.hidden = false; return; }
+      const name = $("impName").value.trim() || pendingFile.name;
+      const reader = new FileReader();
+      reader.onload = async () => {
+        if (LOCAL_SERVER && $("impSave").checked) {
+          $("impGo").disabled = true; $("impGo").textContent = "Saving and rebuilding…";
+          try {
+            parseRecords(String(reader.result));
+            const data = await postModels("import", { name, provider: $("impFamily").value, content: String(reader.result) });
+            dlg.close();
+            state.tab = "confusion";
+            state.focus = data.changed_key;
+            applyServerData(data);
+            const m = byKey(data.changed_key);
+            toast(m ? `${name}: saved and scored on ${int(m.evaluated_count)} of ${int(D.metadata.total_variants)} variants.` : `${name} was saved but no records matched the cohort.`);
+          } catch (e) {
+            err.textContent = e.message; err.hidden = false;
+          } finally {
+            $("impGo").disabled = false; $("impGo").textContent = "Score and add";
+          }
+          return;
+        }
+        try {
+          const res = scoreImport(name, $("impFamily").value, parseRecords(String(reader.result)));
+          dlg.close();
+          state.tab = "confusion";
+          state.focus = res.key;
+          renderAll();
+          toast(`${name}: scored ${int(res.n)} of ${int(D.metadata.total_variants)} variants.`);
+        } catch (e) {
+          err.textContent = e.message; err.hidden = false;
+        }
+      };
+      reader.readAsText(pendingFile);
+    };
+  }
+
+  // ---------- model management ----------
+  const LOCAL_SERVER = ["localhost", "127.0.0.1", "[::1]"].includes(location.hostname);
+
+  function removeModelLocal(key) {
+    D.models = D.models.filter((m) => m.key !== key);
+    ["confusion_matrices", "categories_data", "criteria_data", "safety_data", "concordance"].forEach((k) => { if (D[k]) delete D[k][key]; });
+    Object.values(D.concordance || {}).forEach((row) => delete row[key]);
+    if (D.variant_table) { delete D.variant_table.calls[key]; if (D.variant_table.criteria) delete D.variant_table.criteria[key]; }
+  }
+
+  function applyServerData(data) {
+    data.ground_truth_index = GT;
+    D = data;
+    normalizeSelection();
+    renderAll();
+  }
+
+  async function postModels(action, body) {
+    const res = await fetch("/api/models/" + action, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.models) throw new Error(data.error ? `${data.error}${data.log ? ": " + data.log.split("\n").filter(Boolean).pop() : ""}` : `Server returned ${res.status}`);
+    return data;
+  }
+
+  function renderModelsDialog() {
+    $("modelsNote").textContent = LOCAL_SERVER
+      ? "Removing a model adds it to dashboard/excluded_models.txt and rebuilds the dataset and dashboard/index.html. Commit and push those files to publish the change. Restore undoes a removal."
+      : "This page is static, so removing a model hides it in this tab only. To remove a model permanently, run python dashboard/server.py, remove it there, then commit and push dashboard/index.html.";
+    $("modelsTable").innerHTML = `<thead><tr><th>Model</th><th class="r">Evaluated</th><th>Source</th><th></th></tr></thead><tbody>${D.models.map((m) =>
+      `<tr><td>${mname(m)}${m.name !== m.short_name ? `<div class="model-meta">${esc(m.name)}</div>` : ""}</td><td class="r num">${int(m.evaluated_count)}</td>
+        <td class="model-meta">${m.imported ? "Imported in this tab" : m.archived ? "Archived (earlier build)" : esc(m.type)}</td>
+        <td class="r"><button type="button" class="btn btn-danger" data-remove="${esc(m.key)}">Remove</button></td></tr>`).join("")}</tbody>`;
+    const removed = LOCAL_SERVER ? (D.metadata.excluded_models || []) : [];
+    $("removedWrap").hidden = !removed.length;
+    $("removedTable").innerHTML = `<tbody>${removed.map((m) => `<tr><td>${esc(m.name)}</td><td class="r"><button type="button" class="btn" data-restore="${esc(m.key)}">Restore</button></td></tr>`).join("")}</tbody>`;
+
+    $("modelsTable").querySelectorAll("[data-remove]").forEach((b) => b.onclick = async () => {
+      const key = b.dataset.remove, m = byKey(key);
+      if (D.models.length <= 1) { toast("At least one model must remain."); return; }
+      if (!b.classList.contains("armed")) {
+        $("modelsTable").querySelectorAll(".armed").forEach((x) => { x.classList.remove("armed"); x.textContent = "Remove"; });
+        b.classList.add("armed");
+        b.textContent = "Confirm";
+        if (m.archived && LOCAL_SERVER) $("modelsStatus").textContent = "Archived models cannot be restored after the next rebuild: their raw results are not in the repository.";
+        return;
+      }
+      if (LOCAL_SERVER && !m.imported) {
+        await serverAction(() => postModels("remove", { key }), `Removed ${m.name}.`);
+      } else {
+        removeModelLocal(key);
+        normalizeSelection();
+        renderAll();
+        renderModelsDialog();
+        toast(`Removed ${m.name} from this tab.`);
+      }
+    });
+    $("removedTable").querySelectorAll("[data-restore]").forEach((b) => b.onclick = () => {
+      const m = (D.metadata.excluded_models || []).find((x) => x.key === b.dataset.restore);
+      serverAction(() => postModels("restore", { key: b.dataset.restore }), `Restored ${m ? m.name : b.dataset.restore}.`);
+    });
+  }
+
+  async function serverAction(fn, okMsg) {
+    const dlg = $("modelsDlg"), err = $("modelsError");
+    dlg.querySelectorAll("button").forEach((b) => (b.disabled = true));
+    $("modelsStatus").textContent = "Rebuilding the dataset…";
+    err.hidden = true;
+    try {
+      applyServerData(await fn());
+      toast(okMsg + " Commit and push dashboard/ to publish.");
+      $("modelsStatus").textContent = "";
+    } catch (e) {
+      err.textContent = e.message; err.hidden = false;
+      $("modelsStatus").textContent = "";
+    } finally {
+      dlg.querySelectorAll("button").forEach((b) => (b.disabled = false));
+      renderModelsDialog();
+    }
+  }
+
+  function setupModels() {
+    $("modelsBtn").onclick = () => { $("modelsStatus").textContent = ""; $("modelsError").hidden = true; renderModelsDialog(); $("modelsDlg").showModal(); };
+    if (LOCAL_SERVER) {
+      $("impSaveWrap").hidden = false;
+      $("impWhere").textContent = "The file is scored against the benchmark's variants. With the option below, it is also saved to the repository and the dashboard is rebuilt.";
+    }
+  }
+
+  // ---------- theme & refresh ----------
+  function setupTheme() {
+    const order = ["system", "light", "dark"];
+    let cur = "system";
+    try { cur = localStorage.getItem("aiva-theme") || "system"; } catch (_) { /* storage unavailable */ }
+    const apply = () => {
+      if (cur === "system") delete document.documentElement.dataset.theme;
+      else document.documentElement.dataset.theme = cur;
+      $("themeBtn").textContent = "Theme: " + cur[0].toUpperCase() + cur.slice(1);
+      if (state.focus) rerenderForTheme();
+    };
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { if (cur === "system" && state.focus) rerenderForTheme(); });
+    $("themeBtn").onclick = () => {
+      cur = order[(order.indexOf(cur) + 1) % order.length];
+      try { localStorage.setItem("aiva-theme", cur); } catch (_) { /* storage unavailable */ }
+      apply();
+    };
+    apply();
+  }
+
+  function setupRefresh() {
+    // Only the local server (dashboard/server.py) provides /api/refresh.
+    if (!["localhost", "127.0.0.1", "[::1]"].includes(location.hostname)) return;
+    const btn = $("refreshBtn");
+    btn.hidden = false;
+    btn.onclick = async () => {
+      btn.disabled = true; btn.textContent = "Rebuilding…";
+      try {
+        const res = await fetch("/api/refresh");
+        const data = await res.json();
+        if (!data.models) throw new Error(data.log || "Rebuild failed");
+        data.ground_truth_index = GT;
+        D = data;
+        renderAll();
+        toast("Dataset rebuilt from result files.");
+      } catch (e) {
+        toast("Rebuild failed: " + e.message);
+      } finally {
+        btn.disabled = false; btn.textContent = "Rebuild data";
+      }
+    };
+  }
+
+
+  // ---------- figure export (SVG / TIFF) ----------
+  // Each figure card is redrawn as plain SVG primitives from its rendered
+  // layout (boxes, circles, text), so the SVG stays editable in vector tools.
+  // Exports always use the light theme on a white background.
+  const EXPORT_IGNORE = ".fig-export, .ui-hint, .controls, .seg, select, input, label.field, dialog";
+  const colorCache = new Map();
+  const colorCtx = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
+
+  function rgba(css) {
+    if (!css || css === "transparent" || css === "none") return null;
+    if (colorCache.has(css)) return colorCache.get(css);
+    colorCtx.clearRect(0, 0, 1, 1);
+    colorCtx.fillStyle = "#000";
+    colorCtx.fillStyle = css;
+    colorCtx.fillRect(0, 0, 1, 1);
+    const [r, g, b, a] = colorCtx.getImageData(0, 0, 1, 1).data;
+    const out = a === 0 ? null : { hex: "#" + [r, g, b].map((v) => v.toString(16).padStart(2, "0")).join(""), a: +(a / 255).toFixed(3) };
+    colorCache.set(css, out);
+    return out;
+  }
+  const paint = (attr, c) => (c ? ` ${attr}="${c.hex}"${c.a < 1 ? ` ${attr}-opacity="${c.a}"` : ""}` : ` ${attr}="none"`);
+  const xmlEsc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const n2 = (v) => +v.toFixed(2);
+
+  function splitTopLevel(str) {
+    const parts = []; let depth = 0, cur = "";
+    for (const ch of str) {
+      if (ch === "(") depth++;
+      if (ch === ")") depth--;
+      if (ch === "," && depth === 0) { parts.push(cur.trim()); cur = ""; } else cur += ch;
+    }
+    if (cur.trim()) parts.push(cur.trim());
+    return parts;
+  }
+
+  function parseShadows(str) {
+    if (!str || str === "none") return [];
+    return splitTopLevel(str).map((s) => {
+      const color = (s.match(/(rgba?|color|oklab|oklch|lab|lch|hsla?)\([^)]*\)|#[0-9a-f]{3,8}/i) || [])[0];
+      const rest = color ? s.replace(color, "") : s;
+      const nums = (rest.match(/-?[\d.]+px/g) || []).map(parseFloat);
+      return { color: rgba(color), inset: /\binset\b/.test(rest), x: nums[0] || 0, y: nums[1] || 0, blur: nums[2] || 0, spread: nums[3] || 0 };
+    });
+  }
+
+  function shapeSvg(x, y, w, h, radius, attrs) {
+    if (radius === "circle") return `<ellipse cx="${n2(x + w / 2)}" cy="${n2(y + h / 2)}" rx="${n2(w / 2)}" ry="${n2(h / 2)}"${attrs}/>`;
+    const r = Math.min(radius, w / 2, h / 2);
+    return `<rect x="${n2(x)}" y="${n2(y)}" width="${n2(w)}" height="${n2(h)}"${r > 0 ? ` rx="${n2(r)}"` : ""}${attrs}/>`;
+  }
+
+  function boxSvg(cs, r, ox, oy) {
+    const out = [];
+    const rad = cs.borderTopLeftRadius.trim();
+    const radius = rad.endsWith("%") && parseFloat(rad) >= 50 ? "circle" : parseFloat(rad) || 0;
+    const x = r.left - ox, y = r.top - oy, w = r.width, h = r.height;
+    const shadows = parseShadows(cs.boxShadow).filter((s) => s.blur === 0 && s.spread > 0 && s.color);
+    shadows.filter((s) => !s.inset).forEach((s) => {
+      const grow = radius === "circle" ? "circle" : radius + s.spread;
+      out.push(shapeSvg(x - s.spread + s.x, y - s.spread + s.y, w + 2 * s.spread, h + 2 * s.spread, grow, paint("fill", s.color)));
+    });
+    const bg = rgba(cs.backgroundColor);
+    if (bg) out.push(shapeSvg(x, y, w, h, radius, paint("fill", bg)));
+    const grad = cs.backgroundImage && cs.backgroundImage.startsWith("linear-gradient")
+      ? (cs.backgroundImage.match(/(rgba?|color|oklab|oklch)\([^)]*\)|#[0-9a-f]{3,8}/gi) || []).map(rgba).filter(Boolean) : [];
+    if (grad.length >= 2) {
+      const id = "g" + Math.random().toString(36).slice(2, 8);
+      out.push(`<defs><linearGradient id="${id}">${grad.map((c, i) => `<stop offset="${n2(i / (grad.length - 1))}" stop-color="${c.hex}"/>`).join("")}</linearGradient></defs>`);
+      out.push(shapeSvg(x, y, w, h, radius, ` fill="url(#${id})"`));
+    }
+    const sides = ["Top", "Right", "Bottom", "Left"].map((sd) => ({
+      w: cs["border" + sd + "Style"] === "none" ? 0 : parseFloat(cs["border" + sd + "Width"]) || 0,
+      c: rgba(cs["border" + sd + "Color"])
+    }));
+    const same = sides.every((sd) => sd.w === sides[0].w && sd.c && sides[0].c && sd.c.hex === sides[0].c.hex && sd.c.a === sides[0].c.a);
+    if (same && sides[0].w > 0) {
+      const bw = sides[0].w;
+      out.push(shapeSvg(x + bw / 2, y + bw / 2, w - bw, h - bw, radius === "circle" ? "circle" : Math.max(0, radius - bw / 2), ` fill="none"${paint("stroke", sides[0].c)} stroke-width="${bw}"`));
+    } else {
+      const [t, rt, b, l] = sides;
+      if (t.w && t.c) out.push(shapeSvg(x, y, w, t.w, 0, paint("fill", t.c)));
+      if (b.w && b.c) out.push(shapeSvg(x, y + h - b.w, w, b.w, 0, paint("fill", b.c)));
+      if (l.w && l.c) out.push(shapeSvg(x, y, l.w, h, 0, paint("fill", l.c)));
+      if (rt.w && rt.c) out.push(shapeSvg(x + w - rt.w, y, rt.w, h, 0, paint("fill", rt.c)));
+    }
+    // Inset shadows sit inside the border, as the browser paints them.
+    const [bt, br, bb, bl] = sides.map((sd) => sd.w);
+    shadows.filter((s) => s.inset).forEach((s) => {
+      const sw = s.spread;
+      const ix = x + bl + sw / 2, iy = y + bt + sw / 2, iw = w - bl - br - sw, ih = h - bt - bb - sw;
+      if (iw > 0 && ih > 0) out.push(shapeSvg(ix, iy, iw, ih, radius === "circle" ? "circle" : Math.max(0, radius - sw / 2), ` fill="none"${paint("stroke", s.color)} stroke-width="${sw}"`));
+    });
+    return out.join("");
+  }
+
+  const measureCtx = document.createElement("canvas").getContext("2d");
+  function fitText(text, font, maxW) {
+    measureCtx.font = font;
+    if (measureCtx.measureText(text).width <= maxW) return text;
+    let lo = 0, hi = text.length;
+    while (lo < hi) {
+      const mid = (lo + hi + 1) >> 1;
+      if (measureCtx.measureText(text.slice(0, mid) + "…").width <= maxW) lo = mid; else hi = mid - 1;
+    }
+    return text.slice(0, lo).trimEnd() + "…";
+  }
+
+  function textSvg(node, ox, oy) {
+    const raw = node.textContent;
+    if (!raw.trim()) return "";
+    const el = node.parentElement;
+    const cs = getComputedStyle(el);
+    const color = rgba(cs.color);
+    const fs = parseFloat(cs.fontSize);
+    const font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    // Group words into rendered lines.
+    const range = document.createRange();
+    const lines = [];
+    const addPiece = (text, rect, joined) => {
+      const line = lines.find((ln) => Math.abs(ln.top - rect.top) < fs * 0.5);
+      if (line) { line.words.push(joined && line.glue ? text : " " + text); line.glue = false; line.right = rect.right; line.bottom = Math.max(line.bottom, rect.bottom); }
+      else lines.push({ top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right, words: [text], glue: false });
+    };
+    for (const m of raw.matchAll(/\S+/g)) {
+      range.setStart(node, m.index);
+      range.setEnd(node, m.index + m[0].length);
+      const rects = [...range.getClientRects()].filter((q) => q.width > 0);
+      if (!rects.length) continue;
+      if (rects.every((q) => Math.abs(q.top - rects[0].top) < fs * 0.5)) { addPiece(m[0], rects[0], false); continue; }
+      // The browser broke this word across lines (e.g. at a hyphen): split it where it broke.
+      let piece = "", pieceRect = null;
+      for (let i = 0; i < m[0].length; i++) {
+        range.setStart(node, m.index + i);
+        range.setEnd(node, m.index + i + 1);
+        const r = [...range.getClientRects()].find((q) => q.width > 0);
+        if (!r) { piece += m[0][i]; continue; }
+        if (pieceRect && Math.abs(r.top - pieceRect.top) >= fs * 0.5) { addPiece(piece, pieceRect, false); piece = ""; pieceRect = null; }
+        if (!pieceRect) pieceRect = r;
+        piece += m[0][i];
+      }
+      if (piece && pieceRect) addPiece(piece, pieceRect, false);
+    }
+    lines.forEach((ln) => { ln.words = [ln.words.join("").trim()]; });
+    // Text clipped with an ellipsis on screen is clipped the same way here.
+    const clip = el.closest(".lbl, .d");
+    const clipRect = clip && getComputedStyle(clip).textOverflow === "ellipsis" && clip.scrollWidth > clip.clientWidth ? clip.getBoundingClientRect() : null;
+    return lines.map((ln) => {
+      let text = ln.words.join(" ");
+      if (cs.textTransform === "uppercase") text = text.toUpperCase();
+      else if (cs.textTransform === "lowercase") text = text.toLowerCase();
+      if (clipRect) text = fitText(text, font, clipRect.right - ln.left);
+      const h = ln.bottom - ln.top;
+      const baseline = ln.bottom - (h - fs) / 2 - fs * 0.2;
+      return `<text x="${n2(ln.left - ox)}" y="${n2(baseline - oy)}" font-size="${fs}" font-weight="${cs.fontWeight}"${cs.fontStyle !== "normal" ? ` font-style="${cs.fontStyle}"` : ""} font-family="${xmlEsc(cs.fontFamily)}"${cs.letterSpacing !== "normal" && parseFloat(cs.letterSpacing) ? ` letter-spacing="${n2(parseFloat(cs.letterSpacing))}"` : ""}${paint("fill", color)}>${xmlEsc(text)}</text>`;
+    }).join("");
+  }
+
+  // Inline <svg> charts are copied with their computed paint written as attributes.
+  function inlineSvg(svg, ox, oy) {
+    const r = svg.getBoundingClientRect();
+    const clone = svg.cloneNode(true);
+    const src = [...svg.querySelectorAll("*")], dst = [...clone.querySelectorAll("*")];
+    src.forEach((el, i) => {
+      const cs = getComputedStyle(el), c = dst[i];
+      c.removeAttribute("class");
+      c.removeAttribute("data-tip");
+      // Computed paint is copied below; inline var() styles would not resolve outside the page
+      c.removeAttribute("style");
+      if (cs.display === "none") { c.remove(); return; }
+      const fill = cs.fill.startsWith("url") ? null : rgba(cs.fill);
+      c.setAttribute("fill", fill ? fill.hex : "none");
+      const fo = parseFloat(cs.fillOpacity) * (fill ? fill.a : 1);
+      if (fo < 1) c.setAttribute("fill-opacity", n2(fo));
+      const stroke = rgba(cs.stroke);
+      if (stroke && parseFloat(cs.strokeWidth) > 0) {
+        c.setAttribute("stroke", stroke.hex);
+        c.setAttribute("stroke-width", parseFloat(cs.strokeWidth));
+        if (stroke.a < 1) c.setAttribute("stroke-opacity", stroke.a);
+      }
+      if (el.tagName === "text") {
+        if (cs.paintOrder && cs.paintOrder !== "normal") c.setAttribute("paint-order", cs.paintOrder);
+        if (cs.strokeLinejoin) c.setAttribute("stroke-linejoin", cs.strokeLinejoin);
+        c.setAttribute("font-size", parseFloat(cs.fontSize));
+        c.setAttribute("font-weight", cs.fontWeight);
+        c.setAttribute("font-family", cs.fontFamily);
+      }
+    });
+    return `<g transform="translate(${n2(r.left - ox)},${n2(r.top - oy)})">${clone.innerHTML}</g>`;
+  }
+
+  function walkSvg(node, ox, oy, out, root) {
+    if (node.nodeType === 3) { out.push(textSvg(node, ox, oy)); return; }
+    if (node.nodeType !== 1 || node.matches(EXPORT_IGNORE)) return;
+    if (node.tagName.toLowerCase() === "svg") { out.push(inlineSvg(node, ox, oy)); return; }
+    const cs = getComputedStyle(node);
+    if (cs.display === "none" || cs.visibility === "hidden") return;
+    if (node !== root) {
+      const r = node.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0) out.push(boxSvg(cs, r, ox, oy));
+    }
+    node.childNodes.forEach((c) => walkSvg(c, ox, oy, out, root));
+  }
+
+  function withLightLayout(card, fn) {
+    const html = document.documentElement;
+    const prevTheme = html.dataset.theme;
+    html.dataset.theme = "light";
+    html.classList.add("exporting-root");
+    html.classList.add("exporting-root");
+    // Colours that depend on the theme are computed while rendering.
+    if (prevTheme !== "light") rerenderForTheme();
+    // Let wide tables lay out at full width instead of scrolling.
+    const prevWidth = card.style.width;
+    const extra = Math.max(0, ...[...card.querySelectorAll(".table-wrap")].map((w) => w.scrollWidth - w.clientWidth));
+    if (extra > 0) card.style.width = card.offsetWidth + extra + "px";
+    card.classList.add("exporting");
+    try { return fn(); } finally {
+      card.classList.remove("exporting");
+      html.classList.remove("exporting-root");
+      card.style.width = prevWidth;
+      if (prevTheme) html.dataset.theme = prevTheme; else delete html.dataset.theme;
+      if (prevTheme !== "light") rerenderForTheme();
+    }
+  }
+
+  function figureSvg(card) {
+    return withLightLayout(card, () => {
+      const pad = 16;
+      const r = card.getBoundingClientRect();
+      const ox = r.left - pad, oy = r.top - pad;
+      const out = [];
+      walkSvg(card, ox, oy, out, card);
+      const w = Math.ceil(r.width + 2 * pad), h = Math.ceil(r.height + 2 * pad);
+      const body = out.join("");
+      // Embed the page's fonts (only those the figure uses) so SVG and TIFF keep the same type
+      const faces = ($("fontFaces")?.textContent || "").split("\n").filter((r) => body.includes(r.match(/font-family:'([^']+)'/)?.[1] || "\u0000"));
+      const defs = faces.length ? `<defs><style>${faces.join("\n")}</style></defs>` : "";
+      const svg = `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">` +
+        `${defs}<rect width="${w}" height="${h}" fill="#ffffff"/>${body}</svg>`;
+      return { svg, w, h };
+    });
+  }
+
+  function packBits(src) {
+    const out = new Uint8Array(src.length * 2 + 2);
+    let i = 0, o = 0;
+    const n = src.length;
+    while (i < n) {
+      let j = i + 1;
+      while (j < n && src[j] === src[i] && j - i < 128) j++;
+      if (j - i >= 2) {
+        out[o++] = 257 - (j - i);
+        out[o++] = src[i];
+        i = j;
+      } else {
+        let k = i;
+        while (k < n && k - i < 128 && !(k + 1 < n && src[k] === src[k + 1])) k++;
+        if (k === i) k = i + 1;
+        out[o++] = k - i - 1;
+        for (let m = i; m < k; m++) out[o++] = src[m];
+        i = k;
+      }
+    }
+    return out.subarray(0, o);
+  }
+
+  async function deflate(bytes) {
+    const stream = new Blob([bytes]).stream().pipeThrough(new CompressionStream("deflate"));
+    return new Uint8Array(await new Response(stream).arrayBuffer());
+  }
+
+  // Baseline RGB TIFF with DPI tags. Strips are Deflate-compressed with a
+  // horizontal predictor; browsers without CompressionStream fall back to PackBits.
+  async function encodeTiff(rgbaData, w, h, dpi) {
+    const useDeflate = typeof CompressionStream === "function";
+    const rps = 32;
+    const nStrips = Math.ceil(h / rps);
+    const strips = [];
+    let dataLen = 0;
+    for (let s0 = 0; s0 < h; s0 += rps) {
+      const rows = Math.min(rps, h - s0);
+      const raw = new Uint8Array(rows * w * 3);
+      const parts = [];
+      for (let r = 0; r < rows; r++) {
+        const base = r * w * 3;
+        for (let x = 0, src = (s0 + r) * w * 4, d = base; x < w; x++, src += 4) {
+          raw[d++] = rgbaData[src]; raw[d++] = rgbaData[src + 1]; raw[d++] = rgbaData[src + 2];
+        }
+        if (useDeflate) {
+          for (let i = base + w * 3 - 1; i >= base + 3; i--) raw[i] = (raw[i] - raw[i - 3]) & 0xff;
+        } else {
+          parts.push(packBits(raw.subarray(base, base + w * 3)));
+        }
+      }
+      let strip;
+      if (useDeflate) strip = await deflate(raw);
+      else {
+        strip = new Uint8Array(parts.reduce((a, q) => a + q.length, 0));
+        let o = 0;
+        parts.forEach((q) => { strip.set(q, o); o += q.length; });
+      }
+      strips.push(strip);
+      dataLen += strip.length;
+    }
+
+    const SHORT = 3, LONG = 4, RATIONAL = 5;
+    const tags = [
+      [256, LONG, 1, w], [257, LONG, 1, h], [258, SHORT, 3, "bps"],
+      [259, SHORT, 1, useDeflate ? 8 : 32773], [262, SHORT, 1, 2],
+      [273, LONG, nStrips, "offsets"], [277, SHORT, 1, 3], [278, LONG, 1, rps],
+      [279, LONG, nStrips, "counts"], [282, RATIONAL, 1, "xres"], [283, RATIONAL, 1, "yres"],
+      [284, SHORT, 1, 1], [296, SHORT, 1, 2]
+    ];
+    if (useDeflate) tags.push([317, SHORT, 1, 2]);
+    const ifdStart = 8;
+    let off = ifdStart + 2 + tags.length * 12 + 4;
+    const at = {};
+    at.bps = off; off += 6;
+    at.xres = off; off += 8;
+    at.yres = off; off += 8;
+    if (nStrips > 1) { at.offsets = off; off += 4 * nStrips; at.counts = off; off += 4 * nStrips; }
+    const dataOff = off;
+    const buf = new ArrayBuffer(dataOff + dataLen);
+    const dv = new DataView(buf), u8 = new Uint8Array(buf);
+    dv.setUint16(0, 0x4949); dv.setUint16(2, 42, true); dv.setUint32(4, ifdStart, true);
+    dv.setUint16(ifdStart, tags.length, true);
+    let t = ifdStart + 2;
+    tags.forEach(([id, type, count, value]) => {
+      if (value === "offsets" && nStrips === 1) value = dataOff;
+      else if (value === "counts" && nStrips === 1) value = strips[0].length;
+      else if (typeof value === "string") value = at[value];
+      dv.setUint16(t, id, true); dv.setUint16(t + 2, type, true); dv.setUint32(t + 4, count, true);
+      if (type === SHORT && count === 1) dv.setUint16(t + 8, value, true); else dv.setUint32(t + 8, value, true);
+      t += 12;
+    });
+    dv.setUint32(t, 0, true);
+    [8, 8, 8].forEach((v, i) => dv.setUint16(at.bps + i * 2, v, true));
+    dv.setUint32(at.xres, dpi, true); dv.setUint32(at.xres + 4, 1, true);
+    dv.setUint32(at.yres, dpi, true); dv.setUint32(at.yres + 4, 1, true);
+    let pos = dataOff;
+    strips.forEach((st, i) => {
+      if (nStrips > 1) { dv.setUint32(at.offsets + i * 4, pos, true); dv.setUint32(at.counts + i * 4, st.length, true); }
+      u8.set(st, pos);
+      pos += st.length;
+    });
+    return new Blob([buf], { type: "image/tiff" });
+  }
+
+  async function svgToTiff(svg, w, h, dpi) {
+    const MAX_PIXELS = 120e6;
+    let scale = dpi / 96;
+    if (w * h * scale * scale > MAX_PIXELS) {
+      scale = Math.sqrt(MAX_PIXELS / (w * h));
+      dpi = Math.floor(scale * 96);
+    }
+    const img = new Image();
+    const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
+    try {
+      img.src = url;
+      await img.decode();
+      const cw = Math.round(w * scale), ch = Math.round(h * scale);
+      const canvas = document.createElement("canvas");
+      canvas.width = cw; canvas.height = ch;
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.drawImage(img, 0, 0, cw, ch);
+      return { blob: await encodeTiff(ctx.getImageData(0, 0, cw, ch).data, cw, ch, dpi), dpi };
+    } finally {
+      URL.revokeObjectURL(url);
+    }
+  }
+
+  function download(blob, name) {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+
+  const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+  function figureName(card) {
+    const parts = ["aiva", card.querySelector(".card-head h3").textContent];
+    if (!card.hasAttribute("data-static")) parts.push(selModels().map((m) => m.short_name).join(" vs "));
+    if (card.querySelector("#cmGrid")) parts.push(state.cmScale + "-class", state.cmMode === "count" ? "counts" : "row-pct");
+    if (card.querySelector("#agreeHeat")) parts.push(state.agree === "exact_pct" ? "exact" : "directional");
+    return slug(parts.join(" ")).slice(0, 140).replace(/-$/, "");
+  }
+
+  async function exportFigure(card, fmt, dpi) {
+    const name = figureName(card);
+    try {
+      const { svg, w, h } = figureSvg(card);
+      if (fmt === "svg") {
+        download(new Blob([svg], { type: "image/svg+xml" }), name + ".svg");
+        return;
+      }
+      toast("Rendering TIFF…");
+      const res = await svgToTiff(svg, w, h, dpi);
+      download(res.blob, `${name}-${res.dpi}dpi.tiff`);
+      toast(res.dpi < dpi ? `Saved at ${res.dpi} dpi; ${dpi} dpi would exceed the browser's canvas limit.` : `Saved ${name}-${res.dpi}dpi.tiff`);
+    } catch (e) {
+      toast("Export failed: " + e.message);
+    }
+  }
+
+  function setupExport() {
+    document.querySelectorAll(".card").forEach((card) => {
+      const head = card.querySelector(".card-head");
+      if (!head || !head.querySelector("h3")) return;
+      const menu = document.createElement("details");
+      menu.className = "fig-export";
+      menu.innerHTML = `<summary class="btn">Export</summary><div class="menu" role="menu">
+        <button type="button" role="menuitem" data-fmt="svg">SVG (vector)</button>
+        <button type="button" role="menuitem" data-fmt="tiff" data-dpi="300">TIFF, 300 dpi</button>
+        <button type="button" role="menuitem" data-fmt="tiff" data-dpi="600">TIFF, 600 dpi</button>
+        <div class="menu-note">Light theme, white background</div></div>`;
+      menu.querySelectorAll("button").forEach((b) => b.onclick = () => {
+        menu.open = false;
+        exportFigure(card, b.dataset.fmt, +b.dataset.dpi || 300);
+      });
+      head.appendChild(menu);
+    });
+    document.addEventListener("click", (e) => {
+      document.querySelectorAll(".fig-export[open]").forEach((d) => { if (!d.contains(e.target)) d.open = false; });
+    });
+  }
+
+  // ---------- wiring ----------
+  document.querySelectorAll(".tab").forEach((b) => (b.onclick = () => setTab(b.dataset.tab)));
+  document.querySelectorAll(".section-tab").forEach((b) => (b.onclick = () => setTab(b.dataset.section === "ranking" ? "ranking" : state.clsTab || "leaderboard")));
+  $("focusSel").onchange = (e) => setFocus(e.target.value);
+  $("csvBtn").onclick = downloadVariantsCsv;
+  window.addEventListener("hashchange", () => { applyHash(); normalizeSelection(); renderSelector(); setTab(state.tab); });
+  let resizeT;
+  window.addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(() => { if (RENDER[state.tab]) RENDER[state.tab](); }, 150); });
+
+  setupTheme();
+  setupRefresh();
+  setupImport();
+  setupModels();
+  setupExport();
+  setupPicker();
+  setupLbScatter();
+  setupLbPicker();
+  applyHash();
+  renderAll();
+})();
+</script>
+</body>
+</html>

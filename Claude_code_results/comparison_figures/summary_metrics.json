@@ -1,0 +1,153 @@
+{
+  "total": 8387,
+  "cc_exact_acc": 0.42649338261595326,
+  "rerun_exact_acc": 0.4386550614045547,
+  "cc_dir_acc": 0.5768451174436628,
+  "rerun_dir_acc": 0.5160367235006558,
+  "cc_macro_f1": 0.34712,
+  "rerun_macro_f1": 0.34371999999999997,
+  "cc_per_class": {
+    "Pathogenic": {
+      "precision": 0.7576,
+      "recall": 0.1732,
+      "f1": 0.282,
+      "support": 2003,
+      "predicted": 458,
+      "true_positives": 347,
+      "false_positives": 111,
+      "false_negatives": 1656
+    },
+    "Likely Pathogenic": {
+      "precision": 0.2567,
+      "recall": 0.1546,
+      "f1": 0.193,
+      "support": 1546,
+      "predicted": 931,
+      "true_positives": 239,
+      "false_positives": 692,
+      "false_negatives": 1307
+    },
+    "Uncertain Significance": {
+      "precision": 0.4311,
+      "recall": 0.8571,
+      "f1": 0.5737,
+      "support": 2779,
+      "predicted": 5525,
+      "true_positives": 2382,
+      "false_positives": 3143,
+      "false_negatives": 397
+    },
+    "Likely Benign": {
+      "precision": 0.3258,
+      "recall": 0.3721,
+      "f1": 0.3474,
+      "support": 1118,
+      "predicted": 1277,
+      "true_positives": 416,
+      "false_positives": 861,
+      "false_negatives": 702
+    },
+    "Benign": {
+      "precision": 0.9847,
+      "recall": 0.2051,
+      "f1": 0.3395,
+      "support": 941,
+      "predicted": 196,
+      "true_positives": 193,
+      "false_positives": 3,
+      "false_negatives": 748
+    }
+  },
+  "rerun_per_class": {
+    "Pathogenic": {
+      "precision": 0.8768,
+      "recall": 0.0604,
+      "f1": 0.113,
+      "support": 2003,
+      "predicted": 138,
+      "true_positives": 121,
+      "false_positives": 17,
+      "false_negatives": 1882
+    },
+    "Likely Pathogenic": {
+      "precision": 0.2727,
+      "recall": 0.1242,
+      "f1": 0.1707,
+      "support": 1546,
+      "predicted": 704,
+      "true_positives": 192,
+      "false_positives": 512,
+      "false_negatives": 1354
+    },
+    "Uncertain Significance": {
+      "precision": 0.4048,
+      "recall": 0.9727,
+      "f1": 0.5717,
+      "support": 2779,
+      "predicted": 6677,
+      "true_positives": 2703,
+      "false_positives": 3974,
+      "false_negatives": 76
+    },
+    "Likely Benign": {
+      "precision": 0.4868,
+      "recall": 0.0993,
+      "f1": 0.1649,
+      "support": 1118,
+      "predicted": 228,
+      "true_positives": 111,
+      "false_positives": 117,
+      "false_negatives": 1007
+    },
+    "Benign": {
+      "precision": 0.8625,
+      "recall": 0.5866,
+      "f1": 0.6983,
+      "support": 941,
+      "predicted": 640,
+      "true_positives": 552,
+      "false_positives": 88,
+      "false_negatives": 389
+    }
+  },
+  "cc_per_dir": {
+    "pathogenic": {
+      "precision": 0.9575,
+      "recall": 0.3748,
+      "f1": 0.5387,
+      "support": 3549
+    },
+    "vus": {
+      "precision": 0.4311,
+      "recall": 0.8571,
+      "f1": 0.5737,
+      "support": 2779
+    },
+    "benign": {
+      "precision": 0.7644,
+      "recall": 0.5469,
+      "f1": 0.6376,
+      "support": 2059
+    }
+  },
+  "rerun_per_dir": {
+    "pathogenic": {
+      "precision": 0.9691,
+      "recall": 0.2299,
+      "f1": 0.3717,
+      "support": 3549
+    },
+    "vus": {
+      "precision": 0.4048,
+      "recall": 0.9727,
+      "f1": 0.5717,
+      "support": 2779
+    },
+    "benign": {
+      "precision": 0.932,
+      "recall": 0.3929,
+      "f1": 0.5528,
+      "support": 2059
+    }
+  }
+}
